@@ -81,8 +81,8 @@ $RECYCLE.BIN/
 /indrz/conference/migrations/
 /indrz/poi_manager/migrations/
 /indrz/logs/
-/indrz/settings.py
-/indrz/secret_settings.py
+/settings/secret_settings.py
+/settings/local.py.example.py
 
 
 
