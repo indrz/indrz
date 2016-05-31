@@ -10,10 +10,10 @@ var map = new ol.Map({
             ]
         }),
         new ol.layer.Group({
-            title: 'Etage',
+            title: 'Ebene',
             layers: [
 
-                wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03
+                wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03 //, wmsE04, wmsE05, wmsE06
             ]
         })
     ],

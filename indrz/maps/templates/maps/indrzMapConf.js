@@ -13,6 +13,6 @@ var route_to = "{{route_to}}";
 var centerx = "{{centerx}}";
 var centery = "{{centery}}";
 
-var StartCenterX = -168547.958404064;
-var StartCenterY = 5983885.94934575;
+var StartCenterX = 1826602.5273166203;
+var StartCenterY = 6142514.2285252055;
 // set the starting coordinate of the map
