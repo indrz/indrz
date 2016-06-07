@@ -1,0 +1,261 @@
+@import url(http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700);
+
+#id-fullscreen{
+    position: relative;
+}
+
+#id-fullscreen .fa{
+  padding-left: 22px;
+  padding-top: 5px;
+}
+.btn-fullscreen{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: none;
+}
+.btn-fullscreen:hover{
+    background: none;
+}
+.btn-fullscreen button{
+    width: 100%;
+    color: #333;
+    background: none;
+    text-indent: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: Quattrocento Sans!important;
+}
+
+.btn-fullscreen button:hover, .btn-fullscreen button::selection{
+    background-color: transparent;
+    color: #262626;
+}
+
+body {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    font-family: SignikaLight,Geneva,Helvetica,Arial;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.indrz-main-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.indrz-map-container { width:100%; height:100%; margin:0; }
+#toolbox       { position:absolute; top:98px; right:18px; padding:3px; border-radius:4px; color:#fff; background: rgba(255, 255, 255, 0.4); z-index:100; }
+#layerswitcher { margin:0; padding:10px; border-radius:4px; background:rgba(0, 60, 136, 0.5); list-style-type:none; }
+
+.indrz-logo {
+  position: absolute; /* or absolute */
+  bottom: 2%;
+  left: 50%;
+    z-index: 1001;
+}
+
+.indrz-floor-changer-float{
+    position: fixed;
+    /*top: 5%;*/
+    right: 20px;
+    z-index: 1001;
+}
+
+.indrz-search {
+  position: absolute; /* or absolute */
+  top: 2%;
+  left: 40px;
+  z-index: 1002;
+}
+
+html, body, map{
+overflow: hidden;
+}
+
+.olImageLoadError { display: none; }
+
+
+.ol-attribution {
+  max-width: calc(100% - 3em);
+}
+.ol-control button, .ol-attribution, .ol-scale-line-inner {
+  font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
+}
+
+.ol-control button, .ol-attribution, .ol-scale-line-inner {
+    font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
+}
+.ol-control button {
+
+    color: #009ab8;
+
+    background-color: #000000;
+    background-color: rgba(0,0,0,1);
+
+}
+.ol-control button:hover {
+
+    color: #009ab8;
+
+    background-color: rgba(163, 163, 163, 0.86);
+    background-color: rgb(163, 163, 163);
+
+}
+#tags {
+  display: none;
+}
+
+body, h1, h2, h3, h4, p, li, td, th {
+  font-family: Quattrocento Sans;
+}
+.navbar-inverse .navbar-inner {
+  background: #1F6B75;
+}
+.navbar-inverse .brand {
+  color: white;
+  padding: 5px;
+}
+
+.bs-example{
+	font-family: sans-serif;
+	position: relative;
+	margin: 100px;
+}
+
+
+
+
+.popover-content {
+	min-width: 225px;
+}
+
+/* STYLE CSS for the typeahead drop down */
+
+.twitter-typeahead .tt-query,
+.twitter-typeahead .tt-hint {
+	margin-bottom: 0;
+}
+.tt-hint {
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 8px 12px;
+	font-size: 14px;
+	line-height: 1.428571429;
+	color: #999;
+	vertical-align: middle;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+	      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.tt-menu {
+	min-width: 160px;
+	margin-top: 2px;
+	padding: 5px 0;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	background-clip: padding-box;
+
+}
+.tt-suggestion {
+	display: block;
+	padding: 3px 20px;
+}
+.tt-suggestion:hover {
+	color: #fff;
+	background-color: #428bca;
+}
+.tt-suggestion.tt-is-under-cursor a {
+	color: #fff;
+}
+.tt-suggestion p {
+	margin: 0;
+}
+
+#id-map-switcher-widget{
+    position: absolute;
+    right: 120px;
+    top: 5%;
+}
+#id-map-switcher-widget button{
+    width: 120px;
+}
+
+.ol-popup {
+  position: absolute;
+  background-color: white;
+  -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+  min-width: 280px;
+  z-index: 9999;
+}
+.ol-popup:after, .ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.ol-popup:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+.ol-popup:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+.ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 2px;
+  right: 8px;
+}
+.ol-popup-closer:after {
+  content: "X";
+}
+#id-map-switcher-widget{
+    position: absolute;
+    right: 120px;
+    top: 5%;
+}
+#id-map-switcher-widget button{
+    width: 120px;
+}
+
+.twitter-typeahead{ float:left; width:100%}
+/* END  STYLE CSS for the TYPEAHEAD drop down */

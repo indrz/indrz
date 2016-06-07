@@ -1,0 +1,46 @@
+{% extends "homepage/wu-base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block map_div %}
+      <div id="map" class="indrz-map-container">
+
+            {% block floor-change-float %}
+
+                <div class="indrz-floor-changer-float">
+                    <ul class="nav nav-pills nav-stacked" id="floor-links"></ul>
+                </div>
+
+            {% endblock floor-change-float %}
+
+             {% block indrz-logo-imgt %}
+
+                <div class="indrz-logo">
+
+                    <a href="http://www.indrz.com" target="_blank"><img
+                    src="{% static "img/indrz-powered-by-90px.png" %}"/></a>
+
+                 </div>
+
+            {% endblock indrz-logo-imgt %}
+
+
+        </div>
+{% endblock map_div %}
+
+{% block map_js %}
+    <script>  {% include 'maps/indrzMapConf.js' %} </script>
+    <script>  {% include 'maps/indrzLayers.js' %} </script>
+    <script>  {% include 'maps/indrz-floorswitcher.js' %} </script>
+    <script>  {% include 'maps/indrzMapInit.js' %}</script>
+    <script>  {% include 'maps/routing.js' %} </script>
+    <script>  {% include 'maps/search.js' %} </script>
+    <script>  {% include 'maps/indrz-popup.js' %} </script>
+    <script>  {% include 'maps/indrz-controls.js' %} </script>
+    <script>  {% include 'maps/indrz_live_url_update.js' %} </script>
+    <script>  {% include 'maps/share.js' %} </script>
+    <script>  {% include 'maps/initialize.js' %} </script>
+    {% if space_id > 0 and space_id != None %}
+        <script>  {% include 'maps/indrz-space.js' %} </script>
+    {% endif %}
+{% endblock map_js %}
