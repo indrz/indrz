@@ -1,0 +1,35 @@
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html>
+
+<html lang="{{ LANGUAGE_CODE|default:"de" }}">
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>{% block title %}Default Title{% endblock %}</title>
+  <meta charset="utf-8">
+    <!-- IE Fix for HTML5 Tags -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <meta name="robots" content="index,follow" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <script type="text/javascript" href="{% static "js/bootstrap.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "css/ol3111.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "homepage/css/wu-indrz-style.css" %}" type="text/css">
+    <script type="text/javascript" src="{% static "js/ol3.11.1.js" %}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+{% block header-extented %}{% endblock header-extented %}
+
+</head>
+<body>
+
+</body>
+</html>

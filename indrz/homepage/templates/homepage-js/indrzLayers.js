@@ -18,14 +18,14 @@ function createWmsLayer(layerName, geoserverLayer, floorNumber, isVisible, zInde
 }
 
 
-wmsUG01 = createWmsLayer('wmsUG01','indrz:ug01', '-1', 'false', 3 );
-wmsE00 = createWmsLayer('wmsE00','indrz:e00', '0', 'false', 3 );
-wmsE01 = createWmsLayer('wmsE01','indrz:e01', '1', 'false', 3 );
-wmsE02 = createWmsLayer('wmsE02','indrz:e02', '2', 'false', 3 );
-wmsE03 = createWmsLayer('wmsE03','indrz:e03', '3', 'false', 3 );
-// wmsE04 = createWmsLayer('wmsE04','indrz:e04', '4', 'false', 3 );
-// wmsE05 = createWmsLayer('wmsE05','indrz:e05', '5', 'false', 3 );
-// wmsE06 = createWmsLayer('wmsE06','indrz:e06', '6', 'false', 3 );
+wmsUG01 = createWmsLayer('wmsUG01','wuwien:ug01', '-1', 'false', 3 );
+wmsEG00 = createWmsLayer('wmsE00','wuwien:eg00', '0', 'false', 3 );
+wmsEG01 = createWmsLayer('wmsE01','wuwien:eg01', '1', 'false', 3 );
+wmsEG02 = createWmsLayer('wmsE02','wuwien:eg02', '2', 'false', 3 );
+wmsEG03 = createWmsLayer('wmsE03','wuwien:eg03', '3', 'false', 3 );
+wmsEG04 = createWmsLayer('wmsE04','wuwien:eg04', '4', 'false', 3 );
+wmsEG05 = createWmsLayer('wmsE05','wuwien:eg05', '5', 'false', 3 );
+wmsEG06 = createWmsLayer('wmsE06','wuwien:eg06', '6', 'false', 3 );
 
 var mapQuestOsm = new ol.layer.Tile({
     source: new ol.source.MapQuest({

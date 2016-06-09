@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^api/v1/', include('api.urls')),
     url(r'^map/', include('maps.urls')),
     url(r'^poi/', include('poi_manager.urls')),
+    url(r'^wu/', include('homepage.urls')),
 
     ]
 

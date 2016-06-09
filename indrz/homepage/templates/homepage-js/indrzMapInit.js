@@ -13,7 +13,7 @@ var map = new ol.Map({
             title: 'Ebene',
             layers: [
 
-                wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03 //, wmsE04, wmsE05, wmsE06
+                wmsUG01, wmsEG00, wmsEG01, wmsEG02, wmsEG03, wmsEG04, wmsEG05, wmsEG06
             ]
         })
     ],
