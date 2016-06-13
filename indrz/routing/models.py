@@ -113,3 +113,15 @@ class NetworklinesE04(NetworklinesBase):
     Routing network lines used in routing services
     """
     pass
+
+class NetworklinesE05(NetworklinesBase):
+    """
+    Routing network lines used in routing services
+    """
+    pass
+
+class NetworklinesE06(NetworklinesBase):
+    """
+    Routing network lines used in routing services
+    """
+    pass
