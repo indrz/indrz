@@ -21,12 +21,12 @@ DATABASES = {
         # Postgresql with PostGIS
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'indrz', # DB name
+        'NAME': 'indrz-wu', # DB name
         'USER': secret_settings.db_user, # DB user name
         'PASSWORD': secret_settings.db_pwd, # DB user password
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '5434',
     }
 }
 
-POSTGIS_VERSION = ( 2, 1 )
+# POSTGIS_VERSION = ( 2, 1 )
