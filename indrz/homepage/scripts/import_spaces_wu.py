@@ -36,6 +36,8 @@ outdoor_tables = ('od_all_fill', 'od_all_polygons', 'od_baeume_linien', 'od_blin
                   'od_orientierungselemente_linie', 'od_raucherzone', 'od_relax_area')
 bibliothek_tables = ('bibliothek')
 
+building_ids = {'EA': 1, 'D5': 2, 'AD':3, 'LC': 999, 'D1': 999, 'D2': 999, 'D3': 999, 'D4': 999, 'SC': 999, 'TC': 999}
+
 rooms_cols = ('refname', 'room_name', 'room_number', 'building', 'floor', 'description', 'geom', 'building_number',
               'aks_nummer', 'entrance_poi_id', 'room_code', 'category_en' )
 
