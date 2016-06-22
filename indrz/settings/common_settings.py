@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'taggit',
     'mptt',
+    'rest_framework_swagger',
 
 
     ##### our local indrz apps
@@ -74,6 +75,7 @@ TEMPLATES = [
         ],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug': True,
             'context_processors': [
                 # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
                 # list if you haven't customized them:
@@ -114,7 +116,7 @@ DATABASES = {
     }
 }
 
-POSTGIS_VERSION = ( 2, 1 )
+POSTGIS_VERSION = ( 2, 2, 0 )
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -145,10 +147,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_FOLDER = 'static'
-STATIC_ROOT = "/var/www/vhosts/campus.wu.ac.at/static/"
+STATIC_ROOT = "/var/www/vhosts/www.indrz.com/static/"
 
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, STATIC_FOLDER),
+    os.path.join(BASE_DIR, STATIC_FOLDER + "admin")
 ]
 
 # finds all static folders in all apps
@@ -157,71 +160,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
+
 MEDIA_URL = "/media/"
 MEDIA_ROOT = "media"
-
-# LOGGING_CONFIG = None
-
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'formatters': {
-#         'verbose': {
-#             'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-#             'datefmt' : "%d/%b/%Y %H:%M:%S"
-#         },
-#         'simple': {
-#             'format': '%(levelname)s %(message)s'
-#         },
-#     },
-#     'handlers': {
-#         'file_verbose': {
-#             'level': 'DEBUG',
-#             'class': 'logging.FileHandler',
-#             'filename': os.path.join(BASE_DIR,  'logs/verbose.log'),
-#             'formatter': 'verbose'
-#         },
-#         'file_debug': {
-#             'level': 'DEBUG',
-#             'class': 'logging.FileHandler',
-#             'filename': os.path.join(BASE_DIR,  'logs/debug.log'),
-#             'formatter': 'verbose'
-#         },
-#     },
-#     'loggers': {
-#         'django': {
-#             'handlers':['file_verbose'],
-#             'propagate': True,
-#             'level':'DEBUG',
-#         },
-#         'api': {
-#             'handlers': ['file_debug'],
-#             'propagate': True,
-#             'level': 'DEBUG',
-#         },
-#         'admin': {
-#             'handlers': ['file_debug'],
-#             'propagate': True,
-#             'level': 'DEBUG',
-#         },
-#         'buildings': {
-#             'handlers': ['file_debug'],
-#             'propagate': True,
-#             'level': 'DEBUG',
-#         },
-#         'routing': {
-#             'handlers': ['file_debug'],
-#             'propagate': True,
-#             'level': 'DEBUG',
-#         },
-#         'maps': {
-#             'handlers': ['file_debug'],
-#             'propagate': True,
-#             'level': 'DEBUG',
-#         }
-#
-#     }
-# }
-
-# import logging.config
-# logging.config.dictConfig(LOGGING)

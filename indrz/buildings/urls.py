@@ -29,5 +29,6 @@ urlpatterns = patterns('buildings.views',
     url(r'^floor/(?P<building_id>\d{1,5})/$', 'building_floors_list', name='get_floor_ids'),
     url(r'^(?P<building_id>\d{1,5})/externid/(?P<external_room_id>.+)/$', 'get_external_id', name='get_external_ids'),
     url(r'^(?P<building_id>\d{1,5})/(?P<space_name>.+)/$', 'get_space_by_name', name='get_space_by_name'),
+    url(r'^(?P<building_id>\d{1,5})/floors/$', 'building_floors_list', name='get_building_floors'),
     #url(r'^directions/(?P<building_name>building=d{1,5})&start={1,6}&destination={1,6}/$', 'route_room_to_room', name='route-space-to-space' )
 )

@@ -23,7 +23,9 @@ logger = logging.getLogger(__name__)
 def campus_list(request, format=None):
     """
     List all buildings without details
+
     """
+
     if request.method == 'GET':
         campus = Campus.objects.all()
         serializer = CampusSerializer(campus, many=True)

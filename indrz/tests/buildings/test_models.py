@@ -12,15 +12,25 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import absolute_import, print_function
-import sys
+import pytest
+from mixer.backend.django import mixer
+
+pytestmark = pytest.mark.django_db
+
+class TestOrganization:
+    def test_init(self):
+        obj = mixer.blend('buildings.Organization')
+        assert obj.pk == 1, 'Should create an organization instance'
 
 
-try:
-    print("Trying import local_seetings.py settings...", file=sys.stderr)
-    from .local_settings import *
-    print("yes it worked imported...", file=sys.stderr)
-except ImportError:
-    print("Trying import development.py settings...", file=sys.stderr)
-    from .dev_settings import *
-    print("Now importing development.py settings...", file=sys.stderr)
+class TestCampus:
+    def test_init(self):
+        obj = mixer.blend('buildings.Campus')
+        assert obj.pk == 1, 'Should create a campus instance'
+
+
+class TestBuilding:
+    def test_init(self):
+        obj = mixer.blend('buildings.Building')
+        assert obj.pk == 1, 'Should create a building instance'
+

@@ -1,6 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### JetBrains template
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion
 
 *.iml
 
@@ -8,85 +7,21 @@
 .idea/
 # if you remove the above rule, at least ignore the following:
 
-# User-specific stuff:
-# .idea/workspace.xml
-# .idea/tasks.xml
-# .idea/dictionaries
 
-# Sensitive or high-churn files:
-# .idea/dataSources.ids
-# .idea/dataSources.xml
-# .idea/sqlDataSources.xml
-# .idea/dynamic.xml
-# .idea/uiDesigner.xml
-
-# Gradle:
-# .idea/gradle.xml
-# .idea/libraries
-
-# Mongo Explorer plugin:
-# .idea/mongoSettings.xml
-
-## File-based project format:
-*.ipr
-*.iws
-
-## Plugin-specific files:
-
-# IntelliJ
-/out/
-
-# mpeltonen/sbt-idea plugin
-.idea_modules/
-
-# JIRA plugin
-atlassian-ide-plugin.xml
-
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-
-
-### Windows template
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# secret pwd and user names
-/indrz/indrz/secret_settings.py
 *.pyc
 
+*migrations
 
-/indrz/api/migrations/
-/indrz/buildings/migrations/
-/indrz/routing/migrations/
-/indrz/landscape/migrations/
-/indrz/maps/migrations/
-/indrz/conference/migrations/
-/indrz/poi_manager/migrations/
 /indrz/logs/
-/settings/local.py.example.py/
-/node_modules
+
 /indrz/settings/secret_settings.py
+/indrz/htmlcov/
+
+/.cache/
+/indrz/tests/.cache/
 
 
-
+*.cache
 
 
 

@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^logout/$', logout, {'next_page': '/'}, name='logout'),
 
     url(r'^api/v1/', include('api.urls')),
+    url(r'^api/v1/docs/', include('rest_framework_swagger.urls')),
     url(r'^map/', include('maps.urls')),
     url(r'^poi/', include('poi_manager.urls')),
     url(r'^wu/', include('homepage.urls')),

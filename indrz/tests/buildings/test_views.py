@@ -11,16 +11,13 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+from django.test import RequestFactory
+from buildings import views
+import pytest
+pytestmark = pytest.mark.django_db
 
-from __future__ import absolute_import, print_function
-import sys
-
-
-try:
-    print("Trying import local_seetings.py settings...", file=sys.stderr)
-    from .local_settings import *
-    print("yes it worked imported...", file=sys.stderr)
-except ImportError:
-    print("Trying import development.py settings...", file=sys.stderr)
-    from .dev_settings import *
-    print("Now importing development.py settings...", file=sys.stderr)
+class TestCampusList:
+    def test_init_campus_list(self):
+        req = RequestFactory().get('/')
+        resp = views.campus_list(req)
+        assert resp.status_code == 200, 'should call cshow list'

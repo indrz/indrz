@@ -15,7 +15,6 @@ urlpatterns = patterns('api.views',
 urlpatterns += patterns('buildings.views',
     # url(r'^spaces/$', 'spaces_list', name='list_all_campuses'),
     url(r'^spaces/(?P<space_id>\d{1,5})/$', 'space_details', name='show_space_details'),
-    url(r'^spaces/(?P<space_id>\d{1,5})/$', 'get_floor_space_id', name='get_space_info'),
     # url(r'^spaces/(?P<space_name>.+)/$', 'get_space_by_name', name='get_space_by_name'),
     )
 

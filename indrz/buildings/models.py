@@ -326,6 +326,7 @@ class BuildingFloorSpace(FloorSpaceBase):
     room_number = gis_models.CharField(verbose_name=_("Room number"), max_length=150, null=True, blank=True)
     room_number_sign = gis_models.CharField(verbose_name=_("Room number on door sign"), max_length=150, null=True, blank=True)
     room_description = gis_models.CharField(verbose_name=_("Room description"), max_length=150, null=True, blank=True)
+    room_code = gis_models.CharField(verbose_name=_("Room code"), max_length=150, null=True, blank=True)
     capacity = gis_models.IntegerField(verbose_name=_("Total number of occupants allowed in this space"), null=True, blank=True)
 
     space_type = gis_models.ForeignKey(LtSpaceType, null=True, blank=True)

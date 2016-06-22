@@ -1,0 +1,4 @@
+mixer
+pytest
+pytest-cov
+pytest-django

@@ -12,21 +12,27 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from .dev_settings import *
 
-from .common import *
-DEBUG = True
+
+# DATABASES = {
+#     "default": {
+#         # "ENGINE": "django.db.backends.sqlite3",
+#         "ENGINE": "django.contrib.gis.db.backends.spatialite",
+#         "NAME": ":memory:",
+#     }
+# }
 
 DATABASES = {
     'default': {
-        # Postgresql with PostGIS
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'indrz-wu', # DB name
-        'USER': secret_settings.db_user, # DB user name
-        'PASSWORD': secret_settings.db_pwd, # DB user password
+        'NAME': 'test_db',
+        'USER': 'postgres',
+        'PASSWORD': 'air',
         'HOST': 'localhost',
         'PORT': '5434',
     }
 }
 
-# POSTGIS_VERSION = ( 2, 1 )
+EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
+POSTGIS_VERSION = "2.2.2"
