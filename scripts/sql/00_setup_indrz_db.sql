@@ -13,9 +13,7 @@ CREATE DATABASE indrz
 
 CREATE EXTENSION postgis SCHEMA public VERSION "2.2.1";
 
-CREATE EXTENSION pgrouting
-  SCHEMA public
-  VERSION "2.1.0";
+CREATE EXTENSION pgrouting SCHEMA public VERSION "2.1.0";
 
 
 CREATE SCHEMA django AUTHORIZATION "indrz-wu";
