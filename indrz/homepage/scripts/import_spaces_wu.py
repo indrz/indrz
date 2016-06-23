@@ -26,6 +26,7 @@ def create_db_conn():
 
     return conn
 
+
 # list of the floors to update
 # floor_list = ('ug01_poi', 'eg00_poi', 'og01_poi', 'og02_poi', 'og03_poi', 'og04_poi', 'og05_poi', 'og06_poi' )
 pg_schema = ('geodata')
@@ -36,7 +37,7 @@ outdoor_tables = ('od_all_fill', 'od_all_polygons', 'od_baeume_linien', 'od_blin
                   'od_orientierungselemente_linie', 'od_raucherzone', 'od_relax_area')
 bibliothek_tables = ('bibliothek')
 
-building_ids = {'EA': 1, 'D5': 2, 'AD':3, 'LC': 999, 'D1': 999, 'D2': 999, 'D3': 999, 'D4': 999, 'SC': 999, 'TC': 999}
+building_ids = {'EA': 1, 'D5': 6, 'AD':5, 'LC': 2, 'D1': 7, 'D2': 10, 'D3': 4, 'D4': 3, 'SC': 9, 'TC': 8}
 
 rooms_cols = ('refname', 'room_name', 'room_number', 'building', 'floor', 'description', 'geom', 'building_number',
               'aks_nummer', 'entrance_poi_id', 'room_code', 'category_en' )
@@ -44,6 +45,27 @@ rooms_cols = ('refname', 'room_name', 'room_number', 'building', 'floor', 'descr
 indrz_spaces_cols = {'short_name': rooms_cols[1], 'geom': rooms_cols[6], 'room_number': rooms_cols[2],
                       'room_external_id': rooms_cols[8], 'room_number_sign': rooms_cols[10],
                      'fk_space_type_id': rooms_cols[11]}
+
+conn2 = create_db_conn()
+cur2 = conn2.cursor()
+cur2.execute("select short_name, geom, fk_building_id from indrz.buildings_buildingfloor")
+f = cur2.fetchall()
+print(f)
+
+conn3 = psycopg2.connect(host='localhost', user='indrz-wu', port='5434', password='air', database='indrz-wu')
+cur3 = conn3.cursor()
+
+
+for k,v in building_ids.items():
+    sel_buildings_floor_0 = "SELECT short_name, geom, fk_building_id FROM indrz.buildings_buildingfloor WHERE short_name = \'{0}\'".format(k)
+    cur2.execute(sel_buildings_floor_0)
+    res = cur2.fetchall()
+    print(res)
+    # print(sel_buildings_floor_0)
+    insert_state = "INSERT INTO django.buildings_buildingfloor (short_name, geom, fk_building_id) VALUES (\'{0}\', \'{1}\', {2} )".format(k,res[0][1],v)
+    cur3.execute(insert_state)
+    conn3.commit()
+    print(insert_state)
 
 # list of database field names that we want to update
 # you can only update one field at one time
@@ -89,34 +111,37 @@ def union_floor_data(data_list):
 
     return merged_data
 
-poi_list = gen_datalist(0)
-room_list = gen_datalist(1)
-umriss_list = gen_datalist(2)
-networklines_list = gen_datalist(3)
-carto_list = gen_datalist(4)
-doors_list = gen_datalist(5)
-furniture_list = gen_datalist(6)
+# poi_list = gen_datalist(0)
+# room_list = gen_datalist(1)
+# umriss_list = gen_datalist(2)
+# networklines_list = gen_datalist(3)
+# carto_list = gen_datalist(4)
+# doors_list = gen_datalist(5)
+# furniture_list = gen_datalist(6)
 
-print(poi_list)
-print(room_list)
+# print(poi_list)
+# print(room_list)
 # term="WC"
 # sql= "select room_name from geodata.og01_rooms where room_name LIKE %(like)s ESCAPE '='"
 # cur.execute(sql, dict(like= '%'+term+'%'))
 
 #cur.execute('select room_name from geodata.og01_rooms where room_name LIKE %(like)s'WC%';')
-conn2 = create_db_conn()
-cur2 = conn2.cursor()
-cur2.execute('select room_name from geodata.eg00_rooms')
-x = cur2.fetchall()
-print(x)
+# conn2 = create_db_conn()
+# cur2 = conn2.cursor()
+# cur2.execute('select room_name from geodata.eg00_rooms')
+# x = cur2.fetchall()
+# print(x)
 
-for value in x:
-    first_val = value[0]
-    print(first_val)
-    if first_val is not None:
-        print(first_val)
-print (x)
-cols_names = [col_name[0] for col_name in cur2.description]
+# for value in x:
+#     first_val = value[0]
+#     print(first_val)
+#     if first_val is not None:
+#         print(first_val)
+# print (x)
+# cols_names = [col_name[0] for col_name in cur2.description]
+#
+# cur2.close()
+# conn2.close()
 # print(cols_names)
 # print(fx)
 
