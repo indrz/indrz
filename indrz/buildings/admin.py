@@ -25,8 +25,9 @@ class BuildingFloorAdmin(gis_admin.OSMGeoAdmin):
 
 
 class BuildingAdmin(gis_admin.OSMGeoAdmin):
-    list_display = ('building_name',  'fk_campus', 'fk_organization', 'id')
+    list_display = ('name', 'building_name',  'fk_campus', 'fk_organization', 'id')
     search_fields = ('building_name', 'fk_campus')
+
 
 
 admin.site.register(LtAccessType)
