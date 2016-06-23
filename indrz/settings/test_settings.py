@@ -23,16 +23,3 @@ from .dev_settings import *
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'test_db',
-        'USER': 'postgres',
-        'PASSWORD': 'air',
-        'HOST': 'localhost',
-        'PORT': '5434',
-    }
-}
-
-EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
-POSTGIS_VERSION = "2.2.2"

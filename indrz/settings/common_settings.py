@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'routing',
     'conference',
     'poi_manager',
+    'landscape',
     'homepage',
 
 )
