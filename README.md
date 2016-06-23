@@ -31,8 +31,6 @@ Our documentation structure and build environment is built upon the [mapbox docb
 
 ## Quick start installation for developers
 
-coming soon. along with a nice bash script
-
 
 ### Create indrz Ubuntu system user
 ```bash
@@ -76,12 +74,11 @@ pip install -r requirements.txt
 ```
 load the demo campus, building, space data
 ```bash
+pip install -r requirements.txt
 python manage.py migrate --noinput
-python manage.py loaddata initial_user
-python manage.py loaddata initial_demo_campus
-python manage.py loaddata initial_demo_buildings
-python manage.py loaddata initial_demo_spaces
-python manage.py collectstatic --noinput
+python manage.py loaddata initial_ltspacetype_data
+python manage.py loaddata initial_poi_categories
+python manage.py loaddata buildings
 ```
 
 ### Configure your settings
