@@ -8,21 +8,16 @@ startscript = time.time()  # we will use this later
 
 def create_db_conn():
     # Database Connection Info
-    db_host = "137.208.3.187"
-    #db_host = "localhost"
-    db_user = "wuwien"
-    #db_user = "postgres"
-    #db_passwd = "12345"
-    db_passwd = "oi4jtoiwjfds"
-    db_database = "wuwien"
-    db_port = "5432"
-
-
-
+    #db_host = "137.208.3.187"
+    db_host = "localhost"
+    #db_user = "indrz-wu"
+    db_user = "postgres"
+    db_passwd = "air"
+    #db_passwd = "oi4jtoiwjfds"
+    db_database = "wu_old_db"
+    db_port = "5434"
     # get a connection handle to Postgresql queries
     conn = psycopg2.connect(host=db_host, user=db_user, port=db_port, password=db_passwd, database=db_database)
-
-    # get the cursor
 
     return conn
 
@@ -48,25 +43,41 @@ indrz_spaces_cols = {'short_name': rooms_cols[1], 'geom': rooms_cols[6], 'room_n
 
 conn2 = create_db_conn()
 cur2 = conn2.cursor()
-cur2.execute("select short_name, geom, fk_building_id from indrz.buildings_buildingfloor")
+cur2.execute("select building, geom from geodata.og01_umriss")
 f = cur2.fetchall()
-print(f)
+# print(f)
 
 conn3 = psycopg2.connect(host='localhost', user='indrz-wu', port='5434', password='air', database='indrz-wu')
 cur3 = conn3.cursor()
 
+def import_building_floors(floor_level):
+    for k,v in building_ids.items():
+        if k:
+            print(k,v)
+            sel_buildings_floor = "SELECT building, floor FROM geodata.{0}umriss WHERE building = \'{1}\'".format(floor_level, k)
+            print(sel_buildings_floor)
+            cur2.execute(sel_buildings_floor)
+            res = cur2.fetchall()
 
-for k,v in building_ids.items():
-    sel_buildings_floor_0 = "SELECT short_name, geom, fk_building_id FROM indrz.buildings_buildingfloor WHERE short_name = \'{0}\'".format(k)
-    cur2.execute(sel_buildings_floor_0)
-    res = cur2.fetchall()
-    print(res)
-    # print(sel_buildings_floor_0)
-    insert_state = "INSERT INTO django.buildings_buildingfloor (short_name, geom, fk_building_id) VALUES (\'{0}\', \'{1}\', {2} )".format(k,res[0][1],v)
-    cur3.execute(insert_state)
-    conn3.commit()
-    print(insert_state)
+            if res:
+                floor_int = int(res[0][1])
+                print(res)
+                print(sel_buildings_floor)
+                floor_number = floor_level[3:4] # og01_
+                print(floor_number)
 
+                insert_state = """INSERT INTO django.buildings_buildingfloor (short_name, fk_building_id, floor_num)
+                            VALUES (\'{0}\', {1}, {2}, {3} )""".format(k, floor_int,v, floor_number)
+                # cur3.execute(insert_state)
+                # conn3.commit()
+                print(insert_state)
+
+for floor in floor_n:
+    if floor is not "eg00_":
+        import_building_floors(floor)
+
+conn3.close()
+conn2.close()
 # list of database field names that we want to update
 # you can only update one field at one time
 # possible field name you can use 'name'
