@@ -52,9 +52,11 @@ cur3 = conn3.cursor()
 
 def import_building_floors(floor_level):
     for k,v in building_ids.items():
+        # k is Building short name
+        # v is Builing id as integer
         if k:
             print(k,v)
-            sel_buildings_floor = "SELECT building, floor FROM geodata.{0}umriss WHERE building = \'{1}\'".format(floor_level, k)
+            sel_buildings_floor = "SELECT building, floor, st_transform(geom, 3857) FROM geodata.{0}umriss WHERE building = \'{1}\'".format(floor_level, k)
             print(sel_buildings_floor)
             cur2.execute(sel_buildings_floor)
             res = cur2.fetchall()
@@ -63,14 +65,16 @@ def import_building_floors(floor_level):
                 floor_int = int(res[0][1])
                 print(res)
                 print(sel_buildings_floor)
-                floor_number = floor_level[3:4] # og01_
+                floor_number = floor_level.upper()[:2] + " " + floor_level[3:4] # og01_
                 print(floor_number)
+                print("building id is: " + str(v))
 
-                insert_state = """INSERT INTO django.buildings_buildingfloor (short_name, fk_building_id, floor_num)
-                            VALUES (\'{0}\', {1}, {2}, {3} )""".format(k, floor_int,v, floor_number)
-                # cur3.execute(insert_state)
-                # conn3.commit()
+                insert_state = """INSERT INTO django.buildings_buildingfloor (short_name, fk_building_id, floor_num,geom)
+                            VALUES (\'{0}\', {1}, {2}, \'{3}\' )""".format(floor_number, v, floor_int, res[0][2])
+                cur3.execute(insert_state)
+                conn3.commit()
                 print(insert_state)
+                #print("DONE inserting for building: " + floor_level)
 
 for floor in floor_n:
     if floor is not "eg00_":
