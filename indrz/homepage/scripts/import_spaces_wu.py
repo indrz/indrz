@@ -50,6 +50,8 @@ f = cur2.fetchall()
 conn3 = psycopg2.connect(host='localhost', user='indrz-wu', port='5434', password='air', database='indrz-wu')
 cur3 = conn3.cursor()
 
+
+##  STARAT IMPORT FLOORSs
 def import_building_floors(floor_level):
     for k,v in building_ids.items():
         # k is Building short name
@@ -76,9 +78,17 @@ def import_building_floors(floor_level):
                 print(insert_state)
                 #print("DONE inserting for building: " + floor_level)
 
-for floor in floor_n:
-    if floor is not "eg00_":
-        import_building_floors(floor)
+# for floor in floor_n:
+#     if floor is not "eg00_":
+#         import_building_floors(floor)
+
+##    END IMPORT FLOORS
+
+def import_floor_spaces(floor_level):
+    for k,v in building_ids.items():
+        if k:
+            sel_spaces = """SELECT room_name, room_number, building, floor, description, aks_nummer, roomname_de,
+             fancyname_de, category_de, roomcode, entrance_poi_id"""
 
 conn3.close()
 conn2.close()
