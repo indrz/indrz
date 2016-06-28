@@ -34,6 +34,8 @@ bibliothek_tables = ('bibliothek')
 
 building_ids = {'EA': 1, 'D5': 6, 'AD':5, 'LC': 2, 'D1': 7, 'D2': 10, 'D3': 4, 'D4': 3, 'SC': 9, 'TC': 8}
 
+space_type_id_map = {'Drucker': 69,  }
+
 rooms_cols = ('refname', 'room_name', 'room_number', 'building', 'floor', 'description', 'geom', 'building_number',
               'aks_nummer', 'entrance_poi_id', 'room_code', 'category_en' )
 
@@ -67,15 +69,15 @@ def import_building_floors(floor_level):
                 floor_int = int(res[0][1])
                 print(res)
                 print(sel_buildings_floor)
-                floor_number = floor_level.upper()[:2] + " " + floor_level[3:4] # og01_
-                print(floor_number)
+                floor_label = floor_level.upper()[:2] + " " + floor_level[3:4] # og01_
+                print(floor_label)
                 print("building id is: " + str(v))
 
                 insert_state = """INSERT INTO django.buildings_buildingfloor (short_name, fk_building_id, floor_num,geom)
-                            VALUES (\'{0}\', {1}, {2}, \'{3}\' )""".format(floor_number, v, floor_int, res[0][2])
-                cur3.execute(insert_state)
-                conn3.commit()
-                print(insert_state)
+                            VALUES (\'{0}\', {1}, {2}, \'{3}\' )""".format(floor_label, v, floor_int, res[0][2])
+                # cur3.execute(insert_state)
+                # conn3.commit()
+                #print(insert_state)
                 #print("DONE inserting for building: " + floor_level)
 
 # for floor in floor_n:
@@ -84,11 +86,96 @@ def import_building_floors(floor_level):
 
 ##    END IMPORT FLOORS
 
-def import_floor_spaces(floor_level):
+def import_floor_spaces(floor_abr):
+    """
+
+    :param floor_abr: floor abreviation og02_  for example
+    :return:
+    """
     for k,v in building_ids.items():
         if k:
             sel_spaces = """SELECT room_name, room_number, building, floor, description, aks_nummer, roomname_de,
-             fancyname_de, category_de, roomcode, entrance_poi_id"""
+             fancyname_de, category_de, roomcode, entrance_poi_id FROM geodata.{0}rooms as R, geodata.{0}umriss as U
+             WHERE st_within(R.geom, U.geom)""".format(floor_abr)
+
+            sel_spaces_new = """
+             SELECT r.room_name, r.room_number, r.building, r.floor, r.description, r.aks_nummer,
+              r. roomname_de,r.fancyname_de, r.category_de, r.roomcode, r.entrance_poi_id
+           FROM geodata.og01_rooms as r, geodata.og01_umriss as U
+           where st_within(r.geom,u.geom)
+           AND u.building='EA'
+            """
+
+            cur2.execute(sel_spaces)
+            res = cur2.fetchall()
+            floor_level_txt = floor_abr[3:4]
+            print( len(res))
+            print(res)
+            if res is not None or res == "":
+                m_room_types = res[0][0]
+                # print("room_name is : " + str(m_short_name))
+                m_room_number = res[0][1]
+                # print("room number is : " +  str(m_room_number))
+                m_building = res[0][2]
+                # print("room building is : " + str(m_building))
+                m_floor = res[0][3]
+                # print("floor is : " + str(m_floor))
+                m_aks = res[0][5]
+                # print("aks number is : " +  str(m_aks))
+                m_roomname_de = res[0][6]
+
+                m_fancyname_de = res[0][7]
+                m_catname_de = res[0][8]
+                m_roomcode = res[0][9]
+                m_poi_entrance_id = res[0][10]
+                # m_geom = res[0][11]
+                #
+                # sel_get_building_id = """SELECT id from django.buildings_buildingfloor as P WHERE ST_within({0},P.geom)""".format(m_geom)
+                # cur3.execute(sel_get_building_id)
+                # res_building_id = cur3.fetchall()
+
+
+                sel_building_floor_id = """SELECT id, floor_num, fk_building_id from django.buildings_buildingfloor
+                          WHERE floor_num = {0} and fk_building_id = {1}""".format(floor_level_txt, v)
+                # print(sel_building_floor_id)
+
+                cur3.execute(sel_building_floor_id)
+                res_floor_id = cur3.fetchall()
+                # print(res_floor_id)
+
+                if res_floor_id:
+                    # print(res_floor_id)
+                    m_floor_id_value = res_floor_id[0][0]
+                    # print("FLOOR ID : " + str(m_floor_id_value))
+                    if m_floor_id_value > 79:
+                        print("problem houston")
+
+
+                # print("fancyname is : " +  str(m_fancyname_de))
+                # print(len(res))
+
+                # print(k)
+                # print(sel_spaces)
+                insert_state = """INSERT INTO django.buildings_buildingfloorspace (short_name, long_name, floor_num,
+                    room_external_id, room_number, room_number_sign, room_description, fk_building_id,
+                    fk_building_floor_id, space_type_id, roomcode, geom)
+                            VALUES (\'{0}\', '\{1}\', {2}, \'{3}\',\'{4}\', \'{5}\',\'{6}\',
+                            {7},{8},{9},\'{10}\',\'{11}\'  )""".format(m_fancyname_de, m_catname_de, m_floor, m_aks,
+                                                      m_room_number, m_roomname_de, m_room_types, v, m_floor_id_value, 94, m_roomcode, "geom" )
+                # cur3.execute(insert_state)
+                # conn3.commit()
+                # print(insert_state)
+
+
+for floor in floor_n:
+    import_floor_spaces(floor)
+
+
+
+# def assign_space_type(floor_level):
+#     for k,v in building_ids.items():
+#         if k:
+
 
 conn3.close()
 conn2.close()
