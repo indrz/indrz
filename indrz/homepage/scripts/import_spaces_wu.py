@@ -25,7 +25,7 @@ def create_db_conn():
 # list of the floors to update
 # floor_list = ('ug01_poi', 'eg00_poi', 'og01_poi', 'og02_poi', 'og03_poi', 'og04_poi', 'og05_poi', 'og06_poi' )
 pg_schema = ('geodata')
-floor_abrev = ('ug01_', 'eg00_', 'og01_', 'og02_', 'og03_', 'og04_', 'og05_', 'og06_' )
+table_abrev = ('ug01_', 'eg00_', 'og01_', 'og02_', 'og03_', 'og04_', 'og05_', 'og06_' )
 floor_values = ('poi', 'rooms', 'umriss', 'networklines', 'carto_lines', 'doors', 'furniture' )
 other_tables = ('parking_garage', 'raumlist_buchungsys', 'temp_wu_personal_data' )
 outdoor_tables = ('od_all_fill', 'od_all_polygons', 'od_baeume_linien', 'od_blindeleitlinie', 'od_fahrradstellplatz', 'od_familie_linie',
@@ -45,8 +45,8 @@ indrz_spaces_cols = {'short_name': rooms_cols[1], 'geom': rooms_cols[6], 'room_n
 
 conn2 = create_db_conn()
 cur2 = conn2.cursor()
-cur2.execute("select building, geom from geodata.og01_umriss")
-f = cur2.fetchall()
+# cur2.execute("select building, geom from geodata.og01_umriss")
+# f = cur2.fetchall()
 # print(f)
 
 conn3 = psycopg2.connect(host='localhost', user='indrz-wu', port='5434', password='air', database='indrz-wu')
@@ -209,14 +209,81 @@ def import_floor_spaces(floor_abr):
                     #print(insert_state)
 
 
-for floor in floor_abrev:
-    import_floor_spaces(floor)
+# for floor in floor_abrev:
+#     import_floor_spaces(floor)
+
+def import_networklines(floor):
 
 
 
-# def assign_space_type(floor_level):
-#     for k,v in building_ids.items():
-#         if k:
+    sel_networklines = """
+         SELECT cost, type, st_multi(st_transform(geom, 3857))
+       FROM geodata.{0}networklines""".format(floor)
+    #print(sel_spaces_new)
+    cur2.execute(sel_networklines)
+    print(sel_networklines)
+
+    res = None
+    res = cur2.fetchall()
+    #print(res)
+    floor_level_txt = floor[3:4]
+    if floor == "ug01_":
+        floor_level_txt = 'ug01'
+
+    print(floor_level_txt)
+    if not floor_level_txt == 'ug01':
+        floor_level_txt = "e0" + str(floor_level_txt)
+
+    # q_delete = """DELETE FROM django.routing_networklines{0}""".format(floor_level_txt)
+    # cur3.execute(q_delete)
+    #cur3.commit()
+
+    if len(res) > 0:
+        for r in res:
+            insert_state = """INSERT INTO django.routing_networklines{0} (cost, network_type, geom)
+                        VALUES ({1}, {2}, \'{3}\')""".format(floor_level_txt, r[0], r[1], r[2])
+            print(insert_state)
+            # cur3.execute(insert_state)
+            # conn3.commit()
+            print(insert_state)
+
+
+
+
+# for floor in table_abrev:
+#     import_networklines(floor)
+
+
+def update_network_types(floor):
+    floor_level_txt = floor[3:4]
+    if floor == "ug01_":
+        floor_level_txt = 'ug01'
+
+    print(floor_level_txt)
+    if not floor_level_txt == 'ug01':
+        floor_level_txt = "e0" + str(floor_level_txt)
+
+    network_types = {'indoor': 0, 'stairway': 1, 'elevator': 2, 'escalator': 3, 'outdoorway': 4,
+                     'ramp': 5, 'zebra': 8, 'private': 9, 'stairway_no_change': 101, 'ramp_no_change': 102,
+                     'elevator_no_change': 103, 'escalator_no_change': 104}
+
+    # q_sel = """select network_type from django.routing_networklines{0}
+    #       where network_type = {1}""".format(floor_level_txt, 1 )
+    #
+    # print(q_sel)
+
+    q_update = """update django.routing_networklines{0}
+        set network_type = {1}
+        where network_type = {2}""".format(floor_level_txt, network_types['stairway'], 3)
+
+    print(q_update)
+    cur3.execute(q_update)
+    conn3.commit()
+
+
+
+for floor in table_abrev:
+    update_network_types(floor)
 
 def set_space_type(floors):
     pass
