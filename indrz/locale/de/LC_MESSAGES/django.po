@@ -9,639 +9,641 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-21 13:37+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2016-07-15 12:54+0200\n"
+"Last-Translator: b'  <admin@admin.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.7.11\n"
 
 #: .\buildings\models.py:9 .\landscape\models.py:7
 msgid "code value"
-msgstr ""
+msgstr "code Wert"
 
 #: .\buildings\models.py:10 .\landscape\models.py:8
 msgid "name value"
-msgstr ""
+msgstr "name Wert"
 
 #: .\buildings\models.py:114 .\buildings\models.py:119
 msgid "Active meaning show it yes - no"
-msgstr ""
+msgstr "Active Bedeutung zeigen es ja - Nein"
 
 #: .\buildings\models.py:115 .\buildings\models.py:120
 msgid "Priority of POI"
-msgstr ""
+msgstr "Priorität POI"
 
 #: .\buildings\models.py:116 .\buildings\models.py:121
 msgid "Sort order in legend"
-msgstr ""
+msgstr "Sortierreihenfolge in der Legende"
 
 #: .\buildings\models.py:129
 msgid "Street"
-msgstr ""
+msgstr "Street"
 
 #: .\buildings\models.py:131
 msgid "Building or house number"
-msgstr ""
+msgstr "Gebäude-oder Haus-Nr."
 
 #: .\buildings\models.py:133
 msgid "Postal code"
-msgstr ""
+msgstr "PLZ"
 
 #: .\buildings\models.py:135
 msgid "Municipality"
-msgstr ""
+msgstr "Gemeinde"
 
 #: .\buildings\models.py:138
 msgid "City"
-msgstr ""
+msgstr "Stadt"
 
 #: .\buildings\models.py:142
 msgid "Country"
-msgstr ""
+msgstr "Land"
 
 #: .\buildings\models.py:154 .\landscape\models.py:165
 #: .\landscape\models.py:190
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: .\buildings\models.py:155 .\landscape\models.py:168
 #: .\landscape\models.py:193 .\maps\map-models.py:16
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: .\buildings\models.py:156 .\landscape\models.py:169
 #: .\landscape\models.py:194
 msgid "Brief description"
-msgstr ""
+msgstr "Kurze Beschreibung"
 
 #: .\buildings\models.py:157
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: .\buildings\models.py:159
 msgid "Email"
-msgstr ""
+msgstr "E-Mail"
 
 #: .\buildings\models.py:161
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #: .\buildings\models.py:167
 msgid "Building centroid for small scale maps"
-msgstr ""
+msgstr "Gebäude Schwerpunkt für kleine Karten"
 
 #: .\buildings\models.py:185
 msgid "Owner name"
-msgstr ""
+msgstr "Owner name"
 
 #: .\buildings\models.py:186
 msgid "Legal entity form..gmbh, verein"
-msgstr ""
+msgstr "Formular \"Rechtsträger\" ..gmbh, verein"
 
 #: .\buildings\models.py:187
 msgid "Number of buildings"
-msgstr ""
+msgstr "Anzahl der Gebäude"
 
 #: .\buildings\models.py:201
 msgid "Campus name"
-msgstr ""
+msgstr "Campus Namen"
 
 #: .\buildings\models.py:202 .\buildings\models.py:229
 msgid "Building description"
-msgstr ""
+msgstr "Gebäude Beschreibung"
 
 #: .\buildings\models.py:209
 msgid "Campus area of one or more buildings"
-msgstr ""
+msgstr "Campus-Fläche von einem oder mehreren Gebäuden"
 
 #: .\buildings\models.py:222
 msgid "Building name"
-msgstr ""
+msgstr "Gebäude name"
 
 #: .\buildings\models.py:223
 msgid "Building height in meters"
-msgstr ""
+msgstr "Gebäudehöhe in Metern"
 
 #: .\buildings\models.py:224
 msgid "Fancy building name"
-msgstr ""
+msgstr "Schickes Bauwerk Namen"
 
 #: .\buildings\models.py:225
 msgid "Number of floors"
-msgstr ""
+msgstr "Anzahl der Etagen"
 
 #: .\buildings\models.py:226
 msgid "Unique facility number"
-msgstr ""
+msgstr "Einmalige Einrichtung Anzahl"
 
 #: .\buildings\models.py:227
 msgid "Operational hours"
-msgstr ""
+msgstr "Öffnungszeiten"
 
 #: .\buildings\models.py:228
 msgid "EPSG code original data"
-msgstr ""
+msgstr "EPSG-code original-Daten"
 
 #: .\buildings\models.py:244
 msgid "short name eg first floor"
-msgstr ""
+msgstr "kurzer name, der z.B. im ersten Stock"
 
 #: .\buildings\models.py:245 .\buildings\models.py:273
 #: .\buildings\models.py:302 .\buildings\models.py:354
 msgid "long name"
-msgstr ""
+msgstr "lange Namen"
 
 #: .\buildings\models.py:246
 msgid "special name"
-msgstr ""
+msgstr "spezielle Namen"
 
 #: .\buildings\models.py:248
 msgid "Floor order value"
-msgstr ""
+msgstr "Boden Bestellwert"
 
 #: .\buildings\models.py:249
 msgid "Elevation value of floor in meters"
-msgstr ""
+msgstr "Höhe von Boden in Metern"
 
 #: .\buildings\models.py:251 .\buildings\models.py:276
 #: .\buildings\models.py:305 .\buildings\models.py:356 .\routing\models.py:58
 msgid "floor number"
-msgstr ""
+msgstr "Stock Anzahl"
 
 #: .\buildings\models.py:252
 msgid "height of floor"
-msgstr ""
+msgstr "Höhe von Boden"
 
 #: .\buildings\models.py:272 .\buildings\models.py:301
 #: .\buildings\models.py:353
 msgid "short name"
-msgstr ""
+msgstr "kurze Namen"
 
 #: .\buildings\models.py:274
 msgid "gis calculated area"
-msgstr ""
+msgstr "gis berechnete Fläche"
 
 #: .\buildings\models.py:275
 msgid "gis calculated perimeter"
-msgstr ""
+msgstr "gis berechnet Umkreis"
 
 #: .\buildings\models.py:304
 msgid "gis calculated length"
-msgstr ""
+msgstr "gis berechneten Länge"
 
 #: .\buildings\models.py:326
 msgid "Organization name e.g Engineering"
-msgstr ""
+msgstr "Name der Organisation e.g Engineering"
 
 #: .\buildings\models.py:327
 msgid "Department name e.g Engineering"
-msgstr ""
+msgstr "Abteilung name e.g Engineering"
 
 #: .\buildings\models.py:328
 msgid "Division"
-msgstr ""
+msgstr "Division"
 
 #: .\buildings\models.py:336
 msgid "Room id imported from external system"
-msgstr ""
+msgstr "Die Raum-id-importiert aus einem externen system"
 
 #: .\buildings\models.py:337
 msgid "Room number"
-msgstr ""
+msgstr "Zimmer Anzahl"
 
 #: .\buildings\models.py:338
 msgid "Room number on door sign"
-msgstr ""
+msgstr "Zimmernummer an der Tür Unterschreiben"
 
 #: .\buildings\models.py:339
 msgid "Room description"
-msgstr ""
+msgstr "Beschreibung der Zimmer"
 
 #: .\buildings\models.py:340
 msgid "Total number of occupants allowed in this space"
-msgstr ""
+msgstr "Gesamtzahl der Insassen erlaubt in diesem Raum"
 
 #: .\buildings\models.py:344
 msgid "Tag values csv"
-msgstr ""
+msgstr "Tag-Werte csv"
 
 #: .\buildings\models.py:355 .\maps\map-models.py:53
 msgid "description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: .\buildings\models.py:358
 msgid "Force route to this location"
-msgstr ""
+msgstr "Kraft, die route zu diesem Ort"
 
 #: .\buildings\models.py:359
 msgid "Activated and enabled"
-msgstr ""
+msgstr "Aktiviert und aktiviert"
 
 #: .\buildings\models.py:360
 msgid "Tree order in legend"
-msgstr ""
+msgstr "Baum Reihenfolge in der Legende"
 
 #: .\buildings\models.py:361
 msgid "Sort oder of POI items"
-msgstr ""
+msgstr "Sortieren oder POI-Elemente"
 
 #: .\buildings\models.py:362
 msgid "Icon CSS name"
-msgstr ""
+msgstr "Icon CSS name"
 
 #: .\conference\models.py:12
 msgid "name of conference"
-msgstr ""
+msgstr "name der Konferenz"
 
 #: .\conference\models.py:13
 msgid "year of conference"
-msgstr ""
+msgstr "Jahr der Konferenz"
 
 #: .\conference\models.py:37
 msgid "short name of stand"
-msgstr ""
+msgstr "kurze Namen stehen"
 
 #: .\conference\models.py:38
 msgid "long stand name"
-msgstr ""
+msgstr "lange stand name"
 
 #: .\conference\models.py:39
 msgid "label of stand"
-msgstr ""
+msgstr "Etikett stehen"
 
 #: .\conference\models.py:40
 msgid "foyer name location value"
-msgstr ""
+msgstr "foyer name Ort Wert"
 
 #: .\conference\models.py:41
 msgid "name of hall"
-msgstr ""
+msgstr "name der Halle"
 
 #: .\conference\models.py:42
 msgid "stand id from external system"
-msgstr ""
+msgstr "stand id aus einem externen system"
 
 #: .\conference\models.py:43
 msgid "stand number from external"
-msgstr ""
+msgstr "stand Anzahl von externen"
 
 #: .\conference\models.py:44
 msgid "type of stand"
-msgstr ""
+msgstr "Art des Standes"
 
 #: .\landscape\models.py:174
 msgid "Geometry multi-polygon outside facility areas"
-msgstr ""
+msgstr "Geometrie multi-polygon außerhalb facility-Bereichen"
 
 #: .\landscape\models.py:200
 msgid "Geometry multi-linestrings outside area lines"
-msgstr ""
+msgstr "Geometrie multi-linestrings Außenbereich Linien"
 
 #: .\landscape\models.py:218
 msgid "Geometry multi-linestrings pavement lines"
-msgstr ""
+msgstr "Geometrie multi-linestrings Bürgersteig Linien"
 
 #: .\maps\map-models.py:26
 msgid "style name"
-msgstr ""
+msgstr "style-name"
 
 #: .\maps\map-models.py:52 .\maps\map-models.py:103 .\maps\map-models.py:125
 msgid "name"
-msgstr ""
+msgstr "name"
 
 #: .\maps\map-models.py:54
 msgid "projection"
-msgstr ""
+msgstr "Projektion"
 
 #: .\maps\map-models.py:55
 msgid "map thumbnail"
-msgstr ""
+msgstr "anzeigen Miniaturansicht"
 
 #: .\maps\map-models.py:61
 msgid "zoom"
-msgstr ""
+msgstr "zoom"
 
 #: .\maps\map-models.py:62
 msgid "locate"
-msgstr ""
+msgstr "suchen"
 
 #: .\maps\map-models.py:62
 msgid "Locate user on load?"
-msgstr ""
+msgstr "Suchen Sie user auf Last?"
 
 #: .\maps\map-models.py:67
 msgid "background"
-msgstr ""
+msgstr "hintergrund"
 
 #: .\maps\map-models.py:96
 msgid "Map"
-msgstr ""
+msgstr "Anzeigen"
 
 #: .\maps\map-models.py:97
 msgid "Maps"
-msgstr ""
+msgstr "Karten"
 
 #: .\maps\map-models.py:99
 msgid "Can view the map"
-msgstr ""
+msgstr "Kann sich die Karte ansehen"
 
 #: .\maps\map-models.py:104
 msgid "name for a group of layers"
-msgstr ""
+msgstr "name für eine Gruppe von Ebenen"
 
 #: .\maps\map-models.py:106 .\maps\map-models.py:151
 msgid "opacity"
-msgstr ""
+msgstr "Deckkraft"
 
 #: .\maps\map-models.py:107
 msgid "visibility"
-msgstr ""
+msgstr "Sichtbarkeit"
 
 #: .\maps\map-models.py:108 .\maps\map-models.py:153
 msgid "stack order"
-msgstr ""
+msgstr "Stapel, um"
 
 #: .\maps\map-models.py:121
 msgid "Can view the map layer"
-msgstr ""
+msgstr "Können sich die Karte ansehen, Schicht"
 
 #: .\maps\map-models.py:128
 msgid "URL template using OSM tile format"
-msgstr ""
+msgstr "URL-Vorlage mit OSM-tile-format"
 
 #: .\maps\map-models.py:136
 msgid "Order of the tilelayers in the edit box"
-msgstr ""
+msgstr "Reihenfolge der tilelayers in die edit-box"
 
 #: .\maps\map-models.py:141
 msgid "Can view the tilelayer"
-msgstr ""
+msgstr "Können die tilelayer"
 
 #: .\maps\map-models.py:152
 msgid "Visibility"
-msgstr ""
+msgstr "Sichtbarkeit"
 
 #: .\maps\templates\base-map.html:52 .\maps\templates\base-map.html.py:103
 msgid "GIT Source"
-msgstr ""
+msgstr "GIT-Source"
 
 #: .\maps\templates\base-map.html:92
 msgid "Floor"
-msgstr ""
+msgstr "Stock"
 
 #: .\maps\templates\base-map.html:94
 msgid "Etage 3"
-msgstr ""
+msgstr "Etage 3"
 
 #: .\maps\templates\base-map.html:95
 msgid "Etage 2"
-msgstr ""
+msgstr "Etage 2"
 
 #: .\maps\templates\base-map.html:96
 msgid "Etage 1"
-msgstr ""
+msgstr "Etage 1"
 
 #: .\maps\templates\base-map.html:97
 msgid "Etage 0"
-msgstr ""
+msgstr "Etage 0"
 
 #: .\maps\templates\base-map.html:98
 msgid "Etage -1"
-msgstr ""
+msgstr "Etage -1"
 
 #: .\maps\templates\modal-bugreport.html:9
 msgid "Bug Report"
-msgstr ""
+msgstr "Bug-Report"
 
 #: .\maps\templates\modal-bugreport.html:12
 msgid "Please describe what went wrong."
-msgstr ""
+msgstr "Bitte beschreiben Sie, was falsch gelaufen ist."
 
 #: .\maps\templates\modal-bugreport.html:15
 #: .\maps\templates\modal-share.html:16 .\maps\templates\modal-share.html:37
 #: .\maps\templates\modal-share.html:59
 msgid "Close"
-msgstr ""
+msgstr "In der Nähe"
 
 #: .\maps\templates\modal-bugreport.html:16
 msgid "Send"
-msgstr ""
+msgstr "Senden"
 
 #: .\maps\templates\modal-share.html:9
 msgid "Share map"
-msgstr ""
+msgstr "Teilen anzeigen"
 
 #: .\maps\templates\modal-share.html:15
 msgid "Simply copy"
-msgstr ""
+msgstr "Einfach kopieren"
 
 #: .\maps\templates\modal-share.html:15
 msgid "CTRL + c"
-msgstr ""
+msgstr "STRG + c"
 
 #: .\maps\templates\modal-share.html:15
 msgid "then paste"
-msgstr ""
+msgstr "dann einfügen"
 
 #: .\maps\templates\modal-share.html:15
 msgid "CTRL + v"
-msgstr ""
+msgstr "STRG + v"
 
 #: .\maps\templates\modal-share.html:15
 msgid "in your browser"
-msgstr ""
+msgstr "in Ihrem browser"
 
 #: .\maps\templates\modal-share.html:30
 msgid "Share search results"
-msgstr ""
+msgstr "Teilen Sie die Suchergebnisse"
 
 #: .\maps\templates\modal-share.html:38 .\maps\templates\modal-share.html:60
 #: .\maps\templates\search-form.html:17
 msgid "Share"
-msgstr ""
+msgstr "Teilen"
 
 #: .\maps\templates\modal-share.html:52
 msgid "Share route results"
-msgstr ""
+msgstr "Anteil Strecke Ergebnisse"
 
 #: .\maps\templates\routing-form.html:22
 msgid "Standard Route"
-msgstr ""
+msgstr "Standard-Route"
 
 #: .\maps\templates\routing-form.html:28
 msgid "Barrier Free Route"
-msgstr ""
+msgstr "Barriere Freier Strecke"
 
 #: .\maps\templates\routing-form.html:31
 msgid "Go !"
-msgstr ""
+msgstr "Go !"
 
 #: .\maps\templates\search-form.html:8
 msgid "Search for ..."
-msgstr ""
+msgstr "Suche für ..."
 
 #: .\maps\templates\search-form.html:12
 msgid "Go!"
-msgstr ""
+msgstr "Go!"
 
 #: .\maps\templates\search-form.html:19
 msgid "GPS"
-msgstr ""
+msgstr "GPS"
 
 #: .\maps\templates\search-form.html:20
 msgid "Language"
-msgstr ""
+msgstr "Sprache"
 
 #: .\maps\templates\search-form.html:21
 msgid "Directions"
-msgstr ""
+msgstr "Richtungen"
 
 #: .\maps\templates\search-form.html:22
 msgid "Clear"
-msgstr ""
+msgstr "Klar"
 
 #: .\maps\templates\search-form.html:26
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #: .\maps\templates\search-form.html:28
 msgid "Report Bug"
-msgstr ""
+msgstr "Report Bug"
 
 #: .\routing\models.py:23
 msgid "Indoor way"
-msgstr ""
+msgstr "Innen Weg"
 
 #: .\routing\models.py:24
 msgid "Stairway"
-msgstr ""
+msgstr "Treppe"
 
 #: .\routing\models.py:25
 msgid "Elevator"
-msgstr ""
+msgstr "Aufzug"
 
 #: .\routing\models.py:26
 msgid "Escalator"
-msgstr ""
+msgstr "Rolltreppe"
 
 #: .\routing\models.py:27
 msgid "Outdoor way"
-msgstr ""
+msgstr "Im freien Weg"
 
 #: .\routing\models.py:28
 msgid "Ramp"
-msgstr ""
+msgstr "Rampe"
 
 #: .\routing\models.py:29
 msgid "Zebra crossing"
-msgstr ""
+msgstr "Zebra crossing"
 
 #: .\routing\models.py:30
 msgid "Stairway no floor change"
-msgstr ""
+msgstr "Treppe keinen Boden ändern"
 
 #: .\routing\models.py:31
 msgid "Ramp no floor change"
-msgstr ""
+msgstr "Rampe keinen Boden ändern"
 
 #: .\routing\models.py:32
 msgid "Elevator no floor change"
-msgstr ""
+msgstr "Aufzug kein Boden ändern"
 
 #: .\routing\models.py:33
 msgid "Escalator no floor change"
-msgstr ""
+msgstr "Rolltreppe keinen Boden ändern"
 
 #: .\routing\models.py:37
 msgid "Public"
-msgstr ""
+msgstr "Öffentliche"
 
 #: .\routing\models.py:38
 msgid "Private"
-msgstr ""
+msgstr "Private"
 
 #: .\routing\models.py:39
 msgid "Employee"
-msgstr ""
+msgstr "Mitarbeiter"
 
 #: .\routing\models.py:40
 msgid "Visitor"
-msgstr ""
+msgstr "Besucher"
 
 #: .\routing\models.py:41
 msgid "Student"
-msgstr ""
+msgstr "Student"
 
 #: .\routing\models.py:42
 msgid "Faculty"
-msgstr ""
+msgstr "Fakultät"
 
 #: .\routing\models.py:43
 msgid "Secure"
-msgstr ""
+msgstr "Sichern"
 
 #: .\routing\models.py:44
 msgid "Reserved"
-msgstr ""
+msgstr "Vorbehalten"
 
 #: .\routing\models.py:45
 msgid "Maintenance"
-msgstr ""
+msgstr "Wartung"
 
 #: .\routing\models.py:46
 msgid "Handicap"
-msgstr ""
+msgstr "Handicap"
 
 #: .\routing\models.py:47
 msgid "Other"
-msgstr ""
+msgstr "Andere"
 
 #: .\routing\models.py:48
 msgid "Unknown"
-msgstr ""
+msgstr "Unbekannt"
 
 #: .\routing\models.py:51
 msgid "short name eg fast networkline"
-msgstr ""
+msgstr "kurze Namen, z.B. schnelle networkline"
 
 #: .\routing\models.py:52
 msgid "speed value based on selection"
-msgstr ""
+msgstr "speed-Wert basierend auf der Auswahl"
 
 #: .\routing\models.py:54
 msgid "source node id"
-msgstr ""
+msgstr "Quell-Knoten-id"
 
 #: .\routing\models.py:55
 msgid "target node id"
-msgstr ""
+msgstr "Ziel-Knoten-id"
 
 #: .\routing\models.py:56
 msgid "cost to travel network"
-msgstr ""
+msgstr "Kosten travel network"
 
 #: .\routing\models.py:57
 msgid "gis length of linestring"
-msgstr ""
+msgstr "gis Länge des linestring -"
 
 #: .\routing\models.py:60
 msgid "Type of network path type"
-msgstr ""
+msgstr "Art der Netzwerk-Pfad Typ"
 
 #: .\routing\models.py:61
 msgid "Routing access type"
-msgstr ""
+msgstr "Routing Zugang geben"
 
 #: .\templates\admin\404.html:4 .\templates\admin\404.html.py:8
 msgid "Page not found"
-msgstr ""
+msgstr "Seite nicht gefunden"
 
 #: .\templates\admin\404.html:10
 msgid "We're sorry, but the requested page could not be found."
 msgstr ""
+"Es tut uns Leid, aber die angeforderte Seite konnte nicht gefunden werden."
 
 #: .\templates\admin\500.html:6 .\templates\admin\app_index.html:9
 #: .\templates\admin\auth\user\change_password.html:13
@@ -652,147 +654,154 @@ msgstr ""
 #: .\templates\admin\invalid_setup.html:6
 #: .\templates\admin\object_history.html:6
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: .\templates\admin\500.html:7
 msgid "Server error"
-msgstr ""
+msgstr "Server-Fehler"
 
 #: .\templates\admin\500.html:11
 msgid "Server error (500)"
-msgstr ""
+msgstr "Server-Fehler (500)"
 
 #: .\templates\admin\500.html:14
 msgid "Server Error <em>(500)</em>"
-msgstr ""
+msgstr "Server-Fehler <em>(500)</em>"
 
 #: .\templates\admin\500.html:15
 msgid ""
 "There's been an error. It's been reported to the site administrators via "
 "email and should be fixed shortly. Thanks for your patience."
 msgstr ""
+"Es ist ein Fehler gewesen. Es ist berichtet worden, um die site-"
+"Administratoren per E-Mail und sollte in Kürze behoben. Vielen Dank für Ihre"
+" Geduld."
 
 #: .\templates\admin\actions.html:4
 msgid "Run the selected action"
-msgstr ""
+msgstr "Ausführen der ausgewählten Aktion"
 
 #: .\templates\admin\actions.html:4
 msgid "Go"
-msgstr ""
+msgstr "Gehen"
 
 #: .\templates\admin\actions.html:11
 msgid "Click here to select the objects across all pages"
-msgstr ""
+msgstr "Klicken Sie hier, um wählen Sie die Objekte auf allen Seiten"
 
 #: .\templates\admin\actions.html:11
 #, python-format
 msgid "Select all %(total_count)s %(module_name)s"
 msgstr ""
+"Wählen Sie \" alle <code>%(total_count)s</code> <code>%(Modulname)s</code>"
 
 #: .\templates\admin\actions.html:13
 msgid "Clear selection"
-msgstr ""
+msgstr "Löschen der Auswahl"
 
 #: .\templates\admin\auth\user\add_form.html:6
 msgid ""
-"First, enter a username and password. Then, you'll be able to edit more user "
-"options."
+"First, enter a username and password. Then, you'll be able to edit more user"
+" options."
 msgstr ""
+"Geben Sie zuerst einen Benutzernamen und ein Passwort. Dann, Sie werden in "
+"der Lage sein, zu Bearbeiten mehr-Benutzer-Optionen."
 
 #: .\templates\admin\auth\user\add_form.html:8
 msgid "Enter a username and password."
-msgstr ""
+msgstr "Geben Sie einen Benutzernamen und ein Passwort."
 
 #: .\templates\admin\auth\user\change_password.html:17
 #: .\templates\admin\auth\user\change_password.html:54
 #: .\templates\admin\base.html:46
 msgid "Change password"
-msgstr ""
+msgstr "Passwort ändern"
 
 #: .\templates\admin\auth\user\change_password.html:27
 #: .\templates\admin\change_form.html:47 .\templates\admin\change_list.html:67
 #: .\templates\admin\login.html:19
 msgid "Please correct the error below."
-msgstr ""
+msgstr "Bitte korrigieren Sie die folgenden Fehler."
 
 #: .\templates\admin\auth\user\change_password.html:27
 #: .\templates\admin\change_form.html:47 .\templates\admin\change_list.html:67
 #: .\templates\admin\login.html:19
 msgid "Please correct the errors below."
-msgstr ""
+msgstr "Bitte korrigieren Sie die Fehler unten."
 
 #: .\templates\admin\auth\user\change_password.html:31
 #, python-format
 msgid "Enter a new password for the user <strong>%(username)s</strong>."
 msgstr ""
+"Geben Sie ein neues Passwort für den Benutzer <strong>%(username)s</strong>."
 
 #: .\templates\admin\base.html:32
 msgid "Welcome,"
-msgstr ""
+msgstr "Willkommen,"
 
 #: .\templates\admin\base.html:37
 msgid "View site"
-msgstr ""
+msgstr "View site"
 
 #: .\templates\admin\base.html:42
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentation"
 
 #: .\templates\admin\base.html:48
 msgid "Log out"
-msgstr ""
+msgstr "Abmelden"
 
 #: .\templates\admin\base_site.html:3
 msgid "Django site admin"
-msgstr ""
+msgstr "Django site admin"
 
 #: .\templates\admin\base_site.html:6
 msgid "Django administration"
-msgstr ""
+msgstr "Django-administration"
 
 #: .\templates\admin\change_form.html:21 .\templates\admin\index.html:31
 #: .\templates\admin\related_widget_wrapper.html:18
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 #: .\templates\admin\change_form.html:33
 #: .\templates\admin\object_history.html:10
 msgid "History"
-msgstr ""
+msgstr "Geschichte"
 
 #: .\templates\admin\change_form.html:35
 #: .\templates\admin\edit_inline\stacked.html:10
 #: .\templates\admin\edit_inline\tabular.html:33
 msgid "View on site"
-msgstr ""
+msgstr "Vor Ort ansehen"
 
 #: .\templates\admin\change_list.html:58
 #, python-format
 msgid "Add %(name)s"
-msgstr ""
+msgstr "Hinzufügen von %(name)s"
 
 #: .\templates\admin\change_list.html:78
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: .\templates\admin\change_list_results.html:17
 msgid "Remove from sorting"
-msgstr ""
+msgstr "Entfernen Sie von der Sortierung"
 
 #: .\templates\admin\change_list_results.html:18
 #, python-format
 msgid "Sorting priority: %(priority_number)s"
-msgstr ""
+msgstr "Sortierung Priorität: <code>%(priority_number)s</code>"
 
 #: .\templates\admin\change_list_results.html:19
 msgid "Toggle sorting"
-msgstr ""
+msgstr "Umschalten der Sortierung"
 
 #: .\templates\admin\delete_confirmation.html:12
 #: .\templates\admin\related_widget_wrapper.html:26
 #: .\templates\admin\submit_line.html:6
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: .\templates\admin\delete_confirmation.html:18
 #, python-format
@@ -801,13 +810,18 @@ msgid ""
 "related objects, but your account doesn't have permission to delete the "
 "following types of objects:"
 msgstr ""
+"Löschen des %(object_name)s '%(escaped_object)s', würde das Ergebnis in "
+"löschen von verwandten Objekten, aber Ihr Konto nicht über die Berechtigung "
+"zum löschen der folgenden Arten von Objekten:"
 
 #: .\templates\admin\delete_confirmation.html:25
 #, python-format
 msgid ""
-"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
-"following protected related objects:"
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the"
+" following protected related objects:"
 msgstr ""
+"Löschen des %(object_name)s '%(escaped_object)s' erfordern würde, löschen "
+"Sie die folgenden geschützten verwandten Objekte:"
 
 #: .\templates\admin\delete_confirmation.html:32
 #, python-format
@@ -815,25 +829,28 @@ msgid ""
 "Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"? "
 "All of the following related items will be deleted:"
 msgstr ""
+"Sind Sie sicher, dass Sie wollen, löschen Sie das %(object_name)s "
+"\"%(escaped_object)s\"? Alle der folgenden verbundenen Objekte werden "
+"gelöscht:"
 
 #: .\templates\admin\delete_confirmation.html:34
 #: .\templates\admin\delete_selected_confirmation.html:33
 msgid "Objects"
-msgstr ""
+msgstr "Objekte"
 
 #: .\templates\admin\delete_confirmation.html:41
 #: .\templates\admin\delete_selected_confirmation.html:44
 msgid "Yes, I'm sure"
-msgstr ""
+msgstr "Ja, ich bin mir sicher, dass"
 
 #: .\templates\admin\delete_confirmation.html:42
 #: .\templates\admin\delete_selected_confirmation.html:45
 msgid "No, take me back"
-msgstr ""
+msgstr "Nein, nehmen Sie mich zurück"
 
 #: .\templates\admin\delete_selected_confirmation.html:11
 msgid "Delete multiple objects"
-msgstr ""
+msgstr "Löschen von mehreren Objekten"
 
 #: .\templates\admin\delete_selected_confirmation.html:17
 #, python-format
@@ -842,6 +859,9 @@ msgid ""
 "objects, but your account doesn't have permission to delete the following "
 "types of objects:"
 msgstr ""
+"Löschen der ausgewählten %(objects_name)s , würde das Ergebnis in löschen "
+"von verwandten Objekten, aber Ihr Konto nicht über die Berechtigung zum "
+"löschen der folgenden Arten von Objekten:"
 
 #: .\templates\admin\delete_selected_confirmation.html:24
 #, python-format
@@ -849,6 +869,8 @@ msgid ""
 "Deleting the selected %(objects_name)s would require deleting the following "
 "protected related objects:"
 msgstr ""
+"Löschen der ausgewählten %(objects_name)s erfordern würde, löschen Sie die "
+"folgenden geschützten verwandten Objekte:"
 
 #: .\templates\admin\delete_selected_confirmation.html:31
 #, python-format
@@ -856,122 +878,129 @@ msgid ""
 "Are you sure you want to delete the selected %(objects_name)s? All of the "
 "following objects and their related items will be deleted:"
 msgstr ""
+"Sind Sie sicher, dass Sie zum löschen der ausgewählten %(objects_name)s? "
+"Alle folgenden Objekte und Ihre zugehörigen Elemente gelöscht werden:"
 
 #: .\templates\admin\edit_inline\stacked.html:8
 #: .\templates\admin\edit_inline\tabular.html:31
 #: .\templates\admin\index.html:37
 #: .\templates\admin\related_widget_wrapper.html:10
 msgid "Change"
-msgstr ""
+msgstr "Ändern"
 
 #: .\templates\admin\edit_inline\stacked.html:27
 #: .\templates\admin\edit_inline\tabular.html:81
 msgid "Remove"
-msgstr ""
+msgstr "Entfernen"
 
 #: .\templates\admin\edit_inline\stacked.html:28
 #: .\templates\admin\edit_inline\tabular.html:80
 #, python-format
 msgid "Add another %(verbose_name)s"
-msgstr ""
+msgstr "Fügen Sie ein weiteres <code>%(verbose_name)s</code>"
 
 #: .\templates\admin\edit_inline\tabular.html:17
 msgid "Delete?"
-msgstr ""
+msgstr "Löschen?"
 
 #: .\templates\admin\filter.html:2
 #, python-format
 msgid " By %(filter_title)s "
-msgstr ""
+msgstr " Durch <code>%(filter_title)s</code> "
 
 #: .\templates\admin\includes\object_delete_summary.html:2
 msgid "Summary"
-msgstr ""
+msgstr "Zusammenfassung"
 
 #: .\templates\admin\index.html:20
 #, python-format
 msgid "Models in the %(name)s application"
-msgstr ""
+msgstr "Modelle in <code>%(name)s</code> application"
 
 #: .\templates\admin\index.html:47
 msgid "You don't have permission to edit anything."
-msgstr ""
+msgstr "Sie haben keine Berechtigung zum Bearbeiten nichts."
 
 #: .\templates\admin\index.html:55
 msgid "Recent Actions"
-msgstr ""
+msgstr "Aktuelle Aktionen"
 
 #: .\templates\admin\index.html:56
 msgid "My Actions"
-msgstr ""
+msgstr "Meine Aktionen"
 
 #: .\templates\admin\index.html:60
 msgid "None available"
-msgstr ""
+msgstr "Keine vorhanden"
 
 #: .\templates\admin\index.html:74
 msgid "Unknown content"
-msgstr ""
+msgstr "Unbekannte Inhalte"
 
 #: .\templates\admin\invalid_setup.html:12
 msgid ""
-"Something's wrong with your database installation. Make sure the appropriate "
-"database tables have been created, and make sure the database is readable by "
-"the appropriate user."
+"Something's wrong with your database installation. Make sure the appropriate"
+" database tables have been created, and make sure the database is readable "
+"by the appropriate user."
 msgstr ""
+"Etwas ist falsch mit Ihrer Datenbank-installation. Stellen Sie sicher, dass "
+"die entsprechenden Datenbank-Tabellen erstellt wurden, und sicherzustellen, "
+"dass die Datenbank lesbar ist, indem Sie den entsprechenden Benutzer aus."
 
 #: .\templates\admin\login.html:45
 msgid "Forgotten your password or username?"
-msgstr ""
+msgstr "Ihr Passwort vergessen oder Benutzername?"
 
 #: .\templates\admin\login.html:49
 msgid "Log in"
-msgstr ""
+msgstr "Log-in"
 
 #: .\templates\admin\object_history.html:22
 msgid "Date/time"
-msgstr ""
+msgstr "Datum/Zeit"
 
 #: .\templates\admin\object_history.html:23
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #: .\templates\admin\object_history.html:24
 msgid "Action"
-msgstr ""
+msgstr "Aktion"
 
 #: .\templates\admin\object_history.html:38
 msgid ""
-"This object doesn't have a change history. It probably wasn't added via this "
-"admin site."
+"This object doesn't have a change history. It probably wasn't added via this"
+" admin site."
 msgstr ""
+"Dieses Objekt muss nicht eine Veränderung der Geschichte. Es war wohl nicht "
+"Hinzugefügt, über das admin-Website."
 
 #: .\templates\admin\pagination.html:10 .\templates\admin\search_form.html:9
 msgid "Show all"
-msgstr ""
+msgstr "Alle anzeigen"
 
 #: .\templates\admin\pagination.html:11 .\templates\admin\submit_line.html:3
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: .\templates\admin\related_widget_wrapper.html:8
 #, python-format
 msgid "Change selected %(model)s"
-msgstr ""
+msgstr "Ändern der ausgewählten %(model)s"
 
 #: .\templates\admin\related_widget_wrapper.html:16
 #, python-format
 msgid "Add another %(model)s"
-msgstr ""
+msgstr "Fügen Sie ein weiteres %(model)s"
 
 #: .\templates\admin\related_widget_wrapper.html:24
 #, python-format
 msgid "Delete selected %(model)s"
-msgstr ""
+msgstr "Löschen der selektierten %(model)s"
 
 #: .\templates\admin\search_form.html:7
 msgid "Search"
-msgstr ""
+msgstr "Suche"
 
 #: .\templates\admin\search_form.html:9
 #, python-format
@@ -983,32 +1012,32 @@ msgstr[1] ""
 #: .\templates\admin\search_form.html:9
 #, python-format
 msgid "%(full_result_count)s total"
-msgstr ""
+msgstr "%(full_result_count)s total"
 
 #: .\templates\admin\submit_line.html:8
 msgid "Save as new"
-msgstr ""
+msgstr "Sparen Sie als neue"
 
 #: .\templates\admin\submit_line.html:9
 msgid "Save and add another"
-msgstr ""
+msgstr "Speichern und weiteren hinzufügen"
 
 #: .\templates\admin\submit_line.html:10
 msgid "Save and continue editing"
-msgstr ""
+msgstr "Speichern und weiter Bearbeiten"
 
 #: .\templates\gis\admin\openlayers.html:35 .\templates\gis\openlayers.html:18
 msgid "Delete all Features"
-msgstr ""
+msgstr "Löschen Sie alle Funktionen"
 
 #: .\templates\gis\admin\openlayers.html:37
 msgid "WKT debugging window:"
-msgstr ""
+msgstr "WKT-debugging-Fenster:"
 
 #: .\templates\gis\google\google-map.html:4
 msgid "Google Maps via GeoDjango"
-msgstr ""
+msgstr "Google Maps über GeoDjango"
 
 #: .\templates\gis\openlayers.html:19
 msgid "Debugging window (serialized value)"
-msgstr ""
+msgstr "Debugging-Fenster (serialisierte Wert)"

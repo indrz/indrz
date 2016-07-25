@@ -16,7 +16,7 @@ import os
 try:
     from settings import secret_settings
 except ImportError:
-    pass
+    from indrz.settings import secret_settings
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'taggit',
     'mptt',
     'rest_framework_swagger',
+    'rosetta',
 
 
     ##### our local indrz apps
@@ -66,6 +67,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -177,3 +179,7 @@ STATICFILES_FINDERS = (
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = "media"
+
+ROSETTA_MESSAGES_PER_PAGE = 20
+YANDEX_TRANSLATE_KEY = "trnsl.1.1.20160713T103415Z.0a117baa17b2233a.fb58b4876ab2920ea22ae0a0b55507319bb4a0db"
+ROSETTA_ENABLE_TRANSLATION_SUGGESTIONS = True

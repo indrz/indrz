@@ -17,7 +17,7 @@ var map = new ol.Map({
             ]
         })
     ],
-    target: 'map',
+    target: 'map-block',
     controls: ol.control.defaults({
         attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
             collapsible: false
@@ -27,4 +27,27 @@ var map = new ol.Map({
         center: [StartCenterX, StartCenterY],
         zoom: zoom_level
     })
+});
+
+// Change map height on resize
+function fixContentHeight(){
+    var viewHeight = $(window).height();
+    var viewWidth = $(window).width();
+    var $map_block = $("#map-block");
+    if (viewWidth >= 990) {
+        $map_block.height(viewHeight);
+    } else {
+        var navbar = $(".navbar:visible:visible");
+        var contentHeight = viewHeight - navbar.outerHeight();
+        $map_block.height(contentHeight);
+    }
+    map.updateSize();
+}
+
+$(window).resize(function () {
+    fixContentHeight();
+});
+
+$(document).ready(function () {
+    fixContentHeight();
 });
