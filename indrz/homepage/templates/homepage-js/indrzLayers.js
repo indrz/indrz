@@ -39,6 +39,8 @@ var OsmBackLayer = new ol.layer.Tile({
     type:"background"});
 
 
+
+
 // var capabilitiesBasemapUrl = 'http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml';
 //
 // // HiDPI support:
@@ -127,5 +129,7 @@ function appendFloorNav(floor_info, index){
     "<a href='#' onclick='activateLayer(" +
     index +
     ");' id='action-1'>"+ floor_info.short_name +"</a></li>");
-};
+    // Add flour to mobile ui element
+    $("#floor-links-select").prepend("<option value='"+ index +"'>" + floor_info.short_name + "</option>");
+}
 

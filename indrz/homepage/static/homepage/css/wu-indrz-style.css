@@ -1,47 +1,15 @@
 @import url(http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700);
 
-#id-fullscreen{
-    position: relative;
-}
-
-#id-fullscreen .fa{
-  padding-left: 22px;
-  padding-top: 5px;
-}
-.btn-fullscreen{
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background: none;
-}
-.btn-fullscreen:hover{
-    background: none;
-}
-.btn-fullscreen button{
-    width: 100%;
-    color: #333;
-    background: none;
-    text-indent: 10px;
-    font-size: 14px;
-    font-weight: 400;
-    font-family: Quattrocento Sans!important;
-}
-
-.btn-fullscreen button:hover, .btn-fullscreen button::selection{
-    background-color: transparent;
-    color: #262626;
-}
-
 body {
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
     padding: 0;
     margin: 0;
-    font-family: SignikaLight,Geneva,Helvetica,Arial;
+    font-family: SignikaLight, Geneva, Helvetica, Arial;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -84,12 +52,11 @@ body {
   z-index: 1002;
 }
 
-html, body, map{
-overflow: hidden;
-}
-
 .olImageLoadError { display: none; }
 
+body {
+  padding-top: 60px;
+}
 
 .ol-attribution {
   max-width: calc(100% - 3em);
@@ -98,25 +65,6 @@ overflow: hidden;
   font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
 }
 
-.ol-control button, .ol-attribution, .ol-scale-line-inner {
-    font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
-}
-.ol-control button {
-
-    color: #009ab8;
-
-    background-color: #000000;
-    background-color: rgba(0,0,0,1);
-
-}
-.ol-control button:hover {
-
-    color: #009ab8;
-
-    background-color: rgba(163, 163, 163, 0.86);
-    background-color: rgb(163, 163, 163);
-
-}
 #tags {
   display: none;
 }
@@ -137,9 +85,6 @@ body, h1, h2, h3, h4, p, li, td, th {
 	position: relative;
 	margin: 100px;
 }
-
-
-
 
 .popover-content {
 	min-width: 225px;
@@ -259,3 +204,73 @@ body, h1, h2, h3, h4, p, li, td, th {
 
 .twitter-typeahead{ float:left; width:100%}
 /* END  STYLE CSS for the TYPEAHEAD drop down */
+
+.navbar {
+    margin-bottom: 0;
+}
+
+#map {
+    position: relative;
+}
+
+@media (max-width: 990px) {
+    #id-map-switcher-widget {
+        bottom: 1.5em;
+        left: 1em;
+
+        right: auto;
+        top: auto;
+        z-index: 9999;
+    }
+
+    .indrz-floor-changer-float {
+        position: absolute;
+        top: 0.5em;
+    }
+
+    #id-map-switcher-widget button {
+        width: auto;
+    }
+
+    #map-search-form {
+        display: none;
+    }
+
+    #map-search-form.collapse.in {
+        display: block;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-header {
+        float: inherit;
+    }
+}
+
+
+@media (min-width: 990px) {
+    #map-search-form {
+        display: block !important;
+    }
+
+    .navbar-toggle {
+        display: none;
+    }
+}
+
+.indrz-logo {
+    width: 100%;
+    text-align: center;
+    left: auto;
+}
+
+.ol-zoom {
+    bottom: 1.5em;
+    left: auto;
+
+    right: 1em;
+    top: auto;
+    z-index: 9999;
+}

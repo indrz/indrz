@@ -2,34 +2,162 @@
 {% load i18n %}
 <!DOCTYPE html>
 
-<html lang="{{ LANGUAGE_CODE|default:"de" }}">
-
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
 <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>{% block title %}Default Title{% endblock %}</title>
-  <meta charset="utf-8">
-    <!-- IE Fix for HTML5 Tags -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 
-  <meta name="robots" content="index,follow" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <meta name="description" content="indrz indoor map">
+    <meta name="author" content="GOMOGI platform indrz.com">
+
+    <title>{% block title %}Default Title{% endblock %}</title>
+
+    <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+    <script src="{% static "js/jquery-1.11.2.min.js" %}"></script>
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-    <script type="text/javascript" href="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
     <link rel="stylesheet" href="{% static "css/ol3111.css" %}" type="text/css">
-    <link rel="stylesheet" href="{% static "homepage/css/wu-indrz-style.css" %}" type="text/css">
-    <script type="text/javascript" src="{% static "js/ol3.11.1.js" %}"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="{% static "css/custom-layout.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "css/indrz-layout.css" %}" type="text/css">
+    <script src="{% static "js/ol3.11.1.js" %}"></script>
 
-{% block header-extented %}{% endblock header-extented %}
+    {% block head_extra %}{% endblock head_extra %}
 
 </head>
 <body>
 
+
+{% block nav %}{% include 'navbar-top.html' %}{% endblock nav %}
+
+<div id="indrz-main-container" class="container-fluid">
+    {% block map-section %}
+        <div class="row">
+
+            <div class="col-md-4 col-lg-3" id="map-search-form">
+                <div>
+
+                    <div class="panel-body">
+                        {% block search_form %}{% include 'search-form.html' %}{% endblock search_form %}
+                    </div>
+
+                    <div class="panel-body">
+                        {% block routing-form %} {% include 'routing-form.html' %} {% endblock routing-form %}
+                    </div>
+
+                    <div class="panel-body">
+                        {% include "includes/change_lang_form.html" %}
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+                <div class="row">
+                    <div id="map" class="indrz-map-container">
+
+                        {% block floor-change-float %}
+
+                            <div class="indrz-floor-changer-float">
+                                <select class="form-control hidden-md hidden-lg" id="floor-links-select"></select>
+                                <ul class="nav nav-pills nav-stacked visible-md-block visible-lg-block" id="floor-links"></ul>
+                            </div>
+
+                        {% endblock floor-change-float %}
+
+                        <div id="map-block"></div>
+
+                        {% block indrz-logo-imgt %}
+
+                            <div class="indrz-logo">
+
+                                <a href="http://www.indrz.com" target="_blank"><img
+                                        src="{% static "img/indrz-powered-by-90px.png" %}"/></a>
+
+                            </div>
+
+                        {% endblock indrz-logo-imgt %}
+
+
+                    </div>
+
+                {% block background-base-changer %}
+
+                    <div id="id-map-switcher-widget">
+                        <button id="id-map-switcher" class="btn btn-info">
+                            Satellite
+                        </button>
+                    </div>
+
+                {% endblock background-base-changer %}
+
+                </div>
+            </div>
+
+
+        </div>
+    {% endblock map-section %}
+</div>
+
+
+
+
+{% block popup-markup %} {% include 'popup-markup.html' %} {% endblock popup-markup %}
+
+
+{% block js-typeahead %}
+    <script>
+        var roomNums = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: '/api/v1/spaces/search/?format=json'
+        });
+
+        // passing in `null` for the `options` arguments will result in the default
+        // options being used
+        $('#rooms-prefetch .typeahead').typeahead(null, {
+            name: 'countries',
+            limit: 100,
+            source: roomNums
+        });
+
+
+        $("#submitForm").submit(function (event) {
+            {#  alert( "Handler for .submit() called."  );#}
+            var buildingid = building_id;
+            var startNum = $('#route-from').val();
+            var endNum = $('#route-to').val();
+            var rType = $("input:radio[name=typeRoute]:checked").val();
+            addRoute(buildingid, startNum, endNum, rType);
+            event.preventDefault();
+        });
+
+
+    </script>
+
+{% endblock js-typeahead %}
+
+{% block js-search-box %}{% endblock js-search-box %}
+{% block route_from_to %}{% endblock route_from_to %}
+{% block map_frame %}{% endblock map_frame %}
+{% block js-autocomplete %}{% endblock js-autocomplete %}
+{% block route_options %}{% endblock route_options %}
+{% block footer %}{% endblock footer %}
+
+<script>
+    $(".nav a").on("click", function () {
+        $(".nav").find(".active").removeClass("active");
+        $(this).parent().addClass("active");
+    });
+
+    $(function () {
+        $("#floor-links-select").on('change', function () {
+            activateLayer($(this).val());
+        });
+    });
+
+</script>
 </body>
 </html>
