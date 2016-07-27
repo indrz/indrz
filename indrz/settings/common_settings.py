@@ -124,10 +124,13 @@ DATABASES = {
         # Postgresql with PostGIS
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'indrz', # DB name
+        # 'NAME': 'indrz', # DB name local
+        'NAME': 'indrz-wu', # DB name Redhat live server
         'USER': secret_settings.db_user, # DB user name
         'PASSWORD': secret_settings.db_pwd, # DB user password
-        'HOST': 'localhost',
+        # 'HOST': 'localhost', # local dev DB pg9.5
+        # 'PORT': '5434',  # local dev DB pg9.5
+        'HOST': 'gis-neu.wu.ac.at',
         'PORT': '5432',
     }
 }
