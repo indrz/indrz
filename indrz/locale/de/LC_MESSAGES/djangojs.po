@@ -8,13 +8,33 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-13 16:06+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-07-27 17:06+0200\n"
+"PO-Revision-Date: 2016-07-27 17:08+0200\n"
+"Last-Translator: b'  <>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.7.11\n"
 
+#: .\maps\templates\maps\indrz-popup.js:62
+msgid "Building Name: "
+msgstr "Gebäudename: "
+
+#: .\maps\templates\maps\indrz-popup.js:74
+msgid "Campus "
+msgstr "Campus"
+
+#: .\maps\templates\maps\indrz-popup.js:77
+msgid "Floor Number "
+msgstr "Stockwerk"
+
+#: .\maps\templates\maps\indrz-popup.js:83
+msgid "Coordinate: "
+msgstr "Koordinate: "
+
+#: .\maps\templates\maps\indrz-popup.js:83
+msgid "Bug Report"
+msgstr "Bug-Report"

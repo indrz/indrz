@@ -692,8 +692,7 @@ msgstr "Klicken Sie hier, um wählen Sie die Objekte auf allen Seiten"
 #: .\templates\admin\actions.html:11
 #, python-format
 msgid "Select all %(total_count)s %(module_name)s"
-msgstr ""
-"Wählen Sie \" alle <code>%(total_count)s</code> <code>%(Modulname)s</code>"
+msgstr "Wählen Sie alle %(total_count)s %(module_name)s"
 
 #: .\templates\admin\actions.html:13
 msgid "Clear selection"

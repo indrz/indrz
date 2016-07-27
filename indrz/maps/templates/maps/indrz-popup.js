@@ -59,7 +59,7 @@ map.on('singleclick', function (e) {
 
 function open_popup(properties, coordinate){
 
-  var titlePopup = "Building Name: ";
+  var titlePopup = gettext('Building Name: ');
 
   var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
       coordinate, 'EPSG:3857', 'EPSG:4326'));
@@ -71,14 +71,16 @@ function open_popup(properties, coordinate){
         var name = properties.name;
         var floorNum = "0";
         var buildingName = properties.campus_name;
-        titlePopup = "Campus:  ";
+        titlePopup = gettext('Campus ');
     }
 
+    var textFloorNumber = gettext('Floor Number ');
+
     popup_content.innerHTML = '<h4>' + name + '</h4>';
-    popup_content.innerHTML += '<p>Floor Number: ' + floorNum + '</p>';
+    popup_content.innerHTML += '<p>' + textFloorNumber + floorNum + '</p>';
     popup_content.innerHTML += '<p>' + titlePopup + buildingName + '</p>';
 
-  popup_content.innerHTML += '<p>Coordinate:</p><code>' + hdms + '</code><p><a href="#"><i class="fa fa-bug fa-fw"></i> Bug report</a>  </p>';
+  popup_content.innerHTML += '<p>' + gettext('Coordinate: ')+ '</p><code>' + hdms + '</code><p><a href="#"><i class="fa fa-bug fa-fw"></i>' + gettext('Bug Report') + '</a>  </p>';
   popup_overlay.setPosition(coordinate);
 }
 
