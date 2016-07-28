@@ -1,2 +1,4 @@
 "C:\Program Files\pgAdmin III\1.22\pg_restore.exe" --host gis-neu.wu.ac.at --port 5432 --username "postgres" --dbname "indrz-wu"  --verbose "C:\Users\mdiener\Desktop\campusgis-wuwien.backup"
 "C:\Program Files\pgAdmin III\1.22\pg_dump.exe" --host gis.wu.ac.at --port 5432 --username "postgres" --format custom --blobs --inserts --verbose --file "C:\Users\mdiener\Desktop\campusgis-wuwien-old.backup" "wuwien"
+
+"C:\Program Files\pgAdmin III\1.22\pg_restore.exe" --host gis-neu.wu.ac.at --port 5432 --username "postgres" --dbname "campusgis-old"  --verbose "C:\Users\mdiener\Desktop\campusgis-wuwien-old.backup"
