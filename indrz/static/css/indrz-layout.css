@@ -215,8 +215,8 @@ body, h1, h2, h3, h4, p, li, td, th {
 
 @media (max-width: 990px) {
     #id-map-switcher-widget {
-        bottom: 1.5em;
-        left: 1em;
+        bottom: 1em;
+        left: 1.5em;
 
         right: auto;
         top: auto;

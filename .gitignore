@@ -15,11 +15,12 @@
 /indrz/logs/
 
 /indrz/settings/secret_settings.py
+/indrz/settings/production_settings.py
+
 /indrz/htmlcov/
 
 /.cache/
-/indrz/tests/.cache/
-
+/indrz/tests
 
 *.cache
 
