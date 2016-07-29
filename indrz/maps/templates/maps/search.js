@@ -97,3 +97,17 @@ $("#clearSearch").click(function () {
     $("#search-input").val('');
 
 });
+var searchPanelShown = true;
+$("#toggle-search").click(function () {
+    if (searchPanelShown) {
+        var panelWidth = $("#search-panel").outerWidth();
+        var buttonWidth = $("#toggle-search").outerWidth();
+        var leftPosition = -(panelWidth - buttonWidth);
+        $("#search-panel").css("left", leftPosition+"px");
+    } else {
+         $("#search-panel").css("left", "0");
+    }
+    searchPanelShown = !searchPanelShown;
+    //$("#search-panel").toggleClass("minimized");
+    $("#toggle-search i").toggleClass("fa-chevron-left").toggleClass("fa-chevron-right");
+});

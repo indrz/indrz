@@ -1,0 +1,64 @@
+.ol-zoom {
+    top: 150px;
+}
+
+#search-panel {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    z-index: 5;
+    border: 1px solid #ccc;
+    background: #ffffff;
+    border-radius: 3px;
+    transition: left 1s ease;
+}
+/*#search-panel.minimized {*/
+    /*left: -250px;*/
+/*}*/
+
+#search-input-holder {
+    float: left;
+}
+#search-btns {
+    float: left;
+}
+#search-input {
+    border: none;
+}
+/*#search-input:focus {*/
+    /*outline: none;*/
+/*}*/
+#search-panel .form-control:focus, #search-panel .form-control:active,
+#search-panel .btn:focus, #search-panel .btn:active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none
+}
+#search-btns a, #search-btns button {
+    border: none;
+    background: #ffffff;
+    height: 34px;
+}
+#enterSearch {
+    border: none;
+    width: 40px;
+    background: #ffffff;
+}
+#enterSearch:hover {
+    color: #337ab7;
+    font-weight: bold;
+}
+#search-menu-btn, #search-menu-btn:hover, #search-menu-btn:active, #search-menu-btn:focus, #search-menu-btn:active {
+    border: none;
+    background: #ffffff;
+    box-shadow: none;
+}
+#search-menu-btn:hover, #toggle-search:hover {
+    color: #337ab7;
+}
+#toggle-search {
+    width: 20px;
+    padding-left: 5px;
+    z-index: 2;
+    border-left: 1px solid #ccc !important;
+}
