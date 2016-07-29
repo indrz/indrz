@@ -37,24 +37,13 @@ urlpatterns = [
     url(r'^logout/$', logout, {'next_page': '/'}, name='logout'),
 
     url(r'^api/v1/', include('api.urls')),
-    url(r'^api/v1/docs/', include('rest_framework_swagger.urls')),
     url(r'^map/', include('maps.urls')),
     url(r'^poi/', include('poi_manager.urls')),
     url(r'^wu/', include('homepage.urls')),
-
-]
-
-urlpatterns += i18n_patterns(
-    url(r'^$', 'maps.views.view_map'),  # homepage start page url
-    url(r'^login/$', login, name='login'),
-    url(r'^logout/$', logout, {'next_page': '/'}, name='logout'),
-
-    url(r'^api/v1/', include('api.urls')),
-    url(r'^map/', include('maps.urls')),
-    url(r'^poi/', include('poi_manager.urls')),
     url(r'^jsi18n/$', javascript_catalog, js_info_dict,
         name='javascript-catalog'),
-)
+
+]
 
 
 urlpatterns += [
@@ -64,4 +53,9 @@ urlpatterns += [
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
         url(r'^rosetta/', include('rosetta.urls')),
+    ]
+
+if 'rest-framework-swagger' in settings.INSTALLED_APPS:
+    urlpatterns += [
+        url(r'^api/v1/docs/', include('rest_framework_swagger.urls')),
     ]
