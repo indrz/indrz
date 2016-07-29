@@ -28,9 +28,10 @@ class BuildingFloorSpaceSerializer(GeoFeatureModelSerializer):
                   'room_external_id', 'space_type')
 
 
-class BuildingFloorSerializer(serializers.ModelSerializer):
+class BuildingFloorSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = BuildingFloor
+        geo_field = 'multi_poly'
         fields = ('id', 'short_name', 'floor_num', 'fk_building')
 
 

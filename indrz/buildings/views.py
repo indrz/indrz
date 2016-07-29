@@ -108,6 +108,17 @@ def building_detail(request, pk, format=None):
 
 
 @api_view(['GET'])
+def get_campus_info(request, campus_id, format=None):
+    """
+    Get a list of buildings on a singlge campus
+    """
+    if request.method == 'GET':
+        buildings_on_campus = Building.objects.filter(fk_campus=campus_id).order_by('id')
+        serializer = BuildingShortSerializer(buildings_on_campus, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
 def building_floors_list(request, building_id, format=None):
     """
     List all floor ids for a specific building
@@ -117,6 +128,54 @@ def building_floors_list(request, building_id, format=None):
         serializer = BuildingFloorSerializer(floor_ids, many=True)
         return Response(serializer.data)
 
+
+
+
+
+@api_view(['GET'])
+def get_floor_info(request, building_id, floor_id, format=None):
+    """
+    Get informatoin about a single floor in a single building
+    """
+
+    if request.method == 'GET':
+        floor_ids = BuildingFloor.objects.filter(fk_building=building_id)
+        floor_data = floor_ids.filter(pk=floor_id)
+        serializer = BuildingFloorSerializer(floor_data, many=True, context={'request': request})
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_floor_spaces(request, building_id, floor_id, format=None):
+    """
+    List all spaces on the provided building and floor
+    """
+    if request.method == 'GET':
+        floor_ids = BuildingFloor.objects.filter(fk_building=building_id, fk_building_floor=floor_id)
+        serializer = BuildingFloorSerializer(floor_ids, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_space_by_id(request, building_id, floor_id, space_id, format=None):
+    """
+    Get information about a single space providing, building_id, floor_id, space_id
+    """
+    if request.method == 'GET':
+        floor_ids = BuildingFloor.objects.filter(fk_building=building_id, fk_building_floor=floor_id)
+        serializer = BuildingFloorSerializer(floor_ids, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_space_by_name(request, building_id, floor_id, space_name, format=None):
+    """
+    Get information about a single space providing, building_id, floor_id, space_id
+    """
+    if request.method == 'GET':
+        floor_ids = BuildingFloor.objects.filter(fk_building=building_id, fk_building_floor=floor_id)
+        serializer = BuildingFloorSerializer(floor_ids, many=True)
+        return Response(serializer.data)
 
 @api_view(['GET'])
 def building_spaces_list(request, building_id, floor_id, format=None):
