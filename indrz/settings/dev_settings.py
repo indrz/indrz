@@ -5,22 +5,6 @@ from .common_settings import *
 DEBUG = True
 
 
-DATABASES = {
-    'default': {
-        # Postgresql 9.5 with PostGIS
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'indrz-wu', # DB name
-        'USER': 'indrz-wu', # DB user name
-        'PASSWORD': 'air', # DB user password
-        'HOST': 'localhost',
-        'PORT': '5434',
-    }
-}
-
-POSTGIS_VERSION = ( 2, 2, 2 )
-
-
 LOGGING_CONFIG = None
 
 LOGGING = {

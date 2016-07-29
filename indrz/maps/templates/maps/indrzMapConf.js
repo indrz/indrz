@@ -1,6 +1,7 @@
 
 var baseUrlWms =  '';
 var zoom_level="{{ zoom_level }}";
+var campus_id="{{ campus_id }}";
 var building_id="{{ building_id }}";
 var active_floor_num="{{floor_num}}";
 var space_id="{{ space_id }}";
