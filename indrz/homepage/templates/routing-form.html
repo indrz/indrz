@@ -1,0 +1,47 @@
+{% load i18n %}
+
+    <div id="directions" class="directions">
+        <form id="submitForm">
+
+            <div id="rooms-prefetch" class="input-group margin-bottom-sm">
+                <span class="input-group-addon"><i class="fa fa-flag-o"></i></span>
+                <input id="route-from" class="typeahead form-control" type="text" placeholder="Start Route">
+            </div>
+            <br>
+
+            <div id="rooms-prefetch" class="input-group margin-bottom-sm">
+                <span class="input-group-addon"><i class="fa fa-flag-checkered"></i></span>
+                <input id="route-to" class="typeahead form-control" type="text" placeholder="End Route">
+
+            </div>
+
+
+            <div class="radio">
+                <label>
+                    <input type="radio" name="typeRoute" id="routeTypeStandard" value="0" checked>
+                    {% trans "Standard Route" %}
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="typeRoute" id="routeTypeBarrierFree" value="1">
+                    {% trans "Barrier Free Route" %}
+                </label>
+            </div>
+            <button id="enterRoute" type="submit" class="btn btn-default">{% trans "Go !" %}</button>
+            <button id="shareRoute" type="button" class="btn btn-info hide" data-toggle="modal" data-target="#ShareRouteModal">
+                <span >
+                    <i class="fa fa-share"></i> Share Route
+                </span>
+{#                {% trans " Share route" %}#}
+
+            </button>
+            <button id="clearRoute" type="button" class="btn btn-warning hide">
+                <i class="fa fa-refresh"></i>
+{#                {% trans "Clear route" %}#}
+            </button>
+            <br><br>
+              <a id="id-share-map" class="btn btn-default " data-toggle="modal" data-target="#ShareMapModal"><i class="fa fa-share fa-fw"> </i> Share Map</a>
+        </form>
+
+    </div>

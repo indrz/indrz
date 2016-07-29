@@ -1,8 +1,10 @@
-{% extends "homepage/wu-map-base.html" %}
+{% extends "base-map.html" %}
 {% load i18n %}
 {% load staticfiles %}
 
 {% block title %}WU Campus Plan{% endblock %}
+
+
 
 {% block head_extra %}
 
@@ -31,6 +33,10 @@
             </div>
         </nav>
 {% endblock nav %}
+{#{% block routing-form %}{% endblock routing-form %}#}
+{# {% block map-section %}{% endblock map-section %}#}
+{#{% block background-base-changer %}{% endblock background-base-changer %}#}
+{#{% block search_form %}{% endblock search_form %}#}
 
 {% block js-search-box %}
 
@@ -70,19 +76,20 @@
 {% endblock js-search-box %}
 
 
+
 {% block map_frame %}
-    <script>  {% include 'homepage-js/indrzMapConf.js' %} </script>
-    <script>  {% include 'homepage-js/indrzLayers.js' %} </script>
-    <script>  {% include 'homepage-js/indrz-floorswitcher.js' %} </script>
-    <script>  {% include 'homepage-js/indrzMapInit.js' %}</script>
-    <script>  {% include 'homepage-js/routing.js' %} </script>
-    <script>  {% include 'homepage-js/search.js' %} </script>
-    <script>  {% include 'homepage-js/indrz-popup.js' %} </script>
-    // <script>  {% include 'homepage-js/indrz-controls.js' %} </script>
-    <script>  {% include 'homepage-js/indrz_live_url_update.js' %} </script>
-    <script>  {% include 'homepage-js/share.js' %} </script>
-    <script>  {% include 'homepage-js/initialize.js' %} </script>
+    <script>  {% include 'maps/indrzMapConf.js' %} </script>
+    <script>  {% include 'maps/indrzLayers.js' %} </script>
+    <script>  {% include 'maps/indrz-floorswitcher.js' %} </script>
+    <script>  {% include 'maps/indrzMapInit.js' %}</script>
+    <script>  {% include 'maps/routing.js' %} </script>
+    <script>  {% include 'maps/search.js' %} </script>
+    <script>  {% include 'maps/indrz-popup.js' %} </script>
+    <script>  {% include 'maps/indrz-controls.js' %} </script>
+    <script>  {% include 'maps/indrz_live_url_update.js' %} </script>
+    <script>  {% include 'maps/share.js' %} </script>
+    <script>  {% include 'maps/initialize.js' %} </script>
     {% if space_id > 0 and space_id != None %}
-        <script>  {% include 'homepage-js/indrz-space.js' %} </script>
+        <script>  {% include 'maps/indrz-space.js' %} </script>
     {% endif %}
 {% endblock map_frame %}

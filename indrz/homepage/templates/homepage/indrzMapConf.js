@@ -1,6 +1,7 @@
 
 var baseUrlWms =  'http://137.208.3.187:8080/geoserver/wuwien/wms';
 var zoom_level="{{ zoom_level }}";
+var campus_id="{{ campus_id }}";
 var building_id="{{ building_id }}";
 var active_floor_num="{{floor_num}}";
 var space_id="{{ space_id }}";
@@ -12,8 +13,6 @@ var route_from = "{{route_from}}";
 var route_to = "{{route_to}}";
 var centerx = "{{centerx}}";
 var centery = "{{centery}}";
-
-var wms_floor_names= ["wmsUG01", "wmsEG00", "wmsEG01", "wmsEG02", "wmsEG03", "wmsEG04", "wmsEG05", "wmsEG06"];
 
 var StartCenterX = 1826602.5273166203;
 var StartCenterY = 6142514.2285252055;

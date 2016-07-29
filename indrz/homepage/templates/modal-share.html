@@ -1,0 +1,76 @@
+{% load i18n %}
+<div id="ShareMapModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-share-square fa-fw"></i>{% trans "Share map" %}</h4>
+            </div>
+                <div class="modal-body">
+                <p>
+                    <code id="popup-link">
+                        <textarea class="share-link text-left" placeholder="here is the link static hard coded" style="width:100%;"> </textarea>
+                    </code>
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <p>{% trans "Simply copy" %}<code>{% trans "CTRL + c" %}</code> {% trans "then paste" %}<code>{% trans "CTRL + v" %}</code>{% trans "in your browser" %}</p>
+                <a class="btn btn-default" href="#" data-dismiss="modal"> {% trans "Close" %}</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="ShareSearchModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-share-square fa-fw"></i>{% trans "Share search results" %}</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <code id="popup-link">
+                        <textarea class="share-link text-left" placeholder="here is the link static hard coded" style="width:100%;"> </textarea>
+                    </code>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <p>{% trans "Simply copy" %}<code>{% trans "CTRL + c" %}</code> {% trans "then paste" %}<code>{% trans "CTRL + v" %}</code>{% trans "in your browser" %}</p>
+                <a class="btn btn-default" href="#" data-dismiss="modal"> {% trans "Close" %}</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="ShareRouteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-share-square fa-fw"></i>{% trans "Share route results" %}</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <code id="popup-link">
+                        <textarea class="share-link text-left" placeholder="here is the link static hard coded" style="width:100%;"> </textarea>
+                    </code>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <p>{% trans "Simply copy" %}<code>{% trans "CTRL + c" %}</code> {% trans "then paste" %}<code>{% trans "CTRL + v" %}</code>{% trans "in your browser" %}</p>
+                <a class="btn btn-default" href="#" data-dismiss="modal"> {% trans "Close" %}</a>
+            </div>
+        </div>
+
+    </div>
+</div>

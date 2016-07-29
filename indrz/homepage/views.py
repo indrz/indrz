@@ -26,7 +26,4 @@ def view_map(request, *args, **kwargs):
             'floor_num': int(floor_num)
         })
 
-    return render(request, context=context, template_name='homepage/wu-map.html')
-
-def show_help(request):
-    return render(request, template_name='homepage/wu-help.html')
+    return render(request, context=context, template_name='map.html')

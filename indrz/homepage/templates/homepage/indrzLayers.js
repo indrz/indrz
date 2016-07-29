@@ -18,14 +18,14 @@ function createWmsLayer(layerName, geoserverLayer, floorNumber, isVisible, zInde
 }
 
 
-wmsUG01 = createWmsLayer('wmsUG01','wuwien:ug01', '-1', 'false', 3 );
-wmsEG00 = createWmsLayer('wmsE00','wuwien:eg00', '0', 'false', 3 );
-wmsEG01 = createWmsLayer('wmsE01','wuwien:eg01', '1', 'false', 3 );
-wmsEG02 = createWmsLayer('wmsE02','wuwien:eg02', '2', 'false', 3 );
-wmsEG03 = createWmsLayer('wmsE03','wuwien:eg03', '3', 'false', 3 );
-wmsEG04 = createWmsLayer('wmsE04','wuwien:eg04', '4', 'false', 3 );
-wmsEG05 = createWmsLayer('wmsE05','wuwien:eg05', '5', 'false', 3 );
-wmsEG06 = createWmsLayer('wmsE06','wuwien:eg06', '6', 'false', 3 );
+wmsUG01 = createWmsLayer('wmsUG01','indrz:ug01', '-1', 'false', 3 );
+wmsE00 = createWmsLayer('wmsE00','indrz:e00', '0', 'false', 3 );
+wmsE01 = createWmsLayer('wmsE01','indrz:e01', '1', 'false', 3 );
+wmsE02 = createWmsLayer('wmsE02','indrz:e02', '2', 'false', 3 );
+wmsE03 = createWmsLayer('wmsE03','indrz:e03', '3', 'false', 3 );
+// wmsE04 = createWmsLayer('wmsE04','indrz:e04', '4', 'false', 3 );
+// wmsE05 = createWmsLayer('wmsE05','indrz:e05', '5', 'false', 3 );
+// wmsE06 = createWmsLayer('wmsE06','indrz:e06', '6', 'false', 3 );
 
 var mapQuestOsm = new ol.layer.Tile({
     source: new ol.source.MapQuest({
@@ -37,45 +37,6 @@ var OsmBackLayer = new ol.layer.Tile({
     source: new ol.source.OSM(),
     visible: true,
     type:"background"});
-
-
-
-
-// var capabilitiesBasemapUrl = 'http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml';
-//
-// // HiDPI support:
-// // * Use 'bmaphidpi' layer (pixel ratio 2) for device pixel ratio > 1
-// // * Use 'geolandbasemap' layer (pixel ratio 1) for device pixel ratio == 1
-// var hiDPI = ol.has.DEVICE_PIXEL_RATIO > 1;
-// var basemapLayer = hiDPI ? 'bmaphidpi' : 'bmapgrau';
-// var tilePixelRatio = hiDPI ? 2 : 1;
-//
-//
-//
-//
-// fetch(capabilitiesBasemapUrl).then(function(response) {
-//     return response.text();
-//     }).then(function(text) {
-//         var resultBasemap = new ol.format.WMTSCapabilities().read(text);
-//         var optionsBasemap = ol.source.WMTS.optionsFromCapabilities(resultBasemap, {
-//           layer: basemapLayer,
-//           matrixSet: 'google3857',
-//           requestEncoding: 'REST',
-//           attribution: "&copy; Data CC-BY 3.0 AT by <a target='_blank' href='http://www.basemap.at/'>basemap.at</a>",
-//           style: 'normal'
-//         });
-//         options.tilePixelRatio = tilePixelRatio;
-//         // var BasemapAtBackLayer = new ol.layer.Tile({
-//         //     source: new ol.source.WMTS(optionsBasemap)
-//         // });
-//         map.addLayer(new ol.layer.Tile({
-//           source: new ol.source.WMTS(options)
-//             type:"background"
-//         }));
-//     });
-
-
-
 
 var SatelliteLayer = new ol.layer.Tile({
     source: new ol.source.MapQuest({layer: 'sat'}),
@@ -132,4 +93,3 @@ function appendFloorNav(floor_info, index){
     // Add flour to mobile ui element
     $("#floor-links-select").prepend("<option value='"+ index +"'>" + floor_info.short_name + "</option>");
 }
-
