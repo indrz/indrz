@@ -55,7 +55,7 @@ if 'rosetta' in settings.INSTALLED_APPS:
         url(r'^rosetta/', include('rosetta.urls')),
     ]
 
-if 'rest-framework-swagger' in settings.INSTALLED_APPS:
+if 'rest_framework_swagger' in settings.INSTALLED_APPS:
     urlpatterns += [
         url(r'^api/v1/docs/', include('rest_framework_swagger.urls')),
     ]

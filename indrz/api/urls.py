@@ -7,21 +7,33 @@ urlpatterns = patterns('api.views',
 
     # url(r'^spaces/search/(?P<search_term>[a-zA-Z0-9]{2,5})/$', 'autocomplete_list', name='spaces_list'),
     url(r'^spaces/search/$', 'autocomplete_list', name='spaces_list'),
+
     #url(r'^directions/(?P<building_name>building=d{1,5})&start={1,6}&destination={1,6}/$', 'route_room_to_room', name='route-space-to-space' )
-    url(r'^buildings/', include('buildings.urls')),
+
     )
 
 # SPACES API URLS
 urlpatterns += patterns('buildings.views',
     # url(r'^spaces/$', 'spaces_list', name='list_all_campuses'),
     url(r'^spaces/(?P<space_id>\d{1,5})/$', 'space_details', name='show_space_details'),
+    # url(r'^spaces/(?P<building_id>\d{1,5})/(?P<floor_id>\d{1,5})/$', 'building_spaces_list',
+    #                         name='building_spaces_list'),
     # url(r'^spaces/(?P<space_name>.+)/$', 'get_space_by_name', name='get_space_by_name'),
     )
 
-# CAMPUS API URLS
+
+# Floors API URLS
+urlpatterns += patterns('buildings.views',
+    url(r'^floors/(?P<floor_id>\d{1,5})/$', 'get_spaces_on_floor', name='get_spaces_on_floor'),
+    # url(r'^spaces/(?P<space_name>.+)/$', 'get_space_by_name', name='get_space_by_name'),
+    )
+
+# CAMPUS AND BUILDINGS API URLS
 urlpatterns += patterns('buildings.views',
     url(r'^campus/$', 'campus_list', name='list_all_campuses'),
-    url(r'^campus/(?P<pk_campus>[0-9]+)/$', 'list_buildings_on_campus', name='building_on_campus_list'),
+    url(r'^campus/(?P<campus_id>\d{1,5})/$', 'list_buildings_on_campus', name='buildings_list'),
+    url(r'^buildings/', include('buildings.urls')),
+
     )
 
 

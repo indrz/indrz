@@ -4,15 +4,15 @@ from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
 
 class CampusSerializer(serializers.ModelSerializer):
-    # buildings = serializers.StringRelatedField(many=True)
+    buildings = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = Campus
-        # fields = ('id', 'campus_name', 'description', 'fk_organization', 'buildings')
-        fields = ('id', 'campus_name', 'description', 'fk_organization')
+        fields = ('id', 'campus_name', 'description', 'fk_organization', 'buildings')
         # depth = 1  # include organization information
 
 
-class BuildingShortSerializer(serializers.ModelSerializer):
+class BuildingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Building
@@ -36,6 +36,13 @@ class BuildingFloorSerializer(GeoFeatureModelSerializer):
 
 
 class FloorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BuildingFloor
+        fields = ('id', 'short_name', 'floor_num', 'fk_building')
+
+
+class FloorSerializerDetails(serializers.ModelSerializer):
     buildingfloorspace_set = BuildingFloorSpaceSerializer(many=True, read_only=True)
 
     class Meta:
@@ -43,7 +50,8 @@ class FloorSerializer(serializers.ModelSerializer):
         fields = ('id', 'short_name', 'floor_num', 'fk_building', 'buildingfloorspace_set')
 
 
-class BuildingSerializer(serializers.ModelSerializer):
+class BuildingSerializerDetails(serializers.ModelSerializer):
+
     buildingfloor_set = FloorSerializer(many=True, read_only=True)
 
     class Meta:
@@ -51,8 +59,17 @@ class BuildingSerializer(serializers.ModelSerializer):
         fields = ('id', 'building_name', 'num_floors', 'buildingfloor_set')
 
 
+class SpacesOnFloor(GeoFeatureModelSerializer):
+
+    class Meta:
+        model = BuildingFloorSpace
+        geo_field = "multi_poly"
+        fields = ('id', 'short_name', 'floor_num', 'fk_building',
+                  'room_external_id')
+
+
 class SpaceSerializer(GeoFeatureModelSerializer):
-    fk_building = BuildingShortSerializer(read_only=True)
+    fk_building = BuildingSerializer(read_only=True)
     fk_building_floor = BuildingFloorSerializer(read_only=True)
 
     class Meta:

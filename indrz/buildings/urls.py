@@ -21,19 +21,15 @@ urlpatterns = patterns('buildings.views',
 
     # url(r'^spaces/search/(?P<search_term>[a-zA-Z0-9]{2,5})/$', 'autocomplete_list', name='spaces_list'),
     url(r'^$', 'building_list', name='list_buildings'),
-    url(r'^list/$', 'building_short_list', name='building_short_list'),
 
     url(r'^(?P<pk>[0-9]+)/$', 'building_detail', name='building_details'),
-    url(r'^spaces/(?P<building_id>\d{1,5})/(?P<floor_id>\d{1,5})/$', 'building_spaces_list', name='building_spaces_list'),
-
-    url(r'^campus/(?P<campus_id>\d{1,5})/$', 'get_campus_info', name='get_campus_info'),
     url(r'^(?P<building_id>\d{1,5})/externid/(?P<external_room_id>.+)/$', 'get_external_id', name='get_external_ids'),
     url(r'^(?P<building_id>\d{1,5})/floors/$', 'building_floors_list', name='get_floor_ids'),
     # url(r'^(?P<building_id>\d{1,5})/(?P<space_name>.+)/$', 'get_space_by_name', name='get_space_by_name'),
     url(r'^(?P<building_id>\d{1,5})/floors/(?P<floor_id>\d{1,5})/$', 'get_floor_info', name='show_floor_info'),
-    url(r'^(?P<building_id>\d{1,5})/floors/(?P<floor_id>\d{1,5})/spaces/$', 'get_floor_spaces', name='show_floor_spaces'),
+    url(r'^(?P<building_id>\d{1,5})/floors/(?P<floor_id>\d{1,5})/spaces/$', 'get_building_floor_spaces', name='get_building_floor_spaces'),
     url(r'^(?P<building_id>\d{1,5})/floors/(?P<floor_id>\d{1,5})/spaces/(?P<space_id>\d{1,5})/$', 'get_space_by_id', name='show_space_by_id'),
-    url(r'^(?P<building_id>\d{1,5})/floors/(?P<floor_id>\d{1,5})/spaces/(?P<space_name>\w+\s\w+)/$', 'get_space_by_name', name='show_space_by_name'),
+    url(r'^(?P<building_id>\d{1,5})/floors/(?P<floor_id>\d{1,5})/spaces/(?P<space_name>.+)/$', 'get_space_by_name', name='show_space_by_name'),
     # url(r'^(?P<building_id>\d{1,5})/floorlist/$', 'building_floors_list', name='get_floor_ids'),
     # url(r'^floor/(?P<building_id>\d{1,5})/$', 'building_floors_list', name='get_floor_ids'),
     #url(r'^directions/(?P<building_name>building=d{1,5})&start={1,6}&destination={1,6}/$', 'route_room_to_room', name='route-space-to-space' )
