@@ -12,12 +12,6 @@ class CampusSerializer(serializers.ModelSerializer):
         # depth = 1  # include organization information
 
 
-class BuildingSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Building
-        fields = ('id', 'building_name', 'num_floors', 'fk_organization', 'fk_campus')
-
 
 class BuildingFloorSpaceSerializer(GeoFeatureModelSerializer):
 
@@ -28,7 +22,8 @@ class BuildingFloorSpaceSerializer(GeoFeatureModelSerializer):
                   'room_external_id', 'space_type')
 
 
-class BuildingFloorSerializer(GeoFeatureModelSerializer):
+class BuildingFloorGeomSerializer(GeoFeatureModelSerializer):
+
     class Meta:
         model = BuildingFloor
         geo_field = 'multi_poly'
@@ -36,13 +31,24 @@ class BuildingFloorSerializer(GeoFeatureModelSerializer):
 
 
 class FloorSerializer(serializers.ModelSerializer):
+    buildingfloorspace_set = BuildingFloorSpaceSerializer(many=True, read_only=True)
 
     class Meta:
         model = BuildingFloor
-        fields = ('id', 'short_name', 'floor_num', 'fk_building')
+        fields = ('id', 'short_name', 'floor_num', 'fk_building', 'buildingfloorspace_set')
+
+
+class BuildingSerializer(serializers.ModelSerializer):
+
+    buildingfloor_set = FloorSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Building
+        fields = ('id', 'building_name', 'num_floors', 'fk_organization', 'fk_campus', 'buildingfloor_set')
 
 
 class FloorSerializerDetails(serializers.ModelSerializer):
+
     buildingfloorspace_set = BuildingFloorSpaceSerializer(many=True, read_only=True)
 
     class Meta:
@@ -70,7 +76,7 @@ class SpacesOnFloor(GeoFeatureModelSerializer):
 
 class SpaceSerializer(GeoFeatureModelSerializer):
     fk_building = BuildingSerializer(read_only=True)
-    fk_building_floor = BuildingFloorSerializer(read_only=True)
+    fk_building_floor = BuildingFloorGeomSerializer(read_only=True)
 
     class Meta:
         model = BuildingFloorSpace
