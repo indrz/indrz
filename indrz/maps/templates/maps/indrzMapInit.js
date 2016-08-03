@@ -1,3 +1,9 @@
+
+var view = new ol.View({
+        center: [StartCenterX, StartCenterY],
+        zoom: zoom_level
+    });
+
 var map = new ol.Map({
     interactions: ol.interaction.defaults().extend([
         new ol.interaction.DragRotateAndZoom()
@@ -6,7 +12,7 @@ var map = new ol.Map({
     layers: [
         new ol.layer.Group({
             'title': gettext('Background'),
-            layers: [mapQuestOsm, OsmBackLayer, SatelliteLayer
+            layers: [OsmBackLayer
             ]
         }),
         new ol.layer.Group({
@@ -23,10 +29,7 @@ var map = new ol.Map({
             collapsible: false
         })
     }),
-    view: new ol.View({
-        center: [StartCenterX, StartCenterY],
-        zoom: zoom_level
-    })
+    view: view
 });
 
 // Change map height on resize

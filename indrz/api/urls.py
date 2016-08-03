@@ -32,6 +32,7 @@ urlpatterns += patterns('buildings.views',
 urlpatterns += patterns('buildings.views',
     url(r'^campus/$', 'campus_list', name='list_all_campuses'),
     url(r'^campus/(?P<campus_id>\d{1,5})/$', 'list_buildings_on_campus', name='buildings_list'),
+    url(r'^campus/(?P<campus_id>\d{1,5})/search/(?P<search_string>.{1,60})', 'campus_search', name='search_campus'),
     url(r'^buildings/', include('buildings.urls')),
 
     )

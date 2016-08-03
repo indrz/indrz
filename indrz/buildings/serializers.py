@@ -47,6 +47,13 @@ class BuildingSerializer(serializers.ModelSerializer):
         fields = ('id', 'building_name', 'num_floors', 'fk_organization', 'fk_campus', 'buildingfloor_set')
 
 
+class BuildingShortSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Building
+        fields = ('id', 'building_name', 'num_floors', 'fk_organization', 'fk_campus')
+
+
 class FloorSerializerDetails(serializers.ModelSerializer):
 
     buildingfloorspace_set = BuildingFloorSpaceSerializer(many=True, read_only=True)

@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from buildings.models import Campus, Building, BuildingFloorSpace, BuildingFloor
 from buildings.serializers import (CampusSerializer,
                                    BuildingSerializer,
+                                   BuildingShortSerializer,
                                    BuildingSerializerDetails,
                                    BuildingFloorSpaceSerializer,
                                    BuildingFloorGeomSerializer,
@@ -41,6 +42,21 @@ def get_campus_info(request, campus_id, format=None):
     if request.method == 'GET':
         buildings_on_campus = Building.objects.filter(fk_campus=campus_id).order_by('id')
         serializer = BuildingSerializer(buildings_on_campus, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
+def campus_search(request, campus_id, search_string, format=None):
+    """
+    Get a list of buildings on a singlge campus
+    """
+    if request.method == 'GET':
+        buildings_on_campus = BuildingFloorSpace.objects.filter(short_name__icontains=search_string)
+        serializer = BuildingFloorSpaceSerializer(buildings_on_campus, many=True)
+        # appending 2 quersets together into one new sorted list
+        # result_list = sorted(
+        #     chain(page_list, article_list, post_list),
+        #     key=lambda instance: instance.date_created)
         return Response(serializer.data)
 
 
@@ -87,7 +103,7 @@ def building_list(request, format=None):
     """
     if request.method == 'GET':
         buildings = Building.objects.all()
-        serializer = BuildingSerializer(buildings, many=True)
+        serializer = BuildingShortSerializer(buildings, many=True)
         return Response(serializer.data)
 
         # elif request.method == 'POST':

@@ -36,9 +36,17 @@ function setSearchFeatureStyle(feature, resolution) {
 
 }
 
+function zoomToFeature(source) {
+    var feature = source.getFeatures()[0];
+    var polygon = /** @type {ol.geom.SimpleGeometry} */ (feature.getGeometry());
+    var size = /** @type {ol.Size} */ (map.getSize());
+    // view.fit(polygon, size, {padding: [170, 50, 30, 150], constrainResolution: false})}
+    view.fit(polygon, size, {padding: [170, 50, 30, 150], nearest: true})}
+    // view.fit(point, size, {padding: [170, 50, 30, 150], minResolution: 50})}
 
 function searchIndrz(buildingId, spaceName) {
-    var searchUrl = '/api/v1/buildings/' + buildingId + '/' + spaceName + '.json';
+    // var searchUrl = '/api/v1/buildings/' + buildingId + '/' + spaceName + '.json';
+    var searchUrl = '/api/v1/campus/' + buildingId + '/search/' + spaceName + '?format=json';
 
     if (searchLayer) {
         map.removeLayer(searchLayer);
@@ -53,10 +61,8 @@ function searchIndrz(buildingId, spaceName) {
         var featuresSearch = geojsonFormat3.readFeatures(response,
             {featureProjection: 'EPSG:4326'});
         searchSource.addFeatures(featuresSearch);
-        //var searchFloorId = featuresSearch[0].getProperties().fk_building_floor.id;
-        map.getView().setCenter(ol.extent.getCenter(searchSource.getExtent()));
-        map.getView().setZoom(21);
-        //waitForFloors(searchFloorId);
+
+        zoomToFeature(searchSource);
 
         var centerCoord = ol.extent.getCenter(searchSource.getExtent());
         open_popup(featuresSearch[0].getProperties(), centerCoord);
