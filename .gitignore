@@ -16,6 +16,8 @@
 
 /indrz/settings/secret_settings.py
 /indrz/settings/production_settings.py
+/indrz/settings/dev_settings.py
+
 
 /indrz/htmlcov/
 
