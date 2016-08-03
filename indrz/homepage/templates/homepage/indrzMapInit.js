@@ -6,7 +6,7 @@ var map = new ol.Map({
     layers: [
         new ol.layer.Group({
             'title': 'Background',
-            layers: [mapQuestOsm, OsmBackLayer, SatelliteLayer
+            layers: [OsmBackLayer
             ]
         }),
         new ol.layer.Group({
