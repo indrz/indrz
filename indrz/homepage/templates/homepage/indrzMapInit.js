@@ -1,3 +1,9 @@
+
+var view = new ol.View({
+        center: [StartCenterX, StartCenterY],
+        zoom: zoom_level
+    });
+
 var map = new ol.Map({
     interactions: ol.interaction.defaults().extend([
         new ol.interaction.DragRotateAndZoom()
@@ -5,12 +11,12 @@ var map = new ol.Map({
     //layers: [backgroundLayers[0], backgroundLayers[1], wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03],
     layers: [
         new ol.layer.Group({
-            'title': 'Background',
+            'title': gettext('Background'),
             layers: [OsmBackLayer
             ]
         }),
         new ol.layer.Group({
-            title: 'Ebene',
+            title: gettext('Floor'),
             layers: [
 
                 wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03 //, wmsE04, wmsE05, wmsE06
@@ -23,10 +29,7 @@ var map = new ol.Map({
             collapsible: false
         })
     }),
-    view: new ol.View({
-        center: [StartCenterX, StartCenterY],
-        zoom: zoom_level
-    })
+    view: view
 });
 
 // Change map height on resize

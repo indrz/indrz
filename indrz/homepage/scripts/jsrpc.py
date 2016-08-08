@@ -3,7 +3,7 @@
 
 
 
-import urllib2
+#import urllib2
 import urllib
 import csv
 import json
@@ -11,10 +11,14 @@ import time
 from math import ceil
 import requests
 from pprint import pprint
-
+from functools import reduce
 
 
 # # helper method to call request and print out result object
+
+# from __builtin__ import unicode
+
+
 def load_json(data_in, external_url):
     """
 
@@ -112,8 +116,8 @@ def test_route_terminal(ipTerminal):
 # pprint.pprint(data_terminal)
 
 ### test webservice call get_room_center
-# data_rooms = get_room_center('001_20_EG01_018700')
-# pprint.pprint(data_rooms)
+data_rooms = get_room_center('001_20_EG01_018700')
+pprint(data_rooms)
 
 
 # this works and is tested
@@ -193,8 +197,8 @@ def bach_get_all_bookable_rooms():
         'Content-Type': 'application/json-rpc',
     }
 
-    req = urllib2.Request(url, data, headers)
-    resp = urllib2.urlopen(req)
+    req = urllib.request(url, data, headers)
+    resp = urllib.request.urlopen(req)
     data = resp.read().encode('utf-8')
     decoded_json = json.loads(data, 'utf-8')  # this will decode json into strings
     # decoded_json = decoded_json['result']
@@ -234,15 +238,15 @@ def bach_get_employee_details(search_string):
     res = load_json(data, url)
 
     if "show_directory" in res:
-        print "yes key is here"
+        print("yes key is here")
         is_true = res["show_directory"]
-        print is_true
+        print (is_true)
         if is_true:
-            print "value is TRUE go ahead and use it"
+            print ("value is TRUE go ahead and use it")
         else:
-            print "the value is FALSE to NOT use"
+            print ("the value is FALSE to NOT use")
     else:
-        print "did not find key"
+        print ("did not find key")
 
     return res
 
@@ -284,8 +288,8 @@ def bach_get_organization_details(org_key):
 
     return res
 
-data_org_details = bach_get_organization_details("3944")
-pprint(data_org_details)
+# data_org_details = bach_get_organization_details("3944")
+# pprint(data_org_details)
 
 def bach_get_search_eventseries(search_event_string):
     """
@@ -333,7 +337,8 @@ def export_to_csv(file_name, json_data):
     w = csv.DictWriter(output_csv_file, sorted(D[0].keys()), delimiter='\t')
     w.writeheader()
     for each_value in D:
-        w.writerow({k: unicode(v).encode('utf-8') for k, v in
+        # w.writerow({k: unicode(v).encode('utf-8') for k, v in
+        w.writerow({k: v.encode('utf-8') for k, v in
                     each_value.items()})  # works !!! finaly #http://stackoverflow.com/questions/11884190/python-csv-unicode-ascii-codec-cant-encode-character-u-xf6-in-position-1-o
 
     output_csv_file.close()
@@ -448,7 +453,7 @@ def bach_get_headcount():
                         # print zone_b
                         zones_ab = str(zone_a) + ':' + '000066' + ';' + str(zone_b) + ':' + '000066'
 
-                        print zones_ab
+                        print (zones_ab)
 
                     # capacity_url = base_wms_url + zone_hex
 
@@ -523,7 +528,7 @@ def create_headcount_wms(floor_name='OG04', hexcolor='aaf60b'):
                    '&styles=&bbox=' + bbox + '&width=900&height=900&srs=EPSG:900913&format=image/png&env=color:' + hexcolor
 
     get_legend_graphic = 'http://gis.wu.ac.at/geoserver/wuwien/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=wuwien:og04_studyzone'
-    print base_wms_url
+    print (base_wms_url)
     # return wmsurl_space_available
 
 
@@ -602,10 +607,10 @@ def test_call_autocomplete(searchString):
     items = []
     bachData_rooms = bach_search_rooms(searchString)
 
-    print type(searchString)  # type string
+    print(type(searchString))  # type string
     # searchString = unicode(searchString, "utf-8")
-    print searchString
-    print searchString.upper()
+    print(searchString)
+    print(searchString.upper())
     if bachData_rooms is not None:
         for row in bachData_rooms:
             # searchString = unicode(searchString, "utf-8") # convert our string to unicode
@@ -624,7 +629,7 @@ def test_call_autocomplete(searchString):
                 room_cat = room_cat.strip()
                 items.append({"name": room_cat})
 
-    print items
+    print(items)
 
 
 # test_call_autocomplete(unicode('Hörsaal', 'utf-8'))
@@ -633,4 +638,4 @@ def test_call_autocomplete(searchString):
 
 start = time.time()
 end = time.time()
-print 'total script time: ' + str(end - start)
+print('total script time: ' + str(end - start))

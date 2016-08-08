@@ -34,7 +34,7 @@ var styles = [style];
           }
     };
 
-var spaceJSONURL = '/api/v1/buildings/space/'+ space_id +'.json';
+var spaceJSONURL = '/api/v1/space/'+ space_id +'.json';
 
 var space_source = new ol.source.Vector();
 $.ajax(spaceJSONURL).then(function(response) {

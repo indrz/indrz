@@ -78,18 +78,18 @@
 
 
 {% block map_frame %}
-    <script>  {% include 'maps/indrzMapConf.js' %} </script>
-    <script>  {% include 'maps/indrzLayers.js' %} </script>
-    <script>  {% include 'maps/indrz-floorswitcher.js' %} </script>
-    <script>  {% include 'maps/indrzMapInit.js' %}</script>
-    <script>  {% include 'maps/routing.js' %} </script>
-    <script>  {% include 'maps/search.js' %} </script>
-    <script>  {% include 'maps/indrz-popup.js' %} </script>
-    <script>  {% include 'maps/indrz-controls.js' %} </script>
-    <script>  {% include 'maps/indrz_live_url_update.js' %} </script>
-    <script>  {% include 'maps/share.js' %} </script>
-    <script>  {% include 'maps/initialize.js' %} </script>
+    <script>  {% include 'homepage/indrzMapConf.js' %} </script>
+    <script>  {% include 'homepage/indrzLayers.js' %} </script>
+    <script>  {% include 'homepage/indrz-floorswitcher.js' %} </script>
+    <script>  {% include 'homepage/indrzMapInit.js' %}</script>
+    <script>  {% include 'homepage/routing.js' %} </script>
+    <script>  {% include 'homepage/search.js' %} </script>
+    <script>  {% include 'homepage/indrz-popup.js' %} </script>
+    <script>  {% include 'homepage/indrz-controls.js' %} </script>
+    <script>  {% include 'homepage/indrz_live_url_update.js' %} </script>
+    <script>  {% include 'homepage/share.js' %} </script>
+    <script>  {% include 'homepage/initialize.js' %} </script>
     {% if space_id > 0 and space_id != None %}
-        <script>  {% include 'maps/indrz-space.js' %} </script>
+        <script>  {% include 'homepage/indrz-space.js' %} </script>
     {% endif %}
 {% endblock map_frame %}
