@@ -265,12 +265,3 @@ body, h1, h2, h3, h4, p, li, td, th {
     text-align: center;
     left: auto;
 }
-
-.ol-zoom {
-    bottom: 1.5em;
-    left: auto;
-
-    right: 1em;
-    top: auto;
-    z-index: 9999;
-}
