@@ -55,13 +55,14 @@ INSTALLED_APPS = (
 
     ##### our local indrz apps
     'api',
-    'maps',
+    # 'maps',
     'buildings',
     'routing',
     'conference',
     'poi_manager',
     'landscape',
     'homepage',
+    'homepage.library'
 
 )
 
@@ -84,7 +85,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR,  'templates'),
-                 os.path.join(BASE_DIR,  'maps/templates'),
+                 # os.path.join(BASE_DIR,  'maps/templates'),
                  os.path.join(BASE_DIR,  'poi_manager/templates'),
                  os.path.join(BASE_DIR,  'homepage/templates'),
             # insert your TEMPLATE_DIRS here

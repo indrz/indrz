@@ -37,6 +37,12 @@ urlpatterns += patterns('buildings.views',
 
     )
 
+urlpatterns += patterns('',
+
+    url(r'^library/', include('homepage.library.urls')),
+
+    )
+
 
 # DIRECTIONS API URLS
 urlpatterns += patterns('routing.views',

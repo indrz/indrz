@@ -24,20 +24,21 @@ from django.views.i18n import javascript_catalog
 
 js_info_dict = {
     'domain': 'djangojs',
-    'packages': ('maps', 'poi_manager', ),
+    'packages': ('homepage', 'poi_manager', ),  #'maps',
 }
 
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'maps.views.view_map'),  # homepage start page url
+    # url(r'^$', 'maps.views.view_map'),  # homepage start page url
+    url(r'^$', include('homepage.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
     url(r'^login/$', login, name='login'),
     url(r'^logout/$', logout, {'next_page': '/'}, name='logout'),
 
     url(r'^api/v1/', include('api.urls')),
-    url(r'^map/', include('maps.urls')),
+    # url(r'^map/', include('maps.urls')),
     url(r'^poi/', include('poi_manager.urls')),
     url(r'^wu/', include('homepage.urls')),
     url(r'^jsi18n/$', javascript_catalog, js_info_dict,
