@@ -40,9 +40,21 @@ function zoomToFeature(source) {
     var feature = source.getFeatures()[0];
     var polygon = /** @type {ol.geom.SimpleGeometry} */ (feature.getGeometry());
     var size = /** @type {ol.Size} */ (map.getSize());
-    view.fit(polygon, size, {padding: [170, 50, 30, 150], constrainResolution: false})}
+    view.fit(polygon, size, {padding: [170, 50, 30, 150], constrainResolution: false})
+    }
     // view.fit(polygon, size, {padding: [170, 50, 30, 150], nearest: true})}
     // view.fit(point, size, {padding: [170, 50, 30, 150], minResolution: 50})}
+
+function zoomer(coord, zoom){
+        var pan = ol.animation.pan({
+          duration: 2000,
+          source: /** @type {ol.Coordinate} */ (view.getCenter())
+        });
+        map.beforeRender(pan);
+
+        view.setCenter(coord);
+       // view.setZoom(zoom)
+    }
 
 function searchIndrz(buildingId, spaceName) {
     // var searchUrl = '/api/v1/buildings/' + buildingId + '/' + spaceName + '.json';
@@ -62,9 +74,17 @@ function searchIndrz(buildingId, spaceName) {
             {featureProjection: 'EPSG:4326'});
         searchSource.addFeatures(featuresSearch);
 
-        zoomToFeature(searchSource);
+        // zoomToFeature(searchSource);
 
         var centerCoord = ol.extent.getCenter(searchSource.getExtent());
+        console.log(centerCoord);
+
+        // zoomer(centerCoord, 20);
+        zoomToFeature(searchSource);
+        // zoomer(centerCoord);
+        // view.setCenter(centerCoord);
+        // view.setZoom(21);
+
         open_popup(featuresSearch[0].getProperties(), centerCoord);
 
         space_id = response.features[0].id;

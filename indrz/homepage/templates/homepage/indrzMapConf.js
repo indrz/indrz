@@ -1,5 +1,5 @@
 
-var baseUrlWms =  '';
+var baseUrlWms =  'http://gis.wu.ac.at/geoserver/wuwien/wms';
 var zoom_level="{{ zoom_level }}";
 var campus_id="{{ campus_id}}";
 var building_id="{{ building_id }}";
