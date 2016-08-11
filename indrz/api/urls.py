@@ -3,7 +3,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 from routing.views import create_route_from_coords, create_route_from_id, create_route_from_search, \
     force_route_mid_point
-from buildings.views import get_spaces_on_floor, campus_list, list_buildings_on_campus, campus_search, space_details
+from buildings.views import get_spaces_on_floor, campus_list, campus_search, space_details, campus_buildings_list, campus_buildings_short_list
 from api.views import autocomplete_list
 
 urlpatterns = [
