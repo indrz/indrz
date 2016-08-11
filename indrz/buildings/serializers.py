@@ -31,11 +31,11 @@ class BuildingFloorGeomSerializer(GeoFeatureModelSerializer):
 
 
 class FloorSerializer(serializers.ModelSerializer):
-    buildingfloorspace_set = BuildingFloorSpaceSerializer(many=True, read_only=True)
+    # buildingfloorspace_set = BuildingFloorSpaceSerializer(many=True, read_only=True)
 
     class Meta:
         model = BuildingFloor
-        fields = ('id', 'short_name', 'floor_num', 'fk_building', 'buildingfloorspace_set')
+        fields = ('id', 'short_name', 'floor_num', 'fk_building')
 
 
 class BuildingSerializer(serializers.ModelSerializer):

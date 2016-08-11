@@ -61,7 +61,7 @@ def campus_search(request, campus_id, search_string, format=None):
 
 
 @api_view(['GET', ])
-def list_buildings_on_campus(request, campus_id, format=None, **kwargs):
+def campus_buildings_list(request, campus_id, format=None, **kwargs):
     """
     List all buildings within a single campus
     :param request:
@@ -86,13 +86,13 @@ def list_buildings_on_campus(request, campus_id, format=None, **kwargs):
 
 
 @api_view(['GET', ])
-def building_short_list(request, campus_id, format=None):
+def campus_buildings_short_list(request, campus_id, format=None):
     """
     List all buildings without details
     """
     if request.method == 'GET':
         buildings = Building.objects.filter(fk_campus=campus_id)
-        serializer = BuildingSerializer(buildings, many=True)
+        serializer = BuildingShortSerializer(buildings, many=True)
         return Response(serializer.data)
 
 

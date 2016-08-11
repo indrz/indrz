@@ -2,25 +2,20 @@
 import os
 from .common_settings import *
 
-ALLOWED_HOSTS = []
+DEBUG = True
 
 DATABASES = {
     'default': {
         # Postgresql with PostGIS
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'indrz', # DB name local
-        'NAME': 'indrz-wu', # DB name Redhat live server
+        'NAME': 'indrz-wu', # DB name
         'USER': secret_settings.db_user, # DB user name
         'PASSWORD': secret_settings.db_pwd, # DB user password
-        # 'HOST': 'localhost', # local dev DB pg9.5
-        # 'PORT': '5434',  # local dev DB pg9.5
-        'HOST': 'gis-neu.wu.ac.at',
-        'PORT': '5432',
+        'HOST': 'localhost',
+        'PORT': '5434',
     }
 }
-
-DEBUG = True
 
 if os.path.isdir('../logs'):
     LOGGING_CONFIG = None
