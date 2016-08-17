@@ -151,6 +151,7 @@ STATIC_ROOT = "/var/www/vhosts/www.indrz.com/static/"
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, STATIC_FOLDER),
     os.path.join(BASE_DIR, STATIC_FOLDER + "admin")
+
 ]
 
 # finds all static folders in all apps
@@ -162,6 +163,7 @@ STATICFILES_FINDERS = (
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = "media"
+UPLOAD_POI_DIR = MEDIA_ROOT + '/poi-icons/'
 
 ROSETTA_MESSAGES_PER_PAGE = 20
 YANDEX_TRANSLATE_KEY = "trnsl.1.1.20160713T103415Z.0a117baa17b2233a.fb58b4876ab2920ea22ae0a0b55507319bb4a0db"

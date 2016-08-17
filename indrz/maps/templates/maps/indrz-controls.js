@@ -8,9 +8,9 @@ var full_screen_control = new ol.control.FullScreen({
 
 map.addControl(full_screen_control);
 
-$("#id-map-switcher").on("click", function(evt){
+$("#id-map-switcher").on("click", function (evt) {
     map_type = !map_type;
-    if(map_type) {
+    if (map_type) {
         $(this).text('Satellite');
         SatelliteLayer.setVisible(false);
         OsmBackLayer.setVisible(true);

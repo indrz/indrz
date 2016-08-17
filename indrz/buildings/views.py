@@ -15,7 +15,11 @@ from buildings.serializers import (CampusSerializer,
                                    BuildingFloorSpaceSerializer,
                                    BuildingFloorGeomSerializer,
                                    SpaceSerializer,
-                                   SpacesOnFloor,
+                                   BuildingFloor,
+FloorSerializer,
+FloorSerializerDetails
+
+
                                    )
 
 logger = logging.getLogger(__name__)
@@ -76,7 +80,7 @@ def campus_buildings_list(request, campus_id, format=None, **kwargs):
 
         map_name = kwargs.pop('map_name', None)
         details = request.GET.get('details')
-        print(str(details))
+        # print(type(details))
         if details == 'True':
             serializer_detail = BuildingSerializer(buildings, many=True)
             return Response(serializer_detail.data)
@@ -93,6 +97,24 @@ def campus_buildings_short_list(request, campus_id, format=None):
     if request.method == 'GET':
         buildings = Building.objects.filter(fk_campus=campus_id)
         serializer = BuildingShortSerializer(buildings, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
+def campus_floor_spaces(request, campus_id, floor_num, format=None):
+    """
+    Return all spaces from all buildings on a specified campus and floor number (not floor ID)
+    :param campus_id: campus_id as integer the unique key
+    :param floor_num: the floor number for all buildings
+    :param format:
+    :return: all spaces in all buildings for a specified floor number
+    """
+    if request.method == 'GET':
+
+        spaces_ids = BuildingFloorSpace.objects.filter(fk_building__fk_campus= campus_id).filter(fk_building_floor__floor_num = floor_num)
+
+        serializer = BuildingFloorSpaceSerializer(spaces_ids, many=True)
+
         return Response(serializer.data)
 
 
@@ -136,7 +158,7 @@ def building_floors_list(request, building_id, format=None):
     """
     if request.method == 'GET':
         floor_ids = BuildingFloor.objects.filter(fk_building=building_id)
-        serializer = BuildingFloorGeomSerializer(floor_ids, many=True)
+        serializer = FloorSerializer(floor_ids, many=True)
         return Response(serializer.data)
 
 
@@ -162,7 +184,7 @@ def get_spaces_on_floor(request, floor_id, format=None):
 
         space_ids = BuildingFloorSpace.objects.filter(fk_building_floor=floor_id)
 
-        serializer = SpacesOnFloor(space_ids, many=True)
+        serializer = BuildingFloorSpaceSerializer(space_ids, many=True)
         return Response(serializer.data)
 
 

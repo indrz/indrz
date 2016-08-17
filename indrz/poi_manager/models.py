@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.contrib.gis.db import models as gis_model
 from buildings.models import Building, BuildingFloor, Campus
+from django.conf import settings
 
 # class BaseLookupDomain(models.Model):
 #     code = models.CharField(verbose_name=_("code value"), max_length=150, null=True, blank=True)
@@ -48,7 +49,17 @@ class PoiIcon(models.Model):
     """
     name = models.CharField(verbose_name=_('Name of map icon'),max_length=255)
 
-    poi_icon = models.FileField(upload_to="poi-icons")
+    poi_icon = models.FileField(verbose_name=_('Poi icon image'), upload_to=settings.UPLOAD_POI_DIR, max_length=512)
+
+    def get_poi_icon_url(self):
+        return self.poi_icon.url if self.poi_icon else None
+
+
+    def pictogram_img(self):
+        return u'<img src="%s" />' % (self.poi_icon.url if self.poi_icon else "")
+
+    pictogram_img.short_description = _("Pictogram")
+    pictogram_img.allow_tags = True
 
     class Meta:
         ordering = ('name', )

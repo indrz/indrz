@@ -28,3 +28,8 @@ POSTGIS_VERSION = ( 2, 2, 1 )
 
 
 STATIC_ROOT = "/var/www/vhosts/www.indrz.com/static/"
+
+STATICFILES_DIRS += [
+    os.path.join(BASE_DIR, 'homepage/static')
+
+]

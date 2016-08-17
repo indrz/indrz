@@ -1,8 +1,7 @@
-
 var view = new ol.View({
-        center: [StartCenterX, StartCenterY],
-        zoom: zoom_level
-    });
+    center: [StartCenterX, StartCenterY],
+    zoom: zoom_level
+});
 
 var map = new ol.Map({
     interactions: ol.interaction.defaults().extend([
@@ -33,7 +32,7 @@ var map = new ol.Map({
 });
 
 // Change map height on resize
-function fixContentHeight(){
+function fixContentHeight() {
     var viewHeight = $(window).height();
     var viewWidth = $(window).width();
     var $map_block = $("#map-block");
