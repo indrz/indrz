@@ -43,7 +43,10 @@ indrz_spaces_cols = {'short_name': rooms_cols[1], 'geom': rooms_cols[6], 'room_n
                       'room_external_id': rooms_cols[8], 'room_number_sign': rooms_cols[10],
                      'fk_space_type_id': rooms_cols[11]}
 
-conn2 = create_db_conn()
+# conn2 = create_db_conn()
+# cur2 = conn2.cursor()
+
+conn2 = psycopg2.connect(host='localhost', user='postgres', port='5434', password='air', database='wu_old_db')
 cur2 = conn2.cursor()
 # cur2.execute("select building, geom from geodata.og01_umriss")
 # f = cur2.fetchall()
@@ -182,13 +185,14 @@ def import_floor_spaces(floor_abr):
                     res_floor_id = cur3.fetchall()
                     # print(res_floor_id)
 
-                    if res_floor_id:
-                        # print(res_floor_id)
-                        m_floor_id_value = res_floor_id[0][0]
-                        print(m_floor_id_value)
-                        # print("FLOOR ID : " + str(m_floor_id_value))
-                        if m_floor_id_value > 79:
-                            print("we have a problem houston")
+                if res_floor_id:
+                    # print(res_floor_id)
+                    m_floor_id_value = res_floor_id[0][0]
+                    print(m_floor_id_value)
+                    # print("FLOOR ID : " + str(m_floor_id_value))
+                    if m_floor_id_value > 79:
+                        print("we have a problem houston")
+
 
 
                     # print("fancyname is : " +  str(m_fancyname_de))
