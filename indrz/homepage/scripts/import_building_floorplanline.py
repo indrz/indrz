@@ -112,12 +112,7 @@ def import_carto_lines(floor_abr):
             print("number of features to process: " + str(len(res)))
             if len(res) > 0:
 
-                # print(len(res))
-                # print(res)
                 for r in res:
-
-                    # print(len(res[0]))
-                    # print("we have rest the length is: " + str(len(res)))
 
 
                     m_types = test_null(r[0])
@@ -142,11 +137,6 @@ def import_carto_lines(floor_abr):
                         if m_floor_id_value > 79:
                             print("we have a problem houston")
 
-                        # print("inserting floor: " + str(floor_level_txt) + " m_floor_id_value : " + str(m_floor_id_value))
-
-
-                        # print(k)
-                        # print(sel_spaces)
                         insert_state = """INSERT INTO django.buildings_buildingfloorplanline (short_name, floor_num,
                             fk_building_id, fk_building_floor_id, geom)
                                     VALUES (\'{0}\', \'{1}\', {2}, \'{3}\',\'{4}\'  )""".format(m_types, floor_level_txt,
@@ -158,11 +148,157 @@ def import_carto_lines(floor_abr):
 
 
 
+# for floor in table_abrev:
+#     import_carto_lines(floor)
+
+
+def import_furniture(floor_abr):
+
+    """
+
+    :param floor_abr: floor abreviation og02_  for example
+    :return:
+    """
+    for building_abr, building_id in building_ids.items():
+        if building_abr:
+            floor_level_txt = floor_abr[3:4]
+            print('now working on floor: ' + str(floor_level_txt))
+
+            sel_spaces_new = """
+                SELECT  lines.refname,
+                    ST_TRANSFORM(lines.geom, 3857) as geom
+                FROM geodata.{0}furniture AS lines,
+                 geodata.buildings_buildingfloor AS floor
+                 WHERE st_within(lines.geom,floor.geom)
+                 AND floor.fk_building_id = {1}
+                 AND floor.floor_num = {2}
+
+                """.format(floor_abr, building_id, floor_level_txt)
+            # print(sel_spaces_new)
+            cur1.execute(sel_spaces_new)
+            res = None
+            res = cur1.fetchall()
+            floor_level_txt = floor_abr[3:4]
+            print("now on floor level: " + str(floor_level_txt))
+            # print(len(res))
+            # print(res)
+            # print("the type is a " + str(type(res)))
+            print("number of features to process: " + str(len(res)))
+            if len(res) > 0:
+
+                for r in res:
+
+
+                    m_types = test_null(r[0])
+
+                    # print("room_name is : " + str(m_types))
+                    m_geom = test_null(r[1])
+
+
+                    sel_building_floor_id = """SELECT id, floor_num, fk_building_id from django.buildings_buildingfloor
+                              WHERE floor_num = {0} and fk_building_id = {1}""".format(floor_level_txt, building_id)
+                    # print(sel_building_floor_id)
+
+                    cur2.execute(sel_building_floor_id)
+                    res_floor_id = cur2.fetchall()
+                    # print(res_floor_id)
+
+                    if res_floor_id:
+                        # print(res_floor_id)
+                        m_floor_id_value = res_floor_id[0][0]
+                        # print(m_floor_id_value)
+                        # print("FLOOR ID : " + str(m_floor_id_value))
+                        if m_floor_id_value > 79:
+                            print("we have a problem houston")
+
+                        insert_state = """INSERT INTO django.buildings_buildingfloorplanline (short_name, long_name, floor_num,
+                            fk_building_id, fk_building_floor_id, geom)
+                                    VALUES ('furniture',\'{0}\', \'{1}\', {2}, \'{3}\',\'{4}\'  )""".format(m_types, floor_level_txt,
+                                                                               building_id, m_floor_id_value, m_geom)
+                        cur2.execute(insert_state)
+                        conn2.commit()
+
+                print('done inserting on building id: ' + str(building_id))
+
+
+
+# for floor in table_abrev:
+#
+#     import_furniture(floor)
+
+def import_doors(floor_abr):
+
+    """
+
+    :param floor_abr: floor abreviation og02_  for example
+    :return:
+    """
+    for building_abr, building_id in building_ids.items():
+        if building_abr:
+            floor_level_txt = floor_abr[3:4]
+            print('now working on floor: ' + str(floor_level_txt))
+
+            sel_spaces_new = """
+                SELECT  lines.layer,
+                    ST_TRANSFORM(lines.geom, 3857) as geom
+                FROM geodata.{0}doors AS lines,
+                 geodata.buildings_buildingfloor AS floor
+                 WHERE st_within(lines.geom,floor.geom)
+                 AND floor.fk_building_id = {1}
+                 AND floor.floor_num = {2}
+
+                """.format(floor_abr, building_id, floor_level_txt)
+            # print(sel_spaces_new)
+            cur1.execute(sel_spaces_new)
+            res = None
+            res = cur1.fetchall()
+            floor_level_txt = floor_abr[3:4]
+            print("now on floor level: " + str(floor_level_txt))
+            # print(len(res))
+            # print(res)
+            # print("the type is a " + str(type(res)))
+            print("number of features to process: " + str(len(res)))
+            if len(res) > 0:
+
+                for r in res:
+
+
+                    m_types = test_null(r[0])
+
+                    # print("room_name is : " + str(m_types))
+                    m_geom = test_null(r[1])
+
+
+                    sel_building_floor_id = """SELECT id, floor_num, fk_building_id from django.buildings_buildingfloor
+                              WHERE floor_num = {0} and fk_building_id = {1}""".format(floor_level_txt, building_id)
+                    # print(sel_building_floor_id)
+
+                    cur2.execute(sel_building_floor_id)
+                    res_floor_id = cur2.fetchall()
+                    # print(res_floor_id)
+
+                    if res_floor_id:
+                        # print(res_floor_id)
+                        m_floor_id_value = res_floor_id[0][0]
+                        # print(m_floor_id_value)
+                        # print("FLOOR ID : " + str(m_floor_id_value))
+                        if m_floor_id_value > 79:
+                            print("we have a problem houston")
+
+                        insert_state = """INSERT INTO django.buildings_buildingfloorplanline (short_name, long_name, floor_num,
+                            fk_building_id, fk_building_floor_id, geom)
+                                    VALUES ('door',\'{0}\', \'{1}\', {2}, \'{3}\',\'{4}\'  )""".format(m_types, floor_level_txt,
+                                                                               building_id, m_floor_id_value, m_geom)
+                        cur2.execute(insert_state)
+                        conn2.commit()
+
+                print('done inserting on building id: ' + str(building_id))
+
+
+
 for floor in table_abrev:
-    # if floor is not "eg00_":
-    import_carto_lines(floor)
 
-
+    import_doors(floor)
 
 endscript = time.time()
 endtime = endscript - startscript
