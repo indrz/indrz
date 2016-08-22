@@ -222,9 +222,8 @@ def import_furniture(floor_abr):
 
 
 
-# for floor in table_abrev:
-#
-#     import_furniture(floor)
+for floor in table_abrev:
+    import_furniture(floor)
 
 def import_doors(floor_abr):
 
