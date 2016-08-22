@@ -15,12 +15,14 @@
 
 import requests
 import json
-from pprint import pprint
-url_base  = "http://gis-neu.wu.ac.at:8080/geoserver290/rest/workspace/"
+
+url_base = "http://gis-neu.wu.ac.at:8080/geoserver290/rest/workspace/"
 auth = ('mdiener', 'Gis2012mrdSnlw')
+
 headers = {
     'Content-type': 'text/xml',
 }
+
 
 def create_workspace(name):
     data = '<workspace><name>' + name + '</name></workspace>'
@@ -28,9 +30,7 @@ def create_workspace(name):
     requests.post('http://gis-neu.wu.ac.at:8080/geoserver290/rest/workspaces', auth=auth, headers=headers, data=data)
 
 
-
 def get_workspaces():
-
     r = requests.get('http://gis-neu.wu.ac.at:8080/geoserver290/rest/workspaces.json', auth=auth, headers=headers)
 
     res = json.loads(r.text)
@@ -40,11 +40,10 @@ def get_workspaces():
 
     print(type(res))
 
-
     print(r.text)
 
-def get_layers():
 
+def get_layers():
     r = requests.get('http://gis-neu.wu.ac.at:8080/geoserver290/rest/layers.json', auth=auth, headers=headers)
 
     res = json.loads(r.text)
@@ -53,16 +52,14 @@ def get_layers():
         print(lyr)
     print(type(res))
 
-
     print(r.text)
+
 
 get_layers()
 
-def create_layer(new_feature_name):
 
+def create_layer(new_feature_name):
     data = "<featureType><name>" + new_feature_name + "</name></featureType>"
     r = requests.post(url_base + 'indrz/datastores/indrz-wu/featuretypes', auth=auth, headers=headers, data=data)
 
-
     print(r.text)
-
