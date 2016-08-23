@@ -29,7 +29,7 @@ def create_workspace(name):
 
     requests.post('http://gis-neu.wu.ac.at:8080/geoserver290/rest/workspaces', auth=auth, headers=headers, data=data)
 
-
+Ri6XZPuJXTgRSTEZo$4
 def get_workspaces():
     r = requests.get('http://gis-neu.wu.ac.at:8080/geoserver290/rest/workspaces.json', auth=auth, headers=headers)
 

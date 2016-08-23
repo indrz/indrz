@@ -222,8 +222,8 @@ def import_furniture(floor_abr):
 
 
 
-for floor in table_abrev:
-    import_furniture(floor)
+# for floor in table_abrev:
+#     import_furniture(floor)
 
 def import_doors(floor_abr):
 
@@ -232,6 +232,7 @@ def import_doors(floor_abr):
     :param floor_abr: floor abreviation og02_  for example
     :return:
     """
+    cursize = 0
     for building_abr, building_id in building_ids.items():
         if building_abr:
             floor_level_txt = floor_abr[3:4]
@@ -242,7 +243,7 @@ def import_doors(floor_abr):
                     ST_TRANSFORM(lines.geom, 3857) as geom
                 FROM geodata.{0}doors AS lines,
                  geodata.buildings_buildingfloor AS floor
-                 WHERE st_within(lines.geom,floor.geom)
+                 WHERE ST_INTERSECTS(lines.geom,floor.geom)
                  AND floor.fk_building_id = {1}
                  AND floor.floor_num = {2}
 
@@ -257,6 +258,8 @@ def import_doors(floor_abr):
             # print(res)
             # print("the type is a " + str(type(res)))
             print("number of features to process: " + str(len(res)))
+
+
             if len(res) > 0:
 
                 for r in res:
