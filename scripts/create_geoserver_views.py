@@ -14,6 +14,9 @@ dbhost = "localhost"
 
 conn1 = psycopg2.connect(host='localhost', user='postgres', port='5434', password='air', database='wu_old_db')
 cur1 = conn1.cursor()
+
+conn3 = psycopg2.connect(host='localhost', user='indrz-wu', port='5434', password='QZE2dQfWRE3XrPevuKLmEfIEBOXuApbU', database='indrz-wu')
+cur3 = conn1.cursor()
 # cur2.execute("select building, geom from geodata.og01_umriss")
 # f = cur2.fetchall()
 # print(f)
@@ -42,8 +45,10 @@ def create_view(floor, table):
     floor_level_txt = floor[2:3]
 
 
+
     if table == 'carto_lines':
         q =  """
+
         CREATE OR REPLACE VIEW geodata.{0}{1} AS
          SELECT buildings_buildingfloorplanline.short_name,
             buildings_buildingfloorplanline.geom
@@ -64,24 +69,31 @@ def create_view(floor, table):
 
     if table == 'space_polys':
         q = """
+            drop view geodata.{0}{1};
             CREATE OR REPLACE VIEW geodata.{0}{1} AS
-             SELECT buildings_buildingfloorspace.short_name,
+             SELECT buildings_buildingfloorspace.id,
+             buildings_buildingfloorspace.short_name,
+             buildings_buildingfloorspace.long_name,
+             buildings_buildingfloorspace.room_code,
                 buildings_buildingfloorspace.space_type_id,
                 buildings_buildingfloorspace.geom
                FROM django.buildings_buildingfloorspace
               WHERE buildings_buildingfloorspace.floor_num = {2} ;
         """.format(floor, table, floor_level_txt)
 
-    cur2.execute(q)
-    conn2.commit()
+    print('floor is now: ' + floor_level_txt)
     print(q)
 
+    cur3.execute(q)
+    conn3.commit()
 
-vies = ('carto_lines', 'floor_footprint', 'space_polys')
+
+
+views = ('carto_lines', 'floor_footprint', 'space_polys')
 
 
 for floor in table_abrev:
 
-    for space in vies:
+    for space in views:
 
         create_view(floor, space)

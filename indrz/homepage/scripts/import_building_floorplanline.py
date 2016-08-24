@@ -298,9 +298,9 @@ def import_doors(floor_abr):
 
 
 
-for floor in table_abrev:
+# for floor in table_abrev:
+#     import_doors(floor)
 
-    import_doors(floor)
 
 endscript = time.time()
 endtime = endscript - startscript
