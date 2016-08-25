@@ -4,6 +4,11 @@ from .common_settings import *
 
 DEBUG = True
 
+STATICFILES_DIRS += [
+    os.path.join(BASE_DIR, 'homepage/static')
+
+]
+
 DATABASES = {
     'default': {
         # Postgresql with PostGIS
@@ -12,10 +17,23 @@ DATABASES = {
         'NAME': 'indrz-wu', # DB name
         'USER': secret_settings.db_user, # DB user name
         'PASSWORD': secret_settings.db_pwd, # DB user password
-        'HOST': 'localhost',
-        'PORT': '5434',
+        'HOST': 'gis-neu.wu.ac.at',
+        'PORT': '5432',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         # Postgresql with PostGIS
+#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'indrz-wu', # DB name
+#         'USER': secret_settings.db_user, # DB user name
+#         'PASSWORD': secret_settings.db_pwd, # DB user password
+#         'HOST': 'localhost',
+#         'PORT': '5434',
+#     }
+# }
 
 if os.path.isdir('../logs'):
     LOGGING_CONFIG = None
