@@ -1,4 +1,4 @@
-var switchableLayers = [wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03];
+var switchableLayers = [wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06];
 
 function waitForFloors(space_floor_id) {
     if (floor_layers.length > 0) {
