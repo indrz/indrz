@@ -66,7 +66,7 @@ function open_popup(properties, coordinate){
     if (properties.short_name){
         var name = properties.short_name;
         var floorNum = properties.floor_num;
-        var buildingName = properties.fk_building.building_name;
+        var buildingName = properties.building_name;
     } else {
         var name = properties.name;
         var floorNum = "0";
@@ -74,7 +74,7 @@ function open_popup(properties, coordinate){
         titlePopup = gettext('Campus ');
     }
 
-    var textFloorNumber = gettext('Floor Number ');
+    var textFloorNumber = gettext('Floor Number: ');
 
     popup_content.innerHTML = '<h4>' + name + '</h4>';
     popup_content.innerHTML += '<p>' + textFloorNumber + floorNum + '</p>';
