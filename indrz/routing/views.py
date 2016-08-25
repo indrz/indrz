@@ -15,7 +15,7 @@ from geojson import loads, Feature, FeatureCollection
 logger = logging.getLogger(__name__)
 
 
-def get_room_centroid_node(building_id, space_id):
+def get_room_centroid_node(space_id):
     '''
     Find the room center point coordinates
     and find the closest route node point
@@ -27,7 +27,7 @@ def get_room_centroid_node(building_id, space_id):
     room_center_q = """SELECT  layer,
             ST_asGeoJSON(st_centroid(geom))
             AS geom FROM geodata.search_index_v
-            WHERE building_id={0} and id ={1};""".format(building_id, space_id)
+            WHERE id ={0};""".format(space_id)
 
     cur = connection.cursor()
     cur.execute(room_center_q)
@@ -221,13 +221,13 @@ def force_route_mid_point(request, **kwargs):
     mnode = request.GET.get('midnode', 1)  # 1167
     end_node = request.GET.get('endnode', 1)  # 1252
 
-    building_id = 1
+    # building_id = 1
     route_nodes = {'building-id': 1, 'start-node-id': start_node, 'mid-node-id': mnode, 'end-node-id': end_node}
 
     # remove last coordinate of first route
-    start_node_id = get_room_centroid_node(building_id, route_nodes['start-node-id'])
-    mid_node_id = get_room_centroid_node(building_id, route_nodes['mid-node-id'])
-    end_node_id = get_room_centroid_node(building_id, route_nodes['end-node-id'])
+    start_node_id = get_room_centroid_node(route_nodes['start-node-id'])
+    mid_node_id = get_room_centroid_node(route_nodes['mid-node-id'])
+    end_node_id = get_room_centroid_node(route_nodes['end-node-id'])
 
     route_start_to_mid_point = run_route(start_node_id, mid_node_id, 1)
     route_mid_to_end_point = run_route(mid_node_id, end_node_id, 1)
@@ -331,7 +331,7 @@ def run_route(start_node_id, end_node_id, route_type):
 
 
 @api_view(['GET', 'POST'])
-def create_route_from_id(request, building_id, start_room_id, end_room_id, route_type):
+def create_route_from_id(request, start_room_id, end_room_id, route_type):
     """
     Generate a GeoJSON route from external room id
     to external room id
@@ -347,10 +347,10 @@ def create_route_from_id(request, building_id, start_room_id, end_room_id, route
 
         start_room = int(start_room_id.split("=")[1])
         end_room = int(end_room_id.split("=")[1])
-        building_id = int(building_id.split("=")[1])
+        # building_id = int(building_id.split("=")[1])
 
-        start_node_id = get_room_centroid_node(building_id, start_room)
-        end_node_id = get_room_centroid_node(building_id, end_room)
+        start_node_id = get_room_centroid_node( start_room)
+        end_node_id = get_room_centroid_node( end_room)
 
         res = run_route(start_node_id, end_node_id, route_type)
 

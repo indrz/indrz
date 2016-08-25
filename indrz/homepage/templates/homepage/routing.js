@@ -30,9 +30,9 @@ var route_inactive_style = new ol.style.Style({
 });
 
 
-function addRoute(buildingId, fromNumber, toNumber, routeType) {
+function addRoute(fromNumber, toNumber, routeType) {
     var baseUrl = '/api/v1/directions/';
-    var geoJsonUrl = baseUrl + 'buildingid=' + buildingId + '&startid=' + fromNumber + '&endid=' + toNumber + '/?format=json';
+    var geoJsonUrl = baseUrl + 'startid=' + fromNumber + '&endid=' + toNumber + '/?format=json';
 
     var startingLevel = fromNumber.charAt(0);
 
