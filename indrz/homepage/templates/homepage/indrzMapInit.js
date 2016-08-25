@@ -19,7 +19,7 @@ var map = new ol.Map({
             title: gettext('Floor'),
             layers: [
 
-                wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06 //, wmsE04, wmsE05, wmsE06
+                wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06
             ]
         })
     ],

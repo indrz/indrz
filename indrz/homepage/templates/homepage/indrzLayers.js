@@ -144,15 +144,16 @@ function createWmsLayer(layerName, geoserverLayer, floorNumber, isVisible, zInde
 }
 
 var wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06;
-wmsUG01 = createWmsLayer('ug01', 'wuwien:ug01', '-1', 'false', 3);
-wmsE00 = createWmsLayer('eg00', 'wuwien:eg00', '0', 'true', 3);
-wmsE01 = createWmsLayer('og01', 'wuwien:og01', '1', 'false', 3);
-wmsE02 = createWmsLayer('og02', 'wuwien:og02', '2', 'false', 3);
-wmsE03 = createWmsLayer('og03', 'wuwien:og03', '3', 'false', 3);
-wmsE04 = createWmsLayer('og04', 'wuwien:og04', '4', 'false', 3 );
-wmsE05 = createWmsLayer('og05', 'wuwien:og05', '5', 'false', 3 );
-wmsE06 = createWmsLayer('og06', 'wuwien:og06', '6', 'false', 3 );
+wmsUG01 = createWmsLayer('ug01', 'indrz:ug01', '-1', 'false', 3);
+wmsE00 = createWmsLayer('eg00', 'indrz:e00', '0', 'true', 3);
+wmsE01 = createWmsLayer('og01', 'indrz:e01', '1', 'false', 3);
+wmsE02 = createWmsLayer('og02', 'indrz:e02', '2', 'false', 3);
+wmsE03 = createWmsLayer('og03', 'indrz:e03', '3', 'false', 3);
+wmsE04 = createWmsLayer('og04', 'indrz:e04', '4', 'false', 3 );
+wmsE05 = createWmsLayer('og05', 'indrz:e05', '5', 'false', 3 );
+wmsE06 = createWmsLayer('og06', 'indrz:e06', '6', 'false', 3 );
 
+// var floor_layers = [ wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06 ];
 
 var OsmBackLayer = new ol.layer.Tile({
     source: new ol.source.OSM(),
@@ -160,7 +161,7 @@ var OsmBackLayer = new ol.layer.Tile({
     type: "background"
 });
 
-
+// gets all spaces on a single floor for all buildings on campus
 $.ajax('/api/v1/buildings/' + building_id + '/')
     .then(function (response) {
         building_info = response;
