@@ -126,11 +126,10 @@
 
         $("#submitForm").submit(function (event) {
             {#  alert( "Handler for .submit() called."  );#}
-            var buildingid = building_id;
             var startNum = $('#route-from').val();
             var endNum = $('#route-to').val();
             var rType = $("input:radio[name=typeRoute]:checked").val();
-            addRoute(buildingid, startNum, endNum, rType);
+            addRoute(startNum, endNum, rType);
             event.preventDefault();
         });
 

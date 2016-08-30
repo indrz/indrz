@@ -365,7 +365,7 @@ def create_route_from_id(request, start_room_id, end_room_id, route_type):
 
 
 @api_view(['GET', 'POST'])
-def create_route_from_search(request, building_id, start_term, end_term, route_type=0):
+def create_route_from_search(request, start_term, end_term, route_type=0):
     """
     Generate a GeoJSON route from room number
     to room number
@@ -381,7 +381,6 @@ def create_route_from_search(request, building_id, start_term, end_term, route_t
 
         start_room = start_term.split("=")[1]
         end_room = end_term.split("=")[1]
-        building_id = building_id.split("=")[1]
 
         cur = connection.cursor()
         # logger.debug('*************************start term' + str(start_room))
@@ -410,8 +409,8 @@ def create_route_from_search(request, building_id, start_term, end_term, route_t
         # logger.debug('*************************current start id' + str(start_id_value))
         # logger.debug('*************************current end id' + str(end_id_value))
 
-        start_node_id = get_room_centroid_node(building_id, start_id_value)
-        end_node_id = get_room_centroid_node(building_id, end_id_value)
+        start_node_id = get_room_centroid_node( start_id_value )
+        end_node_id = get_room_centroid_node( end_id_value )
 
         res = run_route(start_node_id, end_node_id, route_type)
 

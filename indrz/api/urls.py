@@ -54,17 +54,7 @@ urlpatterns += [
 
 # DIRECTIONS API URLS
 urlpatterns += [
-    url(
-        r'^directions/(?P<start_coord>[-]?\d+\.?\d+,\d+\.\d+),(?P<start_floor>[-]?\d+)&(?P<end_coord>[-]?\d+\.?\d+,\d+\.\d+),(?P<end_floor>[-]?\d+)&(?P<route_type>[0-9])/$',
-        create_route_from_coords, name='root_coords'),
-    # url(r'^directions/(?P<start_room_key>\d{5})&(?P<end_room_key>\d{5})&(?P<route_type>[0-9])/$', 'route_room_to_room', name='route-room-to-room'),
-    url(
-        r'^directions/(?P<start_room_id>startid=\d{1,5})&(?P<end_room_id>endid=\d{1,5})(?P<route_type>&type=\d{1,5})?/$',
-        create_route_from_id, name='routing-from-id'),
-    url(
-        r'^directions/(?P<building_id>buildingid=\d{1,5})&(?P<start_term>startid=.+)&(?P<end_term>endid=.+)(?P<route_type>&type=\d{1,5})?/$',
-        create_route_from_search, name='routing-from-search'),
-    url(r'^directions/force_mid/', force_route_mid_point, name='force-route-midpoint')
+    url(r'^directions/', include('routing.urls'))
 ]
 
 # http://localhost:8000/api/v1/directions/force_mid/?startnode=1385&midnode=1167&endnode=1252
