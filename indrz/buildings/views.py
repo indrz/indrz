@@ -16,12 +16,10 @@ from buildings.serializers import (CampusSerializer,
                                    BuildingFloorGeomSerializer,
                                    SpaceSerializer,
                                    BuildingFloor,
-FloorSerializer,
-FloorSerializerDetails
+FloorSerializer
 
 
                                    )
-from django.db.models import Q
 
 logger = logging.getLogger(__name__)
 
