@@ -4,8 +4,9 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from routing.views import create_route_from_coords, create_route_from_id, create_route_from_search, \
     force_route_mid_point
 from buildings.views import get_spaces_on_floor, campus_list, campus_buildings_list, campus_buildings_short_list, \
-    campus_search, space_details, get_campus_info, campus_floor_spaces
+    space_details, get_campus_info, campus_floor_spaces
 from api.views import autocomplete_list
+from api import search
 
 urlpatterns = [
     #  ex valid call from to  /api/directions/1587848.414,5879564.080,2&1588005.547,5879736.039,2
@@ -40,7 +41,7 @@ urlpatterns += [
     url(r'^campus/(?P<campus_id>\d{1,5})/shortlist/$', campus_buildings_short_list, name='buildings_list'),
     url(r'^campus/(?P<campus_id>\d{1,5})/info/$', get_campus_info, name='campus-info'),
     url(r'^campus/(?P<campus_id>\d{1,5})/floor/(?P<floor_num>\d{1,5})$', campus_floor_spaces, name='campus-floors'),
-    url(r'^campus/(?P<campus_id>\d{1,5})/search/(?P<search_string>.{1,60})', campus_search, name='search_campus'),
+    url(r'^campus/(?P<campus_id>\d{1,5})/search/(?P<search_string>.{1,60})', search.search_indrz, name='search_campus'),
     url(r'^buildings/', include('buildings.urls')),
 
     ]

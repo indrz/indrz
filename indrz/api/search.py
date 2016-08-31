@@ -1,9 +1,13 @@
 import re
 
 from django.db.models import Q
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
 from buildings.models import BuildingFloorSpace
+from buildings.serializers import BuildingFloorSpaceSerializer
+
 
 
 def normalize_query(query_string,
@@ -41,16 +45,37 @@ def get_query(query_string, search_fields):
     return query
 
 
-def search(request):
-    query_string = ''
-    found_entries = None
-    if ('q' in request.GET) and request.GET['q'].strip():
-        query_string = request.GET['q']
+@api_view(['GET'])
+def search_indrz(request, campus_id, search_string):
+    # query_string = ''
+    # found_entries = None
 
-        entry_query = get_query(query_string, ['short_name', 'long_name', 'tag', 'tags'])
+    # if using a url like http://www.campus.com/search/?q=sometext
+    # use this if statement and indent code block
 
-        found_entries = BuildingFloorSpace.objects.filter(entry_query).order_by('-pub_date')
-    # TODO add search html code
-    # return render_to_response('search/search_results.html',
-    #                       { 'query_string': query_string, 'found_entries': found_entries },
-    #                       context_instance=RequestContext(request))
+    # if ('q' in request.GET) and request.GET['q'].strip():
+    #     query_string = request.GET['q']
+
+    entry_query = get_query(search_string, ['short_name', 'long_name', 'room_code', 'room_description'])
+
+    # return only first 20 results
+    found_entries = BuildingFloorSpace.objects.filter(fk_building__fk_campus=campus_id).filter(entry_query)[:20]
+
+    # buildings_on_campus = BuildingFloorSpace.objects.filter(Q(short_name__icontains=search_string) | Q(room_code__icontains=search_string))
+    serializer = BuildingFloorSpaceSerializer(found_entries, many=True)
+
+    return Response(serializer.data)
+
+# old silly search
+# @api_view(['GET'])
+# def campus_search(request, campus_id, search_string, format=None):
+#     """
+#     Search campus spaces in system and pois
+#     """
+#     if request.method == 'GET':
+#
+#         buildings_on_campus = BuildingFloorSpace.objects.filter(Q(short_name__icontains=search_string) | Q(room_code__icontains=search_string))
+#         serializer = BuildingFloorSpaceSerializer(buildings_on_campus, many=True)
+#
+#         return Response(serializer.data)
+

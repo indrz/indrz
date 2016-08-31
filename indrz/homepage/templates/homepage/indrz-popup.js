@@ -57,6 +57,19 @@ map.on('singleclick', function (e) {
   });
 });
 
+function getTitle(properties){
+    var name;
+    if(properties.short_name){
+        name = properties.short_name;
+        return name;
+    }
+    if (properties.room_code){
+        name = properties.room_code;
+        return name;
+    }
+
+}
+
 function open_popup(properties, coordinate){
 
   var titlePopup = gettext('Building Name: ');
@@ -64,13 +77,14 @@ function open_popup(properties, coordinate){
   var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
       coordinate, 'EPSG:3857', 'EPSG:4326'));
     if (properties.short_name){
+
         var name = properties.short_name;
         var floorNum = properties.floor_num;
         var buildingName = properties.building_name;
     } else {
-        var name = properties.name;
-        var floorNum = "0";
-        var buildingName = properties.campus_name;
+        var name = properties.room_code;
+        var floorNum = properties.floor_num;
+        var buildingName = properties.building_name;
         titlePopup = gettext('Campus ');
     }
 
