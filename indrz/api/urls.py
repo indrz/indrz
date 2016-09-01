@@ -8,6 +8,8 @@ from buildings.views import get_spaces_on_floor, campus_list, campus_buildings_l
 from api.views import autocomplete_list
 from api import search
 
+from homepage.views import get_room_center
+
 urlpatterns = [
     #  ex valid call from to  /api/directions/1587848.414,5879564.080,2&1588005.547,5879736.039,2
     # url(r'^directions/(?P<start_coord>[-]?\d+\.?\d+,\d+\.\d+),(?P<start_floor>\d+)&(?P<end_coord>[-]?\d+\.?\d+,\d+\.\d+),(?P<end_floor>\d+)&(?P<route_type>[0-9])/$', 'create_route', name='directions'),
@@ -22,6 +24,8 @@ urlpatterns = [
 # SPACES API URLS
 urlpatterns += [
     # url(r'^spaces/$', 'spaces_list', name='list_all_campuses'),
+    url(r'^getcenter/(?P<big_pk>(\d{3}_\d{2}_[A-Z]{1}[A-Z0-9]{1}[0-9]{2}_\d{6}))/$', get_room_center, name='show_space_details'),
+
     url(r'^spaces/(?P<space_id>\d{1,5})/$', space_details, name='show_space_details'),
     # url(r'^spaces/(?P<building_id>\d{1,5})/(?P<floor_id>\d{1,5})/$', 'building_spaces_list',
     #                         name='building_spaces_list'),
