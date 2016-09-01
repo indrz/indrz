@@ -1,6 +1,7 @@
 # Create your views here.
 import json
 import re
+from geojson import Feature, FeatureCollection
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -144,32 +145,42 @@ def rvk_call(request, rvk_id):
 
                     shelfGeom = dbrow[0][0]
                     shelfGeomJson = json.loads(str(shelfGeom))
-
-                    item = {
-                        "type": "Feature",
-                        "properties":
-                            {
+                    shelf_properties = {
                                 "text": rvk_key,
                                 "building": building[:2],
                                 "floor": building[3:4],
                                 "shelfID": shelfID,
                                 "fachboden": fachboden,
                                 "position": str(sectionPosition),
-                            },
-                        "geometry": geomJson,
-                        "shelfGeometry": shelfGeomJson
-                    }
+                            }
+                    point_location = Feature(geometry=geomJson, properties=shelf_properties)
+                    shelf_poly = Feature(geometry=shelfGeomJson, properties=shelf_properties)
+                    result_collection = FeatureCollection([shelf_poly, point_location])
+                    # item = {
+                    #     "type": "Feature",
+                    #     "properties":
+                    #         {
+                    #             "text": rvk_key,
+                    #             "building": building[:2],
+                    #             "floor": building[3:4],
+                    #             "shelfID": shelfID,
+                    #             "fachboden": fachboden,
+                    #             "position": str(sectionPosition),
+                    #         },
+                    #     "geometry": geomJson,
+                    #     "shelfGeometry": shelfGeomJson
+                    # }
 
-                    return Response(item)
+                    return Response(result_collection)
 
                 else:
-                    return Response({'error 2': 'len db row is 0'})
+                    return Response({'error 4': 'len db row is 0'})
             else: 
-                return Response({'error 1': 'no rvk found in first query'})
+                return Response({'error 3': 'no rvk found in first query'})
 
         # execute query stuff end
         # ============================================================================================
-        return Response(item)
+        return Response({'error 2': 'query to DB returned nothing hmm'})
     # return HttpResponse(returnVal)
     else:
-        return Response({'error 3': 'man I need to debug'})
+        return Response({'error 1': 'boom the RVK code does not match sorry call us'})
