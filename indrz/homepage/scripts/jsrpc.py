@@ -62,7 +62,7 @@ def get_room_center(aks_nummer):
     }
 
     req = requests.post(url, data=data, headers=json_headers)
-    response_data = req.json()
+    response_data = req.text
 
 
     if response_data is not None:
@@ -74,6 +74,7 @@ def get_room_center(aks_nummer):
     else:
         return None
 
+pprint(get_room_center('001_10_EG01_311200'))
 
 def test_route_terminal(ipTerminal):
     url = 'http://localhost:8000/terminal'
@@ -116,8 +117,8 @@ def test_route_terminal(ipTerminal):
 # pprint.pprint(data_terminal)
 
 ### test webservice call get_room_center
-data_rooms = get_room_center('001_20_EG01_018700')
-pprint(data_rooms)
+# data_rooms = get_room_center('001_20_EG01_018700')
+# pprint(data_rooms)
 
 
 # this works and is tested
@@ -598,7 +599,7 @@ def setInDict(dataDict, mapList, value):
 
 #### test bach_get_room_by_pk_big
 # data_rooms = bach_get_room_by_pk_big('001_10_EG01_311200') # 001_10_EG01_311200
-# pprint.pprint(data_rooms)
+# pprint(data_rooms)
 
 
 
@@ -631,10 +632,11 @@ def test_call_autocomplete(searchString):
 
     print(items)
 
-
+# python 2.7 code
 # test_call_autocomplete(unicode('Hörsaal', 'utf-8'))
-# test_call_autocomplete('Hörsaal')
 
+# test_call_autocomplete('Hörsaal')
+# test_call_autocomplete('Erste')
 
 start = time.time()
 end = time.time()
