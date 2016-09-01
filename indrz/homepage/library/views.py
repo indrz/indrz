@@ -2,9 +2,11 @@
 import json
 import re
 
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 
+@api_view(['GET'])
 def rvk_call(request, q):
     """
     if a space was used in the url it is encoded as %20
