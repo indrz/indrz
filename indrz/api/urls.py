@@ -25,7 +25,6 @@ urlpatterns = [
 urlpatterns += [
     # url(r'^spaces/$', 'spaces_list', name='list_all_campuses'),
     url(r'^getcenter/(?P<big_pk>(\d{3}_\d{2}_[A-Z]{1}[A-Z0-9]{1}[0-9]{2}_\d{6}))/$', get_room_center, name='show_space_details'),
-
     url(r'^spaces/(?P<space_id>\d{1,5})/$', space_details, name='show_space_details'),
     # url(r'^spaces/(?P<building_id>\d{1,5})/(?P<floor_id>\d{1,5})/$', 'building_spaces_list',
     #                         name='building_spaces_list'),
