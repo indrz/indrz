@@ -17,11 +17,11 @@ from django.conf.urls import url
 from homepage.library.views import rvk_call
 
 urlpatterns = [
-    #  ex valid call from to  /api/directions/1587848.414,5879564.080,2&1588005.547,5879736.039,2
+    #  ex vQP 020 A499alid call from to  /api/directions/1587848.414,5879564.080,2&1588005.547,5879736.039,2
     #url(r'^directions/(?P<start_coord>[-]?\d+\.?\d+,\d+\.\d+),(?P<start_floor>\d+)&(?P<end_coord>[-]?\d+\.?\d+,\d+\.\d+),(?P<end_floor>\d+)&(?P<route_type>[0-9])/$', 'create_route', name='directions'),
 
     # url(r'^spaces/search/(?P<search_term>[a-zA-Z0-9]{2,5})/$', 'autocomplete_list', name='spaces_list'),
-   url(r'^/([a-zA-Z0-9_-]*)/$', rvk_call, name="call RVK system"),
+   url(r'(?P<rvk_id>.+)', rvk_call, name="call RVK system"),
 
 ]
 

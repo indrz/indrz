@@ -7,7 +7,7 @@ from rest_framework.response import Response
 
 
 @api_view(['GET'])
-def rvk_call(request, q):
+def rvk_call(request, rvk_id):
     """
     if a space was used in the url it is encoded as %20
     :param request:
@@ -15,8 +15,11 @@ def rvk_call(request, q):
     :return:
     """
     # rvk_key = q.replace('%20', '_')
-    rvk_key = q['key'].replace('%20', '_')
-    rvk_key = rvk_key.upper()
+    # rvk_key = rvk_id['key'].replace('%20', '_')
+    #rvk_key = rvk_id.replace('%20', '_')
+    print(rvk_id)
+    rvk_key = rvk_id.upper()
+    print(rvk_key)
 
     if re.match(
             "[a-zA-Z][a-zA-Z]?[ _]*[0-9]{3,5}([\.\-](([0-9]{1,5})|([A-Za-z]([0-9]{1,5})?)))?[ _]*[a-zA-Z][0-9]{1,3}.*",
@@ -121,7 +124,7 @@ def rvk_call(request, q):
                 # sql = "select  ST_AsGeoJson(ST_Force_2d(geom)) from geodata.og0" + building[3:4] +
                 # "_library_regal_lines where id_letter = \'" + shelfID + "\';"
 
-                sql = "select ST_AsGeoJson(ST_Line_Interpolate_Point(ST_OffsetCurve((select geom from geodata.og0" + building[3:4] + "_library_regal_lines where id_letter = \'" + shelfID + "\'),"
+                sql = "select ST_AsGeoJson(ST_Line_Interpolate_Point(ST_OffsetCurve((select geom from library.og0" + building[3:4] + "_library_regal_lines where id_letter = \'" + shelfID + "\'),"
                 
                 if sideIndicator > 0.5:
                     sql += "-0.7), " + str(1 - (1 - sectionPosition) * 2) + "))"
@@ -135,7 +138,7 @@ def rvk_call(request, q):
                     geomJson = json.loads(str(geom))
 
                     # get the highlighted geometry of the shelf
-                    sql = "select ST_AsGeoJson(geom) from geodata.og0" + building[3:4] + "_library_shelf_poly where id_letter = \'" + shelfID + "\';"
+                    sql = "select ST_AsGeoJson(geom) from library.og0" + building[3:4] + "_library_shelf_poly where id_letter = \'" + shelfID + "\';"
                     cursor.execute(sql)
                     dbrow = cursor.fetchall()
 
@@ -156,14 +159,17 @@ def rvk_call(request, q):
                         "geometry": geomJson,
                         "shelfGeometry": shelfGeomJson
                     }
-                else: 
-                    return Response(None)
+
+                    return Response(item)
+
+                else:
+                    return Response({'error 2': 'len db row is 0'})
             else: 
-                return Response(None)
+                return Response({'error 1': 'no rvk found in first query'})
 
         # execute query stuff end
         # ============================================================================================
         return Response(item)
     # return HttpResponse(returnVal)
     else:
-        return Response(None)
+        return Response({'error 3': 'man I need to debug'})
