@@ -387,7 +387,7 @@ def create_route_from_search(request, start_term, end_term, route_type=0):
         # logger.debug('*************************end term' + str(end_room))
 
         start_query = """SELECT id, external_id, search_string FROM geodata.search_index_v
-                          WHERE replace(replace (upper(search_string), '.', ''),'.', '') LIKE upper('%{0}%')
+                          WHERE search_string LIKE '%{0}%'
                           ORDER BY length(search_string) LIMIT 1""".format(start_room)
 
         # logger.debug('**************print query' + str(start_query))
@@ -397,7 +397,7 @@ def create_route_from_search(request, start_term, end_term, route_type=0):
         start_id_value = get_start_id_list[0]
 
         end_query = """SELECT id, external_id, search_string FROM geodata.search_index_v
-                          WHERE replace(replace (upper(search_string), '.', ''),'.', '') LIKE upper('%{0}%')
+                          WHERE search_string LIKE '%{0}%'
                           ORDER BY length(search_string) LIMIT 1""".format(end_room)
 
         # logger.debug('**************print END  query' + str(end_query))
