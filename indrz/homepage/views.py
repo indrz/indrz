@@ -2,6 +2,7 @@ import re
 import json
 
 from django.core.exceptions import PermissionDenied
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.gis.db.models.functions import Centroid, AsGeoJSON
 
@@ -11,6 +12,8 @@ from rest_framework.response import Response
 from buildings.models import BuildingFloorSpace
 
 from geojson import Feature
+
+from homepage import bach_calls
 
 def view_map(request, *args, **kwargs):
     context = {}
@@ -183,3 +186,65 @@ def get_room_center(request, big_pk):
 #         # raise Exception("wrong IP! your ip is : " + ip_addr)
 #         # return HttpResponseForbidden()
 #         raise PermissionDenied
+
+def wuAutoComplete(request):
+    searchString = request.GET["query"]
+    if (searchString != None):
+
+        items = []
+
+
+        # ===========================================================================
+        # bach data
+
+        #======================================================
+        #append organizations but no persons!
+        bachData = bach_calls.bach_search_directory(searchString)
+        if bachData is not None:
+            for row in bachData:
+                if "label" in row and searchString.upper() in row["label"].upper():
+
+                    name = ""
+                    if ("label" in row and searchString == row["label"]):
+                        name = row["label"]
+                    elif ("name_de" in row and searchString == row["name_de"]):
+                        name = row["name_de"]
+                    elif ("name_en" in row and searchString == row["name_en"]):
+                        name = row["name_en"]
+                    else:
+                        name = row["label"]
+
+                    # remove whitespaces at the end of string (for duplicate detection)
+                    name = name.strip()
+                    items.append({"name": name})
+
+        from django.db import connection
+
+        cursor = connection.cursor()
+
+        searchString = searchString.replace(".", "", 2)
+        searchString = searchString.replace(" ", "", 2)
+
+        cursor.execute("""SELECT search_string FROM geodata.search_index_v
+                          WHERE replace(replace (upper(search_string), '.', ''),'.', '') LIKE upper(%(search_string)s)
+                          GROUP BY search_string
+                          ORDER BY search_string DESC, length(search_string) LIMIT 100""",
+                       {"search_string": "%" + searchString + "%"})
+
+        rows = cursor.fetchall()
+        #return HttpResponse(cursor.query)
+
+        for row in rows:
+            item = {'name': row[0].strip()}
+            items.append(item)
+        # ===========================================================================
+        # END local data
+
+        # remove duplicate entries
+
+        output = []
+        for x in items:
+            if x not in output:
+                output.append(x)
+        # return HttpResponse(request.GET["callback"] + "(" + json.dumps({'result': output}) + ")")
+        return HttpResponse(json.dumps({'result':items}))

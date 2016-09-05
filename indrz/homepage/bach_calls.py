@@ -8,31 +8,30 @@
 ###################################
 
 import json
-import urllib2
-import simplejson
+import requests
 
-
-def load_json(data, url):
+def load_json(data_in, external_url):
     """
 
     :param data: the input data as json
-    :param url: the bach api url call to webservice
+    :param external_url: the bach api url call to webservice
     :return: wu api json reponse for search
     """
-    data = simplejson.dumps(data)
-    headers = {
-        'Content-Type': 'application/json-rpc',
-    }
-    req = urllib2.Request(url, data, headers)
-    resp = urllib2.urlopen(req)
-    data = resp.read()
+    data_res = json.dumps(data_in)
+    external_api_endpoint_url = external_url
 
-    if data is not None:
-        data = simplejson.loads(data)
-        if 'result' in data:
-            return data['result']  # return only the values in the result item
+    json_header = {
+        'Content-Type': 'application/json',
+    }
+
+    req = requests.post(external_api_endpoint_url, data=data_res, headers=json_header)
+    response_data = req.json()
+
+    if response_data is not None:
+        if 'result' in response_data:
+            return response_data['result']  # return only the values in the result item
         else:
-            return data
+            return response_data
     else:
         return None
 
