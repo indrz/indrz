@@ -17,7 +17,7 @@ function update_url(mode) {
     var data = {};
 
     if (mode == "route") {
-        url = "/wu/" + map_name + "/?buildingid=" + building_id + "&route_from=" + $("#route-from").val() + "&route_to=" + $("#route-to").val();
+        url = "/wu/" + map_name + "/?buildingid=" + building_id + "&startstr=" + $("#route-from").val() + "&endstr=" + $("#route-to").val();
     } else if (mode == "search") {
         url = "/wu/" + map_name + "/?buildingid=" + building_id + "&spaceid=" + space_id;
     } else if (mode == "map") {
