@@ -46,10 +46,9 @@ var shelfStyles = {
       };
 
 
-var calculateLibraryRoute = function (rvk_key) {
+var routeToBook = function (rvk_key) {
 
-    var res = jsonRpcCall(webserviceBaseUrl, "test_lib", '{"key": "' + rvk_key + '"}',
-    var res = indrzApiCall('/api/v1/library/' + rvk_key);
+    var res = indrzApiCall('/api/v1/library/route/' + rvk_key);
 
     function tmpCallback(res) {
         return function (res) {
@@ -58,56 +57,29 @@ var calculateLibraryRoute = function (rvk_key) {
             }
             else {
 
-
-                var vectorShelf = new ol.layer.Vector({
-                    source: new ol.source.Vector({
+                var s = new ol.source.Vector({
                             url: '/api/v1/library/' + rvk_key,
                             format: new ol.format.GeoJSON()
-                        },
+                        });
+                var vectorShelf = new ol.layer.Vector({
+                    source: s,
                     style : styleFunction});
-
 
                 map.getLayers().push(vectorShelf);
 
+                var endCoords = res.features[1].geometry.coordinates;
+                var endFloor = res.features[1].properties.floor;
 
-                //parse item
-                var shelfGeo = res.features[0].geometry;
-                var floor = res.properties.floor;
-                var building = res.properties.building;
-                var fachboden = res.properties.fachboden;
-                var shelfID = res.properties.shelfID;
-                var geojson_format = new OpenLayers.Format.GeoJSON();
-                var geo = geojson_format.read(res.geometry);
-                var shelfGeo = geojson_format.read(res.shelfGeometry);
-
-                geo[0].attributes = {
-                    'layer': floor
-                };
-
-                shelfGeo[0].attributes = {
-                    'featureType': 'polygon',
-                    'building': building,
-                    'layer': floor,
-                    'title': "Target shelf"
-                }
-                shelfGeo.layer = floor;
-
-
-                calculateRouteToShelf(geo, floor);
-
-                AppMain.viewer.tools['routingModule'].routingControl.libraryBufferLayer.addFeatures([shelfGeo[0]]);
-
-                createLibraryPopup(geo[0].geometry.getCentroid(), floor, building, fachboden, shelfID, rvk_key);
+                fix_start_coord = "1826545.2173675, 6142423.4241214";
+                RouteToShelf(endCoords, endFloor, 0 );
 
                 return;
             }
             return;
         }(res);
     }
-
-    )
-    ;
 };
+
 
 
 var createLibraryPopup = function (geometry, floor, building, fachboden, shelfID, rvk_key) {
@@ -157,16 +129,76 @@ var destroyLibraryPopup = function () {
     }
 };
 
-var calculateRouteToShelf = function (geo, floor) {
-    var shelf_Middle = geo[0].geometry.getCentroid();
+// var calculateRouteToShelf = function (geo, floor) {
+    // var shelf_Middle = geo[0].geometry.getCentroid();
+    //
+    // AppMain.viewer.tools['routingModule'].addRouteStartPoint(1826545.2173675, 6142423.4241214, $.t('library.routeStart'), 0);
+    // AppMain.viewer.tools['routingModule'].addRouteEndPoint(shelf_Middle.x, shelf_Middle.y, $.t('library.routeEnd'), floor);
+    //
+    // //switch floor and center
+    // AppMain.viewer.tools['routingModule'].routingControl.centerTo(shelf_Middle.x, shelf_Middle.y, 22);
+    // AppMain.changeFloorTo(floor);
 
-    AppMain.viewer.tools['routingModule'].addRouteStartPoint(1826545.2173675, 6142423.4241214, $.t('library.routeStart'), 0);
-    AppMain.viewer.tools['routingModule'].addRouteEndPoint(shelf_Middle.x, shelf_Middle.y, $.t('library.routeEnd'), floor);
+function RouteToShelf(rvk_id) {
+        // request, start_coord, start_floor, end_coord, end_floor, route_type):
+        //http:/localhost:8000/api/v1/directions/1587848.414,5879564.080,2&1588005.547,5879736.039,2&0
 
-    //switch floor and center
-    AppMain.viewer.tools['routingModule'].routingControl.centerTo(shelf_Middle.x, shelf_Middle.y, 22);
-    AppMain.changeFloorTo(floor);
-};
+    var baseUrl = '/api/v1/library/route/';
+    var geoJsonUrl = baseUrl + rvk_id;
+
+
+    if (routeLayer) {
+        map.removeLayer(routeLayer);
+        console.log("removing layer now");
+        //map.getLayers().pop();
+    }
+
+    var source = new ol.source.Vector();
+    $.ajax(geoJsonUrl).then(function (response) {
+        //console.log("response", response);
+        var geojsonFormat = new ol.format.GeoJSON();
+        var features = geojsonFormat.readFeatures(response,
+            {featureProjection: 'EPSG:4326'});
+        source.addFeatures(features);
+
+        addMarkers(features);
+
+        // active the floor of the start point
+        var start_floor = features[0].getProperties().floor;
+        for (var i = 0; i < floor_layers.length; i++) {
+            if (start_floor == floor_layers[i].getProperties().floor_num) {
+                activateLayer(i);
+            }
+        }
+        // center up the route
+        var extent = source.getExtent();
+        map.getView().fit(extent, map.getSize());
+    });
+
+    routeLayer = new ol.layer.Vector({
+        //url: geoJsonUrl,
+        //format: new ol.format.GeoJSON(),
+        source: source,
+        style: function (feature, resolution) {
+            var feature_floor = feature.getProperties().floor;
+            if (feature_floor == active_floor_num) {
+                feature.setStyle(route_active_style);
+            } else {
+                feature.setStyle(route_inactive_style);
+            }
+        },
+        title: "Route",
+        name: "Route",
+        visible: true,
+        zIndex: 9999
+    });
+
+    map.getLayers().push(routeLayer);
+
+    $("#clearRoute").removeClass("hide");
+    $("#shareRoute").removeClass("hide");
+
+}
 
 var unanchorPopup = function (popup) {
     popup.removeAnchorEvents();
