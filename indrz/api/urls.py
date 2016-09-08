@@ -55,6 +55,11 @@ urlpatterns += [
 
     ]
 
+urlpatterns += [
+
+    url(r'^kiosk/', include('homepage.kiosk.urls')),
+
+    ]
 
 # DIRECTIONS API URLS
 urlpatterns += [

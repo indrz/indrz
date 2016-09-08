@@ -1,0 +1,96 @@
+{% extends "base-map.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block title %}WU Campus Plan{% endblock %}
+
+
+
+{% block head_extra %}
+
+    <script src="{% static "js/bloodhound.min.js" %}"></script>
+    <script src="{% static "js/typeahead.bundle.min.js" %}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <style> body {
+        padding-top: 0px;
+    }</style>
+
+
+{% endblock head_extra %}
+
+{% block nav %}
+    <nav class="navbar navbar-default hidden-md hidden-lg">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#map-search-form" aria-expanded="true">
+                        <span class="sr-only">{% trans 'Toggle search form' %}</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span></button>
+                    <a class="navbar-brand" href="#">Indrz</a>
+                </div>
+            </div>
+        </nav>
+{% endblock nav %}
+{#{% block routing-form %}{% endblock routing-form %}#}
+{# {% block map-section %}{% endblock map-section %}#}
+{#{% block background-base-changer %}{% endblock background-base-changer %}#}
+{#{% block search_form %}{% endblock search_form %}#}
+
+{% block js-search-box %}
+
+    <script>
+
+       var building_id = 1;
+
+        var searchValues = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: '/api/v1/spaces/search/?format=json'
+        });
+
+        // passing in `null` for the `options` arguments will result in the default
+        // options being used
+        $('#search-input').typeahead(null, {
+            hint: true,
+            highlight: true,
+            minLength: 1,
+            name: 'search-field',
+            limit: 100,
+            source: searchValues
+        });
+
+
+        $("#submitFormSearch").submit(function (event) {
+            {#              alert( "Handler for .submit() called."  );#}
+
+            {#            var buildingid = buildingNantesId;#}
+            var searchText = $('#search-input').val();
+            searchIndrz(building_id, searchText);
+            event.preventDefault();
+        });
+    </script>
+
+
+{% endblock js-search-box %}
+
+
+
+{% block map_frame %}
+    <script>  {% include 'homepage/indrzMapConf.js' %} </script>
+    <script>  {% include 'homepage/indrzLayers.js' %} </script>
+    <script>  {% include 'homepage/basemap.js' %} </script>
+    <script>  {% include 'homepage/indrz-floorswitcher.js' %} </script>
+    <script>  {% include 'homepage/indrzMapInit.js' %}</script>
+    <script>  {% include 'homepage/routing.js' %} </script>
+    <script>  {% include 'homepage/search.js' %} </script>
+    <script>  {% include 'homepage/indrz-popup.js' %} </script>
+    <script>  {% include 'homepage/indrz-controls.js' %} </script>
+    <script>  {% include 'homepage/indrz_live_url_update.js' %} </script>
+    <script>  {% include 'homepage/share.js' %} </script>
+    <script>  {% include 'homepage/initialize.js' %} </script>
+    {% if space_id > 0 and space_id != None %}
+        <script>  {% include 'homepage/indrz-space.js' %} </script>
+    {% endif %}
+{% endblock map_frame %}

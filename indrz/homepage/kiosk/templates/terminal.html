@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>WU Wien Campus</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+
+		<!-- Include WU Bootstrap css templates -->
+		<link href="bootstrap/css/bootstrap-custom.css" rel="stylesheet">
+    	<link href="bootstrap/css/custom-responsive.css" rel="stylesheet">
+		<script type="text/javascript">
+		
+		var timeOut = null;
+		window.onresize = function(){
+			if (timeOut != null){
+        		clearTimeout(timeOut);
+                }
+            else {
+    		  timeOut = setTimeout(function(){
+    		  	  location.href = location.href;
+    		      }, 500);
+            }
+		}
+
+
+			/** GIS CONFIG  - EDIT HERE */
+			
+			/* this config must be done BEFORE the actual source code is included
+			and can be moved into a separate file if necessary */
+			
+			/** floorMaxExtent - describes the maximum extent for the actual floor map data; 
+			this limits the borders of what is shown on the map in terms of floors, but not where the user can pan/move to 
+			-- currently not used due to bug with print servlet thinking that maxExtent equals the 
+			*/
+			var floorMaxExtent = [16.40351, 48.21071, 16.41653, 48.21708]; 
+			
+			/** startExtent - he start extent */
+			var startExtent = [16.4059, 48.21071, 16.4108, 48.2159];
+			/** startZoom - the start zoom level */
+			var startZoom   = 17;
+			
+			/** srcEPSG - coordinate system for startExtent and floorMaxExtent */
+			var srcEPSG = 'EPSG:4326'; // WGS 84
+			/** tgtEPSG - coordinate system for how the map is displayed and handled */
+			var tgtEPSG = 'EPSG:900913'; // google mercator
+		
+			/** tmsUrl - the URL for the tile-map-service */
+			var tmsUrl = "http://gis.wu.ac.at/tms/";
+            // wu drone ortho tile cache layer
+            var ortho_wu_tiles_url = "http://gis.wu.ac.at/wu_ortho/";
+			/** kmlLayerBaseUrl - the URL for the KML base layer, needed for the google earth plugin */ 
+			var kmlLayerBaseUrl = "http://gis.wu.ac.at/kml/";
+			
+			/** googleEarthApiKey - the api key for google maps/earth api */
+			var googleEarthApiKey = "AIzaSyB8mXCaPU5t10JB4a5kXr4OuKipubMGMmQ";
+		
+			/** floorLayerNames - array with floor layer names as they are made available via the tile map service - see tmsUrl */
+			var floorLayerNames = ["wuwien:ug01@EPSG:900913@png", "wuwien:eg00@EPSG:900913@png", "wuwien:og01@EPSG:900913@png", 
+					"wuwien:og02@EPSG:900913@png", "wuwien:og03@EPSG:900913@png", "wuwien:og04@EPSG:900913@png","wuwien:og05@EPSG:900913@png",
+					"wuwien:og06@EPSG:900913@png"];
+
+            var wuOrthoLayerName = "wu_ortho_tiles";
+					
+			/** floorOffset - the lowest floor, e.g. untergeschoss = basement = -1, eg = erdgeschoss = ground floor = 0, og01 = 1. stock = 1rst floor = 1, etc... */
+			var floorOffset = -1;
+					
+			/** kmlLayers - array with floor layer names as they are made available via the KML service - see kmlLayerBaseUrl */
+			var kmlLayers = ["wuwien:ug01.png.kml","wuwien:eg00.png.kml","wuwien:og01.png.kml","wuwien:og02.png.kml","wuwien:og03.png.kml","wuwien:og04.png.kml","wuwien:og05.png.kml","wuwien:og06.png.kml"];
+					
+					
+			/** WEBSERVICE CONFIG */
+			/* this section holds the webservice config elements and depending on how you are using / including this script you might need to change the paths here;
+			please be aware that these webservices are called via AJAX and therefor you MUST pay attention to the SAME-ORIGIN-POLICY http://en.wikipedia.org/wiki/Same_origin_policy ;
+			this means, if your website is hosted at demo.wu.ac.at you can not access webservices at gis.wu.ac.at; or if your website is using https, you can not access
+			these webservices via http, etc.... */
+			
+			/** printBaseUrl - URL to the printer webservice */
+			var printBaseUrl = "/print/pdf/";
+			
+			/** webserviceBaseUrl - the base url to the webservices (= django ajax api) - please adapt */
+			var webserviceBaseUrl = "http://localhost:8000/api/";
+			
+			/** webserviceRouteMethod - the name of the routing webservice */
+			var webserviceRouteMethod = "routeFromTo";
+			
+			/** webserviceSearchMethod - the name of the search webservice */
+			var webserviceSearchMethod = "searchAny";
+			
+			/** webserviceWhatsHereMethod - the name of the "whats here" webservice (= request with coordinates) */
+			var webserviceWhatsHereMethod = "searchCoordinates";
+			
+			/** webserviceWhatsHerePOIMethod - name for the "what pois are here" webservice (= request with coordinates) */
+			var webserviceWhatsHerePOIMethod = "searchCoordinatesPOI";
+			
+			/** webserviceLanguagePath - language webservice, provides data for I18next library; __lng__ will be automatically replaced by the language that is requested by browser or user. */
+			var webserviceLanguagePath = "http://gis.wu.ac.at/wuwien_django/lang/__lng__/";
+			
+			/** webservicePOIPath - path for the POI list as json */
+			var webservicePOIPath = 'http://gis.wu.ac.at/wuwien_django/pois.json';
+
+			/** mapPanelId - the map panel id is used quite often in the project, so we should use a global variable for the name; only change if you absolutely need to change it */
+			var mapPanelId = 'mymap';
+
+			/** routingAlphabet - array used for the actual alphabet for icons for routing and search; unless you live in russia or anywhere in Asia, I do not recommend to change that;
+			furthermore this is linked to css classes */ 
+			var routingAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+			
+			/** routingColorActive - color for routing-lines for the active floor */
+			var routingColorActive = '#FF0000';
+			
+			/** routingColorAlternateing - color for routing-liens on different floors, alternating over floors */
+			var routingColorAlternateing = ['#ff8080',  '#800000'];
+		</script>
+		
+		<!-- including all javascript resources 
+		if you're using this on a different host, you might want to add http://gis.wu.ac.at/ or https://gis.wu.ac.at/ at the beginning of the URLs -->		
+		
+		<!-- please keep in mind, while javascript resources are available in the js and vendor directory in the actual source code,
+		they are compiled and compressed depending on settings and are all saved in the js directory -->
+		
+		<!-- include jquery -->
+		<!--<script type="text/javascript" src="http://gis.wu.ac.at/js/jquery/jquery-1.7.2.min.js"></script>-->
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+
+		<!-- include i18next -->
+                <script type="text/javascript" src="js/i18next/i18next-1.4.0.min.js"></script>
+		<!-- extjs -->
+			<!-- ** CSS ** -->
+			<!-- base library -->
+			<link rel="stylesheet" type="text/css" href="js/extjs/ext-3.4.0/resources/css/ext-all.css" />
+
+			<!-- overrides to base library -->
+
+
+			<!-- ** Javascript ** -->
+			<!-- ExtJS library: base/adapter -->
+			<script type="text/javascript" src="js/extjs/ext-3.4.0/adapter/ext/ext-base.js"></script>
+			<!-- ExtJS library: all widgets -->
+			<script type="text/javascript" src="js/extjs/ext-3.4.0/ext-all.js"></script>
+
+
+			<!-- overrides to library -->
+
+			<!-- extensions -->
+
+		<!-- extjs end -->
+
+
+
+		<!-- OpenLayers -->
+		<script type="text/javascript" src="js/openlayers/OpenLayers.js"></script>
+		<link rel="stylesheet" type="text/css" href="js/openlayers/theme/default/style.css"/>
+		
+		<!-- GeoExt -->
+		<script type="text/javascript" src="js/geoext/script/GeoExt.js"></script>
+		<link rel="stylesheet" type="text/css" href="js/geoext/resources/css/geoext-all-debug.css"/>
+		
+		<!-- Geoext.ux printpreview -->
+		<script type="text/javascript" src="js/printPreview/lib/GeoExt.ux/PrintPreview.js"></script>
+		<link rel="stylesheet" type="text/css" href="js/printPreview/resources/css/printpreview.css" />
+		
+		<!-- GXP -->
+		<script type="text/javascript" src="js/gxp/script/gxp.js"></script>
+		<link rel="stylesheet" type="text/css" href="js/gxp/script/theme/all.css"/>
+		
+		<!-- Load google earth plugin js with api key 
+		<script src="http://www.google.com/jsapi?key=ABQIAAAA0xaoKqphBeBHlaUgO_LvPhRBEiKim3aa5wXJpiU29TMN1NOI7RRDMf-_b4W4n0Rgenq9P2MYNDia7Q"></script>
+		<script type="text/javascript">
+			google.load("earth", "1");					
+		</script>
+        -->
+		
+		
+		<!-- Include Campus GIS Related Javascript Sources -->
+		<!-- Please be aware that you need to change these to js/wuwien.min.js and css/wuwien.min.css when deploying/changing outside of gis.wu.ac.at -->
+		
+
+ 
+		<!-- include our JS (change to js/wuwien.min.js for deployment) -->
+		<script type="text/javascript" src="js/terminal.js"></script>
+
+
+
+		<!-- include our CSS (change to css/wuwien.min.css for deployment) -->
+		<link rel="stylesheet" type="text/css" href="css/wuwien.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/terminal.css"/>
+
+		<script type="text/javascript" src="js/config2.js">	</script>
+		
+		<!-- Javascript includes END -->
+
+
+	</head>
+	<body class="myUnselectableText">
+
+
+
+    <div class="row-fluid">
+        <div class="span12 b3k_content" role="main"><!--the span10 box will always have main role-->
+
+            <div style="height: 100% !important; width: 100% margin-bottom: 0px;">
+              	<div id="googleEarthHelperWindow" style="background-color: #000000" class="x-hide-display"><h3>Pretty image for google earth here</h3></div>
+
+
+            </div>
+			<div id="wuMapWindow" ></div>
+
+  		  </div>
+
+    </div><!--end content-->
+
+
+      <div class="sidebar" role="search">
+        <h3 class="access">Search within WU directory</h3>
+      </div><!--end sidebar-->
+                      
+
+       <!-- Piwik -->
+    <script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.wu.ac.at/piwik/" : "http://piwik.wu.ac.at/piwik/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+    </script><script type="text/javascript">
+    try {
+    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 4);
+    piwikTracker.trackPageView();
+    piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+    </script><noscript><p><img src="http://piwik.wu.ac.at/piwik/piwik.php?idsite=4" style="border:0" alt="" /></p></noscript>
+    <!-- End Piwik Tracking Code -->
+
+	</body>
+</html>
