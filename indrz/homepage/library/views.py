@@ -2,7 +2,6 @@
 import json
 import re
 from geojson import Feature, FeatureCollection
-from routing.views import create_route_from_coords
 
 import requests
 from rest_framework.decorators import api_view
