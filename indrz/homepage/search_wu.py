@@ -1,5 +1,7 @@
 # search anything on campus
 import json
+import pprint
+
 from django.http import HttpResponse
 import logging
 from homepage import bach_calls
@@ -166,7 +168,7 @@ def getAssignedEntrance(request, aks, layer):
     results = cursor.fetchall()
 
     if len(results) > 0:
-        entranceID = results[0][0];
+        entranceID = results[0][0]
 
         cursor.execute(
             "SELECT description, description_en, ST_asgeojson(geom) AS geojson_geom FROM geodata.poi_list WHERE id=%(id)s",
@@ -193,12 +195,32 @@ def getAssignedEntrance(request, aks, layer):
     # search for strings and return a list of strings and coordinates
 
 
+def has_front_office(data):
+    """
+
+    :param data:
+    :return:
+    """
+    if 'currentAffiliation'in data:
+        organization_id = data[0]['orgid']
+        bachOrgs = bach_calls.bach_get_organization_details(organization_id)
+        pprint.pprint(bachData)
+
+        if 'location' in bachOrgs:
+            front_office_external_id = bachOrgs['location']
+
+            return front_office_external_id
+    else:
+        return None
+
 # @jsonrpc_method('searchAny(q=dict) -> dict', validate=True)
 @api_view(['GET'])
 def search_any(request, q):
-    if q.keys().index('searchString') < 0:
-        raise Exception("Couldn't find searchString in parameter q")
-    searchString = q['searchString']
+    # if q.keys().index('searchString') < 0:
+    #     raise Exception("Couldn't find searchString in parameter q")
+    # searchString = q['searchString']
+
+    searchString = q
 
     # dont allow empty searchString, too short searchString or too long searchstring (50 characters is way too much
     #  and probably a sql attack so we prevent it here aswell
@@ -218,27 +240,12 @@ def search_any(request, q):
 
     cursor = connection.cursor()
 
-    # if searchSTring contains a comma, we need to split it and use what is after the comma as building
-    # if ',' in searchString:
-    #   tmpArr = searchString.partition(',')
-    #   searchString = tmpArr[0]
-    #   extraBuilding = tmpArr[2].strip()
 
-    # searchString can be used for SQL injections - to prevent this we are using the
-    # cursor.execute method with searchString as parameter
-    # sql = basicQuery = """
-    # select search_string, text_type, external_id, st_asgeojson(geom) as geom,
-    # st_asgeojson(st_PointOnSurface(geom)) as center, layer, building, 0 as resultType, aks_nummer
-    #       FROM geodata.search_index_v
-    #       WHERE upper(building) LIKE %(building)s AND ( upper(search_string) LIKE %(search_string)s
-    #       OR aks_nummer LIKE %(search_string)s )
-    #       ORDER BY priority DESC, length(search_string) LIMIT 9
-    # """
     sql = basicQuery = """
-    SELECT search_string, text_type, external_id, st_asgeojson(geom) AS geom, st_asgeojson(st_PointOnSurface(geom)) AS center, layer, building, 0 AS resultType, aks_nummer, roomcode
+    SELECT search_string, text_type, external_id, st_asgeojson(geom) AS geom, st_asgeojson(st_PointOnSurface(geom)) AS center, layer, building_id, 0 AS resultType, external_id, text_type
             FROM geodata.search_index_v
             WHERE upper(search_string) LIKE %(search_string)s
-            ORDER BY priority DESC, length(search_string) LIMIT 9
+            ORDER BY search_string DESC, length(search_string) LIMIT 9
     """
 
     # query bach api rooms for room data
@@ -247,10 +254,13 @@ def search_any(request, q):
     if room_data_results != None:
         bachData.extend(room_data_results)
 
+    print(bachData)
+
     # =============================================
     # extend d organisations and people data in one
     bachOrgs = bach_calls.bach_search_directory(searchString)
     bachData.extend(bachOrgs)
+    pprint.pprint(bachData)
     # uncomment following for orgs without persons
     # if len(bachOrgs) > 0:
     #     for row in bachOrgs:
@@ -320,9 +330,9 @@ def search_any(request, q):
 
                     cursor.execute("SELECT search_string, text_type, external_id, st_asgeojson(geom) AS geom, \
                      st_asgeojson(st_PointOnSurface(geom)) AS center,\
-                     layer, building, 0 AS resultType, aks_nummer, roomcode \
+                     layer, building_id, 0 AS resultType, external_id, text_type \
                      FROM geodata.search_index_v \
-                     WHERE aks_nummer = upper(%(location)s)", locationDict)
+                     WHERE external_id = upper(%(location)s)", locationDict)
 
                     result = cursor.fetchall()
 
@@ -447,10 +457,11 @@ def search_any(request, q):
         # add the assigned entrance
         for tempResult in bachLocationStrings:
             if (tempResult["aks_nummer"] is not None and tempResult["aks_nummer"] != ""):
-                entranceData = getAssignedEntrance(tempResult["aks_nummer"], tempResult["layer"]);
-                tempResult["entrance"] = entranceData["id"];
-                tempResult["entrance_name_de"] = entranceData["de"];
-                tempResult["entrance_name_en"] = entranceData["en"];
+                #entranceData = getAssignedEntrance(tempResult["aks_nummer"], tempResult["layer"]);
+                #tempResult["entrance"] = entranceData["id"];
+                #tempResult["entrance_name_de"] = entranceData["de"];
+                #tempResult["entrance_name_en"] = entranceData["en"];
+                pass
 
         # --------------------------------------------------------
         retVal = {"searchString": searchString, "building": '', "searchResult": bachLocationStrings,
@@ -507,10 +518,11 @@ def search_any(request, q):
         # add the assigned entrance
         for tempResult in rows:
             if (tempResult["aks_nummer"] is not None and tempResult["aks_nummer"] != ""):
-                entranceData = getAssignedEntrance(tempResult["aks_nummer"], tempResult["layer"]);
-                tempResult["entrance"] = entranceData["id"];
-                tempResult["entrance_name_de"] = entranceData["de"];
-                tempResult["entrance_name_en"] = entranceData["en"];
+                #entranceData = getAssignedEntrance(tempResult["aks_nummer"], tempResult["layer"]);
+                #tempResult["entrance"] = entranceData["id"];
+               # tempResult["entrance_name_de"] = entranceData["de"];
+                #tempResult["entrance_name_en"] = entranceData["en"];
+                pass
         # --------------------------------------------------------
         retVal = {"searchString": searchString, "building": extraBuilding, "searchResult": rows, "length": len(db_rows)}
 
