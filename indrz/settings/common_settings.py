@@ -30,6 +30,7 @@ INSTALLED_APPS = (
 
     #### third party apps
     'rest_framework',
+    'rest_framework_gis',
     'taggit',
     'mptt',
     'rest_framework_swagger',
@@ -46,6 +47,7 @@ INSTALLED_APPS = (
     'landscape',
     'homepage',
     'homepage.library'
+    #'homepage.kiosk',
 
 )
 
@@ -71,6 +73,8 @@ TEMPLATES = [
                  # os.path.join(BASE_DIR,  'maps/templates'),
                  os.path.join(BASE_DIR,  'poi_manager/templates'),
                  os.path.join(BASE_DIR,  'homepage/templates'),
+                 os.path.join(BASE_DIR,  'homepage/library/templates'),
+                 os.path.join(BASE_DIR,  'homepage/kiosk/templates'),
             # insert your TEMPLATE_DIRS here
         ],
         'APP_DIRS': True,

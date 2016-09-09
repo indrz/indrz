@@ -26,6 +26,9 @@ DATABASES = {
 
 POSTGIS_VERSION = ( 2, 2, 1 )
 
+WU_IP_STARTSWITH = "137.208."
+LOCALHOST_URL = "http://campus.wu.ac.at/"
+
 
 STATIC_ROOT = "/var/www/vhosts/www.indrz.com/static/"
 

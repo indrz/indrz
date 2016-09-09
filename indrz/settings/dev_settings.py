@@ -9,18 +9,8 @@ STATICFILES_DIRS += [
 
 ]
 
-DATABASES = {
-    'default': {
-        # Postgresql with PostGIS
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'indrz-wu', # DB name
-        'USER': secret_settings.db_user, # DB user name
-        'PASSWORD': secret_settings.db_pwd, # DB user password
-        'HOST': 'gis-neu.wu.ac.at',
-        'PORT': '5432',
-    }
-}
+WU_IP_STARTSWITH = "137.208."
+LOCALHOST_URL = "http://localhost:8000/"
 
 # DATABASES = {
 #     'default': {
@@ -30,10 +20,23 @@ DATABASES = {
 #         'NAME': 'indrz-wu', # DB name
 #         'USER': secret_settings.db_user, # DB user name
 #         'PASSWORD': secret_settings.db_pwd, # DB user password
-#         'HOST': 'localhost',
-#         'PORT': '5434',
+#         'HOST': 'gis-neu.wu.ac.at',
+#         'PORT': '5432',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        # Postgresql with PostGIS
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'indrz-wu', # DB name
+        'USER': secret_settings.db_user, # DB user name
+        'PASSWORD': secret_settings.db_pwd, # DB user password
+        'HOST': 'localhost',
+        'PORT': '5434',
+    }
+}
 
 if os.path.isdir('../logs'):
     LOGGING_CONFIG = None
