@@ -1,10 +1,10 @@
 from django.conf.urls import url
 
-from .views import getPoiTerminalData, route_from_terminal
+from .views import get_terminal, route_from_terminal
 
 urlpatterns = [
-   url(r'^route/.+', route_from_terminal, name="route from kiosk"),
-   url(r'(?P<kiosk_id>.+)', getPoiTerminalData, name="get kiosk data"),
+   url(r'^route/(?P<destination_location>.+)', route_from_terminal, name="route from kiosk"),
+   url(r'^', get_terminal, name="get kiosk data"),
 
 
 ]

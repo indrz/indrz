@@ -3,11 +3,20 @@
 # !/opt/.venvs/wuwien/bin python
 
 import json
-from rest_framework.decorators import api_view
 
+import requests
+from geojson import Feature
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+from django.conf import settings
+
+from poi_manager.models import Poi
+from django.contrib.gis.db.models.functions import Centroid, AsGeoJSON
 
 from django.http import  HttpResponse
-
+from homepage import search_wu
+from pprint import pprint
 import logging
 
 logr = logging.getLogger(__name__)
@@ -46,89 +55,67 @@ def create_terminal_start_json(query_result):
 
 
 @api_view(['GET', ])
-def getPoiTerminalData(request):
+def get_terminal(request):
     """
     return a LIST of all POIs either with "entrance" or "ubahn" in the column "name"
     """
     ipTerminal = get_client_ip(request)
     if ipTerminal == "127.0.0.1":
-        ipTerminal = "143.205.84.105"
-
-    from django.db import connection
-    cur = connection.cursor()
-
-    # note aks_nummer column stores Terminal IP value in POI_LIST tabel
-    query_get_ter = "select st_asgeojson(st_pointonsurface(geom)), description, description_en, floor, aks_nummer " \
-                    "from geodata.poi_list where aks_nummer LIKE '{0}'".format(ipTerminal)
-
-    cur.execute(query_get_ter)
-    entrance = cur.fetchone()
-
-    # bring in format: [{lat: .. lon: ... routeNodeAttributes:{"name": ..., "name_de": ...}},....]
-    if entrance:
-        terminal_start = create_terminal_start_json(entrance)
-
-        return HttpResponse(terminal_start, content_type="application/json")
-    else:
-        # note aks_nummer column stores Terminal IP value in POI_LIST tabel
-        query_non_terminal_req = "SELECT st_asgeojson(st_pointonsurface(geom)), description, description_en, floor, aks_nummer " \
-                                 "FROM geodata.poi_list WHERE description = 'LC Eingang'"
-
-        cur.execute(query_non_terminal_req)
-        non_terminal_start_resp = cur.fetchone()
-        terminal_start = create_terminal_start_json(non_terminal_start_resp)
-
-        return HttpResponse(terminal_start, content_type="application/json")
+        # ipTerminal = "143.205.84.105"
+        ipTerminal = "137.208.92.84"
 
 
-#@jsonrpc_method('routeFromTerminal(q=dict) -> dict')
+    poi_qs = Poi.objects.filter(description=ipTerminal)
+
+    if poi_qs:
+        att = poi_qs.values()[0]
+
+        if att['geom']:
+            att['geom'] = None
+
+        centroid_res = Poi.objects.annotate(json=AsGeoJSON(Centroid('geom'))).get(
+            description=ipTerminal).json
+
+        res = Feature(geometry=json.loads(centroid_res), properties=att)
+
+        return Response(res)
+
 
 @api_view(['GET', ])
-def route_from_terminal(request, q):
-    if q is None:
-        return json.dumps({'myerror': 'q param is None !  why we dont know not good'})
+def route_from_terminal(request, destination_location):
+    if destination_location is None:
+        return json.dumps({'myerror': 'destination_location param is None !  why we dont know not good'})
     else:
 
-        searchType = q["searchCriteria"]["type"]
-        if searchType == "terminal":
-            # if searchType:
-            from django.db import connection
-            cur = connection.cursor()
+        terminal_data = get_terminal(request)
 
-            # terminal_ip = get_client_ip(request)
-            terminal_data = getPoiTerminalData(request)
+        start_d = terminal_data.data
+        start_floor = str(start_d['properties']['floor_num'])
+        start_coord_x = str(start_d['geometry']['coordinates'][0])
+        start_coord_y = str(start_d['geometry']['coordinates'][1])
 
-            if terminal_data:
-                terminal_dict = json.loads(terminal_data.content)
+        startin = start_coord_x + "," + start_coord_y + "," + start_floor
 
-                lon = q["lon"]
-                lat = q["lat"]
-                layer = q["layer"]
+        destination = search_wu.search_any(request, destination_location)
 
-                terminal_start = {"lat": terminal_dict["lat"], "lon": terminal_dict["lon"],
-                                  "layer": terminal_dict["layer"],
-                                  "routeNodeAttributes": {"name_de": terminal_dict["routeNodeAttributes"]["name_de"],
-                                                          "name_en": terminal_dict["routeNodeAttributes"]["name_en"],
-                                                          "layer": "0"}}
+        dest_d = destination.data
 
-                nodes = [{"lat": lat, "lon": lon, "layer": layer, "routeNodeAttributes": q["routeNodeAttributes"]},
-                         terminal_start]
-                qDict = {"disabled": False, "nodes": nodes}
-                # get frontoffice if needed
 
-                # logr.debug("your ip is : " + str(terminal_ip))
-                # logr.debug("your termain data is : " + str(terminal_data))
-                # logr.debug("your termain diction is : " + str(terminal_dict))
+        dest_floor = str(dest_d['searchResult'][0]['layer'])
+        dest_coord_x = str(dest_d['searchResult'][0]['centerGeometry']['coordinates'][0])
+        dest_coord_y = str(dest_d['searchResult'][0]['centerGeometry']['coordinates'][1])
 
-                #qDict2 = json.loads(getForcedMiddlePointIfExists(cur, qDict))
+        destin = dest_coord_x + "," + dest_coord_y + "," + dest_floor
 
-                #return json.dumps(qDict2)
-                return json.dumps(qDict)
-            else:
-                return json.dumps({'error': ' no terminal found do normal route'})
-        else:
-            return json.dumps(
-                {'error': ' search type NOT "terminal"  in string something went wacky hmm in route_from_terminal'})
+
+        final_q = destin + "&" + startin
+        pprint(final_q)
+
+        # print('/api/v1/directions/'+ fix_start_location + dest_coord + "," + dest_floor + "&0" )
+        url = 'http://localhost:8000/api/v1/directions/' + final_q + '&0'
+        route_to_book = requests.get(url)
+
+        return Response(route_to_book.json())
 
 
 @api_view(['GET'])
