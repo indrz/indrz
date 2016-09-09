@@ -1,6 +1,7 @@
 # search anything on campus
 import json
 import pprint
+import ast
 
 from django.http import HttpResponse
 import logging
@@ -195,21 +196,35 @@ def getAssignedEntrance(request, aks, layer):
     # search for strings and return a list of strings and coordinates
 
 
-def has_front_office(data):
+def has_front_office(orgid):
     """
 
     :param data:
     :return:
     """
-    if 'currentAffiliation'in data:
-        organization_id = data[0]['orgid']
-        bachOrgs = bach_calls.bach_get_organization_details(organization_id)
-        pprint.pprint(bachData)
 
-        if 'location' in bachOrgs:
-            front_office_external_id = bachOrgs['location']
+    from django.db import connection
+    cursor = connection.cursor()
 
-            return front_office_external_id
+    if orgid != None and orgid != "":
+        organization_details = bach_calls.bach_get_organization_details(orgid)
+        if organization_details != None and len(organization_details) > 0:
+            org_info = {"location": organization_details["location"],
+                        "name": organization_details["label"],
+                        "geom": None}
+
+            query_geo = """SELECT  st_asgeojson(st_PointOnSurface(geom)) AS center
+              FROM geodata.search_index_v
+              WHERE external_id = \'{0}\'""".format(organization_details["location"])
+
+            cursor.execute(query_geo)
+            geos = cursor.fetchone()
+
+            foo = ast.literal_eval(geos[0])
+
+            org_info.update({'geom': foo})
+
+            return org_info
     else:
         return None
 
@@ -260,7 +275,7 @@ def search_any(request, q):
     # extend d organisations and people data in one
     bachOrgs = bach_calls.bach_search_directory(searchString)
     bachData.extend(bachOrgs)
-    pprint.pprint(bachData)
+    # .pprint(bachData)
     # uncomment following for orgs without persons
     # if len(bachOrgs) > 0:
     #     for row in bachOrgs:
@@ -382,24 +397,25 @@ def search_any(request, q):
                         if roomcode_value == '':
                             roomcode_value = None
 
-                        frontoffice = ""
-                        if orgid != None and orgid != "":
-                            organization_details = bach_calls.bach_get_organization_details(orgid)
-                            if organization_details != None and len(organization_details) > 0:
-                                frontoffice = organization_details["location"]
+                        # front_office = ""
+                        front_office = has_front_office(orgid)
+                        # if orgid != None and orgid != "":
+                        #     organization_details = bach_calls.bach_get_organization_details(orgid)
+                        #     if organization_details != None and len(organization_details) > 0:
+                        #         frontoffice = organization_details["location"]
 
                         obj = {"name_de": name_de,
                                "name_en": name_en,
                                "roomcode_value": roomcode_value,
                                "type": repNoneWithEmpty(result[0][1]),
                                "external_id": repNoneWithEmpty(result[0][2]),
-                               "geometry": repNoneWithEmpty(result[0][3]),
-                               "centerGeometry": repNoneWithEmpty(result[0][4]),
+                               "geometry": ast.literal_eval(result[0][3]),
+                               "centerGeometry": ast.literal_eval(result[0][4]),
                                "layer": repNoneWithEmpty(int(result[0][5])),
                                "building": repNoneWithEmpty(result[0][6]),
                                "aks_nummer": repNoneWithEmpty(locationDict["location"]),
                                "orgid": repNoneWithEmpty(orgid),
-                               "frontoffice": repNoneWithEmpty(frontoffice),
+                               "frontoffice": front_office,
                                "category_de": repNoneWithEmpty(cat_de_encode),
                                "category_en": repNoneWithEmpty(cat_en_encode),
                                "src": "bach"
