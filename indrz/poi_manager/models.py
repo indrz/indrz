@@ -120,6 +120,7 @@ class Poi(models.Model):
     """
     name = models.CharField(max_length=255)
     floor_num = models.IntegerField(verbose_name=_("floor number"), null=True, blank=True)
+    description = models.CharField(verbose_name=_("description"), max_length=255, null=True, blank=True)
 
     # icon_class = models.CharField(max_length=255, blank=True, null=True)
     # connect to APP Buildings to enable floors for each POI per level ie floor

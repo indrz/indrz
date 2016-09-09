@@ -55,7 +55,7 @@ def import_poi(floor_abr):
 
             sel_spaces_new = """
                 SELECT  poi.description_en, poi.cat_main_en, poi.cat_sub_en, poi.icon_name_css, poi.sort_order,
-                    ST_MULTI(ST_TRANSFORM(poi.geom, 3857)) as geom
+                    ST_MULTI(ST_TRANSFORM(poi.geom, 3857)) as geom, poi.aks_nummer
                 FROM geodata.{0}poi AS poi,
                  geodata.buildings_buildingfloor AS floor
                  WHERE st_within(poi.geom,floor.geom)
@@ -83,6 +83,8 @@ def import_poi(floor_abr):
                     # print("room_name is : " + str(m_types))
                     m_geom = test_null(r[5])
 
+                    poi_descript = test_null(r[6])
+
 
                     sel_building_floor_id = """SELECT id, floor_num, fk_building_id from django.buildings_buildingfloor
                               WHERE floor_num = {0} and fk_building_id = {1}""".format(floor_level_txt, building_id)
@@ -101,9 +103,9 @@ def import_poi(floor_abr):
                             print("we have a problem houston")
 
                         insert_state = """INSERT INTO django.poi_manager_poi (name, floor_num, fk_building_floor_id,
-                                                      fk_campus_id, fk_building_id, fk_poi_category_id, geom)
-                                    VALUES (\'{0}\', \'{1}\', {2}, {3},\'{4}\',{5},\'{6}\'  )""".format(poi_name, floor_level_txt, m_floor_id_value,
-                                                                               1, building_id, 12, m_geom)
+                                                      fk_campus_id, fk_building_id, fk_poi_category_id, geom, description)
+                                    VALUES (\'{0}\', \'{1}\', {2}, {3},\'{4}\',{5},\'{6}\',\'{7}\'  )""".format(poi_name, floor_level_txt, m_floor_id_value,
+                                                                               1, building_id, 12, m_geom, poi_descript)
                         print(insert_state)
                         cur2.execute(insert_state)
                         conn2.commit()
