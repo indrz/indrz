@@ -8,33 +8,218 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-27 17:06+0200\n"
+"POT-Creation-Date: 2016-09-12 11:57+0200\n"
 "PO-Revision-Date: 2016-07-27 17:08+0200\n"
 "Last-Translator: b'  <>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.7.11\n"
 
+#: .\homepage\templates\homepage\indrz-popup.js:75
 #: .\maps\templates\maps\indrz-popup.js:62
 msgid "Building Name: "
 msgstr "Gebäudename: "
 
+#: .\homepage\templates\homepage\indrz-popup.js:88
 #: .\maps\templates\maps\indrz-popup.js:74
 msgid "Campus "
 msgstr "Campus"
+
+#: .\homepage\templates\homepage\indrz-popup.js:91
+#, fuzzy
+#| msgid "Floor Number "
+msgid "Floor Number: "
+msgstr "Stockwerk"
+
+#: .\homepage\templates\homepage\indrz-popup.js:97
+#: .\maps\templates\maps\indrz-popup.js:83
+msgid "Coordinate: "
+msgstr "Koordinate: "
+
+#: .\homepage\templates\homepage\indrz-popup.js:97
+#: .\maps\templates\maps\indrz-popup.js:83
+msgid "Bug Report"
+msgstr "Bug-Report"
+
+#: .\homepage\templates\homepage\indrzMapInit.js:14
+#: .\maps\templates\maps\indrzMapInit.js:13
+msgid "Background"
+msgstr ""
+
+#: .\homepage\templates\homepage\indrzMapInit.js:19
+#: .\maps\templates\maps\indrzMapInit.js:18
+msgid "Floor"
+msgstr ""
 
 #: .\maps\templates\maps\indrz-popup.js:77
 msgid "Floor Number "
 msgstr "Stockwerk"
 
-#: .\maps\templates\maps\indrz-popup.js:83
-msgid "Coordinate: "
-msgstr "Koordinate: "
+#: .\static\admin\js\SelectFilter2.js:47
+#, c-format
+msgid "Available %s"
+msgstr ""
 
-#: .\maps\templates\maps\indrz-popup.js:83
-msgid "Bug Report"
-msgstr "Bug-Report"
+#: .\static\admin\js\SelectFilter2.js:53
+#, c-format
+msgid "This is the list of available %s. You may choose some by "
+msgstr ""
+
+#: .\static\admin\js\SelectFilter2.js:69
+#, c-format
+msgid "Type into this box to filter down the list of available %s."
+msgstr ""
+
+#: .\static\admin\js\SelectFilter2.js:74
+msgid "Filter"
+msgstr ""
+
+#: .\static\admin\js\SelectFilter2.js:78
+msgid "Choose all"
+msgstr ""
+
+#: .\static\admin\js\SelectFilter2.js:78
+#, c-format
+msgid "Click to choose all %s at once."
+msgstr ""
+
+#: .\static\admin\js\SelectFilter2.js:84
+msgid "Choose"
+msgstr ""
+
+#: .\static\admin\js\SelectFilter2.js:86
+msgid "Remove"
+msgstr ""
+
+#: .\static\admin\js\SelectFilter2.js:92
+#, c-format
+msgid "Chosen %s"
+msgstr ""
+
+#: .\static\admin\js\SelectFilter2.js:98
+#, c-format
+msgid "This is the list of chosen %s. You may remove some by "
+msgstr ""
+
+#: .\static\admin\js\SelectFilter2.js:108
+msgid "Remove all"
+msgstr ""
+
+#: .\static\admin\js\SelectFilter2.js:108
+#, c-format
+msgid "Click to remove all chosen %s at once."
+msgstr ""
+
+#: .\static\admin\js\actions.js:47 .\static\admin\js\actions.min.js:2
+msgid "%(sel)s of %(cnt)s selected"
+msgid_plural "%(sel)s of %(cnt)s selected"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\static\admin\js\actions.js:116 .\static\admin\js\actions.min.js:4
+msgid ""
+"You have unsaved changes on individual editable fields. If you run an "
+"action, your unsaved changes will be lost."
+msgstr ""
+
+#: .\static\admin\js\actions.js:128 .\static\admin\js\actions.min.js:5
+msgid ""
+"You have selected an action, but you haven't saved your changes to "
+"individual fields yet. Please click OK to save. You'll need to re-run the "
+"action."
+msgstr ""
+
+#: .\static\admin\js\actions.js:130 .\static\admin\js\actions.min.js:5
+msgid ""
+"You have selected an action, and you haven't made any changes on individual "
+"fields. You're probably looking for the Go button rather than the Save "
+"button."
+msgstr ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:74
+#, c-format
+msgid "Note: You are %s hour ahead of server time."
+msgid_plural "Note: You are %s hours ahead of server time."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:82
+#, c-format
+msgid "Note: You are %s hour behind server time."
+msgid_plural "Note: You are %s hours behind server time."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:109
+#: .\static\admin\js\admin\DateTimeShortcuts.js:149
+msgid "Now"
+msgstr ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:116
+msgid "Choose a Time"
+msgstr ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:146
+msgid "Choose a time"
+msgstr ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:150
+msgid "Midnight"
+msgstr ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:151
+msgid "6 a.m."
+msgstr ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:152
+msgid "Noon"
+msgstr ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:153
+msgid "6 p.m."
+msgstr ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:157
+#: .\static\admin\js\admin\DateTimeShortcuts.js:281
+msgid "Cancel"
+msgstr ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:217
+#: .\static\admin\js\admin\DateTimeShortcuts.js:274
+msgid "Today"
+msgstr ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:224
+msgid "Choose a Date"
+msgstr ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:272
+msgid "Yesterday"
+msgstr ""
+
+#: .\static\admin\js\admin\DateTimeShortcuts.js:276
+msgid "Tomorrow"
+msgstr ""
+
+#: .\static\admin\js\calendar.js:11
+msgid ""
+"January February March April May June July August September October November "
+"December"
+msgstr ""
+
+#: .\static\admin\js\calendar.js:12
+msgid "S M T W T F S"
+msgstr ""
+
+#: .\static\admin\js\collapse.js:10 .\static\admin\js\collapse.js:21
+#: .\static\admin\js\collapse.min.js:1
+msgid "Show"
+msgstr ""
+
+#: .\static\admin\js\collapse.js:18 .\static\admin\js\collapse.min.js:1
+msgid "Hide"
+msgstr ""
