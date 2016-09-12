@@ -187,8 +187,17 @@ def get_room_center(request, big_pk):
 #         # return HttpResponseForbidden()
 #         raise PermissionDenied
 
-def wuAutoComplete(request):
-    searchString = request.GET["query"]
+@api_view(['GET'])
+def wuAutoComplete(request, search_text):
+    """
+    Example:
+    /autocomplete/Erste
+
+    :param request:
+    :return:
+    """
+    # searchString = request.GET["query"]
+    searchString = search_text
     if (searchString != None):
 
         items = []
@@ -247,4 +256,4 @@ def wuAutoComplete(request):
             if x not in output:
                 output.append(x)
         # return HttpResponse(request.GET["callback"] + "(" + json.dumps({'result': output}) + ")")
-        return HttpResponse(json.dumps({'result':items}))
+        return Response(items)
