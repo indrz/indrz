@@ -40,4 +40,3 @@ STATICFILES_DIRS += [
 MEDIA_URL = "/media/"
 MEDIA_ROOT = "/opt/django-proj/indrz_wu/media"
 UPLOAD_POI_DIR = MEDIA_ROOT + '/poi-icons/'
-
