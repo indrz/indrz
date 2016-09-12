@@ -11,3 +11,27 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+from django.contrib.gis.db import models
+from buildings.models import Building, Campus
+
+
+class Kiosk(models.Model):
+    name = models.CharField(verbose_name=_('name of kiosk'), max_length= 150, null=True, blank=True)
+    ip_address = models.IPAddressField(verbose_name=_('unique IP of the kiosk'), )
+    direction_angle = models.IntegerField(verbose_name=_('enter in degrees from 0 to 359 where 0 is north'), help_text="enter the direction a person is facing when standing and looking at the kiosk screen",
+                                           null=True, blank=True)
+    floor_num = models.IntegerField(verbose_name=_("floor number"), null=True, blank=True)
+    building = models.ForeignKey(Building, null=True, blank=True)
+    campus = models.ForeignKey(Campus)
+
+    geom = models.PointField(verbose_name=_('location of kiosk'), srid=3857, null=True, blank=True)
+
+    objects = models.GeoManager()
+
+    class Meta:
+        abstract = True
+        ordering = ['ip_address']
+
+    def __str__(self):
+        return str(self.name) or ''
