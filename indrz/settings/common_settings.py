@@ -46,8 +46,8 @@ INSTALLED_APPS = (
     'poi_manager',
     'landscape',
     'homepage',
-    'homepage.library'
-    #'homepage.kiosk',
+    'homepage.library',
+    'homepage.kiosk'
 
 )
 
