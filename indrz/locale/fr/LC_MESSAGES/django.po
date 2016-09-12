@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-21 13:37+0100\n"
+"POT-Creation-Date: 2016-09-12 11:51+0200\n"
 "PO-Revision-Date: 2016-07-15 13:03+0200\n"
 "Last-Translator: b'  <admin@admin.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.7.11\n"
 
@@ -27,232 +27,204 @@ msgstr "la valeur du code de"
 msgid "name value"
 msgstr "nom de la valeur"
 
-#: .\buildings\models.py:114 .\buildings\models.py:119
-msgid "Active meaning show it yes - no"
-msgstr "Active sens le montrer oui - non"
-
-#: .\buildings\models.py:115 .\buildings\models.py:120
-msgid "Priority of POI"
-msgstr "La priorité de POI"
-
-#: .\buildings\models.py:116 .\buildings\models.py:121
-msgid "Sort order in legend"
-msgstr "L'ordre de tri dans la légende"
-
-#: .\buildings\models.py:129
+#: .\buildings\models.py:117
 msgid "Street"
 msgstr "Rue"
 
-#: .\buildings\models.py:131
+#: .\buildings\models.py:119
 msgid "Building or house number"
 msgstr "Bâtiment ou de numéro de maison"
 
-#: .\buildings\models.py:133
+#: .\buildings\models.py:121
 msgid "Postal code"
 msgstr "Code Postal"
 
-#: .\buildings\models.py:135
+#: .\buildings\models.py:123
 msgid "Municipality"
 msgstr "Municipalité"
 
-#: .\buildings\models.py:138
+#: .\buildings\models.py:126
 msgid "City"
 msgstr "Ville"
 
-#: .\buildings\models.py:142
+#: .\buildings\models.py:130
 msgid "Country"
 msgstr "Pays"
 
-#: .\buildings\models.py:154 .\landscape\models.py:165
+#: .\buildings\models.py:142 .\landscape\models.py:165
 #: .\landscape\models.py:190
 msgid "Name"
 msgstr "Nom"
 
-#: .\buildings\models.py:155 .\landscape\models.py:168
-#: .\landscape\models.py:193 .\maps\map-models.py:16
+#: .\buildings\models.py:143 .\landscape\models.py:168
+#: .\landscape\models.py:193
 msgid "Description"
 msgstr "Description"
 
-#: .\buildings\models.py:156 .\landscape\models.py:169
+#: .\buildings\models.py:144 .\landscape\models.py:169
 #: .\landscape\models.py:194
 msgid "Brief description"
 msgstr "Brève description"
 
-#: .\buildings\models.py:157
+#: .\buildings\models.py:145 .\users\models.py:12
 msgid "Phone"
 msgstr "Téléphone"
 
-#: .\buildings\models.py:159
+#: .\buildings\models.py:147
 msgid "Email"
 msgstr "E-mail"
 
-#: .\buildings\models.py:161
+#: .\buildings\models.py:149
 msgid "Website"
 msgstr "Site web"
 
-#: .\buildings\models.py:167
+#: .\buildings\models.py:155
 msgid "Building centroid for small scale maps"
 msgstr ""
 "Construction de centre de gravité pour les petites cartes à l'échelle de"
 
-#: .\buildings\models.py:185
+#: .\buildings\models.py:173
 msgid "Owner name"
 msgstr "Le nom du propriétaire d'"
 
-#: .\buildings\models.py:186
-msgid "Legal entity form..gmbh, verein"
+#: .\buildings\models.py:174
+#, fuzzy
+#| msgid "Legal entity form..gmbh, verein"
+msgid "Legal entity form"
 msgstr "Formulaire d'entité légale..gmbh, verein"
 
-#: .\buildings\models.py:187
+#: .\buildings\models.py:175
 msgid "Number of buildings"
 msgstr "Nombre de bâtiments"
 
-#: .\buildings\models.py:201
+#: .\buildings\models.py:189
 msgid "Campus name"
 msgstr "Campus de nom"
 
-#: .\buildings\models.py:202 .\buildings\models.py:229
+#: .\buildings\models.py:190 .\buildings\models.py:217
 msgid "Building description"
 msgstr "Description du bâtiment"
 
-#: .\buildings\models.py:209
+#: .\buildings\models.py:197
 msgid "Campus area of one or more buildings"
 msgstr "Le Campus de la zone d'un ou de plusieurs bâtiments"
 
-#: .\buildings\models.py:222
+#: .\buildings\models.py:210
 msgid "Building name"
 msgstr "Le nom de l'immeuble"
 
-#: .\buildings\models.py:223
+#: .\buildings\models.py:211
 msgid "Building height in meters"
 msgstr "Hauteur du bâtiment en mètres"
 
-#: .\buildings\models.py:224
+#: .\buildings\models.py:212
 msgid "Fancy building name"
 msgstr "Fantaisie le nom de l'immeuble"
 
-#: .\buildings\models.py:225
+#: .\buildings\models.py:213
 msgid "Number of floors"
 msgstr "Nombre d'étages"
 
-#: .\buildings\models.py:226
+#: .\buildings\models.py:214
 msgid "Unique facility number"
 msgstr "Unique numéro de l'établissement"
 
-#: .\buildings\models.py:227
+#: .\buildings\models.py:215
 msgid "Operational hours"
 msgstr "Heures de fonctionnement"
 
-#: .\buildings\models.py:228
+#: .\buildings\models.py:216
 msgid "EPSG code original data"
 msgstr "Code EPSG de données d'origine"
 
-#: .\buildings\models.py:244
+#: .\buildings\models.py:232
 msgid "short name eg first floor"
 msgstr "le nom court de l'ex premier étage"
 
-#: .\buildings\models.py:245 .\buildings\models.py:273
-#: .\buildings\models.py:302 .\buildings\models.py:354
+#: .\buildings\models.py:233 .\buildings\models.py:262
+#: .\buildings\models.py:291
 msgid "long name"
 msgstr "nom long"
 
-#: .\buildings\models.py:246
+#: .\buildings\models.py:234
 msgid "special name"
 msgstr "nom spécial"
 
-#: .\buildings\models.py:248
+#: .\buildings\models.py:236
 msgid "Floor order value"
 msgstr "Plancher de la valeur de la commande"
 
-#: .\buildings\models.py:249
+#: .\buildings\models.py:237
 msgid "Elevation value of floor in meters"
 msgstr "Valeur de l'élévation du sol en mètres"
 
-#: .\buildings\models.py:251 .\buildings\models.py:276
-#: .\buildings\models.py:305 .\buildings\models.py:356 .\routing\models.py:58
+#: .\buildings\models.py:239 .\buildings\models.py:265
+#: .\buildings\models.py:294 .\homepage\kiosk\models.py:27
+#: .\poi_manager\models.py:122 .\routing\models.py:58
 msgid "floor number"
 msgstr "numéro de l'étage"
 
-#: .\buildings\models.py:252
+#: .\buildings\models.py:240
 msgid "height of floor"
 msgstr "hauteur de plancher"
 
-#: .\buildings\models.py:272 .\buildings\models.py:301
-#: .\buildings\models.py:353
+#: .\buildings\models.py:261 .\buildings\models.py:290
 msgid "short name"
 msgstr "nom court"
 
-#: .\buildings\models.py:274
+#: .\buildings\models.py:263
 msgid "gis calculated area"
 msgstr "sig calculé l'aire"
 
-#: .\buildings\models.py:275
+#: .\buildings\models.py:264
 msgid "gis calculated perimeter"
 msgstr "sig calculée à périmètre"
 
-#: .\buildings\models.py:304
+#: .\buildings\models.py:293
 msgid "gis calculated length"
 msgstr "sig longueur calculée"
 
-#: .\buildings\models.py:326
+#: .\buildings\models.py:315
 msgid "Organization name e.g Engineering"
 msgstr "Nom de l'organisation.e.g Ingénierie"
 
-#: .\buildings\models.py:327
+#: .\buildings\models.py:316
 msgid "Department name e.g Engineering"
 msgstr "Département nom de l'e.g Ingénierie"
 
-#: .\buildings\models.py:328
+#: .\buildings\models.py:317
 msgid "Division"
 msgstr "Division"
 
-#: .\buildings\models.py:336
+#: .\buildings\models.py:325
 msgid "Room id imported from external system"
 msgstr "Chambre id importées à partir d'un système externe"
 
-#: .\buildings\models.py:337
+#: .\buildings\models.py:326
 msgid "Room number"
 msgstr "Le numéro de la chambre"
 
-#: .\buildings\models.py:338
+#: .\buildings\models.py:327
 msgid "Room number on door sign"
 msgstr "Numéro de la pièce sur le panneau de porte"
 
-#: .\buildings\models.py:339
+#: .\buildings\models.py:328
 msgid "Room description"
 msgstr "Description de la chambre"
 
-#: .\buildings\models.py:340
+#: .\buildings\models.py:329
+#, fuzzy
+#| msgid "Postal code"
+msgid "Room code"
+msgstr "Code Postal"
+
+#: .\buildings\models.py:330
 msgid "Total number of occupants allowed in this space"
 msgstr "Nombre Total d'occupants autorisés dans cet espace"
 
-#: .\buildings\models.py:344
+#: .\buildings\models.py:334
 msgid "Tag values csv"
 msgstr "Les valeurs de balise csv"
-
-#: .\buildings\models.py:355 .\maps\map-models.py:53
-msgid "description"
-msgstr "description"
-
-#: .\buildings\models.py:358
-msgid "Force route to this location"
-msgstr "La Force de la route à cet endroit"
-
-#: .\buildings\models.py:359
-msgid "Activated and enabled"
-msgstr "Activé et activé"
-
-#: .\buildings\models.py:360
-msgid "Tree order in legend"
-msgstr "Arbre de commande dans la légende"
-
-#: .\buildings\models.py:361
-msgid "Sort oder of POI items"
-msgstr "Trier oder de POI éléments"
-
-#: .\buildings\models.py:362
-msgid "Icon CSS name"
-msgstr "Icône nom CSS"
 
 #: .\conference\models.py:12
 msgid "name of conference"
@@ -294,6 +266,258 @@ msgstr "numéro de stand externes"
 msgid "type of stand"
 msgstr "type de support"
 
+#: .\homepage\kiosk\models.py:21
+#, fuzzy
+#| msgid "name of hall"
+msgid "name of kiosk"
+msgstr "nom de la salle"
+
+#: .\homepage\kiosk\models.py:22
+msgid "unique IP of the kiosk"
+msgstr ""
+
+#: .\homepage\kiosk\models.py:23
+msgid "enter in degrees from 0 to 359 where 0 is north"
+msgstr ""
+
+#: .\homepage\kiosk\models.py:31
+msgid "location of kiosk"
+msgstr ""
+
+#: .\homepage\kiosk\templates\kiosk.html:27 .\homepage\templates\map.html:27
+#: .\maps\templates\map.html:27
+#, fuzzy
+#| msgid "Toggle sorting"
+msgid "Toggle search form"
+msgstr "La bascule de tri"
+
+#: .\homepage\old-site\django-www\django\templates\admin\index.html:19
+#, fuzzy, python-format
+#| msgid "Models in the %(name)s application"
+msgid "Models available in the %(name)s application."
+msgstr "Modèles dans l' %(name)s de l'application"
+
+#: .\homepage\old-site\django-www\django\templates\admin\index.html:20
+#, fuzzy, python-format
+#| msgid "Add %(name)s"
+msgid "%(name)s"
+msgstr "Ajouter %(name)s"
+
+#: .\homepage\old-site\django-www\django\templates\admin\index.html:30
+#: .\templates\admin\change_form.html:21 .\templates\admin\index.html:31
+#: .\templates\admin\related_widget_wrapper.html:18
+msgid "Add"
+msgstr "Ajouter"
+
+#: .\homepage\old-site\django-www\django\templates\admin\index.html:36
+#: .\templates\admin\edit_inline\stacked.html:8
+#: .\templates\admin\edit_inline\tabular.html:31
+#: .\templates\admin\index.html:37
+#: .\templates\admin\related_widget_wrapper.html:10
+msgid "Change"
+msgstr "Changement"
+
+#: .\homepage\old-site\django-www\django\templates\admin\index.html:46
+#: .\homepage\old-site\django-www\django\templates\admin\index.html:63
+#: .\templates\admin\index.html:47
+msgid "You don't have permission to edit anything."
+msgstr "Vous n'avez pas la permission de modifier quoi que ce soit."
+
+#: .\homepage\old-site\django-www\django\templates\admin\index.html:73
+#: .\templates\admin\index.html:55
+msgid "Recent Actions"
+msgstr "Dernières Actions"
+
+#: .\homepage\old-site\django-www\django\templates\admin\index.html:74
+#: .\templates\admin\index.html:56
+msgid "My Actions"
+msgstr "Mes Actions"
+
+#: .\homepage\old-site\django-www\django\templates\admin\index.html:78
+#: .\templates\admin\index.html:60
+msgid "None available"
+msgstr "Aucun n'est disponible"
+
+#: .\homepage\old-site\django-www\django\templates\admin\index.html:92
+#: .\templates\admin\index.html:74
+msgid "Unknown content"
+msgstr "Contenu inconnu"
+
+#: .\homepage\templates\includes\change_lang_form.html:16
+#: .\maps\templates\includes\change_lang_form.html:16
+#, fuzzy
+#| msgid "Language"
+msgid "Change language"
+msgstr "Langue"
+
+#: .\homepage\templates\modal-bugreport.html:9
+#: .\maps\templates\modal-bugreport.html:9
+msgid "Bug Report"
+msgstr "Rapport De Bug"
+
+#: .\homepage\templates\modal-bugreport.html:12
+#: .\maps\templates\modal-bugreport.html:12
+msgid "Please describe what went wrong."
+msgstr "Veuillez décrire ce qui s'est passé."
+
+#: .\homepage\templates\modal-bugreport.html:15
+#: .\homepage\templates\modal-share.html:21
+#: .\homepage\templates\modal-share.html:46
+#: .\homepage\templates\modal-share.html:71
+#: .\maps\templates\modal-bugreport.html:15
+#: .\maps\templates\modal-share.html:21 .\maps\templates\modal-share.html:46
+#: .\maps\templates\modal-share.html:71
+msgid "Close"
+msgstr "Fermer"
+
+#: .\homepage\templates\modal-bugreport.html:16
+#: .\maps\templates\modal-bugreport.html:16
+msgid "Send"
+msgstr "Envoyer"
+
+#: .\homepage\templates\modal-share.html:9 .\maps\templates\modal-share.html:9
+msgid "Share map"
+msgstr "Partager la carte"
+
+#: .\homepage\templates\modal-share.html:20
+#: .\homepage\templates\modal-share.html:45
+#: .\homepage\templates\modal-share.html:70
+#: .\maps\templates\modal-share.html:20 .\maps\templates\modal-share.html:45
+#: .\maps\templates\modal-share.html:70
+msgid "Simply copy"
+msgstr "Il suffit de copier"
+
+#: .\homepage\templates\modal-share.html:20
+#: .\homepage\templates\modal-share.html:45
+#: .\homepage\templates\modal-share.html:70
+#: .\maps\templates\modal-share.html:20 .\maps\templates\modal-share.html:45
+#: .\maps\templates\modal-share.html:70
+msgid "CTRL + c"
+msgstr "CTRL + c"
+
+#: .\homepage\templates\modal-share.html:20
+#: .\homepage\templates\modal-share.html:45
+#: .\homepage\templates\modal-share.html:70
+#: .\maps\templates\modal-share.html:20 .\maps\templates\modal-share.html:45
+#: .\maps\templates\modal-share.html:70
+msgid "then paste"
+msgstr "puis coller"
+
+#: .\homepage\templates\modal-share.html:20
+#: .\homepage\templates\modal-share.html:45
+#: .\homepage\templates\modal-share.html:70
+#: .\maps\templates\modal-share.html:20 .\maps\templates\modal-share.html:45
+#: .\maps\templates\modal-share.html:70
+msgid "CTRL + v"
+msgstr "CTRL + v"
+
+#: .\homepage\templates\modal-share.html:20
+#: .\homepage\templates\modal-share.html:45
+#: .\homepage\templates\modal-share.html:70
+#: .\maps\templates\modal-share.html:20 .\maps\templates\modal-share.html:45
+#: .\maps\templates\modal-share.html:70
+msgid "in your browser"
+msgstr "dans votre navigateur"
+
+#: .\homepage\templates\modal-share.html:35
+#: .\maps\templates\modal-share.html:35
+msgid "Share search results"
+msgstr "Partager les résultats de recherche"
+
+#: .\homepage\templates\modal-share.html:60
+#: .\maps\templates\modal-share.html:60
+msgid "Share route results"
+msgstr "Partager la route des résultats"
+
+#: .\homepage\templates\navbar-top.html:19
+#: .\homepage\templates\navbar-top.html:75 .\maps\templates\navbar-top.html:19
+#: .\maps\templates\navbar-top.html:75
+msgid "GIT Source"
+msgstr "Source de GIT"
+
+#: .\homepage\templates\navbar-top.html:58 .\maps\templates\navbar-top.html:58
+msgid "Floor"
+msgstr "Étage"
+
+#: .\homepage\templates\navbar-top.html:61 .\maps\templates\navbar-top.html:61
+msgid "Etage 3"
+msgstr "Etage 3"
+
+#: .\homepage\templates\navbar-top.html:63 .\maps\templates\navbar-top.html:63
+msgid "Etage 2"
+msgstr "Etage 2"
+
+#: .\homepage\templates\navbar-top.html:65 .\maps\templates\navbar-top.html:65
+msgid "Etage 1"
+msgstr "Etage 1"
+
+#: .\homepage\templates\navbar-top.html:67 .\maps\templates\navbar-top.html:67
+msgid "Etage 0"
+msgstr "Etage 0"
+
+#: .\homepage\templates\navbar-top.html:69 .\maps\templates\navbar-top.html:69
+msgid "Etage -1"
+msgstr "Etage -1"
+
+#: .\homepage\templates\routing-form.html:22
+#: .\maps\templates\routing-form.html:22
+msgid "Standard Route"
+msgstr "Route Standard"
+
+#: .\homepage\templates\routing-form.html:28
+#: .\maps\templates\routing-form.html:28
+msgid "Barrier Free Route"
+msgstr "Sans Obstacle De La Route"
+
+#: .\homepage\templates\routing-form.html:31
+#: .\maps\templates\routing-form.html:31
+msgid "Go !"
+msgstr "Allez !"
+
+#: .\homepage\templates\search-form.html:8 .\maps\templates\search-form.html:8
+msgid "Search for ..."
+msgstr "Recherche pour ..."
+
+#: .\homepage\templates\search-form.html:12
+#: .\maps\templates\search-form.html:12
+msgid "Go!"
+msgstr "Allez!"
+
+#: .\homepage\templates\search-form.html:20
+#: .\maps\templates\search-form.html:20
+msgid "Share"
+msgstr "Partager"
+
+#: .\homepage\templates\search-form.html:22
+#: .\maps\templates\search-form.html:22
+msgid "GPS"
+msgstr "GPS"
+
+#: .\homepage\templates\search-form.html:25
+#: .\maps\templates\search-form.html:25
+msgid "Directions"
+msgstr "Les Directions"
+
+#: .\homepage\templates\search-form.html:26
+#: .\maps\templates\search-form.html:26
+msgid "Print"
+msgstr ""
+
+#: .\homepage\templates\search-form.html:28
+#: .\maps\templates\search-form.html:28
+msgid "Clear"
+msgstr "Claire"
+
+#: .\homepage\templates\search-form.html:32
+#: .\maps\templates\search-form.html:32
+msgid "Info"
+msgstr "Info"
+
+#: .\homepage\templates\search-form.html:34
+#: .\maps\templates\search-form.html:34
+msgid "Report Bug"
+msgstr "Rapport De Bug"
+
 #: .\landscape\models.py:174
 msgid "Geometry multi-polygon outside facility areas"
 msgstr "La géométrie multi-polygone installation à l'extérieur des zones"
@@ -307,212 +531,214 @@ msgstr ""
 msgid "Geometry multi-linestrings pavement lines"
 msgstr "La géométrie multi-éléments linestring chaussée lignes"
 
-#: .\maps\map-models.py:26
-msgid "style name"
-msgstr "nom du style"
+#: .\permissions\permissions.py:22 .\permissions\permissions.py:28
+#: .\permissions\permissions.py:39
+#, fuzzy
+#| msgid "View on site"
+msgid "View organization"
+msgstr "Vue sur le site"
 
-#: .\maps\map-models.py:52 .\maps\map-models.py:103 .\maps\map-models.py:125
-msgid "name"
-msgstr "nom"
+#: .\permissions\permissions.py:23 .\permissions\permissions.py:29
+msgid "View organization map"
+msgstr ""
 
-#: .\maps\map-models.py:54
-msgid "projection"
-msgstr "projection"
+#: .\permissions\permissions.py:30
+msgid "Request membership"
+msgstr ""
 
-#: .\maps\map-models.py:55
-msgid "map thumbnail"
-msgstr "carte miniature"
+#: .\permissions\permissions.py:31
+msgid "Add map to organization"
+msgstr ""
 
-#: .\maps\map-models.py:61
-msgid "zoom"
-msgstr "zoom"
+#: .\permissions\permissions.py:32
+msgid "Add comments to organization"
+msgstr ""
 
-#: .\maps\map-models.py:62
-msgid "locate"
-msgstr "localiser"
+#: .\permissions\permissions.py:33
+msgid "Add comments to map"
+msgstr ""
 
-#: .\maps\map-models.py:62
-msgid "Locate user on load?"
-msgstr "Localiser l'utilisateur sur la charge?"
+#: .\permissions\permissions.py:34 .\permissions\permissions.py:57
+msgid "Modify organization"
+msgstr ""
 
-#: .\maps\map-models.py:67
-msgid "background"
-msgstr "arrière-plan"
+#: .\permissions\permissions.py:35
+msgid "Modify map"
+msgstr ""
 
-#: .\maps\map-models.py:96
-msgid "Map"
-msgstr "Carte"
+#: .\permissions\permissions.py:41
+msgid "View map "
+msgstr ""
 
-#: .\maps\map-models.py:97
-msgid "Maps"
-msgstr "Cartes"
+#: .\permissions\permissions.py:42
+msgid "Add map "
+msgstr ""
 
-#: .\maps\map-models.py:99
-msgid "Can view the map"
-msgstr "Pouvez afficher la carte"
+#: .\permissions\permissions.py:43
+msgid "Modify map map"
+msgstr ""
 
-#: .\maps\map-models.py:104
-msgid "name for a group of layers"
-msgstr "nom pour un groupe de calques"
+#: .\permissions\permissions.py:44
+#, fuzzy
+#| msgid "Delete all Features"
+msgid "Delete map map"
+msgstr "Supprimer toutes les Fonctionnalités"
 
-#: .\maps\map-models.py:106 .\maps\map-models.py:151
-msgid "opacity"
-msgstr "l'opacité"
+#: .\permissions\permissions.py:46
+#, fuzzy
+#| msgid "View site"
+msgid "View layer"
+msgstr "Voir le site"
 
-#: .\maps\map-models.py:107
-msgid "visibility"
-msgstr "visibilité"
+#: .\permissions\permissions.py:47
+msgid "Add layer"
+msgstr ""
 
-#: .\maps\map-models.py:108 .\maps\map-models.py:153
-msgid "stack order"
-msgstr "ordre de la pile"
+#: .\permissions\permissions.py:48
+msgid "Modify layer"
+msgstr ""
 
-#: .\maps\map-models.py:121
-msgid "Can view the map layer"
-msgstr "Pouvez consulter la carte de la couche"
+#: .\permissions\permissions.py:50
+#, fuzzy
+#| msgid "Number of buildings"
+msgid "View building"
+msgstr "Nombre de bâtiments"
 
-#: .\maps\map-models.py:128
-msgid "URL template using OSM tile format"
-msgstr "Modèle d'URL à l'aide de l'OSM, le format de tuile"
+#: .\permissions\permissions.py:51
+msgid "Add building"
+msgstr ""
 
-#: .\maps\map-models.py:136
-msgid "Order of the tilelayers in the edit box"
-msgstr "L'ordre de la tilelayers dans la zone d'édition"
+#: .\permissions\permissions.py:52
+#, fuzzy
+#| msgid "Number of buildings"
+msgid "Modify building"
+msgstr "Nombre de bâtiments"
 
-#: .\maps\map-models.py:141
-msgid "Can view the tilelayer"
-msgstr "Peut afficher les tilelayer"
+#: .\permissions\permissions.py:58
+msgid "Add member"
+msgstr ""
 
-#: .\maps\map-models.py:152
-msgid "Visibility"
-msgstr "Visibilité"
+#: .\permissions\permissions.py:59
+#, fuzzy
+#| msgid "Remove"
+msgid "Remove member"
+msgstr "Supprimer"
 
-#: .\maps\templates\base-map.html:52 .\maps\templates\base-map.html.py:103
-msgid "GIT Source"
-msgstr "Source de GIT"
+#: .\permissions\permissions.py:60
+msgid "Delete organization"
+msgstr ""
 
-#: .\maps\templates\base-map.html:92
-msgid "Floor"
-msgstr "Étage"
+#: .\permissions\permissions.py:61
+msgid "Admin organization values"
+msgstr ""
 
-#: .\maps\templates\base-map.html:94
-msgid "Etage 3"
-msgstr "Etage 3"
+#: .\permissions\permissions.py:62
+msgid "Admin roles"
+msgstr ""
 
-#: .\maps\templates\base-map.html:95
-msgid "Etage 2"
-msgstr "Etage 2"
+#: .\poi_manager\models.py:50
+msgid "Name of map icon"
+msgstr ""
 
-#: .\maps\templates\base-map.html:96
-msgid "Etage 1"
-msgstr "Etage 1"
+#: .\poi_manager\models.py:52
+msgid "Poi icon image"
+msgstr ""
 
-#: .\maps\templates\base-map.html:97
-msgid "Etage 0"
-msgstr "Etage 0"
+#: .\poi_manager\models.py:61
+msgid "Pictogram"
+msgstr ""
 
-#: .\maps\templates\base-map.html:98
-msgid "Etage -1"
-msgstr "Etage -1"
+#: .\poi_manager\models.py:92
+#, fuzzy
+#| msgid "Owner name"
+msgid "Category name"
+msgstr "Le nom du propriétaire d'"
 
-#: .\maps\templates\modal-bugreport.html:9
-msgid "Bug Report"
-msgstr "Rapport De Bug"
+#: .\poi_manager\models.py:93
+msgid "Icon CSS name"
+msgstr "Icône nom CSS"
 
-#: .\maps\templates\modal-bugreport.html:12
-msgid "Please describe what went wrong."
-msgstr "Veuillez décrire ce qui s'est passé."
+#: .\poi_manager\models.py:95 .\poi_manager\models.py:123
+msgid "description"
+msgstr "description"
 
-#: .\maps\templates\modal-bugreport.html:15
-#: .\maps\templates\modal-share.html:16 .\maps\templates\modal-share.html:37
-#: .\maps\templates\modal-share.html:59
-msgid "Close"
-msgstr "Fermer"
+#: .\poi_manager\models.py:97
+msgid "Force route to this location"
+msgstr "La Force de la route à cet endroit"
 
-#: .\maps\templates\modal-bugreport.html:16
-msgid "Send"
-msgstr "Envoyer"
+#: .\poi_manager\models.py:98
+msgid "Activated and enabled"
+msgstr "Activé et activé"
 
-#: .\maps\templates\modal-share.html:9
-msgid "Share map"
-msgstr "Partager la carte"
+#: .\poi_manager\models.py:99
+msgid "Tree order in legend"
+msgstr "Arbre de commande dans la légende"
 
-#: .\maps\templates\modal-share.html:15
-msgid "Simply copy"
-msgstr "Il suffit de copier"
+#: .\poi_manager\models.py:100
+msgid "Sort oder of POI items"
+msgstr "Trier oder de POI éléments"
 
-#: .\maps\templates\modal-share.html:15
-msgid "CTRL + c"
-msgstr "CTRL + c"
+#: .\poi_manager\templatetags\mptt_tags.py:31
+#, python-format
+msgid "full_tree_for_model tag was given an invalid model: %s"
+msgstr ""
 
-#: .\maps\templates\modal-share.html:15
-msgid "then paste"
-msgstr "puis coller"
+#: .\poi_manager\templatetags\mptt_tags.py:55
+#, python-format
+msgid "drilldown_tree_for_node tag was given an invalid model: %s"
+msgstr ""
 
-#: .\maps\templates\modal-share.html:15
-msgid "CTRL + v"
-msgstr "CTRL + v"
+#: .\poi_manager\templatetags\mptt_tags.py:62
+#, python-format
+msgid "drilldown_tree_for_node tag was given an invalid model field: %s"
+msgstr ""
 
-#: .\maps\templates\modal-share.html:15
-msgid "in your browser"
-msgstr "dans votre navigateur"
+#: .\poi_manager\templatetags\mptt_tags.py:89
+#, python-format
+msgid "%s tag requires three arguments"
+msgstr ""
 
-#: .\maps\templates\modal-share.html:30
-msgid "Share search results"
-msgstr "Partager les résultats de recherche"
+#: .\poi_manager\templatetags\mptt_tags.py:91
+#: .\poi_manager\templatetags\mptt_tags.py:146
+#, python-format
+msgid "second argument to %s tag must be 'as'"
+msgstr ""
 
-#: .\maps\templates\modal-share.html:38 .\maps\templates\modal-share.html:60
-#: .\maps\templates\search-form.html:17
-msgid "Share"
-msgstr "Partager"
+#: .\poi_manager\templatetags\mptt_tags.py:143
+#, python-format
+msgid "%s tag requires either three, seven or eight arguments"
+msgstr ""
 
-#: .\maps\templates\modal-share.html:52
-msgid "Share route results"
-msgstr "Partager la route des résultats"
+#: .\poi_manager\templatetags\mptt_tags.py:150
+#, python-format
+msgid "if seven arguments are given, fourth argument to %s tag must be 'with'"
+msgstr ""
 
-#: .\maps\templates\routing-form.html:22
-msgid "Standard Route"
-msgstr "Route Standard"
+#: .\poi_manager\templatetags\mptt_tags.py:154
+#, python-format
+msgid "if seven arguments are given, sixth argument to %s tag must be 'in'"
+msgstr ""
 
-#: .\maps\templates\routing-form.html:28
-msgid "Barrier Free Route"
-msgstr "Sans Obstacle De La Route"
+#: .\poi_manager\templatetags\mptt_tags.py:160
+#, python-format
+msgid ""
+"if eight arguments are given, fourth argument to %s tag must be 'cumulative'"
+msgstr ""
 
-#: .\maps\templates\routing-form.html:31
-msgid "Go !"
-msgstr "Allez !"
+#: .\poi_manager\templatetags\mptt_tags.py:164
+#, python-format
+msgid "if eight arguments are given, fifth argument to %s tag must be 'count'"
+msgstr ""
 
-#: .\maps\templates\search-form.html:8
-msgid "Search for ..."
-msgstr "Recherche pour ..."
+#: .\poi_manager\templatetags\mptt_tags.py:168
+#, python-format
+msgid "if eight arguments are given, seventh argument to %s tag must be 'in'"
+msgstr ""
 
-#: .\maps\templates\search-form.html:12
-msgid "Go!"
-msgstr "Allez!"
-
-#: .\maps\templates\search-form.html:19
-msgid "GPS"
-msgstr "GPS"
-
-#: .\maps\templates\search-form.html:20
-msgid "Language"
-msgstr "Langue"
-
-#: .\maps\templates\search-form.html:21
-msgid "Directions"
-msgstr "Les Directions"
-
-#: .\maps\templates\search-form.html:22
-msgid "Clear"
-msgstr "Claire"
-
-#: .\maps\templates\search-form.html:26
-msgid "Info"
-msgstr "Info"
-
-#: .\maps\templates\search-form.html:28
-msgid "Report Bug"
-msgstr "Rapport De Bug"
+#: .\poi_manager\templatetags\mptt_tags.py:287
+#, python-format
+msgid "%s tag requires a queryset"
+msgstr ""
 
 #: .\routing\models.py:23
 msgid "Indoor way"
@@ -638,7 +864,7 @@ msgstr "Type de réseau type de chemin de"
 msgid "Routing access type"
 msgstr "De routage de type d'accès"
 
-#: .\templates\admin\404.html:4 .\templates\admin\404.html.py:8
+#: .\templates\admin\404.html:4 .\templates\admin\404.html:8
 msgid "Page not found"
 msgstr "Page non trouvée"
 
@@ -674,8 +900,8 @@ msgid ""
 "There's been an error. It's been reported to the site administrators via "
 "email and should be fixed shortly. Thanks for your patience."
 msgstr ""
-"Il y a eu une erreur. Il a été rapporté pour les administrateurs du site par"
-" e-mail et devrait être corrigé sous peu. Merci pour votre patience."
+"Il y a eu une erreur. Il a été rapporté pour les administrateurs du site par "
+"e-mail et devrait être corrigé sous peu. Merci pour votre patience."
 
 #: .\templates\admin\actions.html:4
 msgid "Run the selected action"
@@ -691,19 +917,16 @@ msgstr "Cliquez ici pour sélectionner les objets à travers toutes les pages"
 
 #: .\templates\admin\actions.html:11
 #, python-format
-msgid "Select all %(total_count)s %(module_name)s"
-msgstr "Sélectionnez tous %(total_count)s %(nom du module)s"
+msgid "Select all "
+msgstr "Sélectionnez tous "
 
 #: .\templates\admin\actions.html:13
 msgid "Clear selection"
 msgstr "Effacer la sélection"
 
 #: .\templates\admin\auth\user\add_form.html:6
-msgid ""
-"First, enter a username and password. Then, you'll be able to edit more user"
-" options."
-msgstr ""
-"Tout d'abord, saisissez un nom d'utilisateur et mot de passe. Ensuite, vous "
+msgid "First, enter a username and password. Then, you'll be able to edit more user options. "
+msgstr "Tout d'abord, saisissez un nom d'utilisateur et mot de passe. Ensuite, vous "
 "serez en mesure de modifier plusieurs options de l'utilisateur."
 
 #: .\templates\admin\auth\user\add_form.html:8
@@ -732,8 +955,8 @@ msgstr "Veuillez corriger les erreurs ci-dessous."
 #, python-format
 msgid "Enter a new password for the user <strong>%(username)s</strong>."
 msgstr ""
-"Entrez un nouveau mot de passe pour l'utilisateur "
-"<strong>%(username)s</strong>."
+"Entrez un nouveau mot de passe pour l'utilisateur <strong>%(username)s</"
+"strong>."
 
 #: .\templates\admin\base.html:32
 msgid "Welcome,"
@@ -758,11 +981,6 @@ msgstr "Le site d'administration de Django"
 #: .\templates\admin\base_site.html:6
 msgid "Django administration"
 msgstr "Django administration"
-
-#: .\templates\admin\change_form.html:21 .\templates\admin\index.html:31
-#: .\templates\admin\related_widget_wrapper.html:18
-msgid "Add"
-msgstr "Ajouter"
 
 #: .\templates\admin\change_form.html:33
 #: .\templates\admin\object_history.html:10
@@ -817,8 +1035,8 @@ msgstr ""
 #: .\templates\admin\delete_confirmation.html:25
 #, python-format
 msgid ""
-"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the"
-" following protected related objects:"
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
+"following protected related objects:"
 msgstr ""
 "La suppression de l' %(object_name)s '%(escaped_object)s' nécessiterait la "
 "suppression de la protégée d'objets liés:"
@@ -830,8 +1048,7 @@ msgid ""
 "All of the following related items will be deleted:"
 msgstr ""
 "Êtes-vous sûr de vouloir supprimer l' %(object_name)s</code> "
-"\"%(escaped_object)s\"? Tous les éléments connexes suivants seront "
-"supprimés:"
+"\"%(escaped_object)s\"? Tous les éléments connexes suivants seront supprimés:"
 
 #: .\templates\admin\delete_confirmation.html:34
 #: .\templates\admin\delete_selected_confirmation.html:33
@@ -878,15 +1095,8 @@ msgid ""
 "Are you sure you want to delete the selected %(objects_name)s? All of the "
 "following objects and their related items will be deleted:"
 msgstr ""
-"Êtes-vous sûr de vouloir supprimer l'sélectionnée %(objects_name)s? Tous les"
-" objets suivants et de leurs éléments seront supprimés:"
-
-#: .\templates\admin\edit_inline\stacked.html:8
-#: .\templates\admin\edit_inline\tabular.html:31
-#: .\templates\admin\index.html:37
-#: .\templates\admin\related_widget_wrapper.html:10
-msgid "Change"
-msgstr "Changement"
+"Êtes-vous sûr de vouloir supprimer l'sélectionnée %(objects_name)s? Tous les "
+"objets suivants et de leurs éléments seront supprimés:"
 
 #: .\templates\admin\edit_inline\stacked.html:27
 #: .\templates\admin\edit_inline\tabular.html:81
@@ -917,31 +1127,11 @@ msgstr "Résumé"
 msgid "Models in the %(name)s application"
 msgstr "Modèles dans l' %(name)s de l'application"
 
-#: .\templates\admin\index.html:47
-msgid "You don't have permission to edit anything."
-msgstr "Vous n'avez pas la permission de modifier quoi que ce soit."
-
-#: .\templates\admin\index.html:55
-msgid "Recent Actions"
-msgstr "Dernières Actions"
-
-#: .\templates\admin\index.html:56
-msgid "My Actions"
-msgstr "Mes Actions"
-
-#: .\templates\admin\index.html:60
-msgid "None available"
-msgstr "Aucun n'est disponible"
-
-#: .\templates\admin\index.html:74
-msgid "Unknown content"
-msgstr "Contenu inconnu"
-
 #: .\templates\admin\invalid_setup.html:12
 msgid ""
-"Something's wrong with your database installation. Make sure the appropriate"
-" database tables have been created, and make sure the database is readable "
-"by the appropriate user."
+"Something's wrong with your database installation. Make sure the appropriate "
+"database tables have been created, and make sure the database is readable by "
+"the appropriate user."
 msgstr ""
 "Quelque chose ne va pas avec votre installation de base de données. Assurez-"
 "vous que la base de données les tables ont été créées, et assurez-vous que "
@@ -969,8 +1159,8 @@ msgstr "Action"
 
 #: .\templates\admin\object_history.html:38
 msgid ""
-"This object doesn't have a change history. It probably wasn't added via this"
-" admin site."
+"This object doesn't have a change history. It probably wasn't added via this "
+"admin site."
 msgstr ""
 "Cet objet n'ont pas de changer l'histoire. Il n'était probablement pas "
 "ajoutés par le biais de ce site d'administration."
@@ -1041,3 +1231,72 @@ msgstr "Google Maps via GeoDjango"
 #: .\templates\gis\openlayers.html:19
 msgid "Debugging window (serialized value)"
 msgstr "Fenêtre de débogage (sérialisé valeur)"
+
+#~ msgid "Active meaning show it yes - no"
+#~ msgstr "Active sens le montrer oui - non"
+
+#~ msgid "Priority of POI"
+#~ msgstr "La priorité de POI"
+
+#~ msgid "Sort order in legend"
+#~ msgstr "L'ordre de tri dans la légende"
+
+#~ msgid "style name"
+#~ msgstr "nom du style"
+
+#~ msgid "name"
+#~ msgstr "nom"
+
+#~ msgid "projection"
+#~ msgstr "projection"
+
+#~ msgid "map thumbnail"
+#~ msgstr "carte miniature"
+
+#~ msgid "zoom"
+#~ msgstr "zoom"
+
+#~ msgid "locate"
+#~ msgstr "localiser"
+
+#~ msgid "Locate user on load?"
+#~ msgstr "Localiser l'utilisateur sur la charge?"
+
+#~ msgid "background"
+#~ msgstr "arrière-plan"
+
+#~ msgid "Map"
+#~ msgstr "Carte"
+
+#~ msgid "Maps"
+#~ msgstr "Cartes"
+
+#~ msgid "Can view the map"
+#~ msgstr "Pouvez afficher la carte"
+
+#~ msgid "name for a group of layers"
+#~ msgstr "nom pour un groupe de calques"
+
+#~ msgid "opacity"
+#~ msgstr "l'opacité"
+
+#~ msgid "visibility"
+#~ msgstr "visibilité"
+
+#~ msgid "stack order"
+#~ msgstr "ordre de la pile"
+
+#~ msgid "Can view the map layer"
+#~ msgstr "Pouvez consulter la carte de la couche"
+
+#~ msgid "URL template using OSM tile format"
+#~ msgstr "Modèle d'URL à l'aide de l'OSM, le format de tuile"
+
+#~ msgid "Order of the tilelayers in the edit box"
+#~ msgstr "L'ordre de la tilelayers dans la zone d'édition"
+
+#~ msgid "Can view the tilelayer"
+#~ msgstr "Peut afficher les tilelayer"
+
+#~ msgid "Visibility"
+#~ msgstr "Visibilité"
