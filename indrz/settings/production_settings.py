@@ -3,7 +3,7 @@ import os
 from .common_settings import *
 
 
-ALLOWED_HOSTS = ['indrz', 'api.indrz.com', ]
+ALLOWED_HOSTS = ['campus.wu.ac.at', 'gis-neu.ac.at', ]
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -19,7 +19,7 @@ DATABASES = {
         'NAME': 'indrz-wu', # DB name Redhat live server
         'USER': secret_settings.db_user, # DB user name
         'PASSWORD': secret_settings.db_pwd, # DB user password
-        'HOST': 'gis-neu.wu.ac.at',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -30,9 +30,14 @@ WU_IP_STARTSWITH = "137.208."
 LOCALHOST_URL = "http://campus.wu.ac.at/"
 
 
-STATIC_ROOT = "/var/www/vhosts/www.indrz.com/static/"
+STATIC_ROOT = "/opt/django-proj/indrz_wu/static/"
 
 STATICFILES_DIRS += [
     os.path.join(BASE_DIR, 'homepage/static')
 
 ]
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = "/opt/django-proj/indrz_wu/media"
+UPLOAD_POI_DIR = MEDIA_ROOT + '/poi-icons/'
+
