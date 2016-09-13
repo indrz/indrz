@@ -1,5 +1,5 @@
 
-var baseUrlWms =  'http://gis.wu.ac.at/geoserver/wuwien/wms';
+var baseUrlWms =  'http://gis-neu.wu.ac.at:8080/geoserver290/indrz/wms';
 var zoom_level="{{ zoom_level }}";
 var campus_id="{{ campus_id}}";
 var building_id="{{ building_id }}";
