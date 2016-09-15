@@ -114,8 +114,8 @@ def import_poi(floor_abr):
 
 
 
-for floor in table_abrev:
-    import_poi(floor)
+# for floor in table_abrev:
+#     import_poi(floor)
 
 poi_name_field_values = {
     "Front Office" : 30,
@@ -125,55 +125,55 @@ poi_name_field_values = {
     "Public WC" : 52,
     "P2" : 23,
     "Library Location" : 38,
-    "Copy Machine" : 30,
-    "Taxi Meeting Point" : 30,
-    "Info Point" : 30,
-    "Underground" : 30,
+    "Copy Machine" : 61,
+    "Taxi Meeting Point" : 29,
+    "Info Point" : 14,
+    "Underground" : 27,
     "Sondersammlungen" : 30,
-    "P4" : 30,
-    "Computer Desks" : 30,
-    "Study Area (Library)" : 30,
-    "Telephone Zone" : 30,
-    "Restaurant" : 30,
-    "Search Terminal" : 30,
-    "Surfstation" : 30,
-    "Ramp Up" : 30,
-    "Change Room" : 30,
-    "Library Information" : 30,
-    "Bookstore" : 30,
-    "Entrance" : 30,
-    "Delivery" : 30,
-    "Barrier-free WC" : 30,
-    "Self-service terminals" : 30,
-    "Mens WC" : 30,
-    "Women WC" : 30,
-    "Infoterminal" : 30,
+    "P4" : 25,
+    "Computer Desks" : 44,
+    "Study Area (Library)" : 43,
+    "Telephone Zone" : 45,
+    "Restaurant" : 47,
+    "Search Terminal" : 41,
+    "Surfstation" : 33,
+    "Ramp Up" : 16,
+    "Change Room" : 60,
+    "Library Information" : 37,
+    "Bookstore" : 50,
+    "Entrance" : 13,
+    "Delivery" : 19,
+    "Barrier-free WC" : 56,
+    "Self-service terminals" : 34,
+    "Mens WC" : 54,
+    "Women WC" : 55,
+    "Infoterminal" : 15,
     "Play School" : 30,
-    "Locker" : 30,
-    "Scanner (Library)" : 30,
-    "Front Office Web & New Media" : 30,
-    "Search Terminal (Library)" : 30,
-    "Sights" : 30,
-    "Quiet Room" : 30,
-    "Quiet room / First aid" : 30,
-    "Grocery" : 30,
-    "Bus" : 30,
-    "Assembly point" : 30,
-    "Entrance underground parking" : 30,
-    "Computer Rooms" : 30,
-    "Cafe/Snack" : 30,
-    "P1" : 30,
-    "Vending Machine" : 30,
-    "Company medical officer" : 30,
-    "Self-Checkout" : 30,
-    "Bike" : 30,
-    "Toilet" : 30,
-    "Bank Machine" : 30,
-    "Study Area" : 30,
+    "Locker" : 62,
+    "Scanner (Library)" : 40,
+    "Front Office Web & New Media" : 31,
+    "Search Terminal (Library)" : 41,
+    "Sights" : 58,
+    "Quiet Room" : 39,
+    "Quiet room / First aid" : 66,
+    "Grocery" : 51,
+    "Bus" : 26,
+    "Assembly point" : 67,
+    "Entrance underground parking" : 20,
+    "Computer Rooms" : 35,
+    "Cafe/Snack" : 49,
+    "P1" : 22,
+    "Vending Machine" : 48,
+    "Company medical officer" : 64,
+    "Self-Checkout" : 42,
+    "Bike" : 17,
+    "Toilet" : 53,
+    "Bank Machine" : 63,
+    "Study Area" : 32,
     "ELSA WU" : 30,
-    "Motor Bike Parking" : 30,
-    "Taxi Stand" : 30,
-    "Scanner" : 30
+    "Motor Bike Parking" : 21,
+    "Taxi Stand" : 29,
+    "Scanner" : 40
 
 }
 
@@ -245,3 +245,204 @@ poi_cats_indrz = {
 
 }
 
+open_pois = {
+"": 68,
+"AD Entrance A": 13,
+"Aerobic Room": 68,
+"AR/Portier optional": 68,
+"Archiv/Drucker": 68,
+"Aula": 68,
+"Aula Stud Lounges": 68,
+"Automaten": 48,
+"Automaten Aufstellung/Verkauf": 48,
+"Automatenaufstellung/Verkauf": 48,
+"Bakery Anker": 49,
+"Ball Sports Hall": 57,
+"Berndorf Library for Business Languages": 68,
+"Bibliothek (Info/Rückgabe)": 68,
+"Bibliothek Ausleihe": 68,
+"Buchbinderei": 68,
+"Cafeteria": 49,
+"Cafeteria-Anrichte": 49,
+"Cafeteria/Buffet": 49,
+"COMIDA y Luz": 68,
+"COMIDA y Pan": 68,
+"Communicative Study Area": 32,
+"Copy and Scan": 40,
+"Copy Room": 40,
+"Copy/Kopierer": 40,
+"D2 Entrance A": 13,
+"D2 Entrance B": 13,
+"D2 Entrance C": 13,
+"D2 Entrance D": 13,
+"D2 Entrance E": 13,
+"D3 Entrance D": 13,
+"D5 Entrance": 13,
+"Drucker/Vervielfältigung": 40,
+"Druckernische": 40,
+"Druckerraum": 40,
+"Dusche": 68,
+"Dusche/Waschraum": 68,
+"Eingangshalle Bibliothek": 68,
+"Entrance OMV Library": 13,
+"Fitness Center Lobby": 57,
+"Fitness Room": 57,
+"Front Office Business, Employment and Social Security Law": 30,
+"Front Office Economics": 30,
+"Front Office Finance, Accounting and Statistics": 30,
+"Front Office Foreign Language Business Communication": 30,
+"Front Office Global Business and Trade": 30,
+"Front Office Information Systems and Operations": 30,
+"Front Office International Office": 30,
+"Front Office IT-Services": 30,
+"Front Office Management": 30,
+"Front Office Marketing": 30,
+"Front Office ÖH": 30,
+"Front Office Public Law and Tax Law": 30,
+"Front Office Raiffeisen Language Resource Center": 30,
+"Front Office Socioeconomics": 30,
+"Front Office Strategy and Innovation": 30,
+"Front Office WU Alumni Club": 30,
+"Front Office WU Executive Academy": 30,
+"Front Office ZBP": 30,
+"HT Supermarkt": 51,
+"Information": 14,
+"Infoschalter": 14,
+"Infoterminal AD 1": 15,
+"Infoterminal AD 2": 15,
+"Infoterminal D1 1": 15,
+"Infoterminal D1 2": 15,
+"Infoterminal D2 A 1": 15,
+"Infoterminal D2 A 2": 15,
+"Infoterminal D2 B 1": 15,
+"Infoterminal D2 B 2": 15,
+"Infoterminal D2 C 1": 15,
+"Infoterminal D2 C 2": 15,
+"Infoterminal D2 D 1": 15,
+"Infoterminal D2 D 2": 15,
+"Infoterminal D3 E 1": 15,
+"Infoterminal D3 E 2": 15,
+"Infoterminal D3 F 1": 15,
+"Infoterminal D3 F 2": 15,
+"Infoterminal D4 A 1": 15,
+"Infoterminal D4 A 2": 15,
+"Infoterminal D4 B 1": 15,
+"Infoterminal D4 B 2": 15,
+"Infoterminal D5 1": 15,
+"Infoterminal D5 2": 15,
+"Infoterminal EA 1": 15,
+"Infoterminal EA 2": 15,
+"Infoterminal LC 1": 15,
+"Infoterminal LC 2": 15,
+"Infoterminal TC 1": 15,
+"Infoterminal TC 2": 15,
+"infrastructure": 68,
+"IT Support Center": 68,
+"Journals": 68,
+"Kommunikation/Pausenraum": 68,
+"Kompaktmagazin Zeitschriften": 68,
+"Kopier FO": 40,
+"Kopierer/Archiv": 40,
+"Kopierraum?": 40,
+"Lehrbuchsammlung": 68,
+"Lesebereich": 68,
+"Lesebereich Mezanin": 68,
+"Leseplätze": 68,
+"Library": 37,
+"Library Cafe & Roastery": 37,
+"Library for Law": 37,
+"Library for Social Sciences": 37,
+"Loading Yard": 68,
+"Lobby": 68,
+"Lounge": 68,
+"Meet up point": 67,
+"Meeting Room": 67,
+"Meetingraum/Besprechung": 67,
+"Mensa": 47,
+"Newspapers": 68,
+"None": 68,
+"Nykke": 68,
+"Portier  D4": 14,
+"Portier D3 AD": 14,
+"Portier EA": 14,
+"Poststelle": 14,
+"Printer": 61,
+"Ramp": 16,
+"Reception Rectorate": 14,
+"Recherche/Leseplätze": 41,
+"Reference Collection": 68,
+"Restaurant Brewery": 47,
+"Ruheraum": 39,
+"RVK Classification OG 05": 68,
+"RVK Classification OG 06": 68,
+"Selbststudienzone/Allg.Übungsr.": 43,
+"Self Study Area": 43,
+"Service Desk": 37,
+"Shop 1/Verkaufsraum": 10,
+"Shop 2/Verkaufsraum": 10,
+"Sitting Area": 32,
+"Sondersammlungen Kurt W Rothschild und Josef Steindl": 68,
+"Spar Supermarkt": 51,
+"Spez Bib. Fremdsprachen Erschl.": 68,
+"Spez Bibliothek Fremdsprachen A": 68,
+"Spez Bibliothek Fremdsprachen C": 68,
+"Spez. Bib. Fremdspr./Research": 68,
+"Studierendenbücherei": 50,
+"Study Service Center (SSC)": 68,
+"Surfstation (ByteBar)": 33,
+"Telephone Booth": 45,
+"Textbook Collection": 68,
+"Tresen Cafe": 49,
+"Trinkbrunnen": 68,
+"Umkleide Cafe": 49,
+"Veranstaltungsräume-Stuhllager": 68,
+"Veranstaltungsräume - Aula": 68,
+"Veranstaltungsräume - Festsaal1": 68,
+"Veranstaltungsräume - Festsaal2": 68,
+"Veranstaltungsräume - Foyer": 68,
+"Veranstaltungsräume - Garderobe": 68,
+"Veranstaltungsräume - Stuhllage": 68,
+"VIP/Speisesaal": 47,
+"Workstation": 35
+}
+
+# office_spaces = { "%D2.%" : 63, "%EA.%": 63, "%D3.%": 63, "%D4.%": 63, "%D5.%": 63,"%LC.%": 63,"%SC.%": 63, "%AD.%": 63, "%TC.%": 63, "%D1.%": 63}
+
+building_ids = {'EA': 1, 'D5': 6, 'AD':5, 'LC': 2, 'D1': 7, 'D2': 10, 'D3': 4, 'D4': 3, 'SC': 9, 'TC': 8}
+
+# conn2 = psycopg2.connect(host='gis-neu.wu.ac.at', user='indrz-wu', port='5432',
+#                          password='QZE2dQfWRE3XrPevuKLmEfIEBOXuApbU', database='indrz-wu')
+# cur2 = conn2.cursor()
+
+def assign_space_type():
+
+    for k, v in open_pois.items():
+
+        # sel_poi_cats = """UPDATE django.buildings_buildingfloorspace set space_type_id = {1}
+        #                               WHERE short_name = \'{0}\'""".format(k.replace("'", "''"), v)
+
+        sel_poi_cats = """UPDATE django.poi_manager_poi set fk_poi_category_id = {0}
+                                      WHERE name LIKE \'{1}\'""".format(v, k.replace("'", "''"))
+
+        print(sel_poi_cats)
+        cur2.execute(sel_poi_cats)
+        conn2.commit()
+
+assign_space_type()
+
+
+def assign_space_type():
+
+    for k, v in poi_name_field_values.items():
+
+        # sel_poi_cats = """UPDATE django.buildings_buildingfloorspace set space_type_id = {1}
+        #                               WHERE short_name = \'{0}\'""".format(k.replace("'", "''"), v)
+
+        sel_poi_cats = """UPDATE django.poi_manager_poi set fk_poi_category_id = {0}
+                                      WHERE name LIKE \'{1}\'""".format(v, k.replace("'", "''"))
+
+        print(sel_poi_cats)
+        cur2.execute(sel_poi_cats)
+        conn2.commit()
+
+# assign_space_type()
