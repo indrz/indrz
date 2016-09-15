@@ -31,7 +31,7 @@ js_info_dict = {
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     # url(r'^$', 'maps.views.view_map'),  # homepage start page url
-    url(r'^$', include('homepage.urls')),
+    url(r'^', include('homepage.urls')),
 
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
@@ -40,8 +40,8 @@ urlpatterns = [
 
     url(r'^api/v1/', include('api.urls')),
     # url(r'^map/', include('maps.urls')),
-    url(r'^poi/', include('poi_manager.urls')),
-    url(r'^wu/', include('homepage.urls')),
+
+    #url(r'^wu/', include('homepage.urls')),
     url(r'^jsi18n/$', javascript_catalog, js_info_dict,
         name='javascript-catalog'),
 
