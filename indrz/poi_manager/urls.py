@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
 from poi_manager.views import poi_category_list, add_category, poi_category_json, poi_by_name, poi_list,\
-    poi_category_by_name, get_poi_by_category, get_poi_by_id, get_cat_by_id
+    poi_category_by_name, get_poi_by_category, get_poi_by_id
 
 urlpatterns = [
                url(r'^category-list/$', poi_category_list, name='category-list'),
