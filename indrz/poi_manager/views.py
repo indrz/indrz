@@ -50,14 +50,30 @@ def get_poi_by_category(request, campus_id, category_name):
     cats = PoiCategory.objects.filter(cat_name__icontains=category_name)
     # list = cats.get_descendants()
 
-    poi_qs = Poi.objects.filter(fk_poi_category=cats[0].id)
+
+    #from itertools import chain
+    #result_list = list(chain(page_list, article_list, post_list))
+
+    if cats:
+        if len(cats) > 1:
+            qs = []
+            for cat in cats:
+                poi_qs = Poi.objects.filter(fk_poi_category=cat.id)
+                qs.append(poi_qs)
+
+        else:
+            poi_qs = Poi.objects.filter(fk_poi_category=cats[0].id)
+    else:
+        # return Response({'error': 'No Poi found with the given category name: ' + category_name} )
+        return Response({'error': 'no category found with the given category name: ' + category_name} )
+
     if poi_qs:
         att = poi_qs.values()
 
         return Response(att)
 
     else:
-        return Response({'error': 'something went wrong no POI with that category name found'})
+        return Response({'error': 'sorry no poi entries found assigned to the category name : '+ category_name})
 
 
 @api_view(['GET', ])
@@ -76,10 +92,14 @@ def poi_category_by_name(request, campus_id, category_name):
 
     root_nodes = cache_tree_children(PoiCategory.objects.filter(cat_name__icontains=category_name))
     dicts = []
-    for n in root_nodes:
-        dicts.append(recursive_node_to_dict(n))
+    if root_nodes:
 
-    return Response(dicts)
+        for n in root_nodes:
+            dicts.append(recursive_node_to_dict(n))
+
+        return Response(dicts)
+    else:
+        return Response({'error': 'no category found with the name : ' + category_name})
 
 
 @api_view(['GET', ])
