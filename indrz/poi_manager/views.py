@@ -24,6 +24,13 @@ def poi_category_list(request, campus_id):
 
 
 @api_view(['GET', ])
+def get_poi_by_id(request, campus_id, poi_id):
+    poi_qs = Poi.objects.filter(fk_campus=campus_id).filter(id=poi_id)
+    poi_values = poi_qs.values()
+    return Response(poi_values)
+
+
+@api_view(['GET', ])
 def poi_category_json(request, campus_id):
 
     def recursive_node_to_dict(node):
@@ -127,13 +134,12 @@ def poi_by_name(request, campus_id, poi_name, **kwargs):
         att = poi_qs.values()
         print(att)
 
-        new = []
+        poi_entries = []
 
-        for x in att:
-            print(x)
-            new.append(x)
+        for value in att:
+            poi_entries.append(value)
 
-        return Response(new)
+        return Response(poi_entries)
     else:
         return Response({'error': 'something went wrong no POI with that name found'})
 
