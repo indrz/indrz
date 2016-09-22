@@ -206,9 +206,8 @@ $.ajax('/api/v1/buildings/' + building_id + '/')
 
 function appendFloorNav(floor_info, index) {
     $("#floor-links").prepend("<li>" +
-        "<a href='#' onclick='activateLayer(" +
-        index +
-        ");' id='action-1'>" + floor_info.short_name + "</a></li>");
+        "<a href='#' onclick='activateLayer(" + index + ");' id='action-1'>" + floor_info.short_name + "</a>" +
+        "</li>");
     // Add flour to mobile ui element
     $("#floor-links-select").prepend("<option value='" + index + "'>" + floor_info.short_name + "</option>");
 }

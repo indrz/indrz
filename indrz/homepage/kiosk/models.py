@@ -19,7 +19,7 @@ from buildings.models import Building, Campus
 
 class Kiosk(models.Model):
     name = models.CharField(verbose_name=_('name of kiosk'), max_length=150, null=True, blank=True)
-    ip_address = models.IPAddressField(verbose_name=_('unique IP of the kiosk'), )
+    ip_address = models.GenericIPAddressField(verbose_name=_('unique IP of the kiosk'), )
     direction_angle = models.IntegerField(verbose_name=_('enter in degrees from 0 to 359 where 0 is north'),
                                           help_text="enter the direction a person is facing when standing"
                                                     " and looking at the kiosk screen",

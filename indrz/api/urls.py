@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from rest_framework.urlpatterns import format_suffix_patterns
-
+from django.conf import settings
 from routing.views import create_route_from_coords, create_route_from_id, create_route_from_search, \
     force_route_mid_point
 from buildings.views import get_spaces_on_floor, campus_list, campus_buildings_list, campus_buildings_short_list, \
@@ -65,6 +65,12 @@ urlpatterns += [
 urlpatterns += [
     url(r'^directions/', include('routing.urls'))
 ]
+
+
+urlpatterns += [
+    url(r'^campus/(?P<campus_id>\d{1,5})/poi/', include('poi_manager.urls')),
+]
+
 
 # http://localhost:8000/api/v1/directions/force_mid/?startnode=1385&midnode=1167&endnode=1252
 # http://localhost:8000/api/v1/directions/buildingid=1&startid=307: Orne&endid=311: Mayenne
