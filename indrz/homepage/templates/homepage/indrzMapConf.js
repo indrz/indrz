@@ -1,11 +1,14 @@
-
+var baseApiUrl = 'indrz/api/v1/';
+var baseApiRoutingUrl = 'indrz/api/v1/directions/';
+var baseApiSearchUrl = baseApiUrl + 'search';
 var baseUrlWms =  'http://gis-neu.wu.ac.at:8080/geoserver290/indrz/wms';
 var zoom_level="{{ zoom_level }}";
 var campus_id="{{ campus_id}}";
 var building_id="{{ building_id }}";
 var floor_id="{{ floor_id }}";
 var space_id="{{ space_id }}";
-var active_floor_num="{{floor_num}}";
+// var active_floor_num="{{floor_num}}";
+var active_floor_num=0;
 var floor_layers = [];
 var timer_waitfor_floor = null;
 var building_info = null;

@@ -162,7 +162,7 @@ var OsmBackLayer = new ol.layer.Tile({
 });
 
 // gets all spaces on a single floor for all buildings on campus
-$.ajax('/api/v1/buildings/' + building_id + '/')
+$.ajax(baseApiRoutingUrl + building_id + '/')
     .then(function (response) {
         building_info = response;
         for (var i = 0; i < response.num_floors; i++) {
@@ -190,13 +190,15 @@ $.ajax('/api/v1/buildings/' + building_id + '/')
                 visible: false,
                 zIndex: 99
             });
+
             map.getLayers().push(floor_spaces_vector);
+            floor_layers.push(floor_info);
             floor_layers.push(floor_spaces_vector);
             appendFloorNav(floor_info, i);
         }
         if (space_id == "0") {
             for (var i = 0; i < floor_layers.length; i++) {
-                if (active_floor_num == floor_layers[i].getProperties().floor_num) {
+                if (active_floor_num == floor_layers[i].floor_num) {
                     activateLayer(i);
                 }
             }
