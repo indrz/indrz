@@ -91,8 +91,8 @@ function searchIndrz(campusId, searchString) {
 
         // active the floor of the start point
         var searchResFloorNum = featuresSearch[0].getProperties().floor_num;
-        for (var i = 0; i < floor_layers.length; i++) {
-            if (searchResFloorNum == floor_layers[i].getProperties().floor_num) {
+        for (var i = 0; i < switchableLayers.length; i++) {
+            if (searchResFloorNum == switchableLayers[i].getProperties().floor_num) {
                 activateLayer(i);
             }
         }

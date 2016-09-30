@@ -20,23 +20,23 @@ function hideLayers() {
     for (var i = 0; i < switchableLayers.length; i++) {
         switchableLayers[i].setVisible(false);
     }
-    if (floor_layers.length > 0) {
-        for (var i = 0; i < floor_layers.length; i++) {
-            floor_layers[i].setVisible(false);
-        }
-    }
+    // if (floor_layers.length > 0) {
+    //     for (var i = 0; i < floor_layers.length; i++) {
+    //         floor_layers[i].setVisible(false);
+    //     }
+    // }
     $("#floor-links li").removeClass("active");
 }
 
 
 function setLayerVisible(index) {
     switchableLayers[index].setVisible(true);
-    if (floor_layers.length > 0) {
-        floor_layers[index].setVisible(true);
-        $("#floor-links li:nth-child(" + (floor_layers.length - index) + ")").addClass("active");
+    if (switchableLayers.length > 0) {
+        switchableLayers[index].setVisible(true);
+        $("#floor-links li:nth-child(" + (switchableLayers.length - index) + ")").addClass("active");
 
         // set active_floor_num
-        active_floor_num = floor_layers[index].getProperties().floor_num;
+        active_floor_num = switchableLayers[index].getProperties().floor_num;
         if (routeLayer) {
             var features = routeLayer.getSource().getFeatures();
             for (var i = 0; i < features.length; i++) {
@@ -49,6 +49,24 @@ function setLayerVisible(index) {
             }
         }
     }
+    // if (floor_layers.length > 0) {
+    //     floor_layers[index].setVisible(true);
+    //     $("#floor-links li:nth-child(" + (floor_layers.length - index) + ")").addClass("active");
+    //
+    //     // set active_floor_num
+    //     active_floor_num = floor_layers[index].getProperties().floor_num;
+    //     if (routeLayer) {
+    //         var features = routeLayer.getSource().getFeatures();
+    //         for (var i = 0; i < features.length; i++) {
+    //             var feature_floor = features[i].getProperties().floor;
+    //             if (feature_floor == active_floor_num) {
+    //                 features[i].setStyle(route_active_style);
+    //             } else {
+    //                 features[i].setStyle(route_inactive_style);
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 

@@ -133,7 +133,7 @@ function createWmsLayer(layerName, geoserverLayer, floorNumber, isVisible, zInde
         }),
         visible: isVisible,
         name: layerName,
-        floor: floorNumber,
+        floor_num: floorNumber,
         type: "floor",
         zIndex: zIndexValue,
         crossOrigin: "anonymous"
@@ -161,55 +161,25 @@ var OsmBackLayer = new ol.layer.Tile({
     type: "background"
 });
 
-// gets all spaces on a single floor for all buildings on campus
-$.ajax(baseApiRoutingUrl + building_id + '/')
+
+$.ajax( baseApiUrl + "campus/1/floors/" )
     .then(function (response) {
-        building_info = response;
-        for (var i = 0; i < response.num_floors; i++) {
-            var geojsonFormat = new ol.format.GeoJSON();
-            var floor_info = response.buildingfloor_set[i];
-            var features = geojsonFormat.readFeatures(floor_info.buildingfloorspace_set,
-                {featureProjection: 'EPSG:4326'});
-            var spaces_source = new ol.source.Vector();
-            spaces_source.addFeatures(features);
+        floors_info = response;
 
-            var floor_spaces_vector = new ol.layer.Vector({
-                source: spaces_source,
-                style: new ol.style.Style({
-                    fill: new ol.style.Fill({
-                        color: 'rgba(255, 255, 255, 0.6)'
-                    }),
-                    stroke: new ol.style.Stroke({
-                        color: 'grey',
-                        width: 1
-                    })
-                }),
-                title: "spaces",
-                name: "spaces",
-                floor_num: floor_info.floor_num,
-                visible: false,
-                zIndex: 99
-            });
-
-            map.getLayers().push(floor_spaces_vector);
-            floor_layers.push(floor_info);
-            floor_layers.push(floor_spaces_vector);
-            appendFloorNav(floor_info, i);
-        }
-        if (space_id == "0") {
-            for (var i = 0; i < floor_layers.length; i++) {
-                if (active_floor_num == floor_layers[i].floor_num) {
-                    activateLayer(i);
-                }
+        for (var i = 0; i < floors_info.length; ++i) {
+            floor_layers.push(floors_info[i]);
+            appendFloorNav(floors_info[i].short_name, [i]);
             }
-        }
+
+        activateLayer(1);
+
     });
 
 
 function appendFloorNav(floor_info, index) {
     $("#floor-links").prepend("<li>" +
-        "<a href='#' onclick='activateLayer(" + index + ");' id='action-1'>" + floor_info.short_name + "</a>" +
+        "<a href='#' onclick='activateLayer(" + index + ");' id='action-1'>" + floor_info + "</a>" +
         "</li>");
     // Add flour to mobile ui element
-    $("#floor-links-select").prepend("<option value='" + index + "'>" + floor_info.short_name + "</option>");
+    $("#floor-links-select").prepend("<option value='" + index + "'>" + floor_info + "</option>");
 }

@@ -39,7 +39,7 @@
 {#{% block search_form %}{% endblock search_form %}#}
 
 {% block js-search-box %}
-
+<script>  {% include 'homepage/indrzMapConf.js' %} </script>
     <script>
 
        var building_id = 1;
@@ -47,7 +47,7 @@
         var searchValues = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: '/api/v1/spaces/search/?format=json'
+            prefetch: baseApiUrl + 'spaces/search/?format=json'
         });
 
         // passing in `null` for the `options` arguments will result in the default
@@ -78,9 +78,7 @@
 
 
 {% block map_frame %}
-    <script>  {% include 'homepage/indrzMapConf.js' %} </script>
     <script>  {% include 'homepage/indrzLayers.js' %} </script>
-    <script>  {% include 'homepage/basemap.js' %} </script>
     <script>  {% include 'homepage/indrz-floorswitcher.js' %} </script>
     <script>  {% include 'homepage/indrzMapInit.js' %}</script>
     <script>  {% include 'homepage/routing.js' %} </script>
