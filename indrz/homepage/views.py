@@ -2,7 +2,6 @@ import re
 import json
 
 from django.core.exceptions import PermissionDenied
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.gis.db.models.functions import Centroid, AsGeoJSON
 
@@ -10,10 +9,13 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from buildings.models import BuildingFloorSpace
+from buildings.models import BuildingFloor
 
 from geojson import Feature
 
 from homepage import bach_calls
+from homepage.serializer import CampusFloorSerializer
+
 
 def view_map(request, *args, **kwargs):
     context = {}
@@ -101,6 +103,21 @@ def get_room_center(request, big_pk):
         # raise Exception("wrong IP! your ip is : " + ip_addr)
         # return HttpResponseForbidden()
         raise PermissionDenied
+
+
+@api_view(['GET'])
+def get_campus_floors(request, campus_id, format=None):
+    """
+    Get a list of floors on campus
+    """
+    if request.method == 'GET':
+
+        floor_list = BuildingFloor.objects.filter(fk_building=1)
+
+        data = CampusFloorSerializer(floor_list, many=True)
+
+        return Response(data.data)
+
 
 
 # # search for strings and return a list of strings and coordinates

@@ -1,10 +1,12 @@
 from django.conf.urls import url, include
 from rest_framework.urlpatterns import format_suffix_patterns
-from django.conf import settings
-from routing.views import create_route_from_coords, create_route_from_id, create_route_from_search, \
-    force_route_mid_point
+# from django.conf import settings
+# from routing.views import create_route_from_coords, create_route_from_id, create_route_from_search, \
+#     force_route_mid_point
 from buildings.views import get_spaces_on_floor, campus_list, campus_buildings_list, campus_buildings_short_list, \
     space_details, get_campus_info, campus_floor_spaces
+
+from homepage.views import get_campus_floors
 from api.views import autocomplete_list
 from api import search
 
@@ -40,6 +42,7 @@ urlpatterns += [
 # CAMPUS AND BUILDINGS API URLS
 urlpatterns += [
     url(r'^campus/$', campus_list, name='list_all_campuses'),
+    url(r'^campus/(?P<campus_id>\d{1,5})/floors/$', get_campus_floors, name='campus-floors'),
     url(r'^campus/(?P<campus_id>\d{1,5})/$', campus_buildings_list, name='campus_building_list'),
     url(r'^campus/(?P<campus_id>\d{1,5})/shortlist/$', campus_buildings_short_list, name='buildings_list'),
     url(r'^campus/(?P<campus_id>\d{1,5})/info/$', get_campus_info, name='campus-info'),
