@@ -47,7 +47,8 @@
         var searchValues = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: baseApiUrl + 'spaces/search/?format=json',
+            // prefetch: baseApiUrl + 'spaces/search/?format=json',
+            prefetch: 'http://localhost:8000/autocomplete/%QUERY?.format=json',
             remote: {
               url: 'http://localhost:8000/autocomplete/%QUERY?.format=json',
               wildcard: '%QUERY'

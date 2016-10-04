@@ -155,11 +155,13 @@ def bach_search_directory(searchStr):
         return None
 
 
-#data_search_dir = bach_search_directory("IT-service")
+# data_search_dir = bach_search_directory("IT-service")
 #data_search_dir = bach_search_directory("Irene Fellner")
+# data_search_dir = bach_search_directory("Hörsaal 120")
 # data_search_dir = bach_search_directory("test")
-#print 'type: ' + str(type(data_pk_big)) + '  data_pk_big length: ' + str(len(data_pk_big))
-#pprint.pprint(data_search_dir)
+# print 'type: ' + str(type(data_pk_big)) + '  data_pk_big length: ' + str(len(data_pk_big))
+# pprint(data_search_dir)
+# print(len(data_search_dir))
 
 # this method is a helper method to call the BACH API method get_room_by_pkbig
 # this works and is tested
@@ -325,6 +327,10 @@ def bach_search_rooms(search_string):
 
     return load_json(data, url)
 
+# data_search_dir = bach_search_rooms("Erst")
+# data_search_dir = bach_search_rooms("Hörsaal 120")
+# pprint(data_search_dir)
+# print(len(data_search_dir))
 
 def export_to_csv(file_name, json_data):
     """

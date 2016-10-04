@@ -73,18 +73,31 @@ function getTitle(properties){
 function open_popup(properties, coordinate){
 
   var titlePopup = gettext('Building Name: ');
+    console.log(properties)
 
-  var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
+    var name;
+    var floorNum;
+    var buildingName;
+    var roomcode ;
+
+    if (properties.fancyname_de){
+        name = properties.fancyname_de;
+    }
+
+    var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
       coordinate, 'EPSG:3857', 'EPSG:4326'));
-    if (properties.short_name){
 
-        var name = properties.short_name;
-        var floorNum = properties.floor_num;
-        var buildingName = properties.building_name;
+    if (properties.label){
+        //var properties = properties[0].properties;
+
+        name = properties.label;
+        floorNum = properties.floor_num;
+        buildingName = properties.building_name;
+        roomcode = properties.roomcode;
     } else {
-        var name = properties.room_code;
-        var floorNum = properties.floor_num;
-        var buildingName = properties.building_name;
+        name = properties.roomcode;
+        floorNum = properties.floor_num;
+        buildingName = properties.building_name;
         titlePopup = gettext('Campus ');
     }
 

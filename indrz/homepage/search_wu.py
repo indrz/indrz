@@ -259,20 +259,13 @@ def search_any(request, q):
     cursor = connection.cursor()
 
 
-    sql = basicQuery = """
-    SELECT search_string, text_type, external_id, st_asgeojson(geom) AS geom, st_asgeojson(st_PointOnSurface(geom)) AS center, layer, building_id, 0 AS resultType, external_id, text_type
-            FROM geodata.search_index_v
-            WHERE upper(search_string) LIKE %(search_string)s
-            ORDER BY search_string DESC, length(search_string) LIMIT 9
-    """
-
     # query bach api rooms for room data
     bachData = []
     room_data_results = bach_calls.bach_search_rooms(searchString)
     if room_data_results != None:
         bachData.extend(room_data_results)
 
-    print(bachData)
+    # print(bachData)
 
     # =============================================
     # extend d organisations and people data in one
@@ -301,6 +294,7 @@ def search_any(request, q):
                     ("roomname_en" in row and searchString.upper() in row["roomname_en"].upper()) or \
                     ("roomname_de" in row and searchString.upper() in row["roomname_de"].upper()) or \
                     ("pk_big" in row and searchString.upper() in row["pk_big"].upper()) or \
+                    ("name" in row and searchString.upper() in row["name"].upper()) or \
                     ("name_de" in row and searchString.upper() in row["name_de"].upper()) or \
                     ("name_en" in row and searchString.upper() in row["name_en"].upper()) or \
                     ("category_de" in row and searchString.upper() in row["category_de"].upper()) or \
@@ -319,6 +313,8 @@ def search_any(request, q):
 
                     cat_de_value = None
                     cat_en_value = None
+                    roomcode_value = None
+                    building_name = None
 
                     if 'category_en' in row and row['category_en'] is not None:
                         cat_en_value = row['category_en']
@@ -329,10 +325,15 @@ def search_any(request, q):
                     if 'location_struc' in row and row['location_struc'] is not None:
                         location_values = row['location_struc']
 
+
                         # test if dict item is an empty dictionary if yes skip if not
                         if location_values:  # evaluates to TRUE meaning if NOT empty {}
                             if "roomname_de" in location_values:
                                 roomcode_value = row["location_struc"]["roomname_de"]
+                                building_name = row['location_struc']['buildingname']
+                    else:
+                        roomcode_value = ""
+                        building_name = ""
 
                     # distinguish between normal (aks = location), search by pk, and persons (location can be found in currentaffiliaton)
                     if 'location' in row and row['location'] is not None:
@@ -348,7 +349,7 @@ def search_any(request, q):
 
                     cursor.execute("SELECT search_string, text_type, external_id, st_asgeojson(geom) AS geom, \
                      st_asgeojson(st_PointOnSurface(geom)) AS center,\
-                     layer, building_id, 0 AS resultType, external_id, text_type \
+                     layer, building_id, 0 AS resultType, external_id, text_type, room_code \
                      FROM geodata.search_index_v \
                      WHERE external_id = upper(%(location)s)", locationDict)
 
@@ -365,40 +366,69 @@ def search_any(request, q):
                         # if name_de/en is present in search people, use it,
                         # else use label,
                         # else result is a room from room search and name is roomname_de/en use that
-                        if ("name_de" in row and "name_en" in row):
-                            name_de = row["name_de"]
-                            name_en = row["name_en"]
+                        if ("name" in row ):
+                            name = row["name"]
 
-                        elif ("label" in row):
-                            name_de = row["label"]
-                            name_en = row["label"]
+                        else:
+                            name = ""
+
+
+                        if "name_de" in row:
+                            name_de = row["name_de"]
+                            name = name_de
+                        else:
+                            name_de =""
+
+
+                        if ("label" in row):
+                            label = row["label"]
+                        else:
+                            label = ""
+
 
                         # no name data means we only have room data
-                        elif ("roomname_en" in row and "roomname_de" in row):
-                            name_en = row["roomname_en"]
-                            name_de = row["roomname_de"]
-
-                        elif 'roomcode' in row:
-                            roomcode_value = row['roomcode']
-
-                        elif 'category_de' in row:
-                            cat_de_value = row['category_de']
-
-                        elif 'category_en' in row:
-                            cat_en_value = row['category_en']
-
-                        if cat_de_value is not None:
-                            cat_de_encode = cat_de_value.encode('utf-8')
-                            cat_en_encode = cat_en_value.encode('utf-8')
+                        if ("roomname_en" in row and "roomname_de" in row):
+                            roomname_en = row["roomname_en"]
+                            roomname_de = row["roomname_de"]
                         else:
-                            cat_de_encode = ""
-                            cat_en_encode = ""
+                            roomname_en = ""
+                            roomname_de = ""
+
+                        if ("fancyname_de" in row and "fancyname_en" in row):
+                            fancyname_en = row['fancyname_en']
+                            fancyname_de = row['fancyname_de']
+                        else:
+                            fancyname_en = None
+                            fancyname_de = None
+
+                        if 'roomcode' in row:
+                            roomcode = row['roomcode']
+                        else:
+                            roomcode = ""
+
+                        if 'category_de' in row:
+                            cat_de_value = row['category_de']
+                        else:
+                            cat_de_value = ""
+
+                        if 'category_en' in row:
+                            cat_en_value = row['category_en']
+                        else:
+                            cat_en_value = ""
+
+                        # if cat_de_value is not None:
+                        #     cat_de_encode = cat_de_value.encode('utf-8')
+                        #     cat_en_encode = cat_en_value.encode('utf-8')
+                        # else:
+                        #     cat_de_encode = ""
+                        #     cat_en_encode = ""
                         # ==========================================================
                         # find out location of frontoffice
-                        roomcode_value = repNoneWithEmpty(result[0][9])
+                        roomcode_value = repNoneWithEmpty(result[0][10])
 
                         if roomcode_value == '':
                             roomcode_value = None
+
 
                         # front_office = ""
                         front_office = has_front_office(orgid)
@@ -406,21 +436,31 @@ def search_any(request, q):
                         #     organization_details = bach_calls.bach_get_organization_details(orgid)
                         #     if organization_details != None and len(organization_details) > 0:
                         #         frontoffice = organization_details["location"]
+                        if name == "":
+                            if roomcode_value is not "":
+                                name = roomcode_value
 
-                        obj = {"name_de": name_de,
-                               "name_en": name_en,
-                               "roomcode_value": roomcode_value,
+
+
+                        obj = {"name": repNoneWithEmpty(name),
+                               "label" : repNoneWithEmpty(label),
+                               "room_name_en": repNoneWithEmpty(roomname_en),
+                               "room_name_de": repNoneWithEmpty(roomname_de),
+                               "fancyname_de": repNoneWithEmpty(fancyname_de),
+                               "fancyname_en": repNoneWithEmpty(fancyname_en),
+                               "roomcode": roomcode_value,
                                "type": repNoneWithEmpty(result[0][1]),
                                "external_id": repNoneWithEmpty(result[0][2]),
                                # "geometry": ast.literal_eval(result[0][3]),
                                "centerGeometry": ast.literal_eval(result[0][4]),
-                               "layer": repNoneWithEmpty(int(result[0][5])),
+                               "floor_num": repNoneWithEmpty(int(result[0][5])),
                                "building": repNoneWithEmpty(result[0][6]),
+                               "building_name": building_name,
                                "aks_nummer": repNoneWithEmpty(locationDict["location"]),
                                "orgid": repNoneWithEmpty(orgid),
                                "frontoffice": front_office,
-                               "category_de": repNoneWithEmpty(cat_de_encode),
-                               "category_en": repNoneWithEmpty(cat_en_encode),
+                               "category_de": repNoneWithEmpty(cat_de_value),
+                               "category_en": repNoneWithEmpty(cat_de_value),
                                "src": "bach"
                                }
 
@@ -430,59 +470,17 @@ def search_any(request, q):
 
                 else:
                     pass
-                    # no location from bach api, search in temp table for location:
-                    # to do uncomment next to lines when we allow search on people
-
-                    # cursor.execute("SELECT aks FROM geodata.temp_wu_personal_data WHERE name LIKE %(searchString)s",
-                    #                {"searchString": "%" + searchString + "%"})
-                    # results = cursor.fetchall()
-                    #
-                    # if len(results) > 0:
-                    #     for result in results:
-                    #         if result[0] is not None and result[0] != "":
-                    #             cursor.execute("SELECT search_string, text_type, external_id, \
-                    #              st_asgeojson(geom) AS geom, st_asgeojson(st_PointOnSurface(geom)) AS center, \
-                    #              layer, building, 0 AS resultType, aks_nummer, roomcode \
-                    #              FROM geodata.search_index_v \
-                    #              WHERE aks_nummer = upper(%(location)s)", {"location": result[0]})
-                    #             room = cursor.fetchone()
-                    #
-                    #             roomcode_value = repNoneWithEmpty(row["roomcode"])
-                    #
-                    #             if roomcode_value == '':
-                    #                 roomcode_value = None
-                    #
-                    #             if room is not None:
-                    #                 obj = {"name_de": repNoneWithEmpty(row["label"]),
-                    #                        "name_en": repNoneWithEmpty(row["label"]),
-                    #                        "roomcode_value": repNoneWithEmpty(row["roomcode"]),
-                    #                        "type": repNoneWithEmpty(room[1]),
-                    #                        "external_id": repNoneWithEmpty(room[2]),
-                    #                        "geometry": repNoneWithEmpty(room[3]),
-                    #                        "centerGeometry": repNoneWithEmpty(room[4]),
-                    #                        "layer": repNoneWithEmpty(int(room[5])),
-                    #                        "building": repNoneWithEmpty(room[6]),
-                    #                        "aks_nummer": repNoneWithEmpty(row["location"]),
-                    #                        "orgid": repNoneWithEmpty(row["currentAffiliation"][0]["orgid"]),
-                    #                        "src": "local (no location"}
-                    #
-                    #                 bachLocationStrings.append(obj)
-                                    # else:
-                                    # look up orgid and route to frontoffice, currently not in db
-
-    # =================================================================================================================================
-    # bach data finished, if entries present --> return them, else do a lookup in our local data.
-
 
     if len(bachLocationStrings) > 0:
         # --------------------------------------------------------
         # add the assigned entrance
         for tempResult in bachLocationStrings:
-            if (tempResult["properties"]["aks_nummer"] is not None and tempResult["properties"]["aks_nummer"] != ""):
-                #entranceData = getAssignedEntrance(tempResult["aks_nummer"], tempResult["layer"]);
-                #tempResult["entrance"] = entranceData["id"];
-                #tempResult["entrance_name_de"] = entranceData["de"];
-                #tempResult["entrance_name_en"] = entranceData["en"];
+            if (tempResult["properties"]["aks_nummer"] is not None and tempResult["properties"][
+                "aks_nummer"] != ""):
+                # entranceData = getAssignedEntrance(tempResult["aks_nummer"], tempResult["layer"]);
+                # tempResult["entrance"] = entranceData["id"];
+                # tempResult["entrance_name_de"] = entranceData["de"];
+                # tempResult["entrance_name_en"] = entranceData["en"];
                 pass
 
         # --------------------------------------------------------
@@ -492,8 +490,11 @@ def search_any(request, q):
         final_geojs_res = FeatureCollection(features=bachLocationStrings)
         return Response(final_geojs_res)
 
-
+    # =================================================================================================================================
+    # bach data finished, if entries present --> return them, else do a lookup in our local data.
     else:
+        # do local search in DB no BACH API results found
+
         # query table or view: rooms
         # query columns: room_name
         # Order by similarity? LIMIT to 10
@@ -503,6 +504,13 @@ def search_any(request, q):
         # also convert searchString toUpper here
         searchString2 = "%" + searchString.upper() + "%"
         extraBuilding2 = "%" + extraBuilding.upper() + "%"
+
+        sql = """
+        SELECT search_string, text_type, external_id, st_asgeojson(geom) AS geom, st_asgeojson(st_PointOnSurface(geom)) AS center, layer, building_id, 0 AS resultType, external_id, room_code
+                FROM geodata.search_index_v
+                WHERE upper(search_string) LIKE %(search_string)s
+                ORDER BY search_string DESC, length(search_string) LIMIT 9
+        """
 
         cursor.execute(sql,
                        {"search_string": searchString2, "building": extraBuilding2,
@@ -521,7 +529,7 @@ def search_any(request, q):
                 obj = {"name_de": row[0], "name_en": row[0], "type": row[1], "external_id": row[2], "geometry": row[3],
                        "centerGeometry": row[4], "layer": int(row[5]), "building": row[6], "aks_nummer": loc,
                        "roomcode_value": roomcode_value,
-                       "src": "local"
+                       "src": "local db view"
                        # , "frontoffice": "001_10_OG04_421600", "orgid": "1234"
                        }
             else:
