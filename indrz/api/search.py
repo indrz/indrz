@@ -64,7 +64,16 @@ def search_indrz(request, campus_id, search_string):
     # buildings_on_campus = BuildingFloorSpace.objects.filter(Q(short_name__icontains=search_string) | Q(room_code__icontains=search_string))
     serializer = BuildingFloorSpaceSerializer(found_entries, many=True)
 
-    return Response(serializer.data)
+    if found_entries:
+
+        return Response(serializer.data)
+
+    # elif:
+    #     pass
+        # return Response({'error': 'sorry nothing found with the text:  ' + search_string})
+
+    else:
+        return Response({'error': 'sorry nothing found with the text:  ' + search_string})
 
 # old silly search
 # @api_view(['GET'])

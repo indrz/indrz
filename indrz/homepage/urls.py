@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
-from homepage.views import view_map, wuAutoComplete
-from homepage.search_wu import search_any
+from homepage.views import view_map
+from homepage.search_wu import search_any, searchAutoComplete
 # all urls begin with http://localhost:8000/map/
 
 urlpatterns = [
@@ -9,10 +9,9 @@ urlpatterns = [
     # url(r'^(?P<map_name>[0-9a-zA-Z_-]+)/$', 'view_map', name='map_name'),
     # url(r'^', view_map, name='map_name'),
     # /autocomplete/?query=Irene Fellner
-    url(r'^autocomplete/(?P<search_text>.+)', wuAutoComplete, name='search_autocomplete'),
+    url(r'^autocomplete/(?P<search_text>.+)', searchAutoComplete, name='search_autocomplete'),
     url(r'^search/(?P<q>.+)', search_any, name='search all wu'),
     url(r'^map/(?P<map_name>[^/]+)/$', view_map, name='map_name'),
-
 
 
 ]

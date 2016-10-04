@@ -43,6 +43,8 @@ def autocomplete_list(request):
             v = x[0]
             room_num_list.append(v)
 
+
+
         try:
             #return Response(room_num_list)
             return HttpResponse(json.dumps(room_num_list), content_type='application/json')

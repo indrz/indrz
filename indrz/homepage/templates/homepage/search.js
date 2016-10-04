@@ -58,7 +58,8 @@ function zoomer(coord, zoom){
 
 function searchIndrz(campusId, searchString) {
     // var searchUrl = '/api/v1/buildings/' + buildingId + '/' + spaceName + '.json';
-    var searchUrl = baseApiUrl + 'campus/' + campusId + '/search/' + searchString + '?format=json';
+    // var searchUrl = baseApiUrl + 'campus/' + campusId + '/search/' + searchString + '?format=json';
+    var searchUrl = 'http://localhost:8000/search/' + searchString + '?format=json';
 
     if (searchLayer) {
         map.removeLayer(searchLayer);

@@ -16,6 +16,8 @@ from homepage import bach_calls
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from geojson import Feature, FeatureCollection
+
 logr = logging.getLogger(__name__)
 
 
@@ -70,7 +72,8 @@ def search_coordinates(request, q):
                "externalRefName": external_ref_name,
                "externalData": external_data,
                }
-        rows.append(obj)
+        new_feature = Feature(geometry=row[3], properties=obj)
+        rows.append(new_feature)
 
     searchString = str(lon) + "," + str(lat) + "," + str(layer)
 
@@ -409,7 +412,7 @@ def search_any(request, q):
                                "roomcode_value": roomcode_value,
                                "type": repNoneWithEmpty(result[0][1]),
                                "external_id": repNoneWithEmpty(result[0][2]),
-                               "geometry": ast.literal_eval(result[0][3]),
+                               # "geometry": ast.literal_eval(result[0][3]),
                                "centerGeometry": ast.literal_eval(result[0][4]),
                                "layer": repNoneWithEmpty(int(result[0][5])),
                                "building": repNoneWithEmpty(result[0][6]),
@@ -421,46 +424,49 @@ def search_any(request, q):
                                "src": "bach"
                                }
 
-                        bachLocationStrings.append(obj)
+                        new_feature_geojson = Feature(geometry=ast.literal_eval(result[0][3]), properties=obj)
+
+                        bachLocationStrings.append(new_feature_geojson)
 
                 else:
+                    pass
                     # no location from bach api, search in temp table for location:
                     # to do uncomment next to lines when we allow search on people
 
-                    cursor.execute("SELECT aks FROM geodata.temp_wu_personal_data WHERE name LIKE %(searchString)s",
-                                   {"searchString": "%" + searchString + "%"})
-                    results = cursor.fetchall()
-
-                    if len(results) > 0:
-                        for result in results:
-                            if result[0] is not None and result[0] != "":
-                                cursor.execute("SELECT search_string, text_type, external_id, \
-                                 st_asgeojson(geom) AS geom, st_asgeojson(st_PointOnSurface(geom)) AS center, \
-                                 layer, building, 0 AS resultType, aks_nummer, roomcode \
-                                 FROM geodata.search_index_v \
-                                 WHERE aks_nummer = upper(%(location)s)", {"location": result[0]})
-                                room = cursor.fetchone()
-
-                                roomcode_value = repNoneWithEmpty(row["roomcode"])
-
-                                if roomcode_value == '':
-                                    roomcode_value = None
-
-                                if room is not None:
-                                    obj = {"name_de": repNoneWithEmpty(row["label"]),
-                                           "name_en": repNoneWithEmpty(row["label"]),
-                                           "roomcode_value": repNoneWithEmpty(row["roomcode"]),
-                                           "type": repNoneWithEmpty(room[1]),
-                                           "external_id": repNoneWithEmpty(room[2]),
-                                           "geometry": repNoneWithEmpty(room[3]),
-                                           "centerGeometry": repNoneWithEmpty(room[4]),
-                                           "layer": repNoneWithEmpty(int(room[5])),
-                                           "building": repNoneWithEmpty(room[6]),
-                                           "aks_nummer": repNoneWithEmpty(row["location"]),
-                                           "orgid": repNoneWithEmpty(row["currentAffiliation"][0]["orgid"]),
-                                           "src": "local (no location"}
-
-                                    bachLocationStrings.append(obj)
+                    # cursor.execute("SELECT aks FROM geodata.temp_wu_personal_data WHERE name LIKE %(searchString)s",
+                    #                {"searchString": "%" + searchString + "%"})
+                    # results = cursor.fetchall()
+                    #
+                    # if len(results) > 0:
+                    #     for result in results:
+                    #         if result[0] is not None and result[0] != "":
+                    #             cursor.execute("SELECT search_string, text_type, external_id, \
+                    #              st_asgeojson(geom) AS geom, st_asgeojson(st_PointOnSurface(geom)) AS center, \
+                    #              layer, building, 0 AS resultType, aks_nummer, roomcode \
+                    #              FROM geodata.search_index_v \
+                    #              WHERE aks_nummer = upper(%(location)s)", {"location": result[0]})
+                    #             room = cursor.fetchone()
+                    #
+                    #             roomcode_value = repNoneWithEmpty(row["roomcode"])
+                    #
+                    #             if roomcode_value == '':
+                    #                 roomcode_value = None
+                    #
+                    #             if room is not None:
+                    #                 obj = {"name_de": repNoneWithEmpty(row["label"]),
+                    #                        "name_en": repNoneWithEmpty(row["label"]),
+                    #                        "roomcode_value": repNoneWithEmpty(row["roomcode"]),
+                    #                        "type": repNoneWithEmpty(room[1]),
+                    #                        "external_id": repNoneWithEmpty(room[2]),
+                    #                        "geometry": repNoneWithEmpty(room[3]),
+                    #                        "centerGeometry": repNoneWithEmpty(room[4]),
+                    #                        "layer": repNoneWithEmpty(int(room[5])),
+                    #                        "building": repNoneWithEmpty(room[6]),
+                    #                        "aks_nummer": repNoneWithEmpty(row["location"]),
+                    #                        "orgid": repNoneWithEmpty(row["currentAffiliation"][0]["orgid"]),
+                    #                        "src": "local (no location"}
+                    #
+                    #                 bachLocationStrings.append(obj)
                                     # else:
                                     # look up orgid and route to frontoffice, currently not in db
 
@@ -472,7 +478,7 @@ def search_any(request, q):
         # --------------------------------------------------------
         # add the assigned entrance
         for tempResult in bachLocationStrings:
-            if (tempResult["aks_nummer"] is not None and tempResult["aks_nummer"] != ""):
+            if (tempResult["properties"]["aks_nummer"] is not None and tempResult["properties"]["aks_nummer"] != ""):
                 #entranceData = getAssignedEntrance(tempResult["aks_nummer"], tempResult["layer"]);
                 #tempResult["entrance"] = entranceData["id"];
                 #tempResult["entrance_name_de"] = entranceData["de"];
@@ -482,7 +488,9 @@ def search_any(request, q):
         # --------------------------------------------------------
         retVal = {"searchString": searchString, "building": '', "searchResult": bachLocationStrings,
                   "length": bachDataLength}
-        return Response(retVal)
+
+        final_geojs_res = FeatureCollection(features=bachLocationStrings)
+        return Response(final_geojs_res)
 
 
     else:
@@ -545,8 +553,9 @@ def search_any(request, q):
         return Response(retVal)
 
 @api_view(['GET'])
-def searchAutoComplete(request):
-    searchString = request.GET["query"]
+def searchAutoComplete(request, search_text):
+    # searchString = request.GET["query"]
+    searchString = search_text
     if (searchString != None):
 
         items = []
@@ -573,7 +582,8 @@ def searchAutoComplete(request):
 
                     # remove whitespaces at the end of string (for duplicate detection)
                     name = name.strip()
-                    items.append({"name": name})
+                    # items.append({"name": name})
+                    items.append(name)
 
         # ======================================================
 
@@ -592,12 +602,14 @@ def searchAutoComplete(request):
 
                     # remove whitespaces at the end of string (for duplicate detection)
                     room_cat = room_cat.strip()
-                    items.append({"name": room_cat})
+                    # items.append({"name": room_cat})
+                    items.append(room_cat)
 
                 elif "category_en" in row and searchString.upper() in row["category_en"].upper():
                     room_cat = row['category_en']
                     room_cat = room_cat.strip()
-                    items.append({"name": room_cat})
+                    # items.append({"name": room_cat})
+                    items.append(room_cat)
 
         # ===========================================================================
         # local Postgresql search_index_v data
@@ -611,15 +623,16 @@ def searchAutoComplete(request):
 
         cursor.execute("""SELECT search_string FROM geodata.search_index_v
                           WHERE replace(replace (upper(search_string), '.', ''),'.', '') LIKE upper(%(search_string)s)
-                          GROUP BY search_string, priority
-                          ORDER BY priority DESC, length(search_string) LIMIT 100""",
+                          GROUP BY search_string
+                          LIMIT 100""",
                        {"search_string": "%" + searchString + "%"})
 
         rows = cursor.fetchall()
         # return HttpResponse(cursor.query)
 
         for row in rows:
-            item = {'name': row[0].strip()}
+            # item = {'name': row[0].strip()}
+            item = row[0].strip()
             items.append(item)
         # ===========================================================================
         # END local data
@@ -630,5 +643,78 @@ def searchAutoComplete(request):
         for x in items:
             if x not in output:
                 output.append(x)
-        return HttpResponse(request.GET["callback"] + "(" + json.dumps({'result': output}) + ")")
+        # return HttpResponse(request.GET["callback"] + "(" + json.dumps({'result': output}) + ")")
         # return HttpResponse(json.dumps({'result':items}))
+        return Response(output)
+
+
+# @api_view(['GET'])
+# def wuAutoComplete(request, search_text):
+#     """
+#     Example:
+#     /autocomplete/Erste
+#
+#     :param request:
+#     :return:
+#     """
+#     # searchString = request.GET["query"]
+#     searchString = search_text
+#     if (searchString != None):
+#
+#         items = []
+#
+#
+#         # ===========================================================================
+#         # bach data
+#
+#         #======================================================
+#         #append organizations but no persons!
+#         bachData = bach_calls.bach_search_directory(searchString)
+#         if bachData is not None:
+#             for row in bachData:
+#                 if "label" in row and searchString.upper() in row["label"].upper():
+#
+#                     name = ""
+#                     if ("label" in row and searchString == row["label"]):
+#                         name = row["label"]
+#                     elif ("name_de" in row and searchString == row["name_de"]):
+#                         name = row["name_de"]
+#                     elif ("name_en" in row and searchString == row["name_en"]):
+#                         name = row["name_en"]
+#                     else:
+#                         name = row["label"]
+#
+#                     # remove whitespaces at the end of string (for duplicate detection)
+#                     name = name.strip()
+#                     items.append({"name": name})
+#
+#         from django.db import connection
+#
+#         cursor = connection.cursor()
+#
+#         searchString = searchString.replace(".", "", 2)
+#         searchString = searchString.replace(" ", "", 2)
+#
+#         cursor.execute("""SELECT search_string FROM geodata.search_index_v
+#                           WHERE replace(replace (upper(search_string), '.', ''),'.', '') LIKE upper(%(search_string)s)
+#                           GROUP BY search_string
+#                           ORDER BY search_string DESC, length(search_string) LIMIT 100""",
+#                        {"search_string": "%" + searchString + "%"})
+#
+#         rows = cursor.fetchall()
+#         #return HttpResponse(cursor.query)
+#
+#         for row in rows:
+#             item = {'name': row[0].strip()}
+#             items.append(item)
+#         # ===========================================================================
+#         # END local data
+#
+#         # remove duplicate entries
+#
+#         output = []
+#         for x in items:
+#             if x not in output:
+#                 output.append(x)
+#         # return HttpResponse(request.GET["callback"] + "(" + json.dumps({'result': output}) + ")")
+#         return Response(output)

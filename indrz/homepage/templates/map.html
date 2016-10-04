@@ -47,7 +47,11 @@
         var searchValues = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: baseApiUrl + 'spaces/search/?format=json'
+            prefetch: baseApiUrl + 'spaces/search/?format=json',
+            remote: {
+              url: 'http://localhost:8000/autocomplete/%QUERY?.format=json',
+              wildcard: '%QUERY'
+            }
         });
 
         // passing in `null` for the `options` arguments will result in the default
@@ -74,6 +78,33 @@
 
 
 {% endblock js-search-box %}
+
+{% block route_from_to %}
+    <script>
+    // http://tatiyants.com/how-to-use-json-objects-with-twitter-bootstrap-typeahead/
+        var roomNums = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: baseApiUrl + 'spaces/search/?format=json'
+        });
+        // passing in `null` for the `options` arguments will result in the default
+        // options being used
+        $('#rooms-prefetch .typeahead').typeahead(null, {
+            name: 'countries',
+            limit: 100,
+            source: roomNums
+        });
+        $("#submitForm").submit(function (event) {
+            {#  alert( "Handler for .submit() called."  );#}
+            var startNum = $('#route-from').val();
+            var endNum = $('#route-to').val();
+            var rType = $("input:radio[name=typeRoute]:checked").val();
+            addRoute(startNum, endNum, rType);
+            event.preventDefault();
+        });
+    </script>
+
+{% endblock route_from_to %}
 
 
 
