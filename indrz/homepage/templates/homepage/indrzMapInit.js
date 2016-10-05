@@ -1,6 +1,9 @@
+xStart = 1826602.5273166203;
+yStart = 6142514.2285252055;
+
 
 var view = new ol.View({
-        center: [StartCenterX, StartCenterY],
+        center: [xStart, yStart],
         zoom: zoom_level
     });
 

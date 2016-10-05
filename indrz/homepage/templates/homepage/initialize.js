@@ -2,14 +2,6 @@ $(document).ready(function () {
     function initialize() {
 
 
-        if (centerx.indexOf(",")) {
-
-                var view = map.getView();
-                view.setCenter([centerx.replace(',', '.'), centery.replace(',', '.')]);
-                view.setZoom(zoom_level);
-            }
-
-
         if (centerx != 0 && centery != 0 && isNaN(centerx) == false) {
 
                 var view = map.getView();
@@ -24,7 +16,6 @@ $(document).ready(function () {
                 $("#route-to").val(route_to);
                 $("#submitForm").submit();
             } else if (centerx != 0 && centery != 0 && isNaN(centerx) == false) {
-
                 var view = map.getView();
                 view.setCenter([centerx, centery]);
                 view.setZoom(zoom_level);
