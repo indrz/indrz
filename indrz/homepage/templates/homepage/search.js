@@ -84,6 +84,7 @@ function searchIndrz(campusId, searchString) {
 
         // zoomToFeature(searchSource);
 
+
         var centerCoord = ol.extent.getCenter(searchSource.getExtent());
         console.log(centerCoord);
 
@@ -98,7 +99,7 @@ function searchIndrz(campusId, searchString) {
 
         open_popup(featuresSearch[0].getProperties(), centerCoord);
 
-        space_id = response.features[0].id;
+        space_id = response.features[0].properties.space_id;
 
         // active the floor of the start point
         var searchResFloorNum = featuresSearch[0].getProperties().floor_num;

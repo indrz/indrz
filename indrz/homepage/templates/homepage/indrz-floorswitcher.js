@@ -2,11 +2,20 @@ var switchableLayers = [wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05,
 
 function waitForFloors(space_floor_id) {
     if (floor_layers.length > 0) {
-        for (var i = 0; i < building_info.num_floors; i++) {
-            if (building_info.buildingfloor_set[i].id == space_floor_id) {
-                activateLayer(i);
-            }
-        }
+
+        // for (var i = 0; i < floors_info.length; ++i) {
+        //     floor_layers.push(floors_info[i]);
+        //     appendFloorNav(floors_info[i].short_name, [i]);
+        //     }
+
+        activateLayer(space_floor_id);
+
+
+        // for (var i = 0; i < building_info.num_floors; i++) {
+        //     if (building_info.buildingfloor_set[i].id == space_floor_id) {
+        //         activateLayer(i);
+        //     }
+        // }
     }
     else {
         setTimeout(function () {

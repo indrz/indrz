@@ -70,10 +70,10 @@ function getTitle(properties){
 
 }
 
-function open_popup(properties, coordinate){
+function open_popup(properties, coordinate, name){
 
   var titlePopup = gettext('Building Name: ');
-    var name;
+    //var name;
     var floorNum;
     var buildingName;
     var roomcode ;

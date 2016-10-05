@@ -21,9 +21,7 @@ function update_url(mode) {
     } else if (mode == "search") {
         url = "/map/" + map_name + "/?campus=" + building_id + "&spaceid=" + space_id;
     } else if (mode == "map") {
-        url = "/map/" + map_name + "/?campus=" + building_id +
-            "&centerx=" + centerx2 + "&centery=" + centery2 + "&zlevel=" + current_zoom2 +
-            "&floor=" + active_floor_num;
+        url = "/map/" + map_name + "/?campus=" + building_id + "&centerx=" + centerx2 + "&centery=" + centery2 + "&zlevel=" + current_zoom2 + "&floor=" + active_floor_num;
     }
 
     data.extent = current_extent2;
