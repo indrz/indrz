@@ -107,7 +107,7 @@ function open_popup(properties, coordinate){
     popup_content.innerHTML += '<p>' + textFloorNumber + floorNum + '</p>';
     popup_content.innerHTML += '<p>' + titlePopup + buildingName + '</p>';
 
-  popup_content.innerHTML += '<p>' + gettext('Coordinate: ')+ '</p><code>' + hdms + '</code><p><a href="#"><i class="fa fa-bug fa-fw"></i>' + gettext('Bug Report') + '</a>  </p>';
+  popup_content.innerHTML += '<p>' + gettext('Coordinate: ')+ '</p><code>' + coordinate + '</code><p></p><code>' + hdms + '</code><p><a href="#"><i class="fa fa-bug fa-fw"></i>' + gettext('Bug Report') + '</a>  </p>';
   popup_overlay.setPosition(coordinate);
 }
 

@@ -37,13 +37,20 @@ function setSearchFeatureStyle(feature, resolution) {
 }
 
 function zoomToFeature(source) {
+
+    var view = map.getView();
+    // view.setCenter([centerx, centery]);
+    view.setZoom(19);
+
     var feature = source.getFeatures()[0];
     var polygon = /** @type {ol.geom.SimpleGeometry} */ (feature.getGeometry());
     var size = /** @type {ol.Size} */ (map.getSize());
     view.fit(polygon, size, {padding: [170, 50, 30, 150], constrainResolution: false})
-    }
+
     // view.fit(polygon, size, {padding: [170, 50, 30, 150], nearest: true})}
     // view.fit(point, size, {padding: [170, 50, 30, 150], minResolution: 50})}
+    }
+
 
 function zoomer(coord, zoom){
         var pan = ol.animation.pan({
@@ -81,10 +88,13 @@ function searchIndrz(campusId, searchString) {
         console.log(centerCoord);
 
         // zoomer(centerCoord, 20);
-        zoomToFeature(searchSource);
-        // zoomer(centerCoord);
+       // zoomToFeature(searchSource);
+       // zoomer(centerCoord);
+        // view = map.getView();
         // view.setCenter(centerCoord);
-        // view.setZoom(21);
+        // console.log("setting popup center to "+  centerCoord)
+        // view.setZoom(20);
+
 
         open_popup(featuresSearch[0].getProperties(), centerCoord);
 

@@ -23,7 +23,7 @@ def view_map(request, *args, **kwargs):
         building_id, = request.GET.get('buildingid', 1),
         campus_id = request.GET.get('campus', 1),
         space_id, = request.GET.get('spaceid', 0),
-        zoom_level, = request.GET.get('zlevel', 18),
+        zoom_level, = request.GET.get('zlevel', 17),
         route_from, = request.GET.get('startstr', ''),
         route_to, = request.GET.get('endstr', ''),
         centerx, = request.GET.get('centerx', 0),

@@ -34,7 +34,7 @@ var styles = [style];
           }
     };
 
-var spaceJSONURL = baseApiUrl + 'space/'+ space_id +'.json';
+var spaceJSONURL = baseApiUrl + 'spaces/'+ space_id +'.json';
 
 var space_source = new ol.source.Vector();
 $.ajax(spaceJSONURL).then(function(response) {
