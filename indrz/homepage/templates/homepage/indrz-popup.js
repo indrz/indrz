@@ -73,8 +73,6 @@ function getTitle(properties){
 function open_popup(properties, coordinate){
 
   var titlePopup = gettext('Building Name: ');
-    console.log(properties)
-
     var name;
     var floorNum;
     var buildingName;
