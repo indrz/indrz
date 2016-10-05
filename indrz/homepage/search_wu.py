@@ -349,7 +349,7 @@ def search_any(request, q):
 
                     cursor.execute("SELECT search_string, text_type, external_id, st_asgeojson(geom) AS geom, \
                      st_asgeojson(st_PointOnSurface(geom)) AS center,\
-                     layer, building_id, 0 AS resultType, external_id, text_type, room_code \
+                     layer, building_id, 0 AS resultType, external_id, text_type, room_code, id AS space_id \
                      FROM geodata.search_index_v \
                      WHERE external_id = upper(%(location)s)", locationDict)
 
@@ -461,6 +461,7 @@ def search_any(request, q):
                                "frontoffice": front_office,
                                "category_de": repNoneWithEmpty(cat_de_value),
                                "category_en": repNoneWithEmpty(cat_de_value),
+                               "space_id": repNoneWithEmpty(result[0][11]),
                                "src": "bach"
                                }
 
