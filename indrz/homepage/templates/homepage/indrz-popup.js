@@ -1,3 +1,4 @@
+{% load i18n %}
 var popup_container = document.getElementById('indrz-popup');
 var popup_content = document.getElementById('popup-content');
 var popup_closer = document.getElementById('popup-closer');
@@ -70,6 +71,7 @@ function getTitle(properties){
 
 }
 
+
 function open_popup(properties, coordinate, name){
 
   var titlePopup = gettext('Building Name: ');
@@ -105,7 +107,7 @@ function open_popup(properties, coordinate, name){
     popup_content.innerHTML += '<p>' + textFloorNumber + floorNum + '</p>';
     popup_content.innerHTML += '<p>' + titlePopup + buildingName + '</p>';
 
-  popup_content.innerHTML += '<p>' + gettext('Coordinate: ')+ '</p><code>' + coordinate + '</code><p></p><code>' + hdms + '</code><p><a href="#"><i class="fa fa-bug fa-fw"></i>' + gettext('Bug Report') + '</a>  </p>';
+  popup_content.innerHTML += '<p>' + gettext('Coordinate: ')+ '</p><code>' + coordinate + '</code><p></p><code>' + hdms + '</code>';
   popup_overlay.setPosition(coordinate);
 }
 
