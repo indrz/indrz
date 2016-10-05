@@ -20,7 +20,7 @@ def view_map(request, *args, **kwargs):
     context = {}
     if request.method == 'GET':
         map_name = kwargs.pop('map_name', None)
-        building_id, = request.GET.get('campus', 1),
+        building_id, = request.GET.get('buildingid', 1),
         campus_id = request.GET.get('campus', 1),
         space_id, = request.GET.get('spaceid', 0),
         zoom_level, = request.GET.get('zlevel', 18),
