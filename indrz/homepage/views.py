@@ -38,11 +38,9 @@ def view_map(request, *args, **kwargs):
             floor_num = floor_num + 1
 
         if isinstance(centerx, str):
-            print(centerx)
             if ',' in centerx:
                 centerx = float(centerx.replace(',', '.'))
                 centery = float(centery.replace(',', '.'))
-                print(centerx)
 
         context.update({
             'map_name': map_name,
