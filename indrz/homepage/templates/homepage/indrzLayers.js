@@ -171,7 +171,7 @@ $.ajax( baseApiUrl + "campus/1/floors/" )
             appendFloorNav(floors_info[i].short_name, [i]);
             }
 
-        activateLayer(floor + 1);
+        activateLayer(1);
 
     });
 
