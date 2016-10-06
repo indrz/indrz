@@ -15,6 +15,9 @@ from geojson import Feature
 
 from homepage.serializer import CampusFloorSerializer
 
+def view_new(request):
+    return render(request, "wu-neu-map.html")
+
 
 def view_map(request, *args, **kwargs):
     context = {}

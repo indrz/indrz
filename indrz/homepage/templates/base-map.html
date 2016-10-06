@@ -36,20 +36,23 @@
         <div class="row">
 
             <div class="col-md-3 col-lg-2" id="map-search-form">
-                <div class="panel panel-default">
-
-                    <div class="panel-body">
+                    <h3>{% trans 'Search on campus' %}</h3>
+                    <p></p>
+                    <div id="search-prefetch2" class="input-group">
                         {% block search_form %}{% include 'search-form.html' %}{% endblock search_form %}
                     </div>
+            <p>
 
-                    <div class="panel-body">
+            </p>
+
+                    <div >
                         {% block routing-form %} {% include 'routing-form.html' %} {% endblock routing-form %}
                     </div>
 
-                    <div class="panel-body">
+                    <div >
                         {% include "includes/change_lang_form.html" %}
                     </div>
-                </div>
+
 
 
             </div>
