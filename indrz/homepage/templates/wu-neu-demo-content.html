@@ -1,0 +1,230 @@
+{% extends "wu-neu-base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+<!--
+  Search start
+-->
+<div id="searchbox">
+    <form method="post" id="searchInputForm" name="SearchForm">
+        <input type="text" id="searchInputText" name="searchquery" autocomplete="off"
+               onclick="javascript: if ($(this).val() == &#39;What can we help you with?&#39; || $(this).val() == &#39;What can we help you with?&#39;) { $(this).val(&#39;&#39;).addClass(&#39;searchqueryactive&#39;); }"
+               placeholder="What can we help you with?">
+
+        <a href="javascript: void(0);" onclick="$(&#39;#searchInputForm&#39;).submit();"><img
+                src="./wu-neu-design_files/icon-btn-ar-form.png"></a>
+    </form>
+</div>
+<!--
+ Search end
+-->
+
+
+            <div class="col-xs-2">
+
+                 {% block left-menu %}
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="http://hosting.wu.ac.at/gis/#">Suche</a></li>
+                        <li><a href="http://hosting.wu.ac.at/gis/#">POIs</a></li>
+                    </ul>
+
+                    <h3>Suche am Campus</h3>
+                    <form class="form form-inline">
+                        <div class="form-group form-group-sm">
+                            <label for="searchField" class="sr-only">Searchterm</label>
+                            <input type="text" id="searchField" class="form-control"
+                                   placeholder="Orte, Personen, Institute ">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Suche</button>
+                    </form>
+
+
+                    <h3>Results for Auer</h3>
+                    <ol class="latin">
+                        <li>Alexander Michael Auer: LC.4.076</li>
+                    </ol>
+
+                    <h3>Routing</h3>
+
+                {% endblock left-menu %}
+
+            </div>
+
+
+            <div class="col-xs-10">
+
+                {% block content-main-map %}{% endblock content-main-map %}
+
+                {% block content %}{% endblock content %}
+
+            </div>
+
+{% block content %}
+
+
+                <h1>H1 Überschrift</h1>
+                <h2>H2 Überschrift</h2>
+                <h3>H3 Überschrift</h3>
+                <h4>H4 Überschrift</h4>
+                <h5>H5 Überschrift</h5>
+                <h6>H6 Überschrift</h6>
+
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias aut commodi culpa deleniti dolorem
+                    error inventore ipsam minima molestiae, molestias neque nostrum perferendis placeat ratione saepe
+                    tenetur ut voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, aperiam
+                    autem cum eveniet fugiat nisi quas quasi! Atque corporis deserunt dicta doloremque minus natus
+                    necessitatibus quidem unde! Cupiditate, dolorum earum. Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit. Accusantium architecto assumenda dolorem, dolorum enim eos eum facere inventore
+                    maxime modi nam necessitatibus odio repudiandae sed sunt temporibus ut. Earum, provident.</p>
+
+                <p><strong>Bold Text</strong> and <em>italic text</em> and <strike>deleted</strike></p>
+
+                <ul>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam asperiores deserunt maxime.
+                        Delectus dolores, enim minus officiis omnis similique tempora. Eum fugiat perspiciatis quas?
+                        Beatae distinctio maxime quas repudiandae tempora.
+                    </li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam asperiores deserunt maxime.
+                        Delectus dolores, enim minus officiis omnis similique tempora. Eum fugiat perspiciatis quas?
+                        Beatae distinctio maxime quas repudiandae tempora.
+                    </li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam asperiores deserunt maxime.
+                        Delectus dolores, enim minus officiis omnis similique tempora. Eum fugiat perspiciatis quas?
+                        Beatae distinctio maxime quas repudiandae tempora.
+                    </li>
+                </ul>
+
+                <ol>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid aspernatur, at, atque,
+                        cupiditate dolorum ducimus ea enim eveniet facere harum laborum necessitatibus odio pariatur
+                        quod repudiandae rerum ullam voluptatem.
+                    </li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid aspernatur, at, atque,
+                        cupiditate dolorum ducimus ea enim eveniet facere harum laborum necessitatibus odio pariatur
+                        quod repudiandae rerum ullam voluptatem.
+                    </li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid aspernatur, at, atque,
+                        cupiditate dolorum ducimus ea enim eveniet facere harum laborum necessitatibus odio pariatur
+                        quod repudiandae rerum ullam voluptatem.
+                    </li>
+                </ol>
+
+                <a href="http://hosting.wu.ac.at/gis/#">Link</a>
+
+                <a class="btn btn-primary">Linkbutton</a>
+
+                <button class="btn btn-primary">Normal Button</button>
+                <button class="btn btn-secondary">Normal Button</button>
+
+                <h1>Form</h1>
+                <form class="form form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Text</label>
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" placeholder="123">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Area</label>
+                        <div class="col-xs-6">
+                            <textarea class="form-control" placeholder="123"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Password</label>
+                        <div class="col-xs-6">
+                            <input type="password" class="form-control" placeholder="123">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Checkbox</label>
+                        <div class="col-xs-6">
+                            <input type="checkbox"> Checkbox 1
+                            <br>
+                            <input type="checkbox"> Checkbox 2
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Checkbox</label>
+                        <div class="col-xs-6">
+                            <select class="form-control">
+                                <option selected="">SELECTED</option>
+                                <option>ONE</option>
+                                <option>TWO</option>
+                                <option>THREE</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Radio</label>
+                        <div class="col-xs-6">
+                            <input type="radio" placeholder="123"> Radio 1 <br> <input type="radio" placeholder="123">
+                            Radio 2
+
+                        </div>
+                    </div>
+                </form>
+
+                <h1>Tables:</h1>
+                <h2>Normal Table</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>One</th>
+                        <th>Two</th>
+                        <th>Three</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Content one</td>
+                        <td>Content two</td>
+                        <td>Content three</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h2>Striped Table</h2>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>One</th>
+                        <th>Two</th>
+                        <th>Three</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Content one</td>
+                        <td>Content two</td>
+                        <td>Content three</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h2>Hover Table</h2>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>One</th>
+                        <th>Two</th>
+                        <th>Three</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Content one</td>
+                        <td>Content two</td>
+                        <td>Content three</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+              {% endblock content %}

@@ -99,20 +99,22 @@ def route_from_terminal(request, destination_location):
         destination = search_wu.search_any(request, destination_location)
 
         dest_d = destination.data
+        print(dest_d)
 
 
-        dest_floor = str(dest_d['searchResult'][0]['layer'])
-        dest_coord_x = str(dest_d['searchResult'][0]['centerGeometry']['coordinates'][0])
-        dest_coord_y = str(dest_d['searchResult'][0]['centerGeometry']['coordinates'][1])
+        dest_floor = str(dest_d['features'][0]['properties']['layer'])
+        dest_coord_x = str(dest_d['features'][0]['properties']['centerGeometry']['coordinates'][0])
+        dest_coord_y = str(dest_d['features'][0]['properties']['centerGeometry']['coordinates'][1])
 
         destin = dest_coord_x + "," + dest_coord_y + "," + dest_floor
 
+        print(destin)
 
         final_q = destin + "&" + startin
-        pprint(final_q)
+        print(final_q)
 
         # print('/api/v1/directions/'+ fix_start_location + dest_coord + "," + dest_floor + "&0" )
-        url = 'http://localhost:8000/api/v1/directions/' + final_q + '&0'
+        url = 'http://localhost:8000/indrz/api/v1/directions/' + final_q + '&0'
         route_to_book = requests.get(url)
 
         return Response(route_to_book.json())

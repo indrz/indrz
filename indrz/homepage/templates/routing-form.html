@@ -28,10 +28,10 @@
                     {% trans "Barrier Free Route" %}
                 </label>
             </div>
-            <button id="enterRoute" type="submit" class="btn btn-default">{% trans "Go !" %}</button>
+            <button id="enterRoute" type="submit" class="btn btn-primary"><i class="fa fa-map-signs" aria-hidden="true"></i> {% trans "Go !" %}</button>
             <button id="shareRoute" type="button" class="btn btn-info hide" data-toggle="modal" data-target="#ShareRouteModal">
                 <span >
-                    <i class="fa fa-share"></i> Share Route
+                    <i class="fa fa-share"></i> {% trans "Share Route" %}
                 </span>
 {#                {% trans " Share route" %}#}
 
@@ -41,7 +41,7 @@
 {#                {% trans "Clear route" %}#}
             </button>
             <br><br>
-              <a id="id-share-map" class="btn btn-default " data-toggle="modal" data-target="#ShareMapModal"><i class="fa fa-share fa-fw"> </i> Share Map</a>
+              <a id="id-share-map" class="btn btn-primary " data-toggle="modal" data-target="#ShareMapModal"><i class="fa fa-share-square-o" aria-hidden="true"></i>{% trans "Share map" %}</a>
         </form>
 
     </div>

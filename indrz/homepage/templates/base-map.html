@@ -32,27 +32,40 @@
 {% block nav %}{% include 'navbar-top.html' %}{% endblock nav %}
 
 <div id="indrz-main-container" class="container-fluid">
-    {% block map-section %}
+
         <div class="row">
 
-            <div class="col-md-3 col-lg-2" id="map-search-form">
-                <div class="panel panel-default">
 
-                    <div class="panel-body">
+
+
+            <div class="col-md-3 col-lg-2" id="map-search-form">
+                    <h3>{% trans 'Search on campus' %}</h3>
+                    <p></p>
+                    <div id="search-prefetch2" class="input-group">
                         {% block search_form %}{% include 'search-form.html' %}{% endblock search_form %}
                     </div>
+            <p>
 
-                    <div class="panel-body">
+            </p>
+
+
+                <h3>Routing</h3>
+
+
+                    <div>
                         {% block routing-form %} {% include 'routing-form.html' %} {% endblock routing-form %}
                     </div>
 
-                    <div class="panel-body">
+            <h3></h3>
+
+                    <div >
                         {% include "includes/change_lang_form.html" %}
                     </div>
-                </div>
+
 
 
             </div>
+
 
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10">
                 <div class="row">
@@ -98,7 +111,7 @@
 
 
         </div>
-    {% endblock map-section %}
+
 </div>
 
 
@@ -106,37 +119,6 @@
 
 {% block popup-markup %} {% include 'popup-markup.html' %} {% endblock popup-markup %}
 
-
-{% block js-typeahead %}
-    <script>
-        var roomNums = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.whitespace,
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: '/api/v1/spaces/search/?format=json'
-        });
-
-        // passing in `null` for the `options` arguments will result in the default
-        // options being used
-        $('#rooms-prefetch .typeahead').typeahead(null, {
-            name: 'countries',
-            limit: 100,
-            source: roomNums
-        });
-
-
-        $("#submitForm").submit(function (event) {
-            {#  alert( "Handler for .submit() called."  );#}
-                        var startNum = $('#route-from').val();
-            var endNum = $('#route-to').val();
-            var rType = $("input:radio[name=typeRoute]:checked").val();
-            addRoute(startNum, endNum, rType);
-            event.preventDefault();
-        });
-
-
-    </script>
-
-{% endblock js-typeahead %}
 
 {% block js-search-box %}{% endblock js-search-box %}
 {% block route_from_to %}{% endblock route_from_to %}

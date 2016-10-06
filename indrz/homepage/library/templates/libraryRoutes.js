@@ -165,8 +165,8 @@ function RouteToShelf(rvk_id) {
 
         // active the floor of the start point
         var start_floor = features[0].getProperties().floor;
-        for (var i = 0; i < floor_layers.length; i++) {
-            if (start_floor == floor_layers[i].getProperties().floor_num) {
+        for (var i = 0; i < switchableLayers.length; i++) {
+            if (start_floor == switchableLayers[i].getProperties().floor_num) {
                 activateLayer(i);
             }
         }

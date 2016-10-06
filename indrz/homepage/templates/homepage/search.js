@@ -37,13 +37,20 @@ function setSearchFeatureStyle(feature, resolution) {
 }
 
 function zoomToFeature(source) {
+
+    var view = map.getView();
+    // view.setCenter([centerx, centery]);
+    view.setZoom(19);
+
     var feature = source.getFeatures()[0];
     var polygon = /** @type {ol.geom.SimpleGeometry} */ (feature.getGeometry());
     var size = /** @type {ol.Size} */ (map.getSize());
     view.fit(polygon, size, {padding: [170, 50, 30, 150], constrainResolution: false})
-    }
+
     // view.fit(polygon, size, {padding: [170, 50, 30, 150], nearest: true})}
     // view.fit(point, size, {padding: [170, 50, 30, 150], minResolution: 50})}
+    }
+
 
 function zoomer(coord, zoom){
         var pan = ol.animation.pan({
@@ -58,7 +65,8 @@ function zoomer(coord, zoom){
 
 function searchIndrz(campusId, searchString) {
     // var searchUrl = '/api/v1/buildings/' + buildingId + '/' + spaceName + '.json';
-    var searchUrl = '/api/v1/campus/' + campusId + '/search/' + searchString + '?format=json';
+    // var searchUrl = baseApiUrl + 'campus/' + campusId + '/search/' + searchString + '?format=json';
+    var searchUrl = 'http://localhost:8000/search/' + searchString + '?format=json';
 
     if (searchLayer) {
         map.removeLayer(searchLayer);
@@ -76,23 +84,27 @@ function searchIndrz(campusId, searchString) {
 
         // zoomToFeature(searchSource);
 
+
         var centerCoord = ol.extent.getCenter(searchSource.getExtent());
         console.log(centerCoord);
 
         // zoomer(centerCoord, 20);
-        zoomToFeature(searchSource);
-        // zoomer(centerCoord);
+       // zoomToFeature(searchSource);
+       // zoomer(centerCoord);
+        // view = map.getView();
         // view.setCenter(centerCoord);
-        // view.setZoom(21);
+        // console.log("setting popup center to "+  centerCoord)
+        // view.setZoom(20);
+
 
         open_popup(featuresSearch[0].getProperties(), centerCoord);
 
-        space_id = response.features[0].id;
+        space_id = response.features[0].properties.space_id;
 
         // active the floor of the start point
         var searchResFloorNum = featuresSearch[0].getProperties().floor_num;
-        for (var i = 0; i < floor_layers.length; i++) {
-            if (searchResFloorNum == floor_layers[i].getProperties().floor_num) {
+        for (var i = 0; i < switchableLayers.length; i++) {
+            if (searchResFloorNum == switchableLayers[i].getProperties().floor_num) {
                 activateLayer(i);
             }
         }
@@ -110,6 +122,7 @@ function searchIndrz(campusId, searchString) {
 
     map.getLayers().push(searchLayer);
     $("#clearSearch").removeClass("hide");
+    $("#shareSearch").removeClass("hide");
 
 }
 
@@ -120,6 +133,7 @@ $("#clearSearch").click(function () {
     close_popup();
 
     $("#clearSearch").addClass("hide");
+    $("#shareSearch").addClass("hide");
     $("#search-input").val('');
 
 });

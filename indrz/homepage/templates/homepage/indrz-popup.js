@@ -1,3 +1,4 @@
+{% load i18n %}
 var popup_container = document.getElementById('indrz-popup');
 var popup_content = document.getElementById('popup-content');
 var popup_closer = document.getElementById('popup-closer');
@@ -70,21 +71,33 @@ function getTitle(properties){
 
 }
 
-function open_popup(properties, coordinate){
+
+function open_popup(properties, coordinate, name){
 
   var titlePopup = gettext('Building Name: ');
+    //var name;
+    var floorNum;
+    var buildingName;
+    var roomcode ;
 
-  var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
+    if (properties.fancyname_de){
+        name = properties.fancyname_de;
+    }
+
+    var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
       coordinate, 'EPSG:3857', 'EPSG:4326'));
-    if (properties.short_name){
 
-        var name = properties.short_name;
-        var floorNum = properties.floor_num;
-        var buildingName = properties.building_name;
+    if (properties.label){
+        //var properties = properties[0].properties;
+
+        name = properties.label;
+        floorNum = properties.floor_num;
+        buildingName = properties.building_name;
+        roomcode = properties.roomcode;
     } else {
-        var name = properties.room_code;
-        var floorNum = properties.floor_num;
-        var buildingName = properties.building_name;
+        name = properties.roomcode;
+        floorNum = properties.floor_num;
+        buildingName = properties.building_name;
         titlePopup = gettext('Campus ');
     }
 
@@ -94,7 +107,7 @@ function open_popup(properties, coordinate){
     popup_content.innerHTML += '<p>' + textFloorNumber + floorNum + '</p>';
     popup_content.innerHTML += '<p>' + titlePopup + buildingName + '</p>';
 
-  popup_content.innerHTML += '<p>' + gettext('Coordinate: ')+ '</p><code>' + hdms + '</code><p><a href="#"><i class="fa fa-bug fa-fw"></i>' + gettext('Bug Report') + '</a>  </p>';
+  popup_content.innerHTML += '<p>' + gettext('Coordinate: ')+ '</p><code>' + coordinate + '</code><p></p><code>' + hdms + '</code>';
   popup_overlay.setPosition(coordinate);
 }
 

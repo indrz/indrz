@@ -1,15 +1,22 @@
 {% load i18n %}
-<div id="BugModal" class="modal fade" role="dialog">
+<div id="BugReportModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">{% trans "Bug Report" %}</h4>
+                <h2 class="modal-title"> <i class="fa fa-bug fa-fw"></i>{% trans " Bug Report" %}</h2>
             </div>
-            <div class="modal-body">
-                <input class="form-control" type="text" placeholder="{% trans "Please describe what went wrong." %}">
+                <div class="modal-body">
+                     <h3>Please enter your message</h3>
+                    <textarea style="width:100%;"> </textarea>
+                    <h5>Url you visited</h5>
+                <p>
+                    <code id="popup-link">
+                        <textarea class="share-link text-left" placeholder="here is the link static hard coded" style="width:100%;"> </textarea>
+                    </code>
+                </p>
             </div>
             <div class="modal-footer">
                 <a class="btn btn-default" href="#" data-dismiss="modal"> {% trans "Close" %}</a>

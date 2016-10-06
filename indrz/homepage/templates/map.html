@@ -10,7 +10,11 @@
 
     <script src="{% static "js/bloodhound.min.js" %}"></script>
     <script src="{% static "js/typeahead.bundle.min.js" %}"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">#}
+    <link rel="stylesheet" href="{% static "wu-neu/css" %}" type="text/css" >
+    <link rel="stylesheet" href="{% static "wu-neu/font-awesome.min.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "wu-neu/app.min.css" %}" type="text/css" media="all">
+    <script type="text/javascript" src="{% static "wu-neu/app.min.js" %}"></script>
 
     <style> body {
         padding-top: 0px;
@@ -19,7 +23,7 @@
 
 {% endblock head_extra %}
 
-{% block nav %}
+{% block nav %} {% include "wu-neu-nav.html" %}
     <nav class="navbar navbar-default hidden-md hidden-lg">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -39,7 +43,7 @@
 {#{% block search_form %}{% endblock search_form %}#}
 
 {% block js-search-box %}
-
+<script>  {% include 'homepage/indrzMapConf.js' %} </script>
     <script>
 
        var building_id = 1;
@@ -47,7 +51,12 @@
         var searchValues = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: '/api/v1/spaces/search/?format=json'
+            // prefetch: baseApiUrl + 'spaces/search/?format=json',
+            prefetch: 'http://localhost:8000/autocomplete/%QUERY?.format=json',
+            remote: {
+              url: 'http://localhost:8000/autocomplete/%QUERY?.format=json',
+              wildcard: '%QUERY'
+            }
         });
 
         // passing in `null` for the `options` arguments will result in the default
@@ -75,12 +84,38 @@
 
 {% endblock js-search-box %}
 
+{% block route_from_to %}
+    <script>
+    // http://tatiyants.com/how-to-use-json-objects-with-twitter-bootstrap-typeahead/
+        var roomNums = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: baseApiUrl + 'spaces/search/?format=json'
+        });
+        // passing in `null` for the `options` arguments will result in the default
+        // options being used
+        $('#rooms-prefetch .typeahead').typeahead(null, {
+            name: 'countries',
+            limit: 100,
+            source: roomNums
+        });
+        $("#submitForm").submit(function (event) {
+            {#  alert( "Handler for .submit() called."  );#}
+            var startNum = $('#route-from').val();
+            var endNum = $('#route-to').val();
+            var rType = $("input:radio[name=typeRoute]:checked").val();
+            addRoute(startNum, endNum, rType);
+            event.preventDefault();
+        });
+    </script>
+
+{% endblock route_from_to %}
+
 
 
 {% block map_frame %}
-    <script>  {% include 'homepage/indrzMapConf.js' %} </script>
+    <script>  {% include 'homepage/bugreport.js' %} </script>
     <script>  {% include 'homepage/indrzLayers.js' %} </script>
-    <script>  {% include 'homepage/basemap.js' %} </script>
     <script>  {% include 'homepage/indrz-floorswitcher.js' %} </script>
     <script>  {% include 'homepage/indrzMapInit.js' %}</script>
     <script>  {% include 'homepage/routing.js' %} </script>
@@ -94,3 +129,5 @@
         <script>  {% include 'homepage/indrz-space.js' %} </script>
     {% endif %}
 {% endblock map_frame %}
+
+{% block footer %}{% include "wu-neu-footer.html" %}{% endblock footer %}

@@ -31,8 +31,7 @@ var route_inactive_style = new ol.style.Style({
 
 
 function addRoute(fromNumber, toNumber, routeType) {
-    var baseUrl = '/api/v1/directions/';
-    var geoJsonUrl = baseUrl + 'startstr=' + fromNumber + '&endstr=' + toNumber + '/?format=json';
+    var geoJsonUrl = baseApiRoutingUrl + 'startstr=' + fromNumber + '&endstr=' + toNumber + '/?format=json';
 
     var startingLevel = fromNumber.charAt(0);
 

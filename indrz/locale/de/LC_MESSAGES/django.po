@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-12 11:51+0200\n"
-"PO-Revision-Date: 2016-07-15 12:54+0200\n"
-"Last-Translator: b'  <admin@admin.com>'\n"
+"POT-Creation-Date: 2016-10-06 15:11+0200\n"
+"PO-Revision-Date: 2016-10-06 15:23+0200\n"
+"Last-Translator: b'  <>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.7.11\n"
 
@@ -29,7 +29,7 @@ msgstr "name Wert"
 
 #: .\buildings\models.py:117
 msgid "Street"
-msgstr "Street"
+msgstr "Straße"
 
 #: .\buildings\models.py:119
 msgid "Building or house number"
@@ -84,7 +84,7 @@ msgstr "Gebäude Schwerpunkt für kleine Karten"
 
 #: .\buildings\models.py:173
 msgid "Owner name"
-msgstr "Owner name"
+msgstr "Besitzer"
 
 #: .\buildings\models.py:174
 #, fuzzy
@@ -98,7 +98,7 @@ msgstr "Anzahl der Gebäude"
 
 #: .\buildings\models.py:189
 msgid "Campus name"
-msgstr "Campus Namen"
+msgstr "Campus Name"
 
 #: .\buildings\models.py:190 .\buildings\models.py:217
 msgid "Building description"
@@ -189,11 +189,11 @@ msgstr "Name der Organisation e.g Engineering"
 
 #: .\buildings\models.py:316
 msgid "Department name e.g Engineering"
-msgstr "Abteilung name e.g Engineering"
+msgstr "Abteilung Name zb. Engineering"
 
 #: .\buildings\models.py:317
 msgid "Division"
-msgstr "Division"
+msgstr "Sektion"
 
 #: .\buildings\models.py:325
 msgid "Room id imported from external system"
@@ -243,7 +243,7 @@ msgstr "lange stand name"
 
 #: .\conference\models.py:39
 msgid "label of stand"
-msgstr "Etikett stehen"
+msgstr "Etikett von Stand"
 
 #: .\conference\models.py:40
 msgid "foyer name location value"
@@ -251,7 +251,7 @@ msgstr "foyer name Ort Wert"
 
 #: .\conference\models.py:41
 msgid "name of hall"
-msgstr "name der Halle"
+msgstr "Halle Name"
 
 #: .\conference\models.py:42
 msgid "stand id from external system"
@@ -269,21 +269,21 @@ msgstr "Art des Standes"
 #, fuzzy
 #| msgid "name of hall"
 msgid "name of kiosk"
-msgstr "name der Halle"
+msgstr "Kiosk Name"
 
 #: .\homepage\kiosk\models.py:22
 msgid "unique IP of the kiosk"
-msgstr ""
+msgstr "Kiosk eindeutige IP"
 
 #: .\homepage\kiosk\models.py:23
 msgid "enter in degrees from 0 to 359 where 0 is north"
-msgstr ""
+msgstr "Bitte in Grad eingeben von 0 bis 359 wobei Nord ist 0"
 
 #: .\homepage\kiosk\models.py:31
 msgid "location of kiosk"
-msgstr ""
+msgstr "Kiosk Ort"
 
-#: .\homepage\kiosk\templates\kiosk.html:27 .\homepage\templates\map.html:27
+#: .\homepage\kiosk\templates\kiosk.html:27 .\homepage\templates\map.html:31
 #: .\maps\templates\map.html:27
 #, fuzzy
 #| msgid "Toggle sorting"
@@ -342,6 +342,12 @@ msgstr "Keine vorhanden"
 msgid "Unknown content"
 msgstr "Unbekannte Inhalte"
 
+#: .\homepage\templates\base-map.html:42
+#, fuzzy
+#| msgid "Search for ..."
+msgid "Search on campus"
+msgstr "Suche am Campus"
+
 #: .\homepage\templates\includes\change_lang_form.html:16
 #: .\maps\templates\includes\change_lang_form.html:16
 #, fuzzy
@@ -350,16 +356,12 @@ msgid "Change language"
 msgstr "Sprache"
 
 #: .\homepage\templates\modal-bugreport.html:9
-#: .\maps\templates\modal-bugreport.html:9
-msgid "Bug Report"
+#, fuzzy
+#| msgid "Bug Report"
+msgid " Bug Report"
 msgstr "Bug-Report"
 
-#: .\homepage\templates\modal-bugreport.html:12
-#: .\maps\templates\modal-bugreport.html:12
-msgid "Please describe what went wrong."
-msgstr "Bitte beschreiben Sie, was falsch gelaufen ist."
-
-#: .\homepage\templates\modal-bugreport.html:15
+#: .\homepage\templates\modal-bugreport.html:22
 #: .\homepage\templates\modal-share.html:21
 #: .\homepage\templates\modal-share.html:46
 #: .\homepage\templates\modal-share.html:71
@@ -369,14 +371,16 @@ msgstr "Bitte beschreiben Sie, was falsch gelaufen ist."
 msgid "Close"
 msgstr "In der Nähe"
 
-#: .\homepage\templates\modal-bugreport.html:16
+#: .\homepage\templates\modal-bugreport.html:23
 #: .\maps\templates\modal-bugreport.html:16
 msgid "Send"
 msgstr "Senden"
 
-#: .\homepage\templates\modal-share.html:9 .\maps\templates\modal-share.html:9
+#: .\homepage\templates\modal-share.html:9
+#: .\homepage\templates\routing-form.html:44
+#: .\maps\templates\modal-share.html:9
 msgid "Share map"
-msgstr "Teilen anzeigen"
+msgstr "Karte Teilen"
 
 #: .\homepage\templates\modal-share.html:20
 #: .\homepage\templates\modal-share.html:45
@@ -426,7 +430,7 @@ msgstr "Teilen Sie die Suchergebnisse"
 #: .\homepage\templates\modal-share.html:60
 #: .\maps\templates\modal-share.html:60
 msgid "Share route results"
-msgstr "Anteil Strecke Ergebnisse"
+msgstr "Route ergebnisse teilen"
 
 #: .\homepage\templates\navbar-top.html:19
 #: .\homepage\templates\navbar-top.html:75 .\maps\templates\navbar-top.html:19
@@ -473,11 +477,18 @@ msgstr "Barriere Freier Strecke"
 msgid "Go !"
 msgstr "Go !"
 
-#: .\homepage\templates\search-form.html:8 .\maps\templates\search-form.html:8
+#: .\homepage\templates\routing-form.html:34
+#, fuzzy
+#| msgid "Standard Route"
+msgid "Share Route"
+msgstr "Route Teilen"
+
+#: .\homepage\templates\search-form.html:12
+#: .\maps\templates\search-form.html:8
 msgid "Search for ..."
 msgstr "Suche für ..."
 
-#: .\homepage\templates\search-form.html:12
+#: .\homepage\templates\search-form.html:16
 #: .\maps\templates\search-form.html:12
 msgid "Go!"
 msgstr "Go!"
@@ -486,36 +497,6 @@ msgstr "Go!"
 #: .\maps\templates\search-form.html:20
 msgid "Share"
 msgstr "Teilen"
-
-#: .\homepage\templates\search-form.html:22
-#: .\maps\templates\search-form.html:22
-msgid "GPS"
-msgstr "GPS"
-
-#: .\homepage\templates\search-form.html:25
-#: .\maps\templates\search-form.html:25
-msgid "Directions"
-msgstr "Richtungen"
-
-#: .\homepage\templates\search-form.html:26
-#: .\maps\templates\search-form.html:26
-msgid "Print"
-msgstr ""
-
-#: .\homepage\templates\search-form.html:28
-#: .\maps\templates\search-form.html:28
-msgid "Clear"
-msgstr "Klar"
-
-#: .\homepage\templates\search-form.html:32
-#: .\maps\templates\search-form.html:32
-msgid "Info"
-msgstr "Info"
-
-#: .\homepage\templates\search-form.html:34
-#: .\maps\templates\search-form.html:34
-msgid "Report Bug"
-msgstr "Report Bug"
 
 #: .\landscape\models.py:174
 msgid "Geometry multi-polygon outside facility areas"
@@ -529,6 +510,38 @@ msgstr "Geometrie multi-linestrings Außenbereich Linien"
 msgid "Geometry multi-linestrings pavement lines"
 msgstr "Geometrie multi-linestrings Bürgersteig Linien"
 
+#: .\maps\templates\modal-bugreport.html:9
+msgid "Bug Report"
+msgstr "Bug-Report"
+
+#: .\maps\templates\modal-bugreport.html:12
+msgid "Please describe what went wrong."
+msgstr "Bitte beschreiben Sie, was falsch gelaufen ist."
+
+#: .\maps\templates\search-form.html:22
+msgid "GPS"
+msgstr "GPS"
+
+#: .\maps\templates\search-form.html:25
+msgid "Directions"
+msgstr "Richtungen"
+
+#: .\maps\templates\search-form.html:26
+msgid "Print"
+msgstr "Drucken"
+
+#: .\maps\templates\search-form.html:28
+msgid "Clear"
+msgstr "Klar"
+
+#: .\maps\templates\search-form.html:32
+msgid "Info"
+msgstr "Info"
+
+#: .\maps\templates\search-form.html:34
+msgid "Report Bug"
+msgstr "Report Bug"
+
 #: .\permissions\permissions.py:22 .\permissions\permissions.py:28
 #: .\permissions\permissions.py:39
 #, fuzzy
@@ -538,43 +551,43 @@ msgstr "Vor Ort ansehen"
 
 #: .\permissions\permissions.py:23 .\permissions\permissions.py:29
 msgid "View organization map"
-msgstr ""
+msgstr "Ansicht-Organisation anzeigen"
 
 #: .\permissions\permissions.py:30
 msgid "Request membership"
-msgstr ""
+msgstr "Mitgliedschaft Anfrage "
 
 #: .\permissions\permissions.py:31
 msgid "Add map to organization"
-msgstr ""
+msgstr "Karte zu Organisation Hinzufügen, "
 
 #: .\permissions\permissions.py:32
 msgid "Add comments to organization"
-msgstr ""
+msgstr "Kommentar zu Organization hinzufügen"
 
 #: .\permissions\permissions.py:33
 msgid "Add comments to map"
-msgstr ""
+msgstr "Kommentar zu Karte hinzufügen"
 
 #: .\permissions\permissions.py:34 .\permissions\permissions.py:57
 msgid "Modify organization"
-msgstr ""
+msgstr "Organization Aktualisieren"
 
 #: .\permissions\permissions.py:35
 msgid "Modify map"
-msgstr ""
+msgstr "Karte Aktualisieren"
 
 #: .\permissions\permissions.py:41
 msgid "View map "
-msgstr ""
+msgstr "Karte  Anschauen"
 
 #: .\permissions\permissions.py:42
 msgid "Add map "
-msgstr ""
+msgstr "Karte Hinzufügen"
 
 #: .\permissions\permissions.py:43
 msgid "Modify map map"
-msgstr ""
+msgstr "Karte Editieren"
 
 #: .\permissions\permissions.py:44
 #, fuzzy
@@ -590,11 +603,11 @@ msgstr "View site"
 
 #: .\permissions\permissions.py:47
 msgid "Add layer"
-msgstr ""
+msgstr "Ebene hinzufügen"
 
 #: .\permissions\permissions.py:48
 msgid "Modify layer"
-msgstr ""
+msgstr "Ebene Ändern"
 
 #: .\permissions\permissions.py:50
 #, fuzzy
@@ -604,7 +617,7 @@ msgstr "Anzahl der Gebäude"
 
 #: .\permissions\permissions.py:51
 msgid "Add building"
-msgstr ""
+msgstr "Gebäude HInzugügen"
 
 #: .\permissions\permissions.py:52
 #, fuzzy
@@ -614,7 +627,7 @@ msgstr "Anzahl der Gebäude"
 
 #: .\permissions\permissions.py:58
 msgid "Add member"
-msgstr ""
+msgstr "Mitglied hinzufügen"
 
 #: .\permissions\permissions.py:59
 #, fuzzy
@@ -624,27 +637,27 @@ msgstr "Entfernen"
 
 #: .\permissions\permissions.py:60
 msgid "Delete organization"
-msgstr ""
+msgstr "Organization Löschen"
 
 #: .\permissions\permissions.py:61
 msgid "Admin organization values"
-msgstr ""
+msgstr "Admin-Organisation Werte"
 
 #: .\permissions\permissions.py:62
 msgid "Admin roles"
-msgstr ""
+msgstr "Administrator Rollen"
 
 #: .\poi_manager\models.py:50
 msgid "Name of map icon"
-msgstr ""
+msgstr "Map Icon Name"
 
 #: .\poi_manager\models.py:52
 msgid "Poi icon image"
-msgstr ""
+msgstr "POI icon Bild"
 
 #: .\poi_manager\models.py:61
 msgid "Pictogram"
-msgstr ""
+msgstr "Piktogramm"
 
 #: .\poi_manager\models.py:92
 #, fuzzy
@@ -680,63 +693,78 @@ msgstr "Sortieren oder POI-Elemente"
 #, python-format
 msgid "full_tree_for_model tag was given an invalid model: %s"
 msgstr ""
+"full_tree_for_model tag gegeben wurde eine ungültige Modell: <code>%s</code>"
 
 #: .\poi_manager\templatetags\mptt_tags.py:55
 #, python-format
 msgid "drilldown_tree_for_node tag was given an invalid model: %s"
 msgstr ""
+"drilldown_tree_for_node tag gegeben wurde eine ungültige Modell: "
+"<code>%s</code>"
 
 #: .\poi_manager\templatetags\mptt_tags.py:62
 #, python-format
 msgid "drilldown_tree_for_node tag was given an invalid model field: %s"
 msgstr ""
+"drilldown_tree_for_node tag gegeben wurde eine ungültige Modell-field: "
+"<code>%s</code>"
 
 #: .\poi_manager\templatetags\mptt_tags.py:89
 #, python-format
 msgid "%s tag requires three arguments"
-msgstr ""
+msgstr "<code>%s</code> tag benötigt drei Argumente"
 
 #: .\poi_manager\templatetags\mptt_tags.py:91
 #: .\poi_manager\templatetags\mptt_tags.py:146
 #, python-format
 msgid "second argument to %s tag must be 'as'"
-msgstr ""
+msgstr "zweites argument <code>%s</code> tag \"als\""
 
 #: .\poi_manager\templatetags\mptt_tags.py:143
 #, python-format
 msgid "%s tag requires either three, seven or eight arguments"
 msgstr ""
+"<code>%s</code> - tag erfordert entweder drei, sieben oder acht Argumente"
 
 #: .\poi_manager\templatetags\mptt_tags.py:150
 #, python-format
 msgid "if seven arguments are given, fourth argument to %s tag must be 'with'"
 msgstr ""
+"wenn sieben Argumente gegeben sind, die vierte argument <code>%s</code> tag "
+"muss sein 'mit'"
 
 #: .\poi_manager\templatetags\mptt_tags.py:154
 #, python-format
 msgid "if seven arguments are given, sixth argument to %s tag must be 'in'"
 msgstr ""
+"wenn sieben Argumente gegeben sind, sechsten argument <code>%s</code> tag "
+"'in'"
 
 #: .\poi_manager\templatetags\mptt_tags.py:160
 #, python-format
 msgid ""
 "if eight arguments are given, fourth argument to %s tag must be 'cumulative'"
 msgstr ""
+"wenn acht Argumente gegeben sind, die vierte argument <code>%s</code> tag "
+"'kumulative'"
 
 #: .\poi_manager\templatetags\mptt_tags.py:164
 #, python-format
 msgid "if eight arguments are given, fifth argument to %s tag must be 'count'"
 msgstr ""
+"wenn acht Argumente gegeben sind, fünfte argument <code>%s</code> tag muss "
+"sich 'rechnen'"
 
 #: .\poi_manager\templatetags\mptt_tags.py:168
 #, python-format
 msgid "if eight arguments are given, seventh argument to %s tag must be 'in'"
 msgstr ""
+"wenn acht Argumente gegeben sind, siebten argument <code>%s</code> tag 'in'"
 
 #: .\poi_manager\templatetags\mptt_tags.py:287
 #, python-format
 msgid "%s tag requires a queryset"
-msgstr ""
+msgstr "<code>%s</code> - tag erfordert ein queryset"
 
 #: .\routing\models.py:23
 msgid "Indoor way"
@@ -900,8 +928,8 @@ msgid ""
 "email and should be fixed shortly. Thanks for your patience."
 msgstr ""
 "Es ist ein Fehler gewesen. Es ist berichtet worden, um die site-"
-"Administratoren per E-Mail und sollte in Kürze behoben. Vielen Dank für Ihre "
-"Geduld."
+"Administratoren per E-Mail und sollte in Kürze behoben. Vielen Dank für Ihre"
+" Geduld."
 
 #: .\templates\admin\actions.html:4
 msgid "Run the selected action"
@@ -926,8 +954,8 @@ msgstr "Löschen der Auswahl"
 
 #: .\templates\admin\auth\user\add_form.html:6
 msgid ""
-"First, enter a username and password. Then, you'll be able to edit more user "
-"options."
+"First, enter a username and password. Then, you'll be able to edit more user"
+" options."
 msgstr ""
 "Geben Sie zuerst einen Benutzernamen und ein Passwort. Dann, Sie werden in "
 "der Lage sein, zu Bearbeiten mehr-Benutzer-Optionen."
@@ -1037,8 +1065,8 @@ msgstr ""
 #: .\templates\admin\delete_confirmation.html:25
 #, python-format
 msgid ""
-"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
-"following protected related objects:"
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the"
+" following protected related objects:"
 msgstr ""
 "Löschen des %(object_name)s '%(escaped_object)s' erfordern würde, löschen "
 "Sie die folgenden geschützten verwandten Objekte:"
@@ -1132,9 +1160,9 @@ msgstr "Modelle in <code>%(name)s</code> application"
 
 #: .\templates\admin\invalid_setup.html:12
 msgid ""
-"Something's wrong with your database installation. Make sure the appropriate "
-"database tables have been created, and make sure the database is readable by "
-"the appropriate user."
+"Something's wrong with your database installation. Make sure the appropriate"
+" database tables have been created, and make sure the database is readable "
+"by the appropriate user."
 msgstr ""
 "Etwas ist falsch mit Ihrer Datenbank-installation. Stellen Sie sicher, dass "
 "die entsprechenden Datenbank-Tabellen erstellt wurden, und sicherzustellen, "
@@ -1162,8 +1190,8 @@ msgstr "Aktion"
 
 #: .\templates\admin\object_history.html:38
 msgid ""
-"This object doesn't have a change history. It probably wasn't added via this "
-"admin site."
+"This object doesn't have a change history. It probably wasn't added via this"
+" admin site."
 msgstr ""
 "Dieses Objekt muss nicht eine Veränderung der Geschichte. Es war wohl nicht "
 "Hinzugefügt, über das admin-Website."
