@@ -1,0 +1,22 @@
+{% extends "wu-neu-base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+
+{% block left-menu %}
+
+{% endblock left-menu %}
+
+
+{% block content-main-map %}
+
+    <div class="embed-responsive embed-responsive-16by9">
+
+        <iframe src="http://localhost:8000/map/test" class="embed-responsive-item" style="border: 0; width: 100%; height: 700px;" seamless></iframe>
+
+    </div>
+
+{% endblock content-main-map %}
+
+
+{% block content %}{% endblock content %}
