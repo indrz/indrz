@@ -4,59 +4,59 @@
 
 
 
-                <form class="form form-inline" id="submitFormSearch">
-                    <div class="form-group form-group-sm">
-
-                        <label for="searchField" class="sr-only">Searchterm</label>
-
-
-                        <input type="text" class="form-control" id="search-input" placeholder="{% trans "Search for ..." %}">
-
-                    </div>
-
-                    <input id="enterSearch" type="submit" class="btn btn-primary" value="{% trans "Go!" %}">
-
-                </form>
-
-
+{#                <form class="form form-inline" id="submitFormSearch">#}
+{#                    <div class="form-group form-group-sm">#}
 {##}
-{#            <form class="form form-inline" id="submitFormSearch">#}
-{#                 <div class="form-group form-group-sm">#}
+{#                        <label for="searchField" class="sr-only">Searchterm</label>#}
+{##}
 {##}
 {#                        <input type="text" class="form-control" id="search-input" placeholder="{% trans "Search for ..." %}">#}
-{#                        <input id="enterSearch" type="submit" class="btn btn-primary " href="#" value="{% trans "Go!" %}">#}
 {##}
-{#                        <span class="input-group-btn">#}
+{#                    </div>#}
 {##}
+{#                    <input id="enterSearch" type="submit" class="btn btn-primary" value="{% trans "Go!" %}">#}
 {##}
-{#                              <a id="clearSearch" class="btn btn-primary hide " href="#"><i class="fa fa-refresh fa-fw"></i></a>#}
-{##}
-{#                              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><i#}
-{#                                      class="fa fa-cog fa-fw"></i>#}
-{#                                  <span class="fa fa-caret-down"></span></a>#}
-{##}
-{#                              <ul class="dropdown-menu">#}
-{#                                  <li><a href="#ShareModal" data-toggle="modal" data-target="#ShareSearchModal"><i#}
-{#                                          class="fa fa-share fa-fw"></i> {% trans "Share" %}</a></li>#}
-{##}
-{#                                  <li><a href="#"><i class="fa fa-map-marker fa-fw"></i> {% trans "GPS" %}</a></li>#}
-{#                                  <li><a href="#"><i class="fa fa-language"></i>  {{ LANGUAGE_CODE|upper }}</a></li>#}
-{##}
-{#                                  <li><a href="#"><i class="fa fa-map-signs fa-fw"></i> {% trans "Directions" %}</a></li>#}
-{#                                  <li><a href="#"><i class="fa fa-print fa-fw"></i> {% trans "Print" %}</a></li>#}
-{#                                  <li id="clear-search-results"><a href="#"><i#}
-{#                                          class="fa fa-refresh fa-fw"></i> {% trans "Clear" %}</a>#}
-{#                                  </li>#}
-{#                                  <li id="id-fullscreen"><i class="fa fa-expand fa-fw"></i></li>#}
-{#                                  <li class="divider"></li>#}
-{#                                  <li><a href="#"><i class="fa fa-info fa-fw"></i> {% trans "Info" %}</a></li>#}
-{#                                  <li><a href="#BugModal" data-toggle="modal" data-target="#BugReportModal"><i#}
-{#                                          class="fa fa-bug fa-fw"></i>{% trans "Report Bug" %}</a></li>#}
-{#                              </ul>#}
-{#                          </span>#}
-{##}
-{#                   </div>#}
-{#            </form>#}
+{#                </form>#}
+
+
+
+            <form class="form form-inline" id="submitFormSearch">
+                 <div class="form-group form-group-sm">
+
+                        <input type="text" class="form-control" id="search-input" placeholder="{% trans "Search for ..." %}">
+                        <input id="enterSearch" type="submit" class="btn btn-primary " href="#" value="{% trans "Go!" %}">
+
+                        <span class="input-group-btn">
+
+
+                              <a id="clearSearch" class="btn btn-primary hide " href="#"><i class="fa fa-refresh fa-fw"></i></a>
+
+                              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><i
+                                      class="fa fa-cog fa-fw"></i>
+                                  <span class="fa fa-caret-down"></span></a>
+
+                              <ul class="dropdown-menu">
+                                  <li><a href="#ShareModal" data-toggle="modal" data-target="#ShareSearchModal"><i
+                                          class="fa fa-share fa-fw"></i> {% trans "Share" %}</a></li>
+
+                                  <li><a href="#"><i class="fa fa-map-marker fa-fw"></i> {% trans "GPS" %}</a></li>
+                                  <li><a href="#"><i class="fa fa-language"></i>  {{ LANGUAGE_CODE|upper }}</a></li>
+
+                                  <li><a href="#"><i class="fa fa-map-signs fa-fw"></i> {% trans "Directions" %}</a></li>
+                                  <li><a href="#"><i class="fa fa-print fa-fw"></i> {% trans "Print" %}</a></li>
+                                  <li id="clear-search-results"><a href="#"><i
+                                          class="fa fa-refresh fa-fw"></i> {% trans "Clear" %}</a>
+                                  </li>
+                                  <li id="id-fullscreen"><i class="fa fa-expand fa-fw"></i></li>
+                                  <li class="divider"></li>
+                                  <li><a href="#"><i class="fa fa-info fa-fw"></i> {% trans "Info" %}</a></li>
+                                  <li><a href="#BugModal" data-toggle="modal" data-target="#BugReportModal"><i
+                                          class="fa fa-bug fa-fw"></i>{% trans "Report Bug" %}</a></li>
+                              </ul>
+                          </span>
+
+                   </div>
+            </form>
 
 
 

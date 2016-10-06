@@ -2,6 +2,23 @@
 {% load staticfiles %}
 {% load i18n %}
 
+<!--
+  Search start
+-->
+<div id="searchbox">
+    <form method="post" id="searchInputForm" name="SearchForm">
+        <input type="text" id="searchInputText" name="searchquery" autocomplete="off"
+               onclick="javascript: if ($(this).val() == &#39;What can we help you with?&#39; || $(this).val() == &#39;What can we help you with?&#39;) { $(this).val(&#39;&#39;).addClass(&#39;searchqueryactive&#39;); }"
+               placeholder="What can we help you with?">
+
+        <a href="javascript: void(0);" onclick="$(&#39;#searchInputForm&#39;).submit();"><img
+                src="./wu-neu-design_files/icon-btn-ar-form.png"></a>
+    </form>
+</div>
+<!--
+ Search end
+-->
+
 
             <div class="col-xs-2">
 

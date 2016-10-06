@@ -5,11 +5,18 @@
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- meta name="viewport" content="width=device-width, initial-scale=1.0" -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <meta name="description" content="indrz indoor map">
+    <meta name="author" content="GOMOGI platform indrz.com">
 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Surfstation</title>
+
+       <title>{% block title %}{% trans "Campus Plan" %} {% endblock %}</title>
+
+    <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+
     <meta name="KEYWORDS" content="Home">
     <meta name="robots" content="index,follow">
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
@@ -17,7 +24,9 @@
     <link rel="stylesheet" href="{% static "wu-neu/font-awesome.min.css" %}" type="text/css">
     <link rel="stylesheet" href="{% static "wu-neu/app.min.css" %}" type="text/css" media="all">
     <script type="text/javascript" src="{% static "wu-neu/jquery-1.12.1.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "wu-neu/app.min.js" %}"></script>
+
+
+    {% block head_extra %}{% endblock head_extra %}
 
 
 </head>
@@ -27,126 +36,8 @@
 <!--
   Navigation start
 -->
-<header id="top">
-    <nav class="nav-meta">
-        <div class="nav-left">
-            <ul>
-                <li class="logo-container"><a href="http://hosting.wu.ac.at/gis/#">
-                    <img src="{% static "wu-neu/sitelogo-md.png" %}" class="logo" alt=""></a></li>
-                <!--li class="brandname slideout"><a>CAMPUS</a></li-->
-                <li><a>Karte</a></li>
-                <li><a>Hilfe</a></li>
-            </ul>
-        </div>
 
-        <div class="nav-right">
-            <ul>
-                <li><a>EN</a></li>
-                <li class="slideout" id="quicklinksLink"><a>Quicklinks <i class="fa fa-plus wu-blue"></i></a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
-
-<!--
-  Navigation end
--->
-
-<!--
-  Quicklinks start
--->
-<div id="quicklinks-container">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 tiles">
-                <ul class="row">
-                    <li class="col-md-6">
-                        <a href="http://learn.wu.ac.at/">
-                            <h5>Learn@WU</h5>
-                            <ul>
-                                <li>Lernmaterialien</li>
-                                <li>Tools für den Unterricht</li>
-                                <li>Termine, Fristen &amp; Aufgaben</li>
-                            </ul>
-                        </a>
-                    </li>
-                    <li class="col-md-6">
-                        <a href="http://bach.wu.ac.at/z/stud/acl_users/cookie/login_form?came_from=https%3A//bach.wu.ac.at/z/stud/digidoc/">
-                            <h5>Online-Services für Studierende</h5>
-                            <ul>
-                                <li>Download von digitalen Dokumenten</li>
-                                <li>Rückmeldung</li>
-                                <li>Änderung persönlicher Daten</li>
-                                <li>Student Rankings</li>
-                                <li>uvm.</li>
-                            </ul>
-                        </a>
-                    </li>
-                    <li class="col-md-6">
-                        <a href="http://https//lpis.wu.ac.at/lpis">
-                            <h5>LV- und Prüfungsinfo (LPIS)</h5>
-                            <ul>
-                                <li>An- und Abmeldung zu LVs und Prüfungen</li>
-                                <li>Noteneinsicht</li>
-                            </ul>
-                        </a>
-                    </li>
-                    <li class="col-md-6">
-                        <a href="http://controlpanel.wu.ac.at/">
-                            <h5>Control Panel</h5>
-                            <ul>
-                                <li>Maildienste</li>
-                                <li>WU Passwort &amp; PIN</li>
-                                <li>SMS Service</li>
-                            </ul>
-                        </a>
-                    </li>
-                    <li class="col-md-6">
-                        <a href="http://vvz.wu.ac.at/cgi-bin/vvz.pl">
-                            <h5>Vorlesungsverzeichnis (VVZ)</h5>
-                            <ul>
-                                <li>Termine</li>
-                                <li>Inhalte der Lehr­ver­an­stal­tungen</li>
-                                <li>Beur­tei­lungs­kri­te­rien</li>
-                            </ul>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <ul class="quicklinks">
-                    <li><a href="https://wu.ac.at/bibliothek/">Bibliothek</a></li>
-                    <li><a href="http://campus.wu.ac.at/">Campus Plan</a></li>
-                    <li>
-                        <a href="https://wu.ac.at/universitaet/organisation/akademische-einheiten/departments-institute/">Institute
-                            &amp; Departments</a></li>
-                    <li><a href="https://wu.ac.at/studierende/study-service-center/">Study Service Center</a></li>
-                    <li><a href="http://bach.wu.ac.at/d/directory/">Telefonverzeichnis</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<!--
-  Quicklinks end
--->
-
-<!--
-  Search start
--->
-<div id="searchbox">
-    <form method="post" id="searchInputForm" name="SearchForm">
-        <input type="text" id="searchInputText" name="searchquery" autocomplete="off"
-               onclick="javascript: if ($(this).val() == &#39;What can we help you with?&#39; || $(this).val() == &#39;What can we help you with?&#39;) { $(this).val(&#39;&#39;).addClass(&#39;searchqueryactive&#39;); }"
-               placeholder="What can we help you with?">
-
-        <a href="javascript: void(0);" onclick="$(&#39;#searchInputForm&#39;).submit();"><img
-                src="./wu-neu-design_files/icon-btn-ar-form.png"></a>
-    </form>
-</div>
-<!--
- Search end
--->
+{% block nav %}{% include 'wu-neu-nav.html' %}{% endblock nav %}
 
 
 <!--
@@ -154,81 +45,44 @@
 -->
 <main>
 
-    <div class="container-fluid">
+    <div id="indrz-main-container" class="container-fluid">
 
         <div class="row">
-           {% block content-main-map %}{% endblock content-main-map %}
-           {% block left-menu %}  {% endblock left-menu %}
+          {% block left-content %}  {% endblock left-content %}
+           {% block right-content-map %}{% endblock right-content-map %}
+
            {% block content %}{% endblock content %}
 
         </div>
 
     </div>
+
 </main>
-<footer id="bottom">
-    <div class="doormat">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 divider">
-                    <div class="footer-container">
-                        <div class="social">
-                            <ul>
-                                <li><a href="http://www.facebook.com/wu.wirtschaftsuniversitaet.wien" title="Facebook">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="52.109px" height="51.875px" viewBox="0 0 52.109 51.875" enable-background="new 0 0 52.109 51.875" xml:space="preserve"><g> <circle fill="#009BB8" cx="26.124" cy="25.843" r="25"></circle> <path fill="#FFFFFF" d="M22.601,17.091v3.332h-2.445v4.079h2.445v12.106h5.014V24.502h3.363c0,0,0.318-1.956,0.469-4.093h-3.815  v-2.787c0-0.416,0.55-0.979,1.086-0.979h2.734v-4.239h-3.712C22.478,12.404,22.601,16.482,22.601,17.091"></path></g></svg>
-                                </a></li>
-                                <li><a href="http://twitter.com/wu_vienna" title="Twitter">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="52.109px" height="51.875px" viewBox="0 0 52.109 51.875" enable-background="new 0 0 52.109 51.875" xml:space="preserve"><g> <circle fill="#009BB8" cx="26" cy="25.938" r="25"></circle> <path fill="#FFFFFF" d="M37.236,23.897c1.588-0.128,2.67-0.852,3.084-1.836c-0.574,0.356-2.354,0.739-3.338,0.376  c-0.045-0.234-0.1-0.451-0.156-0.65c-0.748-2.752-3.313-4.969-6-4.699c0.219-0.089,0.439-0.173,0.656-0.241  c0.297-0.108,2.031-0.394,1.76-1.009c-0.229-0.537-2.352,0.414-2.752,0.533c0.529-0.198,1.404-0.535,1.494-1.145  c-0.811,0.109-1.602,0.494-2.213,1.049c0.219-0.238,0.387-0.523,0.422-0.838c-2.15,1.376-3.408,4.15-4.424,6.838  c-0.807-0.771-1.511-1.385-2.147-1.723c-1.783-0.956-3.916-1.951-7.266-3.197c-0.102,1.113,0.549,2.582,2.421,3.563  c-0.403-0.059-1.146,0.068-1.739,0.207c0.239,1.268,1.031,2.313,3.168,2.813c-0.978,0.07-1.478,0.292-1.937,0.771  c0.443,0.883,1.53,1.921,3.482,1.711c-2.174,0.936-0.886,2.668,0.884,2.411c-3.017,3.106-7.774,2.885-10.503,0.283  c7.131,9.717,22.625,5.739,24.934-3.615c1.729,0.014,2.748-0.597,3.375-1.274C39.449,24.393,38.004,24.221,37.236,23.897"></path></g></svg>
-                                </a></li>
-                                <li><a href="http://instagram.com/wuvienna" title="Instagram">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="52.109px" height="51.875px" viewBox="0 0 52.109 51.875" enable-background="new 0 0 52.109 51.875" xml:space="preserve"><g> <path fill="#009BB8" d="M26.055,1.875c-13.811,0-25,11.192-25,25c0,13.81,11.189,25,25,25c13.804,0,25-11.19,25-25  C51.055,13.067,39.859,1.875,26.055,1.875z"></path> <path fill="#FFFFFF" d="M26.177,31.289c2.438,0,4.413-1.977,4.413-4.414c0-2.438-1.975-4.42-4.413-4.42  c-2.442,0-4.419,1.981-4.419,4.42C21.758,29.313,23.735,31.289,26.177,31.289z M33.24,26.875c0,3.898-3.164,7.066-7.063,7.066  c-3.901,0-7.062-3.168-7.062-7.066c0-0.615,0.083-1.199,0.23-1.77h-2v9.717c0,0.486,0.394,0.88,0.88,0.88h15.895  c0.494,0,0.885-0.394,0.885-0.88v-9.717H33.01C33.156,25.676,33.24,26.26,33.24,26.875z M34.121,18.043h-2.646  c-0.486,0-0.885,0.398-0.885,0.881v2.65c0,0.488,0.398,0.881,0.885,0.881h2.646c0.494,0,0.885-0.393,0.885-0.881v-2.65  C35.006,18.441,34.615,18.043,34.121,18.043z M37.656,18.043v17.659c0,1.465-1.186,2.653-2.65,2.653h-17.66  c-1.465,0-2.648-1.188-2.648-2.653V18.043c0-1.465,1.184-2.65,2.648-2.65h17.66C36.471,15.393,37.656,16.578,37.656,18.043  L37.656,18.043z"></path></g></svg>
-                                </a></li>
-                                <li><a href="http://plus.google.com/+wuwien/posts" title="Google+">
-                                    <svg width="50px" height="51px" viewBox="0 0 50 51" version="1.1"
-                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><title>Imported
-                                        Layers</title>
-                                        <desc>Created with Sketch.</desc>
-                                        <defs></defs>
-                                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-                                           sketch:type="MSPage">
-                                            <g id="Imported-Layers" sketch:type="MSLayerGroup">
-                                                <path d="M25,0.964 C38.807,0.964 50,12.157 50,25.964 C50,39.771 38.807,50.964 25,50.964 C11.193,50.964 0,39.771 0,25.964 C0,12.157 11.193,0.964 25,0.964"
-                                                      id="Fill-1" fill="#009BB8" sketch:type="MSShapeGroup"></path>
-                                                <path d="M20.713,36.394 C14.857,36.394 10.093,31.716 10.093,25.964 C10.093,20.213 14.857,15.534 20.713,15.534 C23.274,15.534 25.749,16.443 27.679,18.092 L24.979,21.14 C23.797,20.131 22.282,19.574 20.713,19.574 C17.125,19.574 14.207,22.441 14.207,25.964 C14.207,29.487 17.126,32.353 20.713,32.353 C23.748,32.353 25.735,30.899 26.381,28.29 L20.763,28.29 L20.763,24.25 L30.723,24.25 L30.723,26.27 C30.723,32.325 26.7,36.394 20.713,36.394"
-                                                      id="Fill-2" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
-                                                <path d="M41.808,24.251 L38.729,24.251 L38.729,21.172 L36.265,21.172 L36.265,24.251 L33.186,24.251 L33.186,26.715 L36.265,26.715 L36.265,29.794 L38.729,29.794 L38.729,26.715 L41.808,26.715 L41.808,24.251"
-                                                      id="Fill-3" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </a></li>
-                                <li><a href="http://www.linkedin.com/edu/school?id=10216&amp;trk=edu-cp-title"
-                                       title="LinkedIn">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="52.109px" height="51.875px" viewBox="0 0 52.109 51.875" enable-background="new 0 0 52.109 51.875" xml:space="preserve"><g> <circle fill="#009BB8" cx="26" cy="25.938" r="25"></circle> <path fill="#FFFFFF" d="M20.34,19.963h-4.81V34.35h4.81V19.963z M17.938,17.998c1.676,0,2.721-1.105,2.721-2.486  c-0.035-1.412-1.044-2.482-2.69-2.482s-2.724,1.07-2.724,2.482c0,1.381,1.046,2.486,2.662,2.486H17.938 M37.695,26.1  c0-4.42-2.373-6.471-5.541-6.471c-2.557,0-3.699,1.395-4.34,2.373v-2.039h-4.807c0.059,1.35,0,14.387,0,14.387h4.807v-8.033  c0-0.43,0.039-0.859,0.166-1.17c0.343-0.857,1.137-1.742,2.467-1.742c1.742,0,2.434,1.313,2.434,3.25v7.695h4.814V26.1z   M27.814,22.049v-0.047c-0.008,0.018-0.022,0.035-0.027,0.047H27.814z"></path></g></svg>
-                                </a></li>
-                            </ul>
-                        </div>
 
 
-                    </div>
-                </div>
-                <div class="col-sm-6 accreditations">
-                    <div class="footer-container">
-                        <div class="links">
-                            <ul>
-                                <li><a href="https://alert.wu.ac.at/blog/impressum">Impressum</a></li>
-                            </ul>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="copyright text-center">
-        © 2016 Wirtschaftsuniversität Wien
-    </div>
-</footer>
+{% block popup-markup %} {% include 'popup-markup.html' %} {% endblock popup-markup %}
 
+
+{% block js-search-box %}{% endblock js-search-box %}
+{% block route_from_to %}{% endblock route_from_to %}
+{% block map_frame %}{% endblock map_frame %}
+{% block js-autocomplete %}{% endblock js-autocomplete %}
+{% block route_options %}{% endblock route_options %}
+{% block footer %} {% include "wu-neu-footer.html" %}{% endblock footer %}
+
+<script>
+    $(".nav a").on("click", function () {
+        $(".nav").find(".active").removeClass("active");
+        $(this).parent().addClass("active");
+    });
+
+    $(function () {
+        $("#floor-links-select").on('change', function () {
+            activateLayer($(this).val());
+        });
+    });
+
+</script>
 </body>
 </html>

@@ -14,8 +14,6 @@
     <link rel="stylesheet" href="{% static "wu-neu/css" %}" type="text/css" >
     <link rel="stylesheet" href="{% static "wu-neu/font-awesome.min.css" %}" type="text/css">
     <link rel="stylesheet" href="{% static "wu-neu/app.min.css" %}" type="text/css" media="all">
-    <script type="text/javascript" src="{% static "wu-neu/app.min.js" %}"></script>
-
     <style> body {
         padding-top: 0px;
     }</style>
@@ -23,19 +21,19 @@
 
 {% endblock head_extra %}
 
-{% block nav %} {% include "wu-neu-nav.html" %}
-    <nav class="navbar navbar-default hidden-md hidden-lg">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#map-search-form" aria-expanded="true">
-                        <span class="sr-only">{% trans 'Toggle search form' %}</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span></button>
-                    <a class="navbar-brand" href="#">Indrz</a>
-                </div>
-            </div>
-        </nav>
+{% block nav %} {% include 'wu-neu-nav.html' %}
+{#    <nav class="navbar navbar-default hidden-md hidden-lg">#}
+{#            <div class="container-fluid">#}
+{#                <div class="navbar-header">#}
+{#                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#map-search-form" aria-expanded="true">#}
+{#                        <span class="sr-only">{% trans 'Toggle search form' %}</span>#}
+{#                        <span class="icon-bar"></span>#}
+{#                        <span class="icon-bar"></span>#}
+{#                        <span class="icon-bar"></span></button>#}
+{#                    <a class="navbar-brand" href="#">Indrz</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </nav>#}
 {% endblock nav %}
 {#{% block routing-form %}{% endblock routing-form %}#}
 {# {% block map-section %}{% endblock map-section %}#}
@@ -129,5 +127,3 @@
         <script>  {% include 'homepage/indrz-space.js' %} </script>
     {% endif %}
 {% endblock map_frame %}
-
-{% block footer %}{% include "wu-neu-footer.html" %}{% endblock footer %}
