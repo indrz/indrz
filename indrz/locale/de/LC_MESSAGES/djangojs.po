@@ -8,61 +8,60 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-12 11:57+0200\n"
-"PO-Revision-Date: 2016-07-27 17:08+0200\n"
+"POT-Creation-Date: 2016-10-06 15:13+0200\n"
+"PO-Revision-Date: 2016-10-06 15:21+0200\n"
 "Last-Translator: b'  <>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.7.11\n"
 
-#: .\homepage\templates\homepage\indrz-popup.js:75
+#: .\homepage\templates\homepage\indrz-popup.js:77
 #: .\maps\templates\maps\indrz-popup.js:62
 msgid "Building Name: "
 msgstr "Gebäudename: "
 
-#: .\homepage\templates\homepage\indrz-popup.js:88
+#: .\homepage\templates\homepage\indrz-popup.js:101
 #: .\maps\templates\maps\indrz-popup.js:74
 msgid "Campus "
 msgstr "Campus"
 
-#: .\homepage\templates\homepage\indrz-popup.js:91
+#: .\homepage\templates\homepage\indrz-popup.js:104
 #, fuzzy
 #| msgid "Floor Number "
 msgid "Floor Number: "
 msgstr "Stockwerk"
 
-#: .\homepage\templates\homepage\indrz-popup.js:97
+#: .\homepage\templates\homepage\indrz-popup.js:110
 #: .\maps\templates\maps\indrz-popup.js:83
 msgid "Coordinate: "
 msgstr "Koordinate: "
 
-#: .\homepage\templates\homepage\indrz-popup.js:97
-#: .\maps\templates\maps\indrz-popup.js:83
-msgid "Bug Report"
-msgstr "Bug-Report"
-
-#: .\homepage\templates\homepage\indrzMapInit.js:14
+#: .\homepage\templates\homepage\indrzMapInit.js:17
 #: .\maps\templates\maps\indrzMapInit.js:13
 msgid "Background"
-msgstr ""
+msgstr "Hintergrund"
 
-#: .\homepage\templates\homepage\indrzMapInit.js:19
+#: .\homepage\templates\homepage\indrzMapInit.js:22
 #: .\maps\templates\maps\indrzMapInit.js:18
 msgid "Floor"
-msgstr ""
+msgstr "Ebene"
 
 #: .\maps\templates\maps\indrz-popup.js:77
 msgid "Floor Number "
 msgstr "Stockwerk"
 
+#: .\maps\templates\maps\indrz-popup.js:83
+msgid "Bug Report"
+msgstr "Bug-Report"
+
 #: .\static\admin\js\SelectFilter2.js:47
 #, c-format
 msgid "Available %s"
-msgstr ""
+msgstr "Verfügbar sind <code>%s</code>"
 
 #: .\static\admin\js\SelectFilter2.js:53
 #, c-format
@@ -76,11 +75,11 @@ msgstr ""
 
 #: .\static\admin\js\SelectFilter2.js:74
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: .\static\admin\js\SelectFilter2.js:78
 msgid "Choose all"
-msgstr ""
+msgstr "Alles Auswählen"
 
 #: .\static\admin\js\SelectFilter2.js:78
 #, c-format
@@ -89,16 +88,16 @@ msgstr ""
 
 #: .\static\admin\js\SelectFilter2.js:84
 msgid "Choose"
-msgstr ""
+msgstr "Wählen"
 
 #: .\static\admin\js\SelectFilter2.js:86
 msgid "Remove"
-msgstr ""
+msgstr "Entfernen"
 
 #: .\static\admin\js\SelectFilter2.js:92
 #, c-format
 msgid "Chosen %s"
-msgstr ""
+msgstr "Ausgewählt <code>%s</code>"
 
 #: .\static\admin\js\SelectFilter2.js:98
 #, c-format
@@ -107,12 +106,13 @@ msgstr ""
 
 #: .\static\admin\js\SelectFilter2.js:108
 msgid "Remove all"
-msgstr ""
+msgstr "Alle entfernen"
 
 #: .\static\admin\js\SelectFilter2.js:108
 #, c-format
 msgid "Click to remove all chosen %s at once."
 msgstr ""
+"Klicken Sie auf entfernen, um alle gewählten <code>%s</code> auf einmal."
 
 #: .\static\admin\js\actions.js:47 .\static\admin\js\actions.min.js:2
 msgid "%(sel)s of %(cnt)s selected"
@@ -157,69 +157,71 @@ msgstr[1] ""
 #: .\static\admin\js\admin\DateTimeShortcuts.js:109
 #: .\static\admin\js\admin\DateTimeShortcuts.js:149
 msgid "Now"
-msgstr ""
+msgstr "Jetzt"
 
 #: .\static\admin\js\admin\DateTimeShortcuts.js:116
 msgid "Choose a Time"
-msgstr ""
+msgstr "Wählen Sie eine Zeit,"
 
 #: .\static\admin\js\admin\DateTimeShortcuts.js:146
 msgid "Choose a time"
-msgstr ""
+msgstr "Wählen Sie eine Zeit,"
 
 #: .\static\admin\js\admin\DateTimeShortcuts.js:150
 msgid "Midnight"
-msgstr ""
+msgstr "Mitternacht"
 
 #: .\static\admin\js\admin\DateTimeShortcuts.js:151
 msgid "6 a.m."
-msgstr ""
+msgstr "6 Uhr"
 
 #: .\static\admin\js\admin\DateTimeShortcuts.js:152
 msgid "Noon"
-msgstr ""
+msgstr "Mittag"
 
 #: .\static\admin\js\admin\DateTimeShortcuts.js:153
 msgid "6 p.m."
-msgstr ""
+msgstr "6 Uhr"
 
 #: .\static\admin\js\admin\DateTimeShortcuts.js:157
 #: .\static\admin\js\admin\DateTimeShortcuts.js:281
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: .\static\admin\js\admin\DateTimeShortcuts.js:217
 #: .\static\admin\js\admin\DateTimeShortcuts.js:274
 msgid "Today"
-msgstr ""
+msgstr "Heute"
 
 #: .\static\admin\js\admin\DateTimeShortcuts.js:224
 msgid "Choose a Date"
-msgstr ""
+msgstr "Wählen Sie ein Datum"
 
 #: .\static\admin\js\admin\DateTimeShortcuts.js:272
 msgid "Yesterday"
-msgstr ""
+msgstr "Gestern"
 
 #: .\static\admin\js\admin\DateTimeShortcuts.js:276
 msgid "Tomorrow"
-msgstr ""
+msgstr "Morgen"
 
 #: .\static\admin\js\calendar.js:11
 msgid ""
-"January February March April May June July August September October November "
-"December"
+"January February March April May June July August September October November"
+" December"
 msgstr ""
+"Januar Februar März April Mai Juni Juli August September Oktober November "
+"Dezember"
 
 #: .\static\admin\js\calendar.js:12
 msgid "S M T W T F S"
-msgstr ""
+msgstr "S M D M D F S"
 
 #: .\static\admin\js\collapse.js:10 .\static\admin\js\collapse.js:21
 #: .\static\admin\js\collapse.min.js:1
 msgid "Show"
-msgstr ""
+msgstr "Zeigen"
 
 #: .\static\admin\js\collapse.js:18 .\static\admin\js\collapse.min.js:1
 msgid "Hide"
-msgstr ""
+msgstr "Ausblenden"

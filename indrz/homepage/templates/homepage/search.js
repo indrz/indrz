@@ -122,6 +122,7 @@ function searchIndrz(campusId, searchString) {
 
     map.getLayers().push(searchLayer);
     $("#clearSearch").removeClass("hide");
+    $("#shareSearch").removeClass("hide");
 
 }
 
@@ -132,6 +133,7 @@ $("#clearSearch").click(function () {
     close_popup();
 
     $("#clearSearch").addClass("hide");
+    $("#shareSearch").addClass("hide");
     $("#search-input").val('');
 
 });
