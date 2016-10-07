@@ -26,8 +26,8 @@ def poi_category_list(request, campus_id):
 @api_view(['GET', ])
 def get_poi_by_id(request, campus_id, poi_id):
     poi_qs = Poi.objects.filter(fk_campus=campus_id).filter(id=poi_id)
-    poi_values = poi_qs.values()
-    return Response(poi_values)
+    serializer = PoiSerializer(poi_qs, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET', ])
@@ -85,7 +85,7 @@ def get_poi_by_category(request, campus_id, category_name):
 
 @api_view(['GET', ])
 def get_poi_by_category(request, campus_id, category_name):
-    cats = PoiCategory.objects.filter(cat_name__icontains=category_name)
+    cats = PoiCategory.objects.filter(cat_name__contains=category_name)
     # list = cats.get_descendants()
 
 
