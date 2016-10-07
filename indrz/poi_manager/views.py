@@ -1,11 +1,8 @@
 import collections
-import json
 
-from django.contrib.gis.db.models.functions import AsGeoJSON
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, render
-from geojson import Feature
-from rest_framework.exceptions import APIException, NotFound
+from rest_framework.exceptions import APIException
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
