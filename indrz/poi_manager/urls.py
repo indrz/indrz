@@ -5,7 +5,7 @@ from poi_manager.views import poi_category_list, add_category, poi_category_json
 urlpatterns = [
                url(r'^category-list/$', poi_category_list, name='category-list'),
                url(r'^category-poi/$', poi_category_json, name='category-json'),
-    
+
                url(r'^list/$', poi_list, name='list all pois'),
                url(r'^(?P<poi_id>\d{0,6})/$', get_poi_by_id, name='get poi by id'),
 

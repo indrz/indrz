@@ -18,6 +18,7 @@
     <script src="{% static "js/jquery-1.11.2.min.js" %}"></script>
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
     <script src="{% static "js/bootstrap.min.js" %}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static "css/ol3-17.1.css" %}" type="text/css">
     <link rel="stylesheet" href="{% static "css/custom-layout.css" %}" type="text/css">
     <link rel="stylesheet" href="{% static "css/indrz-layout.css" %}" type="text/css">
@@ -35,18 +36,18 @@
 
         <div class="row">
 
-
-
-
             <div class="col-md-3 col-lg-2" id="map-search-form">
+
+
+
                     <h3>{% trans 'Search on campus' %}</h3>
                     <p></p>
                     <div id="search-prefetch2" class="input-group">
                         {% block search_form %}{% include 'search-form.html' %}{% endblock search_form %}
                     </div>
-            <p>
+                    <p>
 
-            </p>
+                    </p>
 
 
                 <h3>Routing</h3>
@@ -56,11 +57,25 @@
                         {% block routing-form %} {% include 'routing-form.html' %} {% endblock routing-form %}
                     </div>
 
-            <h3></h3>
+                         <h3></h3>
 
                     <div >
                         {% include "includes/change_lang_form.html" %}
                     </div>
+
+
+
+
+                     <h3>Show a POI Layer</h3>
+                        <div >
+
+                            {% include "poi/poi-category.html" %}
+
+
+                         </div>
+
+
+
 
 
 
@@ -138,6 +153,14 @@
             activateLayer($(this).val());
         });
     });
+
+
+    $('#myTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
+$('#myTabs a[href="#poi"]').tab('show') // Select tab by name
 
 </script>
 </body>
