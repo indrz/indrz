@@ -25,9 +25,13 @@ def poi_category_list(request, campus_id):
 
 @api_view(['GET', ])
 def get_poi_by_id(request, campus_id, poi_id):
-    poi_qs = Poi.objects.filter(fk_campus=campus_id).filter(id=poi_id)
-    serializer = PoiSerializer(poi_qs, many=True)
-    return Response(serializer.data)
+    try:
+        poi_qs = Poi.objects.filter(fk_campus=campus_id).filter(id=poi_id)
+        serializer = PoiSerializer(poi_qs, many=True)
+        return Response(serializer.data)
+
+    except Exception as e:
+        raise APIException(detail=e)
 
 
 @api_view(['GET', ])
@@ -52,22 +56,6 @@ def poi_category_json(request, campus_id):
 
 
 @api_view(['GET', ])
-def get_poi_by_cat_id(request, campus_id, cat_id):
-    if request.method == 'GET':
-        try:
-            cats = PoiCategory.objects.get(pk=cat_id)
-
-            if cats:
-
-                poi_qs = Poi.objects.filter(fk_poi_category=cats.id)
-                if poi_qs:
-                    serializer = PoiSerializer(poi_qs, many=True)
-                    return Response(serializer.data)
-        except Exception as e:
-            raise APIException(detail=e)
-
-
-@api_view(['GET', ])
 def get_poi_by_category(request, campus_id, category_name):
     if request.method == 'GET':
         try:
@@ -84,7 +72,20 @@ def get_poi_by_category(request, campus_id, category_name):
 
 
 @api_view(['GET', ])
-def get_poi_by_category(request, campus_id, category_name):
+def get_poi_by_cat_id(request, campus_id, cat_id):
+    if request.method == 'GET':
+        cats = PoiCategory.objects.get(pk=cat_id)
+
+        if cats:
+
+            poi_qs = Poi.objects.filter(fk_poi_category=cats.id)
+            if poi_qs:
+                serializer = PoiSerializer(poi_qs, many=True)
+                return Response(serializer.data)
+
+
+@api_view(['GET', ])
+def get_poi_by_cat_name(request, campus_id, category_name):
     cats = PoiCategory.objects.filter(cat_name__contains=category_name)
     # list = cats.get_descendants()
 
@@ -106,9 +107,9 @@ def get_poi_by_category(request, campus_id, category_name):
         return Response({'error': 'no category found with the given category name: ' + category_name})
 
     if poi_qs:
-        att = poi_qs.values()
+        serializer = PoiSerializer(poi_qs, many=True)
 
-        return Response(att)
+        return Response(serializer.data)
 
     else:
         return Response({'error': 'sorry no poi entries found assigned to the category name : ' + category_name})
@@ -151,11 +152,13 @@ def poi_category_by_name(request, campus_id, category_name):
 
 @api_view(['GET', ])
 def poi_list(request, campus_id):
-    poi_qs = Poi.objects.all()
-    if poi_qs:
-        att = poi_qs.values()
+    try:
+        poi_qs = Poi.objects.all()
+        serializer = PoiSerializer(poi_qs, many=True)
+        return Response(serializer.data)
 
-        return Response(att)
+    except Exception as e:
+        raise APIException(detail=e)
 
 
 @api_view(['GET', ])
