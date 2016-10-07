@@ -1,10 +1,12 @@
 from rest_framework import serializers
 
 from poi_manager.models import Poi, PoiCategory
+from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
-class PoiSerializer(serializers.ModelSerializer):
+class PoiSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = Poi
+        geo_field = 'geom'
         #fields = ('floor_num', 'short_name')
 
 
