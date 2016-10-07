@@ -54,6 +54,12 @@ urlpatterns += [
 
 urlpatterns += [
 
+    url(r'^campus/(?P<campus_id>\d{1,5})/poi/', include('poi_manager.urls')),
+
+    ]
+
+urlpatterns += [
+
     url(r'^library/', include('homepage.library.urls')),
 
     ]
