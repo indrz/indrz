@@ -79,6 +79,14 @@
             searchIndrz(building_id, searchText);
             event.preventDefault();
         });
+
+    $("#showPoi").submit(function (event) {
+       // alert( "Handler for .submit() called." + $('#poi-input').val()   );
+        var poiName = $('#poi-input').val();
+        searchPoi(building_id, poiName);
+        event.preventDefault();
+});
+
     </script>
 
 
@@ -114,6 +122,7 @@
 
 
 {% block map_frame %}
+    <script>  {% include 'homepage/indrz-poi.js' %} </script>
     <script>  {% include 'homepage/bugreport.js' %} </script>
     <script>  {% include 'homepage/indrzLayers.js' %} </script>
     <script>  {% include 'homepage/indrz-floorswitcher.js' %} </script>

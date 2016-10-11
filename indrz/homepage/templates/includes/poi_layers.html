@@ -1,0 +1,16 @@
+{% load i18n %}
+
+
+<form class="form form-inline" id="showPoi">
+    <div class="form-group form-group-sm">
+
+        <label for="poi-input" class="sr-only">Poi Name</label>
+
+        <input id="poi-input" type="text" class="form-control"  placeholder="{% trans "Enter Poi name" %}">
+
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="{% trans "Go!" %}">
+
+
+</form>
