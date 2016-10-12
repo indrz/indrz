@@ -1,17 +1,7 @@
-{#{% load mptt_tags %}#}
-{#<ul> {% recursetree nodes %}#}
-{#        <li{% if node.is_root_node %} class="root-node" id="{{ node.cat_name }}"{% endif %}#}
-{#                {% if node.is_child_node %}class="child-node" {% endif %}#}
-{#                    {% if node.is_leaf_node %} class="no-child" {% endif %}>#}
-{#    {{ node.cat_name }}#}
-{#        {% if not node.is_leaf_node %} <ul class="children" id="{{ node.cat_name }}>{{ children }}</ul>{% endif %}</li>#}
-{#    {% endrecursetree %}#}
-{#</ul>#}
-
 {% load mptt_tags %}
 <ul>
     {% recursetree nodes %}
-        <li data-jstree='{"icon":"fa fa-leaf fa-fw"}'  >
+        <li  data-jstree='{"icon":"{{ node.icon_css_name }}"}' id="cat_id_{{ node.id }}" {% if node.icon_css_name %} {% endif %} >
             {{ node.cat_name }}
             {% if not node.is_leaf_node %}
                 <ul class="children">
@@ -23,6 +13,5 @@
 </ul>
 
 <p>
-
     <a href="/poi/add_category"> go add a new category</a>
 </p>

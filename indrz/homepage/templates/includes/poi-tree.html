@@ -4,7 +4,6 @@
 {% block head_extra %}
     <link rel="stylesheet" href="{% static "js/jstree/themes/default/style.min.css" %}" />
 
-
 {% endblock head_extra %}
 
 
@@ -28,6 +27,9 @@
       console.log(data.selected);
     });
     // 8 interact with the tree - either way is OK
+      $('#jstree').on("select_node.jstree", function (e, data) { alert("node_id: " + data.node.id  + " node name is : "  + data.node.name); });
+
+
     $('button').on('click', function () {
       $('#jstree').jstree(true).select_node('child_node_1');
       $('#jstree').jstree('select_node', 'child_node_1');
