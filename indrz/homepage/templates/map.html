@@ -80,12 +80,12 @@
             event.preventDefault();
         });
 
-    $("#showPoi").submit(function (event) {
-       // alert( "Handler for .submit() called." + $('#poi-input').val()   );
-        var poiName = $('#poi-input').val();
-        searchPoi(building_id, poiName);
-        event.preventDefault();
-});
+        $("#showPoi").submit(function (event) {
+           // alert( "Handler for .submit() called." + $('#poi-input').val()   );
+            var poiName = $('#poi-input').val();
+            searchPoi(building_id, poiName);
+            event.preventDefault();
+            });
 
     </script>
 

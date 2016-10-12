@@ -1,13 +1,3 @@
-
-$("#showPoi").submit(function (event) {
-      alert( "Handler for .submit() called." + $('#poi-input').val()   );
-    // var startNum = $('#route-from').val();
-    // var endNum = $('#route-to').val();
-    // var rType = $("input:radio[name=typeRoute]:checked").val();
-    // addRoute(startNum, endNum, rType);
-    event.preventDefault();
-});
-
 var poiLayer;
 
 function searchPoi(campusId, searchString) {
@@ -37,7 +27,7 @@ function searchPoi(campusId, searchString) {
         var centerCoord = ol.extent.getCenter(searchSource.getExtent());
         console.log(centerCoord);
 
-        open_popup(featuresSearch[0].getProperties(), centerCoord);
+        //open_popup(featuresSearch[0].getProperties(), centerCoord);
 
         var poi_id = response.features[0].id;
 
@@ -65,7 +55,7 @@ function searchPoi(campusId, searchString) {
               anchor: [0.5, 46],
               anchorXUnits: 'fraction',
               anchorYUnits: 'pixels',
-              src: '/static/access_other_stairs.png'
+              src: '/static/access_parking_bikecovered.png'
             }))
           });
 

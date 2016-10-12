@@ -1,29 +1,26 @@
 {% load i18n %}
-{#<div class="indrz-search">#}
 
+<form class="form form-inline" id="submitFormSearch">
+    <div class="form-group form-group-sm">
 
+        <label for="searchField" class="sr-only">Searchterm</label>
 
+        <input type="text" class="form-control" id="search-input" placeholder="{% trans "Search for ..." %}">
 
-                <form class="form form-inline" id="submitFormSearch">
-                    <div class="form-group form-group-sm">
+    </div>
 
-                        <label for="searchField" class="sr-only">Searchterm</label>
+    <input id="enterSearch" type="submit" class="btn btn-primary" value="{% trans "Go!" %}">
 
-                        <input type="text" class="form-control" id="search-input" placeholder="{% trans "Search for ..." %}">
+    <div>
+         <a id="clearSearch" class="btn btn-primary hide " href="#"><i class="fa fa-refresh fa-fw"></i></a>
+         <a id="shareSearch" href="#ShareModal" class = "btn btn-primary hide" data-toggle="modal" data-target="#ShareSearchModal"><i class="fa fa-share fa-fw"></i> {% trans "Share" %}</a>
 
-                    </div>
+    </div>
 
-                    <input id="enterSearch" type="submit" class="btn btn-primary" value="{% trans "Go!" %}">
+</form>
 
-                    <div>
-                         <a id="clearSearch" class="btn btn-primary hide " href="#"><i class="fa fa-refresh fa-fw"></i></a>
-                         <a id="shareSearch" href="#ShareModal" class = "btn btn-primary hide" data-toggle="modal" data-target="#ShareSearchModal"><i class="fa fa-share fa-fw"></i> {% trans "Share" %}</a>
-
-                    </div>
-
-                </form>
-
-
+{% include 'modal-bugreport.html' %}
+{% include 'modal-share.html' %}
 
 {#            <form class="form form-inline" id="submitFormSearch">#}
 {#                 <div class="form-group form-group-sm">#}
@@ -66,5 +63,3 @@
 
 
 
-{% include 'modal-bugreport.html' %}
-{% include 'modal-share.html' %}
