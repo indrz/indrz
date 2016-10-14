@@ -6,7 +6,7 @@ var full_screen_control = new ol.control.FullScreen({
     target: document.getElementById("id-fullscreen")
 });
 
-map.addControl(full_screen_control);
+// map.addControl(full_screen_control);
 
 $("#id-map-switcher").on("click", function(evt){
     map_type = !map_type;
