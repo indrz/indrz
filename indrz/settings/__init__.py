@@ -17,10 +17,10 @@ import sys
 
 
 try:
-    print("Trying import local_seetings.py settings...", file=sys.stderr)
+    print("Trying import production_settings.py settings...", file=sys.stderr)
     from .production_settings import *
-    print("yes it worked imported...", file=sys.stderr)
+    print("yes importing production_settings...", file=sys.stderr)
 except ImportError:
-    print("Trying import development.py settings...", file=sys.stderr)
+    print("Trying import common_settings.py ...", file=sys.stderr)
     from .common_settings import *
-    print("Now importing development.py settings...", file=sys.stderr)
+    print("Now importing common_settings.py settings...", file=sys.stderr)
