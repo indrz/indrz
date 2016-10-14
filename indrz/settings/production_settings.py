@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from .common_settings import *
+from settings.common_settings import *
 
 
 ALLOWED_HOSTS = ['campus.wu.ac.at', 'gis-neu.ac.at', ]
@@ -8,7 +8,6 @@ ALLOWED_HOSTS = ['campus.wu.ac.at', 'gis-neu.ac.at', ]
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-from .common_settings import *
 
 DATABASES = {
     'default': {
@@ -27,16 +26,18 @@ DATABASES = {
 POSTGIS_VERSION = ( 2, 2, 1 )
 
 WU_IP_STARTSWITH = "137.208."
-LOCALHOST_URL = "http://campus.wu.ac.at/"
+LOCALHOST_URL = "http://gis-neu.wu.ac.at/"  # http://campus.wu.ac.at
 
 
-STATIC_ROOT = "/opt/django-proj/indrz_wu/static/"
+STATIC_ROOT = "/opt/django-deploy/indrz/static/"
 
 STATICFILES_DIRS += [
-    os.path.join(BASE_DIR, 'homepage/static')
+    os.path.join(BASE_DIR, 'homepage/static'),
+    os.path.join(BASE_DIR, 'static/admin'),
+    os.path.join(BASE_DIR, 'static/gis')
 
 ]
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = "/opt/django-proj/indrz_wu/media"
+MEDIA_ROOT = "/opt/django-deploy/indrz/media"
 UPLOAD_POI_DIR = MEDIA_ROOT + '/poi-icons/'
