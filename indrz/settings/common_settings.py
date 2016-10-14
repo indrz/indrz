@@ -154,7 +154,6 @@ STATIC_ROOT = "/var/www/vhosts/www.indrz.com/static/"
 
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, STATIC_FOLDER),
-    os.path.join(BASE_DIR, STATIC_FOLDER + "admin")
 
 ]
 
