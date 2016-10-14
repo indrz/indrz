@@ -14,6 +14,7 @@ from buildings.models import BuildingFloor
 from geojson import Feature
 
 from homepage.serializer import CampusFloorSerializer
+from poi_manager.models import PoiCategory
 
 def view_map(request, *args, **kwargs):
     context = {}
@@ -28,6 +29,7 @@ def view_map(request, *args, **kwargs):
         centerx, = request.GET.get('centerx', 0),
         centery, = request.GET.get('centery', 0),
         floor_num, = request.GET.get('floor', 0),
+        poi_name, = request.GET.get('poi-name', ''),
 
         floor_num = int(floor_num)
 
@@ -51,7 +53,9 @@ def view_map(request, *args, **kwargs):
             'route_to': route_to,
             'centerx': centerx,
             'centery': centery,
-            'floor_num': int(floor_num)
+            'floor_num': int(floor_num),
+            'poi_name' : poi_name,
+            'nodes': PoiCategory.objects.all(),
         })
 
     return render(request, context=context, template_name='map.html')

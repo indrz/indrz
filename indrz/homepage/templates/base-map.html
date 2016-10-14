@@ -22,6 +22,12 @@
     <link rel="stylesheet" href="{% static "css/custom-layout.css" %}" type="text/css">
     <link rel="stylesheet" href="{% static "css/indrz-layout.css" %}" type="text/css">
     <script src="{% static "js/ol3.17.1.js" %}"></script>
+<link rel="stylesheet" href="{% static "css/map_poi.main.css" %}" />
+
+<script type="text/javascript">
+
+
+</script>
 
     {% block head_extra %}{% endblock head_extra %}
 
@@ -35,18 +41,16 @@
 
         <div class="row">
 
-
-
-
             <div class="col-md-3 col-lg-2" id="map-search-form">
+
                     <h3>{% trans 'Search on campus' %}</h3>
                     <p></p>
                     <div id="search-prefetch2" class="input-group">
                         {% block search_form %}{% include 'search-form.html' %}{% endblock search_form %}
                     </div>
-            <p>
+                    <p>
 
-            </p>
+                    </p>
 
 
                 <h3>Routing</h3>
@@ -56,12 +60,31 @@
                         {% block routing-form %} {% include 'routing-form.html' %} {% endblock routing-form %}
                     </div>
 
-            <h3></h3>
+                         <h3></h3>
 
                     <div >
                         {% include "includes/change_lang_form.html" %}
                     </div>
 
+
+                    {% block poi-menu %}
+
+                    <h3>Search POI</h3>
+
+
+                        <div >
+                            {% include "includes/poi_layers.html" %}
+
+                            <div>
+                                <h3> Poi Tree</h3>
+                                {% include "includes/poi-tree.html" %}
+                            </div>
+
+
+
+
+                         </div>
+                    {% endblock poi-menu %}
 
 
             </div>
@@ -114,9 +137,6 @@
 
 </div>
 
-
-
-
 {% block popup-markup %} {% include 'popup-markup.html' %} {% endblock popup-markup %}
 
 
@@ -139,6 +159,13 @@
         });
     });
 
+
+
+
 </script>
+
+
+    {% block js-extras %}{% endblock js-extras %}
+
 </body>
 </html>

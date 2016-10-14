@@ -1,0 +1,39 @@
+{% load staticfiles %}
+{% load i18n %}
+
+{% block head_extra %}
+    <link rel="stylesheet" href="{% static "js/jstree/themes/default/style.min.css" %}" />
+
+{% endblock head_extra %}
+
+
+  <div id="jstree">
+    <!-- in this example the tree is populated from inline HTML -->
+      {% include "poi/poi-category.html" %}
+
+  </div>
+
+
+
+  <!-- 4 include the jQuery library -->
+  <!-- 5 include the minified jstree source -->
+  <script src="{% static "js/jstree/jstree.min.js" %}"></script>
+  <script>
+  $(function () {
+    // 6 create an instance when the DOM is ready
+    $('#jstree').jstree();
+    // 7 bind to events triggered on the tree
+    $('#jstree').on("changed.jstree", function (e, data) {
+      console.log(data.selected);
+    });
+    // 8 interact with the tree - either way is OK
+      $('#jstree').on("select_node.jstree", function (e, data) { alert("node_id: " + data.node.id  + " node name is : "  + data.node.name); });
+
+
+    $('button').on('click', function () {
+      $('#jstree').jstree(true).select_node('child_node_1');
+      $('#jstree').jstree('select_node', 'child_node_1');
+      $.jstree.reference('#jstree').select_node('child_node_1');
+    });
+  });
+  </script>

@@ -1,7 +1,7 @@
 {% load mptt_tags %}
 <ul>
     {% recursetree nodes %}
-        <li>
+        <li  data-jstree='{"icon":"{{ node.icon_css_name }}"}' id="cat_id_{{ node.id }}" {% if node.icon_css_name %} {% endif %} >
             {{ node.cat_name }}
             {% if not node.is_leaf_node %}
                 <ul class="children">
@@ -11,7 +11,7 @@
         </li>
     {% endrecursetree %}
 </ul>
-<p>
 
+<p>
     <a href="/poi/add_category"> go add a new category</a>
 </p>

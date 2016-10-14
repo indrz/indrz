@@ -1,16 +1,14 @@
 import collections
-import json
 
-from django.contrib.gis.db.models.functions import AsGeoJSON
-from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, render
-from geojson import Feature
+from rest_framework.exceptions import APIException
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from poi_manager.models import PoiCategory, Poi
 from poi_manager.forms import PoiCategoryForm, PoiForm
+from poi_manager.serializers import PoiSerializer, PoiCategorySerializer
 
 from mptt.exceptions import InvalidMove
 from mptt.forms import MoveNodeForm
@@ -18,21 +16,23 @@ from mptt.templatetags.mptt_tags import cache_tree_children
 
 
 def poi_category_list(request, campus_id):
-    return render_to_response("poi/poi-category.html",
-                              {'nodes': PoiCategory.objects.all()},
-                              context_instance=RequestContext(request))
+    return render(request, "poi/poi-category.html",
+                  {'nodes': PoiCategory.objects.all()})
 
 
 @api_view(['GET', ])
 def get_poi_by_id(request, campus_id, poi_id):
-    poi_qs = Poi.objects.filter(fk_campus=campus_id).filter(id=poi_id)
-    poi_values = poi_qs.values()
-    return Response(poi_values)
+    try:
+        poi_qs = Poi.objects.filter(fk_campus=campus_id).filter(id=poi_id)
+        serializer = PoiSerializer(poi_qs, many=True)
+        return Response(serializer.data)
+
+    except Exception as e:
+        raise APIException(detail=e)
 
 
 @api_view(['GET', ])
 def poi_category_json(request, campus_id):
-
     def recursive_node_to_dict(node):
         result = collections.OrderedDict()
         result['id'] = node.pk
@@ -51,15 +51,44 @@ def poi_category_json(request, campus_id):
 
     return Response(dicts)
 
+
 @api_view(['GET', ])
 def get_poi_by_category(request, campus_id, category_name):
+    if request.method == 'GET':
+        try:
+            cats = PoiCategory.objects.get(cat_name__contains=category_name)
 
-    cats = PoiCategory.objects.filter(cat_name__icontains=category_name)
+            if cats:
+
+                poi_qs = Poi.objects.filter(fk_poi_category=cats.id)
+                if poi_qs:
+                    serializer = PoiSerializer(poi_qs, many=True)
+                    return Response(serializer.data)
+        except Exception as e:
+            raise APIException(detail=e)
+
+
+@api_view(['GET', ])
+def get_poi_by_cat_id(request, campus_id, cat_id):
+    if request.method == 'GET':
+        cats = PoiCategory.objects.get(pk=cat_id)
+
+        if cats:
+
+            poi_qs = Poi.objects.filter(fk_poi_category=cats.id)
+            if poi_qs:
+                serializer = PoiSerializer(poi_qs, many=True)
+                return Response(serializer.data)
+
+
+@api_view(['GET', ])
+def get_poi_by_cat_name(request, campus_id, category_name):
+    cats = PoiCategory.objects.filter(cat_name__contains=category_name)
     # list = cats.get_descendants()
 
 
-    #from itertools import chain
-    #result_list = list(chain(page_list, article_list, post_list))
+    # from itertools import chain
+    # result_list = list(chain(page_list, article_list, post_list))
 
     if cats:
         if len(cats) > 1:
@@ -72,20 +101,29 @@ def get_poi_by_category(request, campus_id, category_name):
             poi_qs = Poi.objects.filter(fk_poi_category=cats[0].id)
     else:
         # return Response({'error': 'No Poi found with the given category name: ' + category_name} )
-        return Response({'error': 'no category found with the given category name: ' + category_name} )
+        return Response({'error': 'no category found with the given category name: ' + category_name})
 
     if poi_qs:
-        att = poi_qs.values()
+        serializer = PoiSerializer(poi_qs, many=True)
 
-        return Response(att)
+        return Response(serializer.data)
 
     else:
-        return Response({'error': 'sorry no poi entries found assigned to the category name : '+ category_name})
+        return Response({'error': 'sorry no poi entries found assigned to the category name : ' + category_name})
+
+
+@api_view(['GET', ])
+def get_poicat_by_id(request, campus_id, cat_id):
+    try:
+        cats = PoiCategory.objects.get(pk=cat_id)
+        serializer = PoiCategorySerializer(cats)
+        return Response(serializer.data)
+    except Exception as e:
+        raise APIException(detail=e)
 
 
 @api_view(['GET', ])
 def poi_category_by_name(request, campus_id, category_name):
-
     def recursive_node_to_dict(node):
         result = collections.OrderedDict()
         result['id'] = node.pk
@@ -111,24 +149,22 @@ def poi_category_by_name(request, campus_id, category_name):
 
 @api_view(['GET', ])
 def poi_list(request, campus_id):
+    try:
+        poi_qs = Poi.objects.all()
+        serializer = PoiSerializer(poi_qs, many=True)
+        return Response(serializer.data)
 
-    poi_qs = Poi.objects.all()
-    if poi_qs:
-        att = poi_qs.values()
-
-        return Response(att)
+    except Exception as e:
+        raise APIException(detail=e)
 
 
 @api_view(['GET', ])
 def poi_by_name(request, campus_id, poi_name, **kwargs):
-
     poi_qs = Poi.objects.filter(fk_campus=campus_id).filter(name__icontains=poi_name)
     floor = request.GET.get('floor')
 
     if floor:
         poi_qs = Poi.objects.filter(fk_campus=campus_id).filter(name__icontains=poi_name).filter(floor_num=floor)
-
-
 
     if poi_qs:
         att = poi_qs.values()
@@ -142,6 +178,7 @@ def poi_by_name(request, campus_id, poi_name, **kwargs):
         return Response(poi_entries)
     else:
         return Response({'error': 'something went wrong no POI with that name found'})
+
 
 def add_category(request):
     # A HTTP POST?
