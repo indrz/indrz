@@ -19,21 +19,101 @@
   <!-- 5 include the minified jstree source -->
   <script src="{% static "js/jstree/jstree.min.js" %}"></script>
   <script>
+
   $(function () {
     // 6 create an instance when the DOM is ready
-    $('#jstree').jstree();
+    $('#jstree').jstree({
+    "checkbox" : {
+      "keep_selected_style" : true,
+      "visible" : true
+    },
+    "plugins" : [ "checkbox", "wholerow" ]
+  });
+
+
+      $('#jstree').on("select_node.jstree", function(e, data) {
+          var nodeName = $('#jstree').jstree(true).get_text(data.node);
+            if(poiExist(nodeName.trim())){
+
+            }
+            else{
+
+
+                  // map.getLayers().push(foz);
+                  //map.getLayers().push(poiLayerGroup);
+
+
+
+                  if (data.selected.length) {
+
+                                      var foz = searchPoi(1, nodeName.trim());
+                  // testCreatePoi(nodeName.trim());
+
+
+                  poiLayerGroup.getLayers().push(foz);
+
+                      $(data.selected).each(function(idx) {
+                          var node = data.instance.get_node(data.selected[idx]);
+                          console.log("The selected node: " + node.text.trim());
+                      })
+                  }
+
+            }
+
+
+      });
+
+    $('#jstree').on("deselect_node.jstree", function(e, data) {
+        var nodeName = $('#jstree').jstree(true).get_text(data.node.id);
+        console.log("deselected  :" + nodeName.trim());
+
+                //map.removeLayer(poiLayer);
+                setPoiVisible(nodeName.trim());
+                console.log("removing poi layer now");
+                //map.getLayers().pop();
+
+      });
+
     // 7 bind to events triggered on the tree
-    $('#jstree').on("changed.jstree", function (e, data) {
-      console.log(data.selected);
-    });
-    // 8 interact with the tree - either way is OK
-      $('#jstree').on("select_node.jstree", function (e, data) { alert("node_id: " + data.node.id  + " node name is : "  + data.node.name); });
+{#    $('#jstree').on("changed.jstree", function (e, data) {#}
+{#      console.log(data.selected);#}
+{#    });#}
+{#    // 8 interact with the tree - either way is OK#}
+{#      $('#jstree').on("select_node.jstree", function (e, data) {#}
+{##}
+{#          var nodeName = $('#jstree').jstree(true).get_text(data.node);#}
+{#          console.log("node name is: "+ nodeName.trim());#}
+{##}
+{#          alert("node_id: " + data.node.id  + " node name is : "  + nodeName.trim());#}
+{##}
+{#          $('#jstree').jstree(true).select_node(data.node);#}
+{##}
+{##}
+{#          var foz = searchPoi(1, nodeName.trim());#}
+{#          poiLayers.push(foz);#}
+{#          map.getLayers().push(foz);#}
+{##}
+{##}
+{#      });#}
+{##}
+{##}
+{##}
+{#        $('#jstree').on("deselect_node.jstree", function (e, data) {#}
+{##}
+{##}
+{#            if (poiLayer) {#}
+{#                map.removeLayer(poiLayer);#}
+{#                console.log("removing poi layer now");#}
+{#                //map.getLayers().pop();#}
+{#            }#}
+{##}
+{##}
+{##}
+{#      });#}
 
 
-    $('button').on('click', function () {
-      $('#jstree').jstree(true).select_node('child_node_1');
-      $('#jstree').jstree('select_node', 'child_node_1');
-      $.jstree.reference('#jstree').select_node('child_node_1');
-    });
+
+
+
   });
   </script>

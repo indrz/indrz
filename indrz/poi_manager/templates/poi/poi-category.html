@@ -1,7 +1,7 @@
 {% load mptt_tags %}
 <ul>
     {% recursetree nodes %}
-        <li  data-jstree='{"icon":"{{ node.icon_css_name }}"}' id="cat_id_{{ node.id }}" {% if node.icon_css_name %} {% endif %} >
+        <li data-jstree='{"icon":"{{ node.icon_css_name }}"}' id="cat_id_{{ node.id }}"{% if node.icon_css_name %}{% endif %}>
             {{ node.cat_name }}
             {% if not node.is_leaf_node %}
                 <ul class="children">

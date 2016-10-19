@@ -105,7 +105,7 @@ function createWmtsLayer(layerSrcName, type, isVisible) {
     });
 
     wmtsLayer = new ol.layer.Tile({
-        name: 'basemap.at - GRAU',
+        name: layerSrcName,
         source: WmtsTileSource,
         minResolution: 0.298582141738,
         visible: isVisible,
@@ -121,6 +121,8 @@ function createWmtsLayer(layerSrcName, type, isVisible) {
 
 var grey_bmapat = createWmtsLayer('bmapgrau', '.png', true);
 var ortho30cm_bmapat = createWmtsLayer('bmaporthofoto30cm', '.jpg', false);
+
+var backgroundLayerGroup = new ol.layer.Group({layers: [grey_bmapat, ortho30cm_bmapat], name: gettext("background maps")});
 
 
 function createWmsLayer(layerName, geoserverLayer, floorNumber, isVisible, zIndexValue) {
@@ -152,6 +154,12 @@ wmsE03 = createWmsLayer('og03', 'indrz:e03', '3', 'false', 3);
 wmsE04 = createWmsLayer('og04', 'indrz:e04', '4', 'false', 3 );
 wmsE05 = createWmsLayer('og05', 'indrz:e05', '5', 'false', 3 );
 wmsE06 = createWmsLayer('og06', 'indrz:e06', '6', 'false', 3 );
+
+
+var wmsfloorLayerGroup = new ol.layer.Group({layers: [wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06], name: gettext("wms floor maps")});
+
+
+var poiLayerGroup = new ol.layer.Group({layers: [], name: gettext("poi group")});
 
 // var floor_layers = [ wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06 ];
 

@@ -12,19 +12,19 @@ var map = new ol.Map({
         new ol.interaction.DragRotateAndZoom()
     ]),
     //layers: [backgroundLayers[0], backgroundLayers[1], wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03],
-    layers: [
-        new ol.layer.Group({
-            'title': gettext('Background'),
-            layers: [grey_bmapat, ortho30cm_bmapat
-            ]
-        }),
-        new ol.layer.Group({
-            title: gettext('Floor'),
-            layers: [
-
-                wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06
-            ]
-        })
+    layers: [backgroundLayerGroup, wmsfloorLayerGroup, poiLayerGroup
+        // new ol.layer.Group({
+        //     'title': gettext('Background'),
+        //     layers: [grey_bmapat, ortho30cm_bmapat
+        //     ]
+        // }),
+        // new ol.layer.Group({
+        //     title: gettext('Floor'),
+        //     layers: [
+        //
+        //         wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06
+        //     ]
+        // })
     ],
     target: 'map-block',
     controls: ol.control.defaults({
