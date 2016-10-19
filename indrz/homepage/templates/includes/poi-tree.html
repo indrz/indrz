@@ -31,26 +31,18 @@
   });
 
 
-      $('#jstree').on("select_node.jstree", function(e, data) {
+      $('#jstree').on("changed.jstree", function(e, data) {
           var nodeName = $('#jstree').jstree(true).get_text(data.node);
             if(poiExist(nodeName.trim())){
 
             }
             else{
 
-
-                  // map.getLayers().push(foz);
-                  //map.getLayers().push(poiLayerGroup);
-
+                var foz = searchPoi(1, nodeName.trim());
+                poiLayerGroup.getLayers().push(foz);
 
 
                   if (data.selected.length) {
-
-                                      var foz = searchPoi(1, nodeName.trim());
-                  // testCreatePoi(nodeName.trim());
-
-
-                  poiLayerGroup.getLayers().push(foz);
 
                       $(data.selected).each(function(idx) {
                           var node = data.instance.get_node(data.selected[idx]);
