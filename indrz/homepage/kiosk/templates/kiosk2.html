@@ -1,0 +1,136 @@
+{% extends "base-layout.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block title %}WU Campus Kiosk{% endblock %}
+
+
+{% block head_extra %}
+
+    <script src="{% static "js/bloodhound.min.js" %}"></script>
+    <script src="{% static "js/typeahead.bundle.min.js" %}"></script>
+
+    <style> body {
+        padding-top: 0px;
+    }</style>
+
+
+{% endblock head_extra %}
+
+{% block nav %}{% endblock nav %}
+
+
+{% block side_col %}
+
+    <div id="map-search-form">
+
+
+    {% block search-form %}
+        <div id="search-form-id" class="indrz-search-kiosk">
+        <div id="kiosk-poi-section" class="indrz-poi-kiosk">
+
+            {% include "poi/poi-kiosk.html" %}
+
+        </div>
+
+        </div>
+    {% endblock search-form %}
+
+
+            </div>
+
+{% endblock side_col %}
+
+{% block main_col %}
+            <div id="map" class="indrz-map-container">
+                {% block floor-change-float %}
+
+                            <div class="indrz-floor-changer-float">
+                                <select class="form-control hidden-md hidden-lg" id="floor-links-select"></select>
+                                <ul class="nav nav-pills nav-stacked visible-md-block visible-lg-block" id="floor-links"></ul>
+                            </div>
+
+                        {% endblock floor-change-float %}
+
+                        <div id="map-block"></div>
+
+                        {% block indrz-logo-imgt %}
+
+                            <div class="indrz-logo">
+
+                                <a href="http://www.indrz.com" target="_blank"><img
+                                        src="{% static "img/indrz-powered-by-90px.png" %}"/></a>
+
+                            </div>
+
+                        {% endblock indrz-logo-imgt %}
+
+            </div>
+{% endblock %}
+
+
+{% block js-search-box %}
+<script>  {% include 'homepage/indrzMapConf.js' %} </script>
+    <script>
+
+       var building_id = 1;
+
+        var searchValues = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: baseApiUrl + 'spaces/search/?format=json',
+            prefetch: 'http://localhost:8000/autocomplete/%QUERY?.format=json',
+            remote: {
+              url: 'http://localhost:8000/autocomplete/%QUERY?.format=json',
+              wildcard: '%QUERY'
+            }
+        });
+
+        // passing in `null` for the `options` arguments will result in the default
+        // options being used
+        $('#search-input').typeahead(null, {
+            hint: true,
+            highlight: true,
+            minLength: 1,
+            name: 'search-field',
+            limit: 100,
+            source: searchValues
+        });
+
+
+        $("#submitFormSearch").submit(function (event) {
+            {#              alert( "Handler for .submit() called."  );#}
+
+            {#            var buildingid = buildingNantesId;#}
+            var searchText = $('#search-input').val();
+            searchIndrz(building_id, searchText);
+            event.preventDefault();
+        });
+
+        $("#showPoi").submit(function (event) {
+           // alert( "Handler for .submit() called." + $('#poi-input').val()   );
+            var poiName = $('#poi-input').val();
+            searchPoi(building_id, poiName);
+            event.preventDefault();
+            });
+
+    </script>
+
+
+{% endblock js-search-box %}
+
+
+
+{% block map_frame %}
+    <script>  {% include 'homepage/indrz-poi.js' %} </script>
+    <script>  {% include 'homepage/indrzLayers.js' %} </script>
+    <script>  {% include 'homepage/indrz-floorswitcher.js' %} </script>
+    <script>  {% include 'homepage/indrzMapInit.js' %}</script>
+    <script>  {% include 'homepage/routing.js' %} </script>
+    <script>  {% include 'homepage/search.js' %} </script>
+    <script>  {% include 'homepage/indrz-popup.js' %} </script>
+    <script>  {% include 'homepage/indrz-controls.js' %} </script>
+    <script>  {% include 'homepage/initialize.js' %} </script>
+{% endblock map_frame %}
+
+{% block footer %}{% endblock footer %}
