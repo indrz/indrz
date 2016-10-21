@@ -6,22 +6,38 @@
 
         <div class="row">
 
-            {% block main_col %}
-                <div class="col-md-3 col-lg-2" id="map-search-form">
-
-                </div>
-            {% endblock %}
-
-            {% block side_col %}
-                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10">
-                    <div class="row">
-                        <div id="map" class="indrz-map-container"></div>
-                    </div>
-                </div>
-            {% endblock %}
+            {% block side_col %}{% endblock %}
+            {% block main_col %}{% endblock %}
 
         </div>
 
     </div>
+
+
+    {% block popup-markup %} {% include 'popup-markup.html' %} {% endblock popup-markup %}
+    {% block js-search-box %}{% endblock js-search-box %}
+    {% block route_from_to %}{% endblock route_from_to %}
+    {% block map_frame %}{% endblock map_frame %}
+    {% block js-autocomplete %}{% endblock js-autocomplete %}
+    {% block route_options %}{% endblock route_options %}
+    {% block footer %}{% endblock footer %}
+
+    <script>
+
+        $(".nav a").on("click", function () {
+            $(".nav").find(".active").removeClass("active");
+            $(this).parent().addClass("active");
+        });
+
+        $(function () {
+            $("#floor-links-select").on('change', function () {
+                activateLayer($(this).val());
+            });
+        });
+
+    </script>
+
+
+        {% block js-extras %}{% endblock js-extras %}
 
 {% endblock %}

@@ -1,0 +1,62 @@
+{% load staticfiles %}
+{% load i18n %}
+
+
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+  {% trans "POI" %}
+</button>
+
+
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  {% trans "Search" %}
+</button>
+
+<div class="collapse" id="collapseExample">
+    <div class="well">
+
+             <div id="search-prefetch2" class="input-group">
+
+                <form class="form form-inline" id="submitFormSearch">
+                    <div class="form-group form-group-sm">
+
+                        <label for="searchField" class="sr-only">Searchterm</label>
+
+                        <input type="text" class="form-control" id="search-input" placeholder="{% trans "Search for ..." %}">
+
+                    </div>
+
+                    <input id="enterSearch" type="submit" class="btn btn-primary" value="{% trans "Go!" %}">
+
+                    <div>
+                         <a id="clearSearch" class="btn btn-primary hide " href="#"><i class="fa fa-refresh fa-fw"></i></a>
+                         <a id="shareSearch" href="#ShareModal" class = "btn btn-primary hide" data-toggle="modal" data-target="#ShareSearchModal"><i class="fa fa-share fa-fw"></i> {% trans "Share" %}</a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+    </div>
+</div>
+
+<div class="collapse" id="collapseExample2">
+  <div class="well">
+    <div class="panel panel-default">
+{#      <div class="panel-body">#}
+        <div class="list-group">
+          <a href="#" class="list-group-item active">
+            Cras justo odio
+          </a>
+          <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+          <a href="#" class="list-group-item">Morbi leo risus</a>
+          <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+          <a href="#" class="list-group-item">Vestibulum at eros</a>
+        </div>
+{#      </div>#}
+    </div>
+  </div>
+</div>
+
+

@@ -5,13 +5,14 @@
 import json
 
 import requests
+from django.shortcuts import render
 from geojson import Feature
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from django.conf import settings
 
-from poi_manager.models import Poi
+from poi_manager.models import Poi, PoiCategory
 from django.contrib.gis.db.models.functions import Centroid, AsGeoJSON
 
 from django.http import  HttpResponse
@@ -57,7 +58,7 @@ def create_terminal_start_json(query_result):
 @api_view(['GET', ])
 def get_terminal(request):
     """
-    return a LIST of all POIs either with "entrance" or "ubahn" in the column "name"
+    find IP of terminal and return start location
     """
     ipTerminal = get_client_ip(request)
     if ipTerminal == "127.0.0.1":
@@ -102,7 +103,7 @@ def route_from_terminal(request, destination_location):
         print(dest_d)
 
 
-        dest_floor = str(dest_d['features'][0]['properties']['layer'])
+        dest_floor = str(dest_d['features'][0]['properties']['floor_num'])
         dest_coord_x = str(dest_d['features'][0]['properties']['centerGeometry']['coordinates'][0])
         dest_coord_y = str(dest_d['features'][0]['properties']['centerGeometry']['coordinates'][1])
 
@@ -147,3 +148,48 @@ def route_from_kiosk(request, rvk_id):
         route_to_book = requests.get(url)
 
         return Response(route_to_book.json())
+
+
+def homepage_kiosk(request, *args, **kwargs):
+    context = {}
+    if request.method == 'GET':
+        map_name = kwargs.pop('map_name', None)
+        building_id, = request.GET.get('buildingid', 1),
+        campus_id = request.GET.get('campus', 1),
+        space_id, = request.GET.get('spaceid', 0),
+        zoom_level, = request.GET.get('zlevel', 17),
+        route_from, = request.GET.get('startstr', ''),
+        route_to, = request.GET.get('endstr', ''),
+        centerx, = request.GET.get('centerx', 0),
+        centery, = request.GET.get('centery', 0),
+        floor_num, = request.GET.get('floor', 0),
+        poi_name, = request.GET.get('poi-name', ''),
+
+        floor_num = int(floor_num)
+
+        if floor_num == 0:
+            floor_num = floor_num + 1
+        else:
+            floor_num = floor_num + 1
+
+        if isinstance(centerx, str):
+            if ',' in centerx:
+                centerx = float(centerx.replace(',', '.'))
+                centery = float(centery.replace(',', '.'))
+
+        context.update({
+            'map_name': map_name,
+            'building_id': building_id,
+            'campus_id': campus_id,
+            'space_id': int(space_id),
+            'zoom_level': zoom_level,
+            'route_from': route_from,
+            'route_to': route_to,
+            'centerx': centerx,
+            'centery': centery,
+            'floor_num': int(floor_num),
+            'poi_name' : poi_name,
+            'nodes': PoiCategory.objects.all(),
+        })
+
+    return render(request, context=context, template_name='kiosk2.html')

@@ -52,6 +52,19 @@ body {
   z-index: 1002;
 }
 
+
+.indrz-search-kiosk {
+    position: absolute; /* or absolute */
+    top:2%;
+    left: 5%;
+    z-index: 2000;
+}
+
+.indrz-poi-kiosk {
+
+}
+
+
 .olImageLoadError { display: none; }
 
 body {
