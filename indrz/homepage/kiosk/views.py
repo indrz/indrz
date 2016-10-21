@@ -153,6 +153,21 @@ def route_from_kiosk(request, rvk_id):
 def homepage_kiosk(request, *args, **kwargs):
     context = {}
     if request.method == 'GET':
+
+        poi_list = (
+        "Study Area", "Surfstation", "Computer Rooms", "Scanner", "Search Terminal", "Self-Checkout", "Study Area",
+        "Computer Desks", "Locker")
+
+        poi_ids = ("43", "32", "33", "42", "62", "40", "41", "35", "44" )
+
+        poi_kiosk_list = []
+
+        for poi in poi_ids:
+            poi_qs = PoiCategory.objects.get(pk=poi)
+
+            poi_kiosk_list.append(poi_qs)
+
+
         map_name = kwargs.pop('map_name', None)
         building_id, = request.GET.get('buildingid', 1),
         campus_id = request.GET.get('campus', 1),
@@ -190,6 +205,7 @@ def homepage_kiosk(request, *args, **kwargs):
             'floor_num': int(floor_num),
             'poi_name' : poi_name,
             'nodes': PoiCategory.objects.all(),
+            'pois': poi_kiosk_list,
         })
 
     return render(request, context=context, template_name='kiosk2.html')

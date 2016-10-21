@@ -21,6 +21,7 @@ from django.contrib.auth.views import login, logout
 from django.conf.urls.i18n import i18n_patterns
 from django.views.i18n import javascript_catalog
 
+from homepage.kiosk.views import homepage_kiosk
 
 js_info_dict = {
     'domain': 'djangojs',
@@ -39,6 +40,7 @@ urlpatterns = [
     url(r'^logout/$', logout, {'next_page': '/'}, name='logout'),
 
     url(r'^indrz/api/v1/', include('api.urls')),
+    url(r'^indrz/kiosk/$', homepage_kiosk, name="kiosk-home"),
     # url(r'^map/', include('maps.urls')),
 
     #url(r'^wu/', include('homepage.urls')),

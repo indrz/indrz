@@ -43,19 +43,23 @@
 
 <div class="collapse" id="collapseExample2">
   <div class="well">
-    <div class="panel panel-default">
+{#    <div class="panel panel-default">#}
 {#      <div class="panel-body">#}
         <div class="list-group">
-          <a href="#" class="list-group-item active">
-            Cras justo odio
-          </a>
-          <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-          <a href="#" class="list-group-item">Morbi leo risus</a>
-          <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-          <a href="#" class="list-group-item">Vestibulum at eros</a>
+
+            {% if pois %}
+                {% for poi in pois %}
+
+                  <a id="{{ poi.id }}" href="#" class="list-group-item">{{ poi.cat_name }}</a>
+
+                {% endfor %}
+
+            {% endif %}
+
+
         </div>
 {#      </div>#}
-    </div>
+{#    </div>#}
   </div>
 </div>
 
