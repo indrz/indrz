@@ -37,19 +37,7 @@
 
             }
             else{
-
-                var foz = searchPoi(1, nodeName.trim());
-                poiLayerGroup.getLayers().push(foz);
-
-
-                  if (data.selected.length) {
-
-                      $(data.selected).each(function(idx) {
-                          var node = data.instance.get_node(data.selected[idx]);
-                          console.log("The selected node: " + node.text.trim());
-                      })
-                  }
-
+                createPoi(1, nodeName.trim());
             }
 
 
@@ -60,7 +48,7 @@
         console.log("deselected  :" + nodeName.trim());
 
                 //map.removeLayer(poiLayer);
-                setPoiVisible(nodeName.trim());
+                setPoiVisibility(nodeName.trim());
                 console.log("removing poi layer now");
                 //map.getLayers().pop();
 
@@ -71,7 +59,7 @@
         console.log("SELECTED  :" + nodeName.trim());
 
                 //map.removeLayer(poiLayer);
-                setPoiVisible(nodeName.trim());
+                setPoiVisibility(nodeName.trim());
                 console.log("make it Visible");
                 //map.getLayers().pop();
 
