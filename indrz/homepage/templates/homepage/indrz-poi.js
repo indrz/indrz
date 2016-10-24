@@ -249,17 +249,22 @@ function searchPoi(campusId, searchString) {
 $('#kiosk-pois a').click(function() {
 
     var poiName = $(this).attr('id').split('_')[1];
+    var elemId = $(this).attr('id');
 
     if (poiExist(poiName)){
 
         setPoiVisibility(poiName);
+        $(elemId).addClass("active");
 
     }
     else {
         var newPoi = createPoi(1,poiName);
-        console.log("function WORKS YES : " + poiName);
         map.getLayers().push(newPoi);
+
+
+
     }
 
 
 });
+

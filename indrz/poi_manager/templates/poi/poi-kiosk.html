@@ -51,7 +51,7 @@
 
                 {% for poi in pois %}
 
-                  <a id="kiosk_{{ poi.cat_name }}" href="#" class="list-group-item"><i class="{{ poi.icon_css_name }}"></i>{{ poi.cat_name }}</a>
+                          <a id="kiosk_{{ poi.cat_name }}" href="#" class="list-group-item"><img class="{{ poi.icon_css_name }}" src="{% static "img/trans.png" %}">{{ poi.cat_name }}</a>
 
                 {% endfor %}
 
@@ -63,5 +63,8 @@
 {#    </div>#}
   </div>
 </div>
+
+
+
 
 
