@@ -66,43 +66,16 @@
 
       });
 
-    // 7 bind to events triggered on the tree
-{#    $('#jstree').on("changed.jstree", function (e, data) {#}
-{#      console.log(data.selected);#}
-{#    });#}
-{#    // 8 interact with the tree - either way is OK#}
-{#      $('#jstree').on("select_node.jstree", function (e, data) {#}
-{##}
-{#          var nodeName = $('#jstree').jstree(true).get_text(data.node);#}
-{#          console.log("node name is: "+ nodeName.trim());#}
-{##}
-{#          alert("node_id: " + data.node.id  + " node name is : "  + nodeName.trim());#}
-{##}
-{#          $('#jstree').jstree(true).select_node(data.node);#}
-{##}
-{##}
-{#          var foz = searchPoi(1, nodeName.trim());#}
-{#          poiLayers.push(foz);#}
-{#          map.getLayers().push(foz);#}
-{##}
-{##}
-{#      });#}
-{##}
-{##}
-{##}
-{#        $('#jstree').on("deselect_node.jstree", function (e, data) {#}
-{##}
-{##}
-{#            if (poiLayer) {#}
-{#                map.removeLayer(poiLayer);#}
-{#                console.log("removing poi layer now");#}
-{#                //map.getLayers().pop();#}
-{#            }#}
-{##}
-{##}
-{##}
-{#      });#}
+          $('#jstree').on("select_node.jstree", function(e, data) {
+        var nodeName = $('#jstree').jstree(true).get_text(data.node.id);
+        console.log("SELECTED  :" + nodeName.trim());
 
+                //map.removeLayer(poiLayer);
+                setPoiVisible(nodeName.trim());
+                console.log("make it Visible");
+                //map.getLayers().pop();
+
+      });
 
 
 
