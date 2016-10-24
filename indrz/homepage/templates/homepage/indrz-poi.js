@@ -58,15 +58,10 @@ function listAllLayers() {
         if (layer instanceof ol.layer.Group) {
             // console.log("Group Name is : " + layer.getProperties().name)
             layer.getLayers().forEach(function (sublayer) {
-
                 // map.removeLayer(layer);
-
 
                     console.log("layer name : " + sublayer.getProperties().name)
                     console.log("layer visibility : " + sublayer.getVisible())
-
-
-
 
             });
         }
@@ -75,8 +70,7 @@ function listAllLayers() {
 }
 
 
-
-function setPoiVisible(namepoi) {
+function setPoiVisibility(namepoi) {
 
     map.getLayers().forEach(function (layer, i) {
 
@@ -100,14 +94,11 @@ function setPoiVisible(namepoi) {
 
                 }
 
-
             });
         }
     });
 
 }
-
-
 
 
 function poiExist(poiName){
@@ -134,26 +125,74 @@ function poiExist(poiName){
 }
 
 
+function createPoiStyle(poiName){
+
+        var iconStyle = new ol.style.Style({
+            image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+                anchor: [0.5, 46],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'pixels',
+                src: '/static/access_parking_bikecovered.png'
+            }))
+        });
+
+        return iconStyle;
+}
+
+
+function createPoi(campusId, poiName) {
+
+    if (poiExist(poiName)){
+        // do nothing
+
+    } else {
+
+        var poiUrl = baseApiUrl + "campus/1/poi/name/" + poiName + '/?format=json';
+        console.log("in createPoi: " + poiUrl);
+
+        // create the poi because it does not exist
+        var poiSource = new ol.source.Vector();
+        $.ajax(poiUrl).then(function (response) {
+            console.log("in response: " + response);
+            var geojsonFormat3 = new ol.format.GeoJSON();
+            var featuresSearch = geojsonFormat3.readFeatures(response,
+                {featureProjection: 'EPSG:4326'});
+            poiSource.addFeatures(featuresSearch);
+
+        });
+
+        poiVectorLayer = new ol.layer.Vector({
+            source: poiSource,
+            style: createPoiStyle(poiName),
+            title: poiName,
+            name: poiName,
+            active: true,
+            visible: true,
+            zIndex: 999
+        });
+
+        poiLayerGroup.getLayers().push(poiVectorLayer);
+
+        return poiVectorLayer;
+    }
+
+
+}
+
 
 function searchPoi(campusId, searchString) {
 
 
-       if (poiExist(searchString)){
+   if (poiExist(searchString)){
 
-
-        setPoiVisible(searchString);
+        setPoiVisibility(searchString);
 
     }
-
-
-// testCreatePoi("Entrance")
-// testCreatePoi("Info Point")
-    // removePoi(poiLayer);
-
-
     else {
 
-            // var searchUrl = '/api/v1/buildings/' + buildingId + '/' + spaceName + '.json';
+       var finally_a_poi = createPoi(1, searchString);
+
+        // var searchUrl = '/api/v1/buildings/' + buildingId + '/' + spaceName + '.json';
         // var searchUrl = baseApiUrl + 'campus/' + campusId + '/search/' + searchString + '?format=json';
         var searchUrl = baseApiUrl + "campus/1/poi/name/" + searchString + '/?format=json';
         console.log("in searchPOI: " + searchUrl);
@@ -177,46 +216,20 @@ function searchPoi(campusId, searchString) {
 
             var poi_id = response.features[0].id;
             // active the floor of the start point
-            var searchResFloorNum = featuresSearch[0].getProperties().floor_num;
-            for (var i = 0; i < switchableLayers.length; i++) {
-                if (searchResFloorNum == switchableLayers[i].getProperties().floor_num) {
-                    activateLayer(i);
-                }
-            }
+            // var searchResFloorNum = featuresSearch[0].getProperties().floor_num;
+            // for (var i = 0; i < switchableLayers.length; i++) {
+            //     if (searchResFloorNum == switchableLayers[i].getProperties().floor_num) {
+            //         activateLayer(i);
+            //     }
+            // }
 
 
-        });
-
-        var iconFeature = new ol.Feature({
-            geometry: new ol.geom.Point([0, 0]),
-            name: "nice icon",
-            population: 4000,
-            rainfall: 500
-        });
-
-        var iconStyle = new ol.style.Style({
-            image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-                anchor: [0.5, 46],
-                anchorXUnits: 'fraction',
-                anchorYUnits: 'pixels',
-                src: '/static/access_parking_bikecovered.png'
-            }))
-        });
-
-        iconFeature.setStyle(iconStyle);
-
-        var vectorSource = new ol.source.Vector({
-            features: [iconFeature]
-        });
-
-        var vectorLayer = new ol.layer.Vector({
-            source: vectorSource
         });
 
 
         poiLayer = new ol.layer.Vector({
             source: poiSource,
-            style: iconStyle,
+            style: createPoiStyle(searchString),
             title: "foo",
             name: searchString,
             active: true,
@@ -224,56 +237,29 @@ function searchPoi(campusId, searchString) {
             zIndex: 999
         });
 
-
         return poiLayer;
-
+       //return finally_a_poi;
 
     }
-
-
-
 
 }
 
 
-//
-// var element = document.getElementById('popup');
-//
-// var popup = new ol.Overlay({
-//   element: element,
-//   positioning: 'bottom-center',
-//   stopEvent: false,
-//   offset: [0, -50]
-// });
-// map.addOverlay(popup);
-//
-// // display popup on click
-// map.on('click', function(evt) {
-//   var feature = map.forEachFeatureAtPixel(evt.pixel,
-//       function(feature) {
-//         return feature;
-//       });
-//   if (feature) {
-//     var coordinates = feature.getGeometry().getCoordinates();
-//     popup.setPosition(coordinates);
-//     $(element).popover({
-//       'placement': 'top',
-//       'html': true,
-//       'content': feature.get('name')
-//     });
-//     $(element).popover('show');
-//   } else {
-//     $(element).popover('destroy');
-//   }
-// });
-//
-// // change mouse cursor when over marker
-// map.on('pointermove', function(e) {
-//   if (e.dragging) {
-//     $(element).popover('destroy');
-//     return;
-//   }
-//   var pixel = map.getEventPixel(e.originalEvent);
-//   var hit = map.hasFeatureAtPixel(pixel);
-//   map.getTarget().style.cursor = hit ? 'pointer' : '';
-// });
+
+$('#kiosk-pois a').click(function() {
+
+    var poiName = $(this).attr('id').split('_')[1];
+
+    if (poiExist(poiName)){
+
+        setPoiVisibility(poiName);
+
+    }
+    else {
+        var newPoi = createPoi(1,poiName);
+        console.log("function WORKS YES : " + poiName);
+        map.getLayers().push(newPoi);
+    }
+
+
+});
