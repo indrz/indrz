@@ -9,7 +9,8 @@
 
     <script src="{% static "js/bloodhound.min.js" %}"></script>
     <script src="{% static "js/typeahead.bundle.min.js" %}"></script>
-
+    <link rel="stylesheet" href="{% static "wu-neu/font-awesome.min.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "homepage/css/map_poi.main.css" %}" type="text/css">
     <style> body {
         padding-top: 0px;
     }</style>
@@ -110,7 +111,8 @@
         $("#showPoi").submit(function (event) {
            // alert( "Handler for .submit() called." + $('#poi-input').val()   );
             var poiName = $('#poi-input').val();
-            searchPoi(building_id, poiName);
+            // searchPoi(building_id, poiName);
+            createPoi(campus_id, poiName);
             event.preventDefault();
             });
 

@@ -45,12 +45,13 @@
   <div class="well">
 {#    <div class="panel panel-default">#}
 {#      <div class="panel-body">#}
-        <div class="list-group">
+        <div id="kiosk-pois" class="list-group">
 
             {% if pois %}
+
                 {% for poi in pois %}
 
-                  <a id="{{ poi.id }}" href="#" class="list-group-item">{{ poi.cat_name }}</a>
+                  <a id="kiosk_{{ poi.cat_name }}" href="#" class="list-group-item"><i class="{{ poi.icon_css_name }}"></i>{{ poi.cat_name }}</a>
 
                 {% endfor %}
 
