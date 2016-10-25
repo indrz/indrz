@@ -60,6 +60,10 @@ map.on('singleclick', function (e) {
 
 function getTitle(properties){
     var name;
+    if (properties.label) {
+        name = properties.label;
+        return name;
+    }
     if(properties.short_name){
         name = properties.short_name;
         return name;
@@ -68,13 +72,27 @@ function getTitle(properties){
         name = properties.room_code;
         return name;
     }
+    if (properties.fancyname_de){
+        name = properties.fancyname_de;
+        return name;
+    }
+    if (properties.roomcode && properties.label != undefined){
+        name = properties.roomcode;
+        return name;
+
+
+    }
+
 
 }
 
 
 function open_popup(properties, coordinate, name){
 
-  var titlePopup = gettext('Building Name: ');
+    var titlePopup = ""
+    var titleBuildingName = gettext('Building : ');
+    var titleFloorNumber = gettext('Floor Number: ');
+    var titleRoomcode = gettext('Room Number: ');
     //var name;
     var floorNum;
     var buildingName;
@@ -84,13 +102,17 @@ function open_popup(properties, coordinate, name){
         name = properties.fancyname_de;
     }
 
+    var name = "";
+
+    titlePopup = getTitle(properties);
+
     var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
       coordinate, 'EPSG:3857', 'EPSG:4326'));
 
     if (properties.label){
         //var properties = properties[0].properties;
 
-        name = properties.label;
+        popupTitle = properties.label;
         floorNum = properties.floor_num;
         buildingName = properties.building_name;
         roomcode = properties.roomcode;
@@ -98,14 +120,15 @@ function open_popup(properties, coordinate, name){
         name = properties.roomcode;
         floorNum = properties.floor_num;
         buildingName = properties.building_name;
-        titlePopup = gettext('Campus ');
+        roomcode = properties.roomcode;
     }
 
-    var textFloorNumber = gettext('Floor Number: ');
 
-    popup_content.innerHTML = '<h4>' + name + '</h4>';
-    popup_content.innerHTML += '<p>' + textFloorNumber + floorNum + '</p>';
-    popup_content.innerHTML += '<p>' + titlePopup + buildingName + '</p>';
+    popup_content.innerHTML = '<h4>' + titlePopup + '</h4>';
+    popup_content.innerHTML += '<p>' + titleFloorNumber + floorNum + '</p>';
+    popup_content.innerHTML += '<p>' + titleBuildingName + buildingName + '</p>';
+    popup_content.innerHTML += '<p>' + titleRoomcode + roomcode + '</p>';
+
 
   popup_content.innerHTML += '<p>' + gettext('Coordinate: ')+ '</p><code>' + coordinate + '</code><p></p><code>' + hdms + '</code>';
   popup_overlay.setPosition(coordinate);
