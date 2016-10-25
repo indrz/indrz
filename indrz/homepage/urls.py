@@ -9,9 +9,10 @@ urlpatterns = [
     # url(r'^(?P<map_name>[0-9a-zA-Z_-]+)/$', 'view_map', name='map_name'),
     # url(r'^', view_map, name='map_name'),
     # /autocomplete/?query=Irene Fellner
+    url(r'^$', view_map, name='map_home'),
     url(r'^autocomplete/(?P<search_text>.+)', searchAutoComplete, name='search_autocomplete'),
     url(r'^search/(?P<q>.+)', search_any, name='search all wu'),
-    url(r'^map/(?P<map_name>[^/]+)/$', view_map, name='map_name')
+    url(r'^map/(?P<map_name>[^/]+)/$', view_map, name='map_name'),
 
 
 ]

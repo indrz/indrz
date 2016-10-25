@@ -10,18 +10,29 @@ function update_url(mode) {
     var centerx2 = center_crd[0];
     var centery2 = center_crd[1];
 
-    var url = "/map/" + map_name + "/?campus=" + building_id +
-        "&centerx=" + centerx2 + "&centery=" + centery2 + "&zlevel=" + current_zoom2 +
-        "&floor=" + active_floor_num;
+    var url = "/?campus=" + building_id + "&centerx=" + centerx2 + "&centery=" + centery2 +
+        "&zlevel=" + current_zoom2 + "&floor=" + active_floor_num;
+
+    // var url = "/map/" + map_name + "/?campus=" + building_id +
+    //     "&centerx=" + centerx2 + "&centery=" + centery2 + "&zlevel=" + current_zoom2 +
+    //     "&floor=" + active_floor_num;
 
     var data = {};
 
+    // if (mode == "route") {
+    //     url = "/map/" + map_name + "/?campus=" + building_id + "&startstr=" + $("#route-from").val() + "&endstr=" + $("#route-to").val();
+    // } else if (mode == "search") {
+    //     url = "/map/" + map_name + "/?campus=" + building_id + "&spaceid=" + space_id;
+    // } else if (mode == "map") {
+    //     url = "/map/" + map_name + "/?campus=" + building_id + "&centerx=" + centerx2 + "&centery=" + centery2 + "&zlevel=" + current_zoom2 + "&floor=" + active_floor_num;
+    // }
+
     if (mode == "route") {
-        url = "/map/" + map_name + "/?campus=" + building_id + "&startstr=" + $("#route-from").val() + "&endstr=" + $("#route-to").val();
+        url = "/?campus=" + building_id + "&startstr=" + $("#route-from").val() + "&endstr=" + $("#route-to").val();
     } else if (mode == "search") {
-        url = "/map/" + map_name + "/?campus=" + building_id + "&spaceid=" + space_id;
+        url = "/?campus=" + building_id + "&spaceid=" + space_id;
     } else if (mode == "map") {
-        url = "/map/" + map_name + "/?campus=" + building_id + "&centerx=" + centerx2 + "&centery=" + centery2 + "&zlevel=" + current_zoom2 + "&floor=" + active_floor_num;
+        url = "/?campus=" + building_id + "&centerx=" + centerx2 + "&centery=" + centery2 + "&zlevel=" + current_zoom2 + "&floor=" + active_floor_num;
     }
 
     data.extent = current_extent2;
