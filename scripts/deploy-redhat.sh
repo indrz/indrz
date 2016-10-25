@@ -8,5 +8,5 @@ mkdir /opt/deploy-django/media
 cp -R /opt/indrz-wu/indrz /opt/django-deploy/indrz
 
 
-cd /opt/indrz-wu
+cd /opt/indrz-wu/indrz
 python manage.py collectstatic
