@@ -12,15 +12,15 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import absolute_import, print_function
-import sys
-
-
-try:
-    print("Trying import production_settings.py settings...", file=sys.stderr)
-    from .production_settings import *
-    print("yes importing production_settings...", file=sys.stderr)
-except ImportError:
-    print("Trying import dev_settings.py ...", file=sys.stderr)
-    from .dev_settings import *
-    print("Now importing dev_settings.py settings...", file=sys.stderr)
+# from __future__ import absolute_import, print_function
+# import sys
+#
+#
+# try:
+#     print("Trying import production_settings.py settings...", file=sys.stderr)
+#     from .production_settings import *
+#     print("yes importing production_settings...", file=sys.stderr)
+# except ImportError:
+#     print("Trying import dev_settings.py ...", file=sys.stderr)
+#     from .dev_settings import *
+#     print("Now importing dev_settings.py settings...", file=sys.stderr)
