@@ -12,25 +12,25 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import pytest
-from mixer.backend.django import mixer
+# import pytest
+# from mixer.backend.django import mixer
 
-pytestmark = pytest.mark.django_db
-
-class TestOrganization:
-    def test_init(self):
-        obj = mixer.blend('buildings.Organization')
-        assert obj.pk == 1, 'Should create an organization instance'
-
-
-class TestCampus:
-    def test_init(self):
-        obj = mixer.blend('buildings.Campus')
-        assert obj.pk == 1, 'Should create a campus instance'
-
-
-class TestBuilding:
-    def test_init(self):
-        obj = mixer.blend('buildings.Building')
-        assert obj.pk == 1, 'Should create a building instance'
-
+# pytestmark = pytest.mark.django_db
+#
+# class TestOrganization:
+#     def test_init(self):
+#         obj = mixer.blend('buildings.Organization')
+#         assert obj.pk == 1, 'Should create an organization instance'
+#
+#
+# class TestCampus:
+#     def test_init(self):
+#         obj = mixer.blend('buildings.Campus')
+#         assert obj.pk == 1, 'Should create a campus instance'
+#
+#
+# class TestBuilding:
+#     def test_init(self):
+#         obj = mixer.blend('buildings.Building')
+#         assert obj.pk == 1, 'Should create a building instance'
+#

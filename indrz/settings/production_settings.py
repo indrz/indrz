@@ -3,6 +3,8 @@ import os
 from settings.common_settings import *
 
 
+production = True
+
 ALLOWED_HOSTS = ['campus.wu.ac.at', 'gis-neu.ac.at', ]
 
 DEBUG = False
@@ -29,7 +31,7 @@ WU_IP_STARTSWITH = "137.208."
 LOCALHOST_URL = "http://gis-neu.wu.ac.at/"  # http://campus.wu.ac.at
 
 
-STATIC_ROOT = "/opt/django-deploy/indrz/static/"
+STATIC_ROOT = "/opt/django-deploy/static"
 
 STATICFILES_DIRS += [
     os.path.join(BASE_DIR, 'homepage/static'),
@@ -37,6 +39,14 @@ STATICFILES_DIRS += [
     os.path.join(BASE_DIR, 'static/gis')
 
 ]
+
+
+
+# finds all static folders in all apps
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = "/opt/django-deploy/indrz/media"

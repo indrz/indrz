@@ -20,8 +20,8 @@ DATABASES = {
         'NAME': 'indrz-wu', # DB name
         'USER': secret_settings.db_user, # DB user name
         'PASSWORD': secret_settings.db_pwd, # DB user password
-        'HOST': 'localhost',
-        'PORT': '5434',
+        'HOST': 'gis-neu.wu.ac.at',
+        'PORT': '5432',
     }
 }
 

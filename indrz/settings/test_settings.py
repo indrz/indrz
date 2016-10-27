@@ -14,12 +14,13 @@
 
 from .dev_settings import *
 
+# SPATIALITE_LIBRARY_PATH = 'c:/OSGeo4W/bin/spatialite.dll'
 
-# DATABASES = {
-#     "default": {
-#         # "ENGINE": "django.db.backends.sqlite3",
-#         "ENGINE": "django.contrib.gis.db.backends.spatialite",
-#         "NAME": ":memory:",
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        # "ENGINE": "django.contrib.gis.db.backends.spatialite",
+        "NAME": ":memory:",
+    }
+}
 

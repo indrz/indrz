@@ -1,0 +1,207 @@
+.access_parking_bike_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') 0px 0px !important;}
+.access_parking_bike{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') 0px -16px !important;}
+
+.access_parking_bikecovered_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -16px 0px !important;}
+.access_parking_bikecovered{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -16px -16px !important;}
+
+.access_parking_motorbike_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -32px 0px !important;}
+.access_parking_motorbike{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -32px -16px !important;}
+
+.access_parking_delivery_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -48px 0px !important;}
+.access_parking_delivery{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -48px -16px !important;}
+
+.access_information_info_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -64px 0px !important;}
+.access_information_info{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -64px -16px !important;}
+
+.access_other_stairsdown_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -80px 0px !important;}
+.access_other_stairsdown{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -80px -16px !important;}
+
+.access_other_stairsup_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -96px 0px !important;}
+.access_other_stairsup{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -96px -16px !important;}
+
+.access_other_stairs_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -112px 0px !important;}
+.access_other_stairs{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -112px -16px !important;}
+
+.access_entrance_exit_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px 0px !important;}
+.access_entrance_exit{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px -16px !important;}
+
+.access_other_rampup_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -144px 0px !important;}
+.access_other_rampup{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -144px -16px !important;}
+
+.access_other_rampdown_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -160px 0px !important;}
+.access_other_rampdown{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -160px -16px !important;}
+
+.access_parking_p1_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -176px 0px !important;}
+.access_parking_p1{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -176px -16px !important;}
+
+.access_parking_p2_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -192px 0px !important;}
+.access_parking_p2{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -192px -16px !important;}
+
+.access_parking_p3_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -208px 0px !important;}
+.access_parking_p3{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -208px -16px !important;}
+
+.access_parking_p4_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -224px 0px !important;}
+.access_parking_p4{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -224px -16px !important;}
+
+.access_parking_parking_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -240px 0px !important;}
+.access_parking_parking{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -240px -16px !important;}
+
+.access_parking_machine_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -256px 0px !important;}
+.access_parking_machine{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -256px -16px !important;}
+
+.access_other_meetingpoint_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -352px 0px !important;}
+.access_other_meetingpoint{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -352px -16px !important;}
+
+.access_other_elevator_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -368px 0px !important;}
+.access_other_elevator{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -368px -16px !important;}
+
+.access_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -384px 0px !important;}
+.access{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -384px -16px !important;}
+
+.access_public_bus_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -400px 0px !important;}
+.access_public_bus{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -400px -16px !important;}
+
+.access_public_ubahn_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -416px 0px !important;}
+.access_public_ubahn{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -416px -16px !important;}
+
+.access_entrance_entrance_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -432px 0px !important;}
+.access_entrance_entrance{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -432px -16px !important;}
+
+.access_public_taxi_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -448px 0px !important;}
+.access_public_taxi{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -448px -16px !important;}
+
+.services_shop_shop_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') 0px -32px !important;}
+.services_shop_shop{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') 0px -48px !important;}
+
+.services_shop_bookstore_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -16px -32px !important;}
+.services_shop_bookstore{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -16px -48px !important;}
+
+.services_other_daycare_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -32px -32px !important;}
+.services_other_daycare{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -32px -48px !important;}
+
+.services_other_fountain_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -48px -32px !important;}
+.services_other_fountain{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -48px -48px !important;}
+
+.services_sports_soccer_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -64px -32px !important;}
+.services_sports_soccer{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -64px -48px !important;}
+
+.services_sports_basketball_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -80px -32px !important;}
+.services_sports_basketball{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -80px -48px !important;}
+
+.services_sports_pingpong_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -96px -32px !important;}
+.services_sports_pingpong{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -96px -48px !important;}
+
+.services_food_cafe_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -112px -32px !important;}
+.services_food_cafe{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -112px -48px !important;}
+
+.services_food_food_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px -32px !important;}
+.services_food_food{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px -48px !important;}
+
+.services_other_post_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -144px -32px !important;}
+.services_other_post{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -144px -48px !important;}
+
+.services_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -160px -32px !important;}
+.services{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -160px -48px !important;}
+
+.services_food_automat_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -176px -32px !important;}
+.services_food_automat{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -176px -48px !important;}
+
+.services_wc_wc_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -272px 0px !important;}
+.services_wc_wc{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -272px -16px !important;}
+
+.services_wc_wheelchair_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -288px 0px !important;}
+.services_wc_wheelchair{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -288px -16px !important;}
+
+.services_wc_baby_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -304px 0px !important;}
+.services_wc_baby{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -304px -16px !important;}
+
+.services_wc_men_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -320px 0px !important;}
+.services_wc_men{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -320px -16px !important;}
+
+.services_wc_men_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -320px 0px !important;}
+.services_wc_men{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -320px -16px !important;}
+
+.services_wc_women_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -336px 0px !important;}
+.services_wc_women{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -336px -16px !important;}
+
+.education_Bibliothek_studysit_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') 0px -64px !important;}
+.education_Bibliothek_studysit{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') 0px -80px !important;}
+
+.education_Bibliothek_studystand_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -16px -64px !important;}
+.education_Bibliothek_studystand{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -16px -80px !important;}
+
+.education_Bibliothek_silent_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -32px -64px !important;}
+.education_Bibliothek_silent{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -32px -80px !important;}
+
+.education_Bibliothek_selfcheckout_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -48px -64px !important;}
+.education_Bibliothek_selfcheckout{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -48px -80px !important;}
+
+.education_Bibliothek_scanner_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -64px -64px !important;}
+.education_Bibliothek_scanner{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -64px -80px !important;}
+
+.education_Bibliothek_Bibliothek_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -80px -64px !important;}
+.education_Bibliothek_Bibliothek{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -80px -80px !important;}
+
+.education_Bibliothek_info_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -96px -64px !important;}
+.education_Bibliothek_info{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -96px -80px !important;}
+
+.education_departments_frontoffice_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -112px -64px !important;}
+.education_departments_frontoffice{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -112px -80px !important;}
+
+.education_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px -64px !important;}
+.education{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px -80px !important;}
+
+.education_departments_pc_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -144px -64px !important;}
+.education_departments_pc{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -144px -80px !important;}
+
+.infrastructure_students_studysit_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') 0px -96px !important;}
+.infrastructure_students_studysit{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') 0px -112px !important;}
+
+.infrastructure_students_print_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -16px -96px !important;}
+.infrastructure_students_print{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -16px -112px !important;}
+
+.infrastructure_public_tel_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -32px -96px !important;}
+.infrastructure_public_tel{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -32px -112px !important;}
+
+.infrastructure_public_infopoint_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -48px -96px !important;}
+.infrastructure_public_infopoint{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -48px -112px !important;}
+
+.infrastructure_students_copy_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -64px -96px !important;}
+.infrastructure_students_copy{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -64px -112px !important;}
+
+.infrastructure_students_locker_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -80px -96px !important;}
+.infrastructure_students_locker{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -80px -112px !important;}
+
+.infrastructure_students_wardrobe_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -96px -96px !important;}
+.infrastructure_students_wardrobe{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -96px -112px !important;}
+
+.infrastructure_students_bankomat_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -112px -96px !important;}
+.infrastructure_students_bankomat{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -112px -112px !important;}
+
+.infrastructure_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px -96px !important;}
+.infrastructure{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px -112px !important;}
+
+
+.security_safety_first_aid_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -0px -128px !important;}
+.security_safety_first_aid{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -0px -144px !important;}
+
+.security_safety_doctor_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -16px -128px !important;}
+.security_safety_doctor{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -16px -144px !important;}
+
+.security_safety_meetingplace_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -32px -128px !important;}
+.security_safety_meetingplace{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -32px -144px !important;}
+
+.security_safety_emergency_telephone_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -48px -128px !important;}
+.security_safety_emergency_telephone{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -48px -144px !important;}
+
+.security_safety_defibrillator_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -64px -128px !important;}
+.security_safety_defibrillator{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -64px -144px !important;}
+
+.security_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -80px -128px !important;}
+.security{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -80px -144px !important;}
+
+
+.no_icon {
+	display : none;
+	background-image:url('../js/extjs/ext-3.4.0/resources/images/default/s.gif') !important;
+}

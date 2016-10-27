@@ -11,13 +11,13 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-from django.test import RequestFactory
-from buildings import views
-import pytest
-pytestmark = pytest.mark.django_db
+# from django.test import RequestFactory
+# from buildings import views
+# import pytest
+# pytestmark = pytest.mark.django_db
 
-class TestCampusList:
-    def test_init_campus_list(self):
-        req = RequestFactory().get('/')
-        resp = views.campus_list(req)
-        assert resp.status_code == 200, 'should call cshow list'
+# class TestCampusList:
+#     def test_init_campus_list(self):
+#         req = RequestFactory().get('/')
+#         resp = views.campus_list(req)
+#         assert resp.status_code == 200, 'should call cshow list'
