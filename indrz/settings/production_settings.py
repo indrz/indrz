@@ -49,5 +49,5 @@ STATICFILES_FINDERS = (
 )
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = "/opt/django-deploy/indrz/media"
+MEDIA_ROOT = "/opt/django-deploy/media"
 UPLOAD_POI_DIR = MEDIA_ROOT + '/poi-icons/'
