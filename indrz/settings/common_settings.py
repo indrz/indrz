@@ -150,7 +150,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_FOLDER = 'static'
-STATIC_ROOT = "/var/www/vhosts/www.indrz.com/static/"
+STATIC_ROOT = "/opt/django-deploy/static/"
 
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, STATIC_FOLDER),

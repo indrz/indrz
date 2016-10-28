@@ -16,6 +16,5 @@ cd /opt/django-deploy/indrz
 source /opt/venvs/py3uwsgi/bin/activate
 python manage.py collectstatic
 
-systemctl stop uwsgi
-systemctl start uwsgi
+systemctl restart uwsgi
 systemctl reload nginx
