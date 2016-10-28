@@ -125,6 +125,15 @@ function poiExist(poiName){
 }
 
 
+function getPoiIcon(poiName){
+
+    // poiIconImage = '/static/homepage/img/' + poiName + '.png'
+    poiIconImage = '/static/homepage/img/access_parking_bikecovered.png'
+
+    return poiIconImage;
+}
+
+
 function createPoiStyle(poiName){
 
         var iconStyle = new ol.style.Style({
@@ -132,7 +141,7 @@ function createPoiStyle(poiName){
                 anchor: [0.5, 46],
                 anchorXUnits: 'fraction',
                 anchorYUnits: 'pixels',
-                src: '/static/homepage/img/access_parking_bikecovered.png'
+                src: getPoiIcon(poiName)
             }))
         });
 
