@@ -132,7 +132,7 @@ function createPoiStyle(poiName){
                 anchor: [0.5, 46],
                 anchorXUnits: 'fraction',
                 anchorYUnits: 'pixels',
-                src: '/static/access_parking_bikecovered.png'
+                src: '/static/homepage/img/access_parking_bikecovered.png'
             }))
         });
 
