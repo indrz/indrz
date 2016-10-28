@@ -3,11 +3,9 @@ import os
 from settings.common_settings import *
 
 
-production = True
-
 ALLOWED_HOSTS = ['campus.wu.ac.at', 'gis-neu.ac.at', ]
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 
@@ -28,7 +26,7 @@ DATABASES = {
 POSTGIS_VERSION = ( 2, 2, 1 )
 
 WU_IP_STARTSWITH = "137.208."
-LOCALHOST_URL = "http://gis-neu.wu.ac.at/"  # http://campus.wu.ac.at
+LOCALHOST_URL = "https://gis-neu.wu.ac.at/"  # http://campus.wu.ac.at
 
 
 STATIC_ROOT = "/opt/django-deploy/static"
