@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 rm -rf /opt/deploy-django/indrz
 rm -rf /opt/deploy-django/static
 rm -rf /opt/deploy-django/media
