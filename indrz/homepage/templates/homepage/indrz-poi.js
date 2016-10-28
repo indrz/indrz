@@ -161,8 +161,9 @@ function createPoi(campusId, poiName) {
 
         // create the poi because it does not exist
         var poiSource = new ol.source.Vector();
+
         $.ajax(poiUrl).then(function (response) {
-            console.log("in response: " + response);
+            // console.log("in response: " + response);
             var geojsonFormat3 = new ol.format.GeoJSON();
             var featuresSearch = geojsonFormat3.readFeatures(response,
                 {featureProjection: 'EPSG:4326'});
@@ -170,7 +171,7 @@ function createPoi(campusId, poiName) {
 
         });
 
-        poiVectorLayer = new ol.layer.Vector({
+        var poiVectorLayer = new ol.layer.Vector({
             source: poiSource,
             style: createPoiStyle(poiName),
             title: poiName,
@@ -187,72 +188,6 @@ function createPoi(campusId, poiName) {
 
 
 }
-
-
-function searchPoi(campusId, searchString) {
-
-
-   if (poiExist(searchString)){
-
-        setPoiVisibility(searchString);
-
-    }
-    else {
-
-       var finally_a_poi = createPoi(1, searchString);
-
-        // var searchUrl = '/api/v1/buildings/' + buildingId + '/' + spaceName + '.json';
-        // var searchUrl = baseApiUrl + 'campus/' + campusId + '/search/' + searchString + '?format=json';
-        var searchUrl = baseApiUrl + "campus/1/poi/name/" + searchString + '/?format=json';
-        console.log("in searchPOI: " + searchUrl);
-
-       // create the poi because it does not exist
-            var poiSource = new ol.source.Vector();
-        $.ajax(searchUrl).then(function (response) {
-            console.log("in response: " + response);
-            var geojsonFormat3 = new ol.format.GeoJSON();
-            var featuresSearch = geojsonFormat3.readFeatures(response,
-                {featureProjection: 'EPSG:4326'});
-            poiSource.addFeatures(featuresSearch);
-
-            // zoomToFeature(searchSource);
-
-
-            var centerCoord = ol.extent.getCenter(poiSource.getExtent());
-            console.log(centerCoord);
-
-            //open_popup(featuresSearch[0].getProperties(), centerCoord);
-
-            var poi_id = response.features[0].id;
-            // active the floor of the start point
-            // var searchResFloorNum = featuresSearch[0].getProperties().floor_num;
-            // for (var i = 0; i < switchableLayers.length; i++) {
-            //     if (searchResFloorNum == switchableLayers[i].getProperties().floor_num) {
-            //         activateLayer(i);
-            //     }
-            // }
-
-
-        });
-
-
-        poiLayer = new ol.layer.Vector({
-            source: poiSource,
-            style: createPoiStyle(searchString),
-            title: "foo",
-            name: searchString,
-            active: true,
-            visible: true,
-            zIndex: 999
-        });
-
-        return poiLayer;
-       //return finally_a_poi;
-
-    }
-
-}
-
 
 
 $('#kiosk-pois a').click(function() {
