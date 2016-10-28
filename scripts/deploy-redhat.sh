@@ -11,3 +11,7 @@ cp -R /opt/indrz-wu/indrz /opt/django-deploy/indrz
 cd /opt/deploy-django/indrz
 source /opt/venvs/py3uwsgi/bin/activate
 python manage.py collectstatic
+
+systemctl stop uwsgi
+systemctl start uwsgi
+systemctl reload nginx
