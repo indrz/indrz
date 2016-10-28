@@ -8,5 +8,6 @@ mkdir /opt/deploy-django/media
 cp -R /opt/indrz-wu/indrz /opt/django-deploy/indrz
 
 
-cd /opt/indrz-wu/indrz
+cd /opt/deploy-django/indrz
+source /opt/venvs/py3uwsgi/bin/activate
 python manage.py collectstatic
