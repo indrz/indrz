@@ -1,4 +1,13 @@
-@import url(/static/homepage/css/font-quattro.css?family=Quattrocento+Sans:400,400italic,700);
+/*@import url(/homepage/static/homepage/css/font-quattro.css?family=Quattrocento+Sans:400,400italic,700);*/
+@import url(https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700);
+
+/*@font-face {*/
+     /*font-family: 'Quattrocento Sans';*/
+    /*font-weight: 400;*/
+     /*url(../../homepage/static/homepage/fonts/QuattrocentoSans-Italic.ttf) format('truetype');*/
+/*}*/
+
+
 
 body {
     position: absolute;
@@ -83,7 +92,7 @@ body {
 }
 
 body, h1, h2, h3, h4, p, li, td, th {
-  font-family: Quattrocento Sans;
+  font-family: 'Quattrocento Sans';
 }
 .navbar-inverse .navbar-inner {
   background: #1F6B75;
