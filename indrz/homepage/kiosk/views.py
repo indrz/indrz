@@ -160,12 +160,12 @@ def homepage_kiosk(request, *args, **kwargs):
 
         poi_ids = ("43", "32", "33", "42", "62", "40", "41", "35", "44" )
 
-        poi_kiosk_list = []
+        poi_cats_list = []
 
         for poi in poi_ids:
             poi_qs = PoiCategory.objects.get(pk=poi)
 
-            poi_kiosk_list.append(poi_qs)
+            poi_cats_list.append(poi_qs)
 
 
         map_name = kwargs.pop('map_name', None)
@@ -205,7 +205,7 @@ def homepage_kiosk(request, *args, **kwargs):
             'floor_num': int(floor_num),
             'poi_name' : poi_name,
             'nodes': PoiCategory.objects.all(),
-            'pois': poi_kiosk_list,
+            'poi_cats': poi_cats_list,
         })
 
     return render(request, context=context, template_name='kiosk2.html')

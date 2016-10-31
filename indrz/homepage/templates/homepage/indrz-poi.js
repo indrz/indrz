@@ -192,20 +192,18 @@ function createPoi(campusId, poiName, poiCatId) {
 
 $('#kiosk-pois a').click(function() {
 
-    var poiName = $(this).attr('id').split('_')[1];
-    var elemId = $(this).attr('id');
+    var poiCatName = $(this).attr('id').split('_')[0];
+    var poiCatId = $(this).attr('id').split('_')[1];
 
-    if (poiExist(poiName)){
+    if (poiExist(poiCatName)){
 
-        setPoiVisibility(poiName);
-        $(elemId).addClass("active");
+        setPoiVisibility(poiCatName);
+        $(poiCatId).addClass("active");
 
     }
     else {
-        var newPoi = createPoi(1,poiName);
+        var newPoi = createPoi(1,poiCatName, poiCatId);
         map.getLayers().push(newPoi);
-
-
 
     }
 

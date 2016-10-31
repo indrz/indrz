@@ -47,11 +47,11 @@
 {#      <div class="panel-body">#}
         <div id="kiosk-pois" class="list-group">
 
-            {% if pois %}
+            {% if poi_cats %}
 
-                {% for poi in pois %}
+                {% for poi_cat in poi_cats %}
 
-                          <a id="kiosk_{{ poi.cat_name }}" href="#" class="list-group-item"><img class="{{ poi.icon_css_name }}" src="{% static "img/trans.png" %}">{{ poi.cat_name }}</a>
+                          <a id="{{ poi_cat.cat_name }}_{{ poi_cat.id}}" href="#" class="list-group-item"><img class="{{ poi_cat.icon_css_name }}" src="{% static "img/trans.png" %}">{{ poi_cat.cat_name }}</a>
 
                 {% endfor %}
 
