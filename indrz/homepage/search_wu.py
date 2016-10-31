@@ -527,12 +527,16 @@ def search_any(request, q):
 
             if row[7] == 0:  # row[7] = 'resultType'
                 # our search string
-                obj = {"name_de": row[0], "name_en": row[0], "type": row[1], "external_id": row[2], "geometry": row[3],
-                       "centerGeometry": row[4], "layer": int(row[5]), "building": row[6], "aks_nummer": loc,
+                obj = {"name_de": row[0], "name_en": row[0], "type": row[1], "external_id": row[2], "geometry": ast.literal_eval(row[3]),
+                       "centerGeometry": ast.literal_eval(row[4]), "layer": int(row[5]), "building": row[6], "aks_nummer": loc,
                        "roomcode_value": roomcode_value,
                        "src": "local db view"
                        # , "frontoffice": "001_10_OG04_421600", "orgid": "1234"
                        }
+
+
+                poi_feature_geojson = Feature(geometry=ast.literal_eval(row[3]), properties=obj)
+
             else:
                 # bach api location aks number
                 locData = bachLocationList[loc]
@@ -545,21 +549,23 @@ def search_any(request, q):
                        # , "frontoffice": "001_10_OG04_421600", "orgid": "1234"
                        }
                 # end if
-            rows.append(obj)
+            rows.append(poi_feature_geojson)
 
         # --------------------------------------------------------
         # add the assigned entrance
-        for tempResult in rows:
-            if (tempResult["aks_nummer"] is not None and tempResult["aks_nummer"] != ""):
-                #entranceData = getAssignedEntrance(tempResult["aks_nummer"], tempResult["layer"]);
-                #tempResult["entrance"] = entranceData["id"];
-               # tempResult["entrance_name_de"] = entranceData["de"];
-                #tempResult["entrance_name_en"] = entranceData["en"];
-                pass
+        # for tempResult in rows:
+        #     if (tempResult["aks_nummer"] is not None and tempResult["aks_nummer"] != ""):
+        #         #entranceData = getAssignedEntrance(tempResult["aks_nummer"], tempResult["layer"]);
+        #         #tempResult["entrance"] = entranceData["id"];
+        #        # tempResult["entrance_name_de"] = entranceData["de"];
+        #         #tempResult["entrance_name_en"] = entranceData["en"];
+        #         pass
         # --------------------------------------------------------
         retVal = {"searchString": searchString, "building": extraBuilding, "searchResult": rows, "length": len(db_rows)}
 
-        return Response(retVal)
+        local_data_geojson = FeatureCollection(features=rows)
+
+        return Response(local_data_geojson)
 
 @api_view(['GET'])
 def searchAutoComplete(request, search_text):
