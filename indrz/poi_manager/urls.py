@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from poi_manager.views import poi_category_list, add_category, poi_category_json, poi_by_name, poi_list,\
-    poi_category_by_name, get_poi_by_cat_name, get_poi_by_id, get_poicat_by_id
+    poi_category_by_name, get_poi_by_cat_name, get_poi_by_id, get_poicat_by_id, get_poi_by_cat_id
 
 urlpatterns = [
                url(r'^category-list/$', poi_category_list, name='category-list'),
@@ -11,6 +11,7 @@ urlpatterns = [
 
                url(r'^category/(?P<cat_id>\d{1,6})/$', get_poicat_by_id, name='get poi category'),
                url(r'^category/(?P<category_name>.+)/$', poi_category_by_name, name='list categories by name'),
+               url(r'^poi/cat/(?P<cat_id>\d{1,6})/$', get_poi_by_cat_id, name='get_poi_by_catid'),
 
                url(r'^name/(?P<category_name>.+)/$', get_poi_by_cat_name, name='search_poi_by_category'),
 

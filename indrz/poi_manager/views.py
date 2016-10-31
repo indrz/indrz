@@ -71,19 +71,16 @@ def get_poi_by_category(request, campus_id, category_name):
 @api_view(['GET', ])
 def get_poi_by_cat_id(request, campus_id, cat_id):
     if request.method == 'GET':
-        cats = PoiCategory.objects.get(pk=cat_id)
 
-        if cats:
-
-            poi_qs = Poi.objects.filter(fk_poi_category=cats.id)
-            if poi_qs:
-                serializer = PoiSerializer(poi_qs, many=True)
-                return Response(serializer.data)
+        poi_qs = Poi.objects.filter(fk_poi_category=cat_id)
+        if poi_qs:
+            serializer = PoiSerializer(poi_qs, many=True)
+            return Response(serializer.data)
 
 
 @api_view(['GET', ])
 def get_poi_by_cat_name(request, campus_id, category_name):
-    cats = PoiCategory.objects.filter(cat_name__contains=category_name)
+    cats = PoiCategory.objects.filter(cat_name__icontains=category_name)
     # list = cats.get_descendants()
 
 
@@ -114,12 +111,9 @@ def get_poi_by_cat_name(request, campus_id, category_name):
 
 @api_view(['GET', ])
 def get_poicat_by_id(request, campus_id, cat_id):
-    try:
-        cats = PoiCategory.objects.get(pk=cat_id)
-        serializer = PoiCategorySerializer(cats)
-        return Response(serializer.data)
-    except Exception as e:
-        raise APIException(detail=e)
+    cats = PoiCategory.objects.get(pk=cat_id)
+    serializer = PoiCategorySerializer(cats)
+    return Response(serializer.data)
 
 
 @api_view(['GET', ])

@@ -37,8 +37,11 @@
             if(poiExist(nodeName.trim())){
 
             }
-            else{
-                createPoi(1, nodeName.trim());
+            else
+            {
+                var Catid = data.node.id;
+                var catNumId = Catid.split("_")[1];
+                createPoi(1, nodeName.trim(), catNumId);
             }
 
 
@@ -56,8 +59,18 @@
       });
 
           $('#jstree').on("select_node.jstree", function(e, data) {
-        var nodeName = $('#jstree').jstree(true).get_text(data.node.id);
-        console.log("SELECTED  :" + nodeName.trim());
+            var nodeName = $('#jstree').jstree(true).get_text(data.node.id);
+            console.log("SELECTED  :" + nodeName.trim());
+            var Catid = data.node.id;
+            var catNumId = Catid.split("_")[1];
+            console.log("current id is num: " + Catid);
+            console.log("id num is: " + catNumId);
+
+
+
+
+
+
 
                 //map.removeLayer(poiLayer);
                 setPoiVisibility(nodeName.trim());

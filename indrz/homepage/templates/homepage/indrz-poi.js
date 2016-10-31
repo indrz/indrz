@@ -149,14 +149,14 @@ function createPoiStyle(poiName){
 }
 
 
-function createPoi(campusId, poiName) {
+function createPoi(campusId, poiName, poiCatId) {
 
     if (poiExist(poiName)){
         // do nothing
 
     } else {
 
-        var poiUrl = baseApiUrl + "campus/1/poi/name/" + poiName + '/?format=json';
+        var poiUrl = baseApiUrl + "campus/1/poi/poi/cat/" + poiCatId + '/?format=json';
         console.log("in createPoi: " + poiUrl);
 
         // create the poi because it does not exist
