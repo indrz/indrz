@@ -1,4 +1,4 @@
-{% extends "base-layout.html" %}
+{% extends "base.html" %}
 {% load i18n %}
 {% load staticfiles %}
 
@@ -18,27 +18,28 @@
 
 {% endblock head_extra %}
 
-{% block nav %}{% endblock nav %}
+{% block nav-top %}{% endblock nav-top %}
 
 
 {% block side_col %}
 
-<div id="map-search-form">
+
+    <div id="map-search-form">
 
 
-    {% block search-form %}
-        <div id="search-form-id" class="indrz-search-kiosk">
-        <div id="kiosk-poi-section" class="indrz-poi-kiosk">
+        {% block search-form %}
+            <div id="search-form-id" class="indrz-search-kiosk">
+                <div id="kiosk-poi-section" class="indrz-poi-kiosk">
 
-            {% include "poi/poi-kiosk.html" %}
+                    {% include "poi/poi-kiosk.html" %}
 
-        </div>
+                </div>
 
-        </div>
-    {% endblock search-form %}
+            </div>
+        {% endblock search-form %}
 
 
-</div>
+    </div>
 
 {% endblock side_col %}
 
@@ -70,7 +71,7 @@
 {% endblock %}
 
 
-{% block js-search-box %}
+{% block js-conf %}
 <script>  {% include 'homepage/indrzMapConf.js' %} </script>
     <script>
 
@@ -119,7 +120,7 @@
     </script>
 
 
-{% endblock js-search-box %}
+{% endblock js-conf %}
 
 
 
