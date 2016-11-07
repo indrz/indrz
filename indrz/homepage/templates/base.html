@@ -20,6 +20,8 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" type="text/css">
         <link rel="stylesheet" href="{% static "css/ol3-17.1.css" %}" type="text/css">
+        <link rel="stylesheet" href="{% static "homepage/wu-neu/app.min.css" %}" type="text/css" media="all">
+
         <link rel="stylesheet" href="{% static "css/custom-layout.css" %}" type="text/css">
         <link rel="stylesheet" href="{% static "css/indrz-layout.css" %}" type="text/css">
         <link rel="stylesheet" href="{% static "css/map_poi.main.css" %}" type="text/css">
@@ -40,7 +42,38 @@
 
 <body>
 
-{% block content %}{% endblock %}
+
+    {% block nav-top %}{% endblock %}
+    <main>
+
+        <div id="indrz-main-container" class="container-fluid">
+
+            <div class="row">
+
+                 {% block side_col %}{% endblock %}
+                 {% block main_col %}{% endblock %}
+            </div>
+
+        </div>
+    </main>
+
+    {% include 'modal-bugreport.html' %}
+    {% include 'modal-share.html' %}
+
+
+
+    {% block popup-markup %} {% include 'popup-markup.html' %} {% endblock popup-markup %}
+    {% block js-conf %}{% endblock js-conf %}
+    {% block route_from_to %}{% endblock route_from_to %}
+    {% block map_frame %}{% endblock map_frame %}
+    {% block js-autocomplete %}{% endblock js-autocomplete %}
+    {% block route_options %}{% endblock route_options %}
+
+    {% block footer %}{% endblock %}
+    {% block js-bottom %}{% endblock %}
+
+
+
 
 </body>
 </html>

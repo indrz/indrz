@@ -1,4 +1,4 @@
-{% extends "base-map.html" %}
+{% extends "base.html" %}
 {% load i18n %}
 {% load staticfiles %}
 
@@ -11,9 +11,12 @@
     <script src="{% static "js/bloodhound.min.js" %}"></script>
     <script src="{% static "js/typeahead.bundle.min.js" %}"></script>
 {#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">#}
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
     <link rel="stylesheet" href="{% static "homepage/wu-neu/css.css" %}" type="text/css" >
     <link rel="stylesheet" href="{% static "homepage/wu-neu/font-awesome.min.css" %}" type="text/css">
-    <link rel="stylesheet" href="{% static "homepage/wu-neu/app.min.css" %}" type="text/css" media="all">
     <script type="text/javascript" src="{% static "homepage/wu-neu/app.min.js" %}"></script>
 
     <style> body {
@@ -23,101 +26,33 @@
 
 {% endblock head_extra %}
 
-{% block nav %} {% include "wu-neu-nav.html" %}
+{% block nav-top %}
+
+    {% include "wu-neu-nav.html" %}
+
     <nav class="navbar navbar-default hidden-md hidden-lg">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#map-search-form" aria-expanded="true">
-                        <span class="sr-only">{% trans 'Toggle search form' %}</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span></button>
-                    <a class="navbar-brand" href="#">Indrz</a>
-                </div>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#map-search-form" aria-expanded="true">
+                    <span class="sr-only">{% trans 'Toggle search form' %}</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span></button>
+                <a class="navbar-brand" href="#">Indrz</a>
             </div>
-        </nav>
-{% endblock nav %}
-{#{% block routing-form %}{% endblock routing-form %}#}
-{# {% block map-section %}{% endblock map-section %}#}
-{#{% block background-base-changer %}{% endblock background-base-changer %}#}
-{#{% block search_form %}{% endblock search_form %}#}
+        </div>
+    </nav>
 
-{% block js-search-box %}
+{% endblock nav-top %}
+
+
+{% block side_col %}{%include "wu-neu-left-menu.html" %}{% endblock %}
+{% block main_col %}{%include "main-map.html" %}{% endblock %}
+
+{% block js-conf %}
 <script>  {% include 'homepage/indrzMapConf.js' %} </script>
-    <script>
 
-       var building_id = 1;
-
-        var searchValues = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.whitespace,
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            // prefetch: baseApiUrl + 'spaces/search/?format=json',
-            prefetch: '/autocomplete/%QUERY?.format=json',
-            remote: {
-              url: '/autocomplete/%QUERY?.format=json',
-              wildcard: '%QUERY'
-            }
-        });
-
-        // passing in `null` for the `options` arguments will result in the default
-        // options being used
-        $('#search-input').typeahead(null, {
-            hint: true,
-            highlight: true,
-            minLength: 1,
-            name: 'search-field',
-            limit: 100,
-            source: searchValues
-        });
-
-
-        $("#submitFormSearch").submit(function (event) {
-            {#              alert( "Handler for .submit() called."  );#}
-
-            {#            var buildingid = buildingNantesId;#}
-            var searchText = $('#search-input').val();
-            searchIndrz(building_id, searchText);
-            event.preventDefault();
-        });
-
-        $("#showPoi").submit(function (event) {
-           // alert( "Handler for .submit() called." + $('#poi-input').val()   );
-            var poiName = $('#poi-input').val();
-            searchPoi(building_id, poiName);
-            event.preventDefault();
-            });
-
-    </script>
-
-
-{% endblock js-search-box %}
-
-{% block route_from_to %}
-    <script>
-    // http://tatiyants.com/how-to-use-json-objects-with-twitter-bootstrap-typeahead/
-        var roomNums = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.whitespace,
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: baseApiUrl + 'spaces/search/?format=json'
-        });
-        // passing in `null` for the `options` arguments will result in the default
-        // options being used
-        $('#rooms-prefetch .typeahead').typeahead(null, {
-            name: 'countries',
-            limit: 100,
-            source: roomNums
-        });
-        $("#submitForm").submit(function (event) {
-            {#  alert( "Handler for .submit() called."  );#}
-            var startNum = $('#route-from').val();
-            var endNum = $('#route-to').val();
-            var rType = $("input:radio[name=typeRoute]:checked").val();
-            addRoute(startNum, endNum, rType);
-            event.preventDefault();
-        });
-    </script>
-
-{% endblock route_from_to %}
+{% endblock js-conf %}
 
 
 
@@ -138,5 +73,22 @@
         <script>  {% include 'homepage/indrz-space.js' %} </script>
     {% endif %}
 {% endblock map_frame %}
+
+{% block js-bottom %}
+    <script>
+    $(".nav a").on("click", function () {
+        $(".nav").find(".active").removeClass("active");
+        $(this).parent().addClass("active");
+    });
+
+    $(function () {
+        $("#floor-links-select").on('change', function () {
+            activateLayer($(this).val());
+        });
+    });
+
+</script>
+
+{% endblock js-bottom %}
 
 {% block footer %}{% include "wu-neu-footer.html" %}{% endblock footer %}

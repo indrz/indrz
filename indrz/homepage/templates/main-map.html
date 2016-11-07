@@ -1,0 +1,45 @@
+{% load i18n %}
+{% load staticfiles %}
+
+
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10">
+                <div class="row">
+                    <div id="map" class="indrz-map-container">
+
+                        {% block floor-change-float %}
+
+                            <div class="indrz-floor-changer-float">
+                                <select class="form-control hidden-md hidden-lg" id="floor-links-select"></select>
+                                <ul class="nav nav-pills nav-stacked visible-md-block visible-lg-block" id="floor-links"></ul>
+                            </div>
+
+                        {% endblock floor-change-float %}
+
+                        <div id="map-block"></div>
+
+                        {% block indrz-logo-imgt %}
+
+                            <div class="indrz-logo">
+
+                                <a href="http://www.indrz.com" target="_blank"><img
+                                        src="{% static "img/indrz-powered-by-90px.png" %}"/></a>
+
+                            </div>
+
+                        {% endblock indrz-logo-imgt %}
+
+
+                    </div>
+
+                {% block background-base-changer %}
+
+                    <div id="id-map-switcher-widget">
+                        <button id="id-map-switcher" class="btn btn-info">
+                            Satellite
+                        </button>
+                    </div>
+
+                {% endblock background-base-changer %}
+
+                </div>
+            </div>

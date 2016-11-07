@@ -1,0 +1,62 @@
+{% load i18n %}
+
+{% block search-form %} {% endblock search-form %}
+{% block routing-form %} {% endblock routing-form %}
+{% block language-changer %}{% endblock language-changer %}
+{% block poi-menu %}{% endblock poi-menu %}
+
+<div class="col-md-3 col-lg-2" id="map-search-form" >
+
+
+
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+            <div id="search-prefetch2" class="input-group" style="padding-top: 15px; padding-bottom: 15px;">
+        {% include 'search-form.html' %}
+    </div>
+                      <a id="id-share-map" class="btn btn-primary " data-toggle="modal" data-target="#ShareMapModal"><i class="fa fa-share-square-o" aria-hidden="true"></i>{% trans "Share map" %}</a>
+
+
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              {% trans 'Routing' %}
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+                <div>
+                    {% include 'routing-form.html' %}
+                </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              {% trans 'POIs' %}
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+
+            <div >
+                {% include "includes/poi_layers.html" %}
+
+                <div>
+                    <h4>{% trans 'POI Tree' %}</h4>
+                    {% include "includes/poi-tree.html" %}
+                </div>
+
+             </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
