@@ -1,4 +1,13 @@
-@import url(http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700);
+/*@import url(/homepage/static/homepage/css/font-quattro.css?family=Quattrocento+Sans:400,400italic,700);*/
+@import url(https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700);
+
+/*@font-face {*/
+     /*font-family: 'Quattrocento Sans';*/
+    /*font-weight: 400;*/
+     /*url(../../homepage/static/homepage/fonts/QuattrocentoSans-Italic.ttf) format('truetype');*/
+/*}*/
+
+
 
 body {
     position: absolute;
@@ -39,7 +48,7 @@ body {
 }
 
 .indrz-floor-changer-float{
-    position: fixed;
+    position: absolute;
     /*top: 5%;*/
     right: 20px;
     z-index: 1001;
@@ -51,6 +60,19 @@ body {
   left: 40px;
   z-index: 1002;
 }
+
+
+.indrz-search-kiosk {
+    position: absolute; /* or absolute */
+    top:2%;
+    left: 5%;
+    z-index: 2000;
+}
+
+.indrz-poi-kiosk {
+
+}
+
 
 .olImageLoadError { display: none; }
 
@@ -70,7 +92,7 @@ body {
 }
 
 body, h1, h2, h3, h4, p, li, td, th {
-  font-family: Quattrocento Sans;
+  font-family: 'Quattrocento Sans';
 }
 .navbar-inverse .navbar-inner {
   background: #1F6B75;
@@ -215,8 +237,8 @@ body, h1, h2, h3, h4, p, li, td, th {
 
 @media (max-width: 990px) {
     #id-map-switcher-widget {
-        bottom: 1.5em;
-        left: 1em;
+        bottom: 1em;
+        left: 1.5em;
 
         right: auto;
         top: auto;
@@ -266,11 +288,12 @@ body, h1, h2, h3, h4, p, li, td, th {
     left: auto;
 }
 
-.ol-zoom {
-    bottom: 1.5em;
-    left: auto;
-
-    right: 1em;
-    top: auto;
-    z-index: 9999;
+h3 {
+    display: block;
+    font-size: 1.17em;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
