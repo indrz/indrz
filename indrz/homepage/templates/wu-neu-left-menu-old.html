@@ -1,0 +1,42 @@
+{% load i18n %}
+<div class="col-md-3 col-lg-2" id="map-search-form">
+
+
+{% block search-form %} {% endblock search-form %}
+{% block routing-form %} {% endblock routing-form %}
+{% block language-changer %}{% endblock language-changer %}
+{% block poi-menu %}{% endblock poi-menu %}
+
+        <h3>{% trans 'Search on campus' %}</h3>
+        <p></p>
+        <div id="search-prefetch2" class="input-group">
+            {% include 'search-form.html' %}
+        </div>
+
+        <p></p>
+
+        <h3>Routing</h3>
+
+        <div>
+            {% include 'routing-form.html' %}
+        </div>
+
+        <h3>Change Language</h3>
+        <div >
+            {% include "includes/change_lang_form.html" %}
+        </div>
+
+        <h3>Search POI</h3>
+
+            <div >
+                {% include "includes/poi_layers.html" %}
+
+                <div>
+                    <h3> Poi Tree</h3>
+                    {% include "includes/poi-tree.html" %}
+                </div>
+
+            </div>
+
+
+</div>
