@@ -4,14 +4,17 @@
 {% block head_extra %}
     <link rel="stylesheet" href="{% static "js/jstree/themes/default/style.min.css" %}" />
 
+
 {% endblock head_extra %}
 
-
+<div style="padding: 20px 20px; overflow: auto; height:500px;">
   <div id="jstree">
     <!-- in this example the tree is populated from inline HTML -->
       {% include "poi/poi-category.html" %}
 
   </div>
+
+</div>
 
 
 
