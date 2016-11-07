@@ -13,12 +13,13 @@
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
             <div id="search-prefetch2" class="input-group" style="padding-top: 15px; padding-bottom: 15px;">
-        {% include 'search-form.html' %}
-    </div>
-                      <a id="id-share-map" class="btn btn-primary " data-toggle="modal" data-target="#ShareMapModal"><i class="fa fa-share-square-o" aria-hidden="true"></i>{% trans "Share map" %}</a>
+                {% include 'search-form.html' %}
+            </div>
 
+        <a id="id-share-map" class="btn btn-primary " data-toggle="modal" data-target="#ShareMapModal"><i class="fa fa-share-square-o" aria-hidden="true"></i>{% trans "Share map" %}</a>
 
-      <div class="panel panel-default">
+<br>
+      <div class="panel panel-default" style="margin-top: 10px;">
         <div class="panel-heading" role="tab" id="headingTwo">
           <h4 class="panel-title">
             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
