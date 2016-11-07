@@ -51,7 +51,7 @@ body {
     position: absolute;
     /*top: 5%;*/
     right: 20px;
-    z-index: 1001;
+    z-index: 1;
 }
 
 .indrz-floorchanger{
@@ -61,6 +61,17 @@ body {
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     color: #fff;
     background-color: rgba(0, 0, 0, 0.5) !important;
+    line-height: 5px !important;
+    font-size: 12px !important;
+    /*background-color: #000000 !important;*/
+
+}
+
+.nav-pills>li>a, .nav-pills>li>a:focus, .nav-pills>li>a {
+    color: #0a6aa1;
+
+    line-height: 5px !important;
+    font-size: 12px !important;
     /*background-color: #000000 !important;*/
 
 }
