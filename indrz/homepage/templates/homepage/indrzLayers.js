@@ -186,7 +186,7 @@ $.ajax( baseApiUrl + "campus/1/floors/" )
 
 function appendFloorNav(floor_info, index) {
     $("#floor-links").prepend("<li>" +
-        "<a href='#' onclick='activateLayer(" + index + ");' id='action-1'>" + floor_info + "</a>" +
+        "<a href='#' onclick='activateLayer(" + index + ");' id='action-1' class='indrz-floorswitcher'>" + floor_info + " </a>" +
         "</li>");
     // Add flour to mobile ui element
     $("#floor-links-select").prepend("<option value='" + index + "'>" + floor_info + "</option>");

@@ -54,6 +54,17 @@ body {
     z-index: 1001;
 }
 
+.indrz-floorchanger{
+    background-color: #0e0e0e !important;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    /*background-color: #000000 !important;*/
+
+}
+
 .indrz-search {
   position: absolute; /* or absolute */
   top: 2%;
@@ -215,6 +226,13 @@ body, h1, h2, h3, h4, p, li, td, th {
 .ol-popup-closer:after {
   content: "X";
 }
+
+.ol-control button {
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
 #id-map-switcher-widget{
     position: absolute;
     right: 120px;

@@ -77,7 +77,7 @@ $('#rooms-prefetch .typeahead').typeahead(null, {
     source: roomNums
 });
 $("#submitForm").submit(function (event) {
-    {#  alert( "Handler for .submit() called."  );#}
+    // alert( "Handler for .submit() called."  );
     var startNum = $('#route-from').val();
     var endNum = $('#route-to').val();
     var rType = $("input:radio[name=typeRoute]:checked").val();
