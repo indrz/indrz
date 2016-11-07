@@ -48,7 +48,7 @@ body {
 }
 
 .indrz-floor-changer-float{
-    position: fixed;
+    position: absolute;
     /*top: 5%;*/
     right: 20px;
     z-index: 1001;
@@ -248,9 +248,6 @@ body, h1, h2, h3, h4, p, li, td, th {
     .indrz-floor-changer-float {
         position: absolute;
         top: 0.5em;
-        font-size: 14px !important;
-        display: none !important;
-
     }
 
     #id-map-switcher-widget button {
