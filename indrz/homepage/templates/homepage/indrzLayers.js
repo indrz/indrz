@@ -80,10 +80,10 @@ function createWmtsLayer(layerSrcName, type, isVisible) {
     sm = ol.proj.get('EPSG:3857');
     templatepng = '{Layer}/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}' + type;
     urlsbmappng = [
-        'http://maps1.wien.gv.at/basemap/' + templatepng,
-        'http://maps2.wien.gv.at/basemap/' + templatepng,
-        'http:///maps3.wien.gv.at/basemap/' + templatepng,
-        'http://maps4.wien.gv.at/basemap/' + templatepng
+        'https://maps1.wien.gv.at/basemap/' + templatepng,
+        'https://maps2.wien.gv.at/basemap/' + templatepng,
+        'https:///maps3.wien.gv.at/basemap/' + templatepng,
+        'https://maps4.wien.gv.at/basemap/' + templatepng
     ];
 
 
@@ -156,6 +156,9 @@ wmsE05 = createWmsLayer('og05', 'indrz:e05', '5', 'false', 3 );
 wmsE06 = createWmsLayer('og06', 'indrz:e06', '6', 'false', 3 );
 
 
+
+
+
 var wmsfloorLayerGroup = new ol.layer.Group({layers: [wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06], name: gettext("wms floor maps")});
 
 
@@ -186,7 +189,7 @@ $.ajax( baseApiUrl + "campus/1/floors/" )
 
 function appendFloorNav(floor_info, index) {
     $("#floor-links").prepend("<li>" +
-        "<a href='#' onclick='activateLayer(" + index + ");' id='action-1' class='indrz-floorswitcher'>" + floor_info + " </a>" +
+        "<a href='#' onclick='activateLayer(" + index + ");' id='floorIndex_" + index  + "' class='indrz-floorswitcher'>" + floor_info + " </a>" +
         "</li>");
     // Add flour to mobile ui element
     $("#floor-links-select").prepend("<option value='" + index + "'>" + floor_info + "</option>");
