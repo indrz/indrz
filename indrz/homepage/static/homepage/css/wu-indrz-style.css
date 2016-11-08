@@ -326,3 +326,7 @@ h3 {
     -webkit-margin-end: 0px;
     font-weight: bold;
 }
+
+.jstree-anchor{
+    font-size: 14px !important;
+}
