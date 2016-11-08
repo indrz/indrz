@@ -126,8 +126,15 @@ function open_popup(properties, coordinate, name){
 
     popup_content.innerHTML = '<h4>' + titlePopup + '</h4>';
     popup_content.innerHTML += '<p>' + titleFloorNumber + floorNum + '</p>';
-    popup_content.innerHTML += '<p>' + titleBuildingName + buildingName + '</p>';
-    popup_content.innerHTML += '<p>' + titleRoomcode + roomcode + '</p>';
+
+    if(properties.building_name != undefined || properties.building_name === ""){
+        popup_content.innerHTML += '<p>' + titleBuildingName + buildingName + '</p>';
+    }
+
+    if(properties.roomcode != undefined){
+        popup_content.innerHTML += '<p>' + titleRoomcode + roomcode + '</p>';
+    }
+
 
 
   popup_content.innerHTML += '<p>' + gettext('Coordinate: ')+ '</p><code>' + coordinate + '</code><p></p><code>' + hdms + '</code>';

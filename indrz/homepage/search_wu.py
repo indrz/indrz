@@ -252,7 +252,7 @@ def search_any(request, q):
     extraBuilding = ''
 
     # rows-array which will contain the return dataset
-    rows = []
+
 
     from django.db import connection
 
@@ -506,6 +506,8 @@ def search_any(request, q):
         searchString2 = "%" + searchString.upper() + "%"
         extraBuilding2 = "%" + extraBuilding.upper() + "%"
 
+        local_db_results = []
+
         sql = """
         SELECT search_string, text_type, external_id, st_asgeojson(geom) AS geom, st_asgeojson(st_PointOnSurface(geom)) AS center, layer, building_id, 0 AS resultType, external_id, room_code
                 FROM geodata.search_index_v
@@ -525,31 +527,18 @@ def search_any(request, q):
             if roomcode_value == '':
                 roomcode_value = None
 
-            if row[7] == 0:  # row[7] = 'resultType'
                 # our search string
-                obj = {"name_de": row[0], "name_en": row[0], "type": row[1], "external_id": row[2], "geometry": ast.literal_eval(row[3]),
-                       "centerGeometry": ast.literal_eval(row[4]), "layer": int(row[5]), "building": row[6], "aks_nummer": loc,
-                       "roomcode_value": roomcode_value,
-                       "src": "local db view"
-                       # , "frontoffice": "001_10_OG04_421600", "orgid": "1234"
-                       }
+            obj = {"label": row[0], "name_en": row[0], "type": row[1], "external_id": row[2],
+                   "centerGeometry": ast.literal_eval(row[4]), "floor_num": repNoneWithEmpty(int(row[5])),
+                   "building": repNoneWithEmpty(row[6]), "aks_nummer": loc, "roomcode_value": repNoneWithEmpty(roomcode_value),
+                   "src": "local db view"
+                   # , "frontoffice": "001_10_OG04_421600", "orgid": "1234"
+                   }
 
 
-                poi_feature_geojson = Feature(geometry=ast.literal_eval(row[3]), properties=obj)
+            poi_feature_geojson = Feature(geometry=ast.literal_eval(row[3]), properties=obj)
+            local_db_results.append(poi_feature_geojson)
 
-            else:
-                # bach api location aks number
-                locData = bachLocationList[loc]
-                if roomcode_value == '':
-                    roomcode_value = None
-                obj = {"name_de": locData['name_de'], "name_en": locData['name_en'], "type": row[1],
-                       "external_id": row[2],
-                       "geometry": row[3], "centerGeometry": row[4], "layer": int(row[5]), "building": row[6],
-                       "aks_nummer": loc, "roomcode_value": roomcode_value, "src": "local"
-                       # , "frontoffice": "001_10_OG04_421600", "orgid": "1234"
-                       }
-                # end if
-            rows.append(poi_feature_geojson)
 
         # --------------------------------------------------------
         # add the assigned entrance
@@ -561,9 +550,9 @@ def search_any(request, q):
         #         #tempResult["entrance_name_en"] = entranceData["en"];
         #         pass
         # --------------------------------------------------------
-        retVal = {"searchString": searchString, "building": extraBuilding, "searchResult": rows, "length": len(db_rows)}
+        # retVal = {"searchString": searchString, "building": extraBuilding, "searchResult": local_db_results, "length": len(db_rows)}
 
-        local_data_geojson = FeatureCollection(features=rows)
+        local_data_geojson = FeatureCollection(features=local_db_results)
 
         return Response(local_data_geojson)
 

@@ -1,5 +1,80 @@
 var searchLayer = null;
 
+var image = new ol.style.Circle({
+  radius: 5,
+  fill: null,
+  stroke: new ol.style.Stroke({color: 'red', width: 1})
+});
+
+var styles = {
+  'Point': [new ol.style.Style({
+    image: image
+  })],
+  'LineString': [new ol.style.Style({
+    stroke: new ol.style.Stroke({
+      color: 'green',
+      width: 1
+    })
+  })],
+  'MultiLineString': [new ol.style.Style({
+    stroke: new ol.style.Stroke({
+      color: 'green',
+      width: 1
+    })
+  })],
+  'MultiPoint': [new ol.style.Style({
+    image: image
+  })],
+  'MultiPolygon': [new ol.style.Style({
+    stroke: new ol.style.Stroke({
+      color: 'yellow',
+      width: 2
+    }),
+    fill: new ol.style.Fill({
+      color: 'rgba(255, 255, 0, 0.2)'
+    })
+  })],
+  'Polygon': [new ol.style.Style({
+    stroke: new ol.style.Stroke({
+      color: 'blue',
+      lineDash: [4],
+      width: 3
+    }),
+    fill: new ol.style.Fill({
+      color: 'rgba(0, 0, 255, 0.1)'
+    })
+  })],
+  'GeometryCollection': [new ol.style.Style({
+    stroke: new ol.style.Stroke({
+      color: 'magenta',
+      width: 2
+    }),
+    fill: new ol.style.Fill({
+      color: 'magenta'
+    }),
+    image: new ol.style.Circle({
+      radius: 10,
+      fill: null,
+      stroke: new ol.style.Stroke({
+        color: 'magenta'
+      })
+    })
+  })],
+  'Circle': [new ol.style.Style({
+    stroke: new ol.style.Stroke({
+      color: 'red',
+      width: 2
+    }),
+    fill: new ol.style.Fill({
+      color: 'rgba(255,0,0,0.2)'
+    })
+  })]
+};
+
+var styleFunction = function(feature, resolution) {
+  return styles[feature.getGeometry().getType()];
+};
+
 
 var search_res_style = new ol.style.Style({
     fill: new ol.style.Fill({
@@ -76,7 +151,7 @@ function searchIndrz(campusId, searchString) {
 
 
     var searchSource = new ol.source.Vector();
-    $.ajax(searchUrl).then(function (response) {
+    $.get(searchUrl).then(function (response) {
         var geojsonFormat3 = new ol.format.GeoJSON();
         var featuresSearch = geojsonFormat3.readFeatures(response,
             {featureProjection: 'EPSG:4326'});
@@ -96,8 +171,12 @@ function searchIndrz(campusId, searchString) {
         // console.log("setting popup center to "+  centerCoord)
         // view.setZoom(20);
 
+        if (featuresSearch.length === 1){
 
-        open_popup(featuresSearch[0].getProperties(), centerCoord);
+            open_popup(featuresSearch[0].getProperties(), centerCoord);
+
+        }
+
 
         space_id = response.features[0].properties.space_id;
 
@@ -114,7 +193,7 @@ function searchIndrz(campusId, searchString) {
 
     searchLayer = new ol.layer.Vector({
         source: searchSource,
-        style: setSearchFeatureStyle,
+        style: styleFunction,
         title: "SearchLayer",
         name: "SearchLayer",
         zIndex: 999
