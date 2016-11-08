@@ -72,9 +72,12 @@ $("#showPoi").submit(function (event) {
 // passing in `null` for the `options` arguments will result in the default
 // options being used
 $('#rooms-prefetch .typeahead').typeahead(null, {
-    name: 'countries',
+    hint: true,
+    highlight: true,
+    minLength: 1,
+    name: 'route-search-field',
     limit: 100,
-    source: roomNums
+    source: searchValues
 });
 $("#submitForm").submit(function (event) {
     // alert( "Handler for .submit() called."  );
