@@ -5,11 +5,16 @@ from __future__ import unicode_literals
 import traceback
 import logging
 import json
+
+import requests
+from django.conf import settings
 from django.http import HttpResponseNotFound
 from django.db import connection
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from geojson import loads, Feature, FeatureCollection
+
+from homepage.search_wu import search_any
 
 
 logger = logging.getLogger(__name__)
@@ -364,6 +369,13 @@ def create_route_from_id(request, start_room_id, end_room_id, route_type):
         return HttpResponseNotFound('<h1>Sorry not a GET or POST request</h1>')
 
 
+def get_features(FeatureCollection):
+    props_list = []
+    for feature in FeatureCollection:
+        props_list.append(feature['properties'])
+
+    return props_list
+
 @api_view(['GET', 'POST'])
 def create_route_from_search(request, start_term, end_term, route_type=0):
     """
@@ -379,8 +391,29 @@ def create_route_from_search(request, start_term, end_term, route_type=0):
 
     if request.method == 'GET' or request.method == 'POST':
 
+
+
         start_room = start_term.split("=")[1]
         end_room = end_term.split("=")[1]
+
+        res_start_searchany = requests.get(url=settings.LOCALHOST_URL + "search/{0}".format(start_room))
+        fx1 = res_start_searchany.json()
+
+        start_aks = fx1['features'][0]['properties']['aks_nummer']
+
+        res_end_searchany = requests.get(url=settings.LOCALHOST_URL + "search/{0}".format(end_room))
+        fx2 = res_end_searchany.json()
+
+        end_aks = fx2['features'][0]['properties']['aks_nummer']
+
+        if start_aks:
+            start_room = start_aks
+
+        if end_aks:
+            end_room = end_aks
+
+
+
 
         cur = connection.cursor()
         # logger.debug('*************************start term' + str(start_room))
@@ -388,6 +421,7 @@ def create_route_from_search(request, start_term, end_term, route_type=0):
 
         start_query = """SELECT id, external_id, search_string FROM geodata.search_index_v
                           WHERE search_string LIKE '%{0}%'
+                          OR external_id = '{0}'
                           ORDER BY length(search_string) LIMIT 1""".format(start_room)
 
         # logger.debug('**************print query' + str(start_query))
@@ -398,6 +432,7 @@ def create_route_from_search(request, start_term, end_term, route_type=0):
 
         end_query = """SELECT id, external_id, search_string FROM geodata.search_index_v
                           WHERE search_string LIKE '%{0}%'
+                          OR external_id = '{0}'
                           ORDER BY length(search_string) LIMIT 1""".format(end_room)
 
         # logger.debug('**************print END  query' + str(end_query))
