@@ -2,11 +2,10 @@
 import os
 from settings.common_settings import *
 
+DEBUG = False
 
-ALLOWED_HOSTS = ['campus.wu.ac.at', 'gis-neu.ac.at', ]
+ALLOWED_HOSTS = ['campus.wu.ac.at', 'gis-neu.wu.ac.at', '.wu.ac.at' ]
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 
 DATABASES = {
