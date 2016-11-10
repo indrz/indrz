@@ -44,7 +44,9 @@
             {
                 var Catid = data.node.id;
                 var catNumId = Catid.split("_")[1];
-                createPoi(1, nodeName.trim(), catNumId);
+                var poiIconName = $('#jstree').jstree(true).get_icon(data.node.id);
+                console.log("poi icon name is:" + poiIconName);
+                createPoi(1, nodeName.trim(), catNumId, poiIconName);
             }
 
 
@@ -64,6 +66,7 @@
           $('#jstree').on("select_node.jstree", function(e, data) {
             var nodeName = $('#jstree').jstree(true).get_text(data.node.id);
             console.log("SELECTED  :" + nodeName.trim());
+
             var Catid = data.node.id;
             var catNumId = Catid.split("_")[1];
             console.log("current id is num: " + Catid);

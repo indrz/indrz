@@ -127,8 +127,8 @@ function poiExist(poiName){
 
 function getPoiIcon(poiName){
 
-    // poiIconImage = '/static/homepage/img/' + poiName + '.png'
-    poiIconImage = '/static/homepage/img/access_parking_bikecovered.png'
+    poiIconImage = '/static/homepage/img/' + poiName + '.png'
+    // poiIconImage = '/static/homepage/img/access_parking_bikecovered.png'
 
     return poiIconImage;
 }
@@ -149,7 +149,7 @@ function createPoiStyle(poiName){
 }
 
 
-function createPoi(campusId, poiName, poiCatId) {
+function createPoi(campusId, poiName, poiCatId, poiIconName) {
 
     if (poiExist(poiName)){
         // do nothing
@@ -158,6 +158,8 @@ function createPoi(campusId, poiName, poiCatId) {
 
         var poiUrl = baseApiUrl + "campus/1/poi/poi/cat/" + poiCatId + '/?format=json';
         console.log("in createPoi: " + poiUrl);
+
+        console.log( $( "li" ).get( 0 ) );
 
         // create the poi because it does not exist
         var poiSource = new ol.source.Vector();
@@ -173,7 +175,7 @@ function createPoi(campusId, poiName, poiCatId) {
 
         var poiVectorLayer = new ol.layer.Vector({
             source: poiSource,
-            style: createPoiStyle(poiName),
+            style: createPoiStyle(poiIconName),
             title: poiName,
             name: poiName,
             active: true,
