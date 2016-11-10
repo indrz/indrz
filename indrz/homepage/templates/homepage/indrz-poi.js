@@ -125,27 +125,20 @@ function poiExist(poiName){
 }
 
 
-function getPoiIcon(poiName){
+function createPoiStyle(poiIconName){
 
-    poiIconImage = '/static/homepage/img/' + poiName + '.png'
-    // poiIconImage = '/static/homepage/img/access_parking_bikecovered.png'
+    poiIconImage = '/static/homepage/img/' + poiIconName + '.png'
 
-    return poiIconImage;
-}
+    var iconStyle = new ol.style.Style({
+        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+            anchor: [0.5, 46],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'pixels',
+            src: poiIconImage
+        }))
+    });
 
-
-function createPoiStyle(poiName){
-
-        var iconStyle = new ol.style.Style({
-            image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-                anchor: [0.5, 46],
-                anchorXUnits: 'fraction',
-                anchorYUnits: 'pixels',
-                src: getPoiIcon(poiName)
-            }))
-        });
-
-        return iconStyle;
+    return iconStyle;
 }
 
 
