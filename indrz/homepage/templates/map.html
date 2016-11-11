@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{% static "homepage/wu-neu/css.css" %}" type="text/css" >
     <link rel="stylesheet" href="{% static "homepage/wu-neu/font-awesome.min.css" %}" type="text/css">
     <link rel="stylesheet" href="{% static "homepage/wu-neu/app.min.css" %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static "homepage/css/wu-indrz-style.css" %}" type="text/css">
     <script type="text/javascript" src="{% static "homepage/wu-neu/app.min.js" %}"></script>
 
     <style> body {
@@ -84,6 +85,7 @@
 
     $(function () {
         $("#floor-links-select").on('change', function () {
+            console.log("click floor change event: " + $(this).val());
             activateLayer($(this).val());
         });
     });
