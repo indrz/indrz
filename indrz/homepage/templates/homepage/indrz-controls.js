@@ -20,3 +20,17 @@ $("#id-map-switcher").on("click", function(evt){
         grey_bmapat.setVisible(false);
     }
 });
+
+
+var CampusZoom = [StartCenterX, StartCenterY];
+var panToCampus = document.getElementById('id-zoom-to-campus');
+
+panToCampus.addEventListener('click', function() {
+    var pan = ol.animation.pan({
+      duration: 2000,
+      source: /** @type {ol.Coordinate} */ (view.getCenter())
+    });
+    map.beforeRender(pan);
+    view.setCenter(CampusZoom);
+    view.setZoom(17);
+    }, false);

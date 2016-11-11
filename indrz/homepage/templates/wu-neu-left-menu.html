@@ -18,7 +18,10 @@
                 {% include 'search-form.html' %}
             </div>
 
-        <a id="id-share-map" class="btn btn-primary " data-toggle="modal" data-target="#ShareMapModal"><i class="fa fa-share-square-o" aria-hidden="true"></i>{% trans "Share map" %}</a>
+        <a id="id-share-map" class="btn btn-primary " data-toggle="modal" data-target="#ShareMapModal" data-placement="top" title="{% trans 'Share Map' %}"><i class="fa fa-share-square-o" aria-hidden="true"></i></a>
+        <a id="id-zoom-to-campus" class="btn btn-primary" data-placement="top" title="{% trans 'Zoom to Campus' %}"><i class="fa fa-home" aria-hidden="true"></i></a>
+
+
 
 <br>
       <div class="panel panel-default" style="margin-top: 10px;">
@@ -61,3 +64,11 @@
       </div>
     </div>
 </div>
+
+<script>
+$(function () {
+  $('[data-placement="top"]').tooltip()
+
+})
+
+</script>
