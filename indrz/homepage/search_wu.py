@@ -528,7 +528,7 @@ def search_any(request, q):
                 roomcode_value = None
 
                 # our search string
-            obj = {"label": row[0], "name_en": row[0], "type": row[1], "external_id": row[2],
+            obj = {"label": row[0], "name": row[0], "type": row[1], "external_id": row[2],
                    "centerGeometry": ast.literal_eval(row[4]), "floor_num": repNoneWithEmpty(int(row[5])),
                    "building": repNoneWithEmpty(row[6]), "aks_nummer": loc, "roomcode_value": repNoneWithEmpty(roomcode_value),
                    "src": "local db view"
