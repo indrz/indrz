@@ -1,10 +1,13 @@
 var searchLayer = null;
 
-var image = new ol.style.Circle({
-  radius: 5,
-  fill: null,
-  stroke: new ol.style.Stroke({color: 'red', width: 1})
-});
+
+var image = new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+            anchor: [0.5, 46],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'pixels',
+            src: '/static/homepage/img/access_parking_p1.png'
+        }));
+
 
 var styles = {
   'Point': [new ol.style.Style({
@@ -138,6 +141,19 @@ function zoomer(coord, zoom){
        // view.setZoom(zoom)
     }
 
+
+function activateFloor(feature){
+    // feature.get('floor_num')
+    var searchResFloorNum = feature.getProperties().floor_num;
+    for (var i = 0; i < switchableLayers.length; i++) {
+        if (searchResFloorNum == switchableLayers[i].getProperties().floor_num) {
+            activateLayer(i);
+        }
+    }
+
+}
+
+
 function searchIndrz(campusId, searchString) {
     // var searchUrl = '/api/v1/buildings/' + buildingId + '/' + spaceName + '.json';
     // var searchUrl = baseApiUrl + 'campus/' + campusId + '/search/' + searchString + '?format=json';
@@ -145,31 +161,30 @@ function searchIndrz(campusId, searchString) {
 
     if (searchLayer) {
         map.removeLayer(searchLayer);
-        console.log("removing search layer now");
-        //map.getLayers().pop();
+
     }
 
 
     var searchSource = new ol.source.Vector();
-    $.get(searchUrl).then(function (response) {
+    $.ajax(searchUrl).then(function (response) {
         var geojsonFormat3 = new ol.format.GeoJSON();
         var featuresSearch = geojsonFormat3.readFeatures(response,
             {featureProjection: 'EPSG:4326'});
         searchSource.addFeatures(featuresSearch);
 
-        // zoomToFeature(searchSource);
+        searchSource.forEachFeature(function(feature) {
+
+            var att = feature.get("name");
+            var floor = feature.get("floor_num");
+            var infoo = '"' + att + '"'
+            var htmlInsert = "<a href='#' onclick='showRes(" + infoo + ")' id='searchResListItem_"+ att +
+                "' class='list-group-item indrz-search-res' >" + att + " <span class='badge'>"+ floor +"</span> </a>"
+
+            $("#search-results-list").append(htmlInsert);
+            });
 
 
         var centerCoord = ol.extent.getCenter(searchSource.getExtent());
-        console.log(centerCoord);
-
-        // zoomer(centerCoord, 20);
-       // zoomToFeature(searchSource);
-       // zoomer(centerCoord);
-        // view = map.getView();
-        // view.setCenter(centerCoord);
-        // console.log("setting popup center to "+  centerCoord)
-        // view.setZoom(20);
 
         if (featuresSearch.length === 1){
 
@@ -181,14 +196,10 @@ function searchIndrz(campusId, searchString) {
         space_id = response.features[0].properties.space_id;
 
         // active the floor of the start point
-        var searchResFloorNum = featuresSearch[0].getProperties().floor_num;
-        for (var i = 0; i < switchableLayers.length; i++) {
-            if (searchResFloorNum == switchableLayers[i].getProperties().floor_num) {
-                activateLayer(i);
-            }
-        }
 
-    });
+        activateFloor(featuresSearch[0]);
+
+    } );
 
 
     searchLayer = new ol.layer.Vector({
@@ -200,10 +211,13 @@ function searchIndrz(campusId, searchString) {
     });
 
     map.getLayers().push(searchLayer);
+
+    $("#search-res").removeClass("hide");
     $("#clearSearch").removeClass("hide");
     $("#shareSearch").removeClass("hide");
 
 }
+
 
 $("#clearSearch").click(function () {
     if (searchLayer) {
@@ -211,8 +225,25 @@ $("#clearSearch").click(function () {
     }
     close_popup();
 
+    $("#search-results-list").empty()
+    $("#search-res").addClass("hide");
     $("#clearSearch").addClass("hide");
     $("#shareSearch").addClass("hide");
     $("#search-input").val('');
 
 });
+
+
+function showRes(featureName){
+    searchLayer.getSource().forEachFeature(function(feature) {
+        if (feature.get('name') === featureName ){
+            open_popup(feature.getProperties(), feature.get('centerGeometry').coordinates);
+
+            activateFloor(feature);
+
+        }
+
+    })
+
+
+}

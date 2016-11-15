@@ -29,21 +29,60 @@ function testCreatePoi(layername) {
     return vectorLayer;
 }
 
-// testCreatePoi("Entrance")
-// testCreatePoi("Info Point")
 
-function listPoiProperties() {
+function getLayerGroupByName() {
+
 
     map.getLayers().forEach(function (layer, i) {
 
         // bindInputs('#layer' + i, layer);
         if (layer instanceof ol.layer.Group) {
-            console.log("Group Name is : " + layer.getProperties().name)
-            layer.getLayers().forEach(function (sublayer, j) {
-                console.log("Layer name: " + sublayer.getProperties().name)
-                //bindInputs('#layer' + i + j, sublayer);
 
-            });
+            if(layer.getProperties().name === 'poi group'){
+
+                console.log("Group Name is : " + layer.getProperties().name)
+                var poi_groupLayer = layer.getLayers();
+                return poi_groupLayer;
+
+            }
+
+
+
+        }
+    });
+
+}
+
+
+function listActivePoiLayers() {
+
+    var poiStatus = false;
+
+    map.getLayers().forEach(function (layer, i) {
+
+        // bindInputs('#layer' + i, layer);
+        if (layer instanceof ol.layer.Group) {
+            // console.log("Group Name is : " + layer.getProperties().name)
+
+            if(layer.getProperties().name === "poi group"){
+
+                return
+                layer.getLayers().forEach(function (sublayer, i) {
+
+                    // console.log("POI Layer Name is : " + sublayer.getProperties().name)
+
+                    poiStatus = true;
+                    return poiStatus;
+
+                    });
+
+            }
+            else{
+                // console.log("no active pois on map");
+                return poiStatus;
+            }
+
+
         }
     });
 
@@ -125,9 +164,21 @@ function poiExist(poiName){
 }
 
 
-function createPoiStyle(poiIconName){
+function createPoiStyle(poiIconName, active){
 
+    poiIconImageHidden = '/static/homepage/img/access_parking_p1.png'
     poiIconImage = '/static/homepage/img/' + poiIconName + '.png'
+
+
+
+    var iconDeactiveStyle = new ol.style.Style({
+        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+            anchor: [0.5, 46],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'pixels',
+            src: poiIconImageHidden
+        }))
+    });
 
     var iconStyle = new ol.style.Style({
         image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
@@ -138,7 +189,15 @@ function createPoiStyle(poiIconName){
         }))
     });
 
-    return iconStyle;
+    if (active==='y'){
+
+        return iconStyle;
+    }
+    else {
+
+        return iconDeactiveStyle;
+    }
+
 }
 
 
@@ -168,7 +227,16 @@ function createPoi(campusId, poiName, poiCatId, poiIconName) {
 
         var poiVectorLayer = new ol.layer.Vector({
             source: poiSource,
-            style: createPoiStyle(poiIconName),
+            // style: createPoiStyle(poiIconName),
+            style: function (feature, resolution) {
+
+                var poiFeature_floor = feature.getProperties().floor_num;
+                if (poiFeature_floor == active_floor_num) {
+                    feature.setStyle(createPoiStyle(poiIconName, 'y'));
+                } else {
+                    feature.setStyle(createPoiStyle(poiIconName, 'n'));
+                }
+            },
             title: poiName,
             name: poiName,
             active: true,
