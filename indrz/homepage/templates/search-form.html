@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<form class="form form-inline" id="submitFormSearch">
+<form class="form form-inline" id="submitFormSearch" style="padding-bottom: 15px;">
     <div class="form-group form-group-sm">
 
         <label for="searchField" class="sr-only">{% trans "Search Term" %}</label>
@@ -18,6 +18,25 @@
     </div>
 
 </form>
+
+
+<div id="search-res" class="panel panel-default hide">
+    <div class="panel-heading">{% trans "Search Results" %}</div>
+    <div class="panel-body">
+
+    <div id="search-results-list" class="list-group " >
+
+        <li href='#' class='list-group-item indrz-search-res' ><span class='badge'>FLOOR</span> </li>
+        <hr>
+
+    </div>
+
+
+  </div>
+</div>
+
+
+
 
 {% include 'modal-bugreport.html' %}
 {% include 'modal-share.html' %}
