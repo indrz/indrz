@@ -227,16 +227,16 @@ function createPoi(campusId, poiName, poiCatId, poiIconName) {
 
         var poiVectorLayer = new ol.layer.Vector({
             source: poiSource,
-            // style: createPoiStyle(poiIconName),
-            style: function (feature, resolution) {
-
-                var poiFeature_floor = feature.getProperties().floor_num;
-                if (poiFeature_floor == active_floor_num) {
-                    feature.setStyle(createPoiStyle(poiIconName, 'y'));
-                } else {
-                    feature.setStyle(createPoiStyle(poiIconName, 'n'));
-                }
-            },
+            style: createPoiStyle(poiIconName, 'y'),
+            // style: function (feature, resolution) {
+            //
+            //     var poiFeature_floor = feature.getProperties().floor_num;
+            //     if (poiFeature_floor == active_floor_num) {
+            //         feature.setStyle(createPoiStyle(poiIconName, 'y'));
+            //     } else {
+            //         feature.setStyle(createPoiStyle(poiIconName, 'n'));
+            //     }
+            // },
             title: poiName,
             name: poiName,
             active: true,
