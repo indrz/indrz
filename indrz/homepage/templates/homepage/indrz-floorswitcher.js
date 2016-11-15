@@ -1,5 +1,12 @@
 var switchableLayers = [wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06];
 
+function getActiveFloorNum(){
+
+ return active_floor_num
+
+}
+
+
 function waitForFloors(space_floor_id) {
     if (floor_layers.length > 0) {
 
@@ -57,6 +64,37 @@ function setLayerVisible(index) {
                 }
             }
         }
+        // if(listActivePoiLayers()){
+        //
+        //     var activePoiLayerList = [];
+        //
+        //     for (var i = 0; i < activePoiLayerList.length; i++) {
+        //         var poiFeatures = activePoiLayerList[i]
+        //             for (var i = 0; i < poiFeatures.length; i++) {
+        //                 var poi_floor = poiFeatures[i].getProperties().floor_num;
+        //                 if (poi_floor == active_floor_num) {
+        //                     poiFeatures[i].setStyle(poi_active_style);
+        //                 } else {
+        //                     poiFeatures[i].setStyle(poi_inactive_style);
+        //                 }
+        //
+        //
+        //             }
+        //
+        //
+        //     }
+        //
+        //     var poiFeatures = poiLayername.getSource().getFeatures();
+        //     for (var i = 0; i < poiFeatures.length; i++){
+        //         var poi_feature_floor = poiFeatures[i].getProperties().floor_num;
+        //         if (poi_feature_floor == active_floor_num){
+        //             poiFeatures[i].setStyle(poi_active_style);
+        //         }
+        //         else {
+        //             poiFeatures[i].setStyle(poi_inactive_style);
+        //         }
+        //     }
+        // }
     }
     // if (floor_layers.length > 0) {
     //     floor_layers[index].setVisible(true);
