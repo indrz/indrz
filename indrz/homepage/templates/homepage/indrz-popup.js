@@ -24,20 +24,20 @@ var popup_overlay = new ol.Overlay(/** @type {olx.OverlayOptions} */ ({
 function close_popup(){
   popup_overlay.setPosition(undefined);
   popup_closer.blur();
-    if (searchLayer) {
-        map.removeLayer(searchLayer);
-
-    }
+    // if (searchLayer) {
+    //     map.removeLayer(searchLayer);
+    //
+    // }
   return false;
 }
 
 popup_closer.onclick = function() {
   popup_overlay.setPosition(undefined);
   popup_closer.blur();
-    if (searchLayer) {
-        map.removeLayer(searchLayer);
-        //map.getLayers().pop();
-    }
+    // if (searchLayer) {
+    //     map.removeLayer(searchLayer);
+    //     //map.getLayers().pop();
+    // }
     // map.getLayers().pop();
   return false;
 };
