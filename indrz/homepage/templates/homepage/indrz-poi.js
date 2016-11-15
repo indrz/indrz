@@ -257,6 +257,8 @@ $('#kiosk-pois a').click(function() {
 
     var poiCatName = $(this).attr('id').split('_')[0];
     var poiCatId = $(this).attr('id').split('_')[1];
+    var className = $('.myclass').attr('class');
+    var poiIconName = $('#kiosk-pois a > img').attr('class');
 
     if (poiExist(poiCatName)){
 
@@ -265,7 +267,7 @@ $('#kiosk-pois a').click(function() {
 
     }
     else {
-        var newPoi = createPoi(1,poiCatName, poiCatId);
+        var newPoi = createPoi(1,poiCatName, poiCatId, poiIconName);
         map.getLayers().push(newPoi);
 
     }
