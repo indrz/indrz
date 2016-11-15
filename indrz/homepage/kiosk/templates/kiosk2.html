@@ -9,12 +9,19 @@
 
     <script src="{% static "js/bloodhound.min.js" %}"></script>
     <script src="{% static "js/typeahead.bundle.min.js" %}"></script>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+
+    <link rel="stylesheet" href="{% static "homepage/wu-neu/css.css" %}" type="text/css" >
     <link rel="stylesheet" href="{% static "homepage/wu-neu/font-awesome.min.css" %}" type="text/css">
-    <link rel="stylesheet" href="{% static "homepage/css/map_poi.main.css" %}" type="text/css">
-    <link rel="stylesheet" href="{% static "homepage/wu-neu/app.min.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "homepage/wu-neu/app.min.css" %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static "homepage/css/wu-indrz-style.css" %}" type="text/css">
+    <script type="text/javascript" src="{% static "homepage/wu-neu/app.min.js" %}"></script>
+
     <style> body {
-        padding-top: 0px;
-    }</style>
+            padding-top: 0px;
+        }
+    </style>
 
 
 {% endblock head_extra %}
@@ -71,58 +78,10 @@
             </div>
 {% endblock %}
 
-
 {% block js-conf %}
 <script>  {% include 'homepage/indrzMapConf.js' %} </script>
-    <script>
-
-       var building_id = 1;
-
-        var searchValues = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.whitespace,
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            // prefetch: baseApiUrl + 'spaces/search/?format=json',
-            prefetch: '/autocomplete/%QUERY?.format=json',
-            remote: {
-              url: '/autocomplete/%QUERY?.format=json',
-              wildcard: '%QUERY'
-            }
-        });
-
-        // passing in `null` for the `options` arguments will result in the default
-        // options being used
-        $('#search-input').typeahead(null, {
-            hint: true,
-            highlight: true,
-            minLength: 1,
-            name: 'search-field',
-            limit: 100,
-            source: searchValues
-        });
-
-
-        $("#submitFormSearch").submit(function (event) {
-            {#              alert( "Handler for .submit() called."  );#}
-
-            {#            var buildingid = buildingNantesId;#}
-            var searchText = $('#search-input').val();
-            searchIndrz(building_id, searchText);
-            event.preventDefault();
-        });
-
-        $("#showPoi").submit(function (event) {
-           // alert( "Handler for .submit() called." + $('#poi-input').val()   );
-            var poiName = $('#poi-input').val();
-            // searchPoi(building_id, poiName);
-            createPoi(campus_id, poiName);
-            event.preventDefault();
-            });
-
-    </script>
-
 
 {% endblock js-conf %}
-
 
 
 {% block map_frame %}
@@ -134,7 +93,102 @@
     <script>  {% include 'homepage/search.js' %} </script>
     <script>  {% include 'homepage/indrz-popup.js' %} </script>
     <script>  {% include 'homepage/indrz-controls.js' %} </script>
+    <script>  {% include 'homepage/share.js' %} </script>
     <script>  {% include 'homepage/initialize.js' %} </script>
+
 {% endblock map_frame %}
+
+{% block js-bottom %}
+    <script>
+    $(".nav a").on("click", function () {
+        $(".nav").find(".active").removeClass("active");
+        $(this).parent().addClass("active");
+    });
+
+    $(function () {
+        $("#floor-links-select").on('change', function () {
+            console.log("click floor change event: " + $(this).val());
+            activateLayer($(this).val());
+        });
+    });
+
+
+
+</script>
+
+      <script src="{% static "js/jstree/jstree.min.js" %}"></script>
+  <script>
+
+  $(function () {
+    // 6 create an instance when the DOM is ready
+    $('#jstree').jstree({
+    "checkbox" : {
+      "keep_selected_style" : true,
+      "visible" : true,
+      "three_state": false
+    },
+    "plugins" : [ "checkbox", "wholerow" ]
+  });
+
+
+      $('#jstree').on("changed.jstree", function(e, data) {
+          var nodeName = $('#jstree').jstree(true).get_text(data.node);
+            if(poiExist(nodeName.trim())){
+
+            }
+            else
+            {
+                var Catid = data.node.id;
+                var catNumId = Catid.split("_")[1];
+                var poiIconName = $('#jstree').jstree(true).get_icon(data.node.id);
+                console.log("poi icon name is:" + poiIconName);
+                createPoi(1, nodeName.trim(), catNumId, poiIconName);
+            }
+
+
+      });
+
+    $('#jstree').on("deselect_node.jstree", function(e, data) {
+        var nodeName = $('#jstree').jstree(true).get_text(data.node.id);
+        console.log("deselected  :" + nodeName.trim());
+
+                //map.removeLayer(poiLayer);
+                setPoiVisibility(nodeName.trim());
+                console.log("removing poi layer now");
+                //map.getLayers().pop();
+
+      });
+
+          $('#jstree').on("select_node.jstree", function(e, data) {
+            var nodeName = $('#jstree').jstree(true).get_text(data.node.id);
+            console.log("SELECTED  :" + nodeName.trim());
+
+            var Catid = data.node.id;
+            var catNumId = Catid.split("_")[1];
+            console.log("current id is num: " + Catid);
+            console.log("id num is: " + catNumId);
+
+
+
+
+
+
+
+                //map.removeLayer(poiLayer);
+                setPoiVisibility(nodeName.trim());
+                console.log("make it Visible");
+                //map.getLayers().pop();
+
+      });
+
+
+
+
+  });
+  </script>
+
+{% endblock js-bottom %}
+
+
 
 {% block footer %}{% endblock footer %}
