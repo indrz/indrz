@@ -257,8 +257,8 @@ $('#kiosk-pois a').click(function() {
 
     var poiCatName = $(this).attr('id').split('_')[0];
     var poiCatId = $(this).attr('id').split('_')[1];
-    var className = $('.myclass').attr('class');
     var poiIconName = $('#kiosk-pois a > img').attr('class');
+    var poiIconName = $(this).attr('aria-label');
 
     if (poiExist(poiCatName)){
 
