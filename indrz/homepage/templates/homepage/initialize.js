@@ -1,4 +1,14 @@
 $(document).ready(function () {
+
+
+    function loadShare(){
+        if(search_text != '' && search_text.length > 0){
+            searchIndrz(1, search_text)
+
+        }
+
+    }
+
     function initialize() {
 
 
@@ -8,6 +18,13 @@ $(document).ready(function () {
                 view.setCenter([centerx, centery]);
                 view.setZoom(zoom_level);
             }
+
+        // if(poi_id != 0){
+        //     searchIndrz(1, search_string)
+        //         // map.getLayers().push(spaceLayer);
+        // }
+        //
+
 
         if (floor_layers.length > 0) {
 
@@ -26,4 +43,7 @@ $(document).ready(function () {
     }
 
     initialize();
+    loadShare();
+
+
 });

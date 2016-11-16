@@ -30,7 +30,9 @@ def view_map(request, *args, **kwargs):
         centery, = request.GET.get('centery', 0),
         floor_num, = request.GET.get('floor', 0),
         poi_name, = request.GET.get('poi-name', ''),
-
+        search_text, = request.GET.get('q', ''),
+        poi_id, = request.GET.get('poi-id', 0),
+        share_xy = request.GET.get('search', ''),
         floor_num = int(floor_num)
 
         if floor_num == 0:
@@ -55,6 +57,9 @@ def view_map(request, *args, **kwargs):
             'centery': centery,
             'floor_num': int(floor_num),
             'poi_name' : poi_name,
+            'search_text': search_text,
+            'poi_id' : poi_id,
+            'share_xy' : share_xy,
             'nodes': PoiCategory.objects.all(),
         })
 

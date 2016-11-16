@@ -192,11 +192,11 @@ function searchIndrz(campusId, searchString) {
 
         }
 
-
         space_id = response.features[0].properties.space_id;
+        poi_id = response.features[0].properties.poi_id;
+        search_text = searchString;
 
         // active the floor of the start point
-
         activateFloor(featuresSearch[0]);
 
     } );

@@ -30,7 +30,21 @@ function update_url(mode) {
     if (mode == "route") {
         url = "/?campus=" + building_id + "&startstr=" + $("#route-from").val() + "&endstr=" + $("#route-to").val();
     } else if (mode == "search") {
-        url = "/?campus=" + building_id + "&spaceid=" + space_id;
+
+        // if(poi_id > 0){
+        //     url = "/?campus=" + building_id + "&poi-id=" + poi_id;
+        // }
+        // if(space_id > 0){
+        //     url = "/?campus=" + building_id + "&spaceid=" + space_id;
+        // }
+
+        if(search_text != undefined && search_text != ""){
+            url = "/?campus=" + building_id + "&q=" + search_text;
+        }
+        // url = "/?campus=" + building_id + "&spaceid=" + share_xy;
+        // url = "/?campus=" + building_id + "&spaceid=" + share_xy;
+        // url = "/?campus=" + building_id + "&share_xy=" + "[" + share_xy + "]";
+    //    http://localhost:8000/?campus=1&share_xy=%22[1826602.52731,6142514.228525]
     } else if (mode == "map") {
         url = "/?campus=" + building_id + "&centerx=" + centerx2 + "&centery=" + centery2 + "&zlevel=" + current_zoom2 + "&floor=" + active_floor_num;
     }

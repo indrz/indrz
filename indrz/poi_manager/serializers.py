@@ -10,7 +10,7 @@ class PoiSerializer(GeoFeatureModelSerializer):
         model = Poi
         geo_field = 'geom'
         depth = 1
-        fields = ('name', 'floor_num', 'fk_poi_category')
+        fields = ('id', 'name', 'floor_num', 'fk_poi_category')
 
 
 class PoiCategorySerializer(serializers.ModelSerializer):

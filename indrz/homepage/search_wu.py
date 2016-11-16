@@ -509,7 +509,9 @@ def search_any(request, q):
         local_db_results = []
 
         sql = """
-        SELECT search_string, text_type, external_id, st_asgeojson(geom) AS geom, st_asgeojson(st_PointOnSurface(geom)) AS center, layer, building_id, 0 AS resultType, external_id, room_code
+        SELECT search_string, text_type, external_id, st_asgeojson(geom) AS geom,
+            st_asgeojson(st_PointOnSurface(geom)) AS center, layer, building_id, 0 AS resultType,
+            external_id, room_code, id
                 FROM geodata.search_index_v
                 WHERE upper(search_string) LIKE %(search_string)s
                 ORDER BY search_string DESC, length(search_string) LIMIT 9
@@ -527,11 +529,16 @@ def search_any(request, q):
             if roomcode_value == '':
                 roomcode_value = None
 
+
+            poi_id = row[1]
+            if poi_id == 'poi':
+                poi_id = repNoneWithEmpty(int(row[10]))
+
                 # our search string
             obj = {"label": row[0], "name": row[0], "type": row[1], "external_id": row[2],
                    "centerGeometry": ast.literal_eval(row[4]), "floor_num": repNoneWithEmpty(int(row[5])),
                    "building": repNoneWithEmpty(row[6]), "aks_nummer": loc, "roomcode_value": repNoneWithEmpty(roomcode_value),
-                   "src": "local db view"
+                   "src": "local db view", "poi_id" : poi_id
                    # , "frontoffice": "001_10_OG04_421600", "orgid": "1234"
                    }
 

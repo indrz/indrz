@@ -9,6 +9,9 @@ var building_id="{{ building_id }}";
 var floor_id="{{ floor_id }}";
 var floor_num = "{{ floor_num }}";
 var space_id="{{ space_id }}";
+var poi_id="{{ poi_id }}";
+var poi_name="{{ poi_name }}";
+var search_text="{{ search_text }}";
 var active_floor_num="{{ floor_num }}";
 var floor_layers = [];
 var timer_waitfor_floor = null;
@@ -19,6 +22,8 @@ var route_to = "{{route_to}}";
 var centerx = "{{centerx}}";
 var centery = "{{centery}}";
 
+// var share_xy = "{{ share_xy }}"  // an array like [1826602.52,6142514.22]
+var share_xy = [1826602.52731,6142514.228525]
 var StartCenterX = 1826602.5273166203;
 var StartCenterY = 6142514.2285252055;
 
@@ -69,6 +74,7 @@ $("#showPoi").submit(function (event) {
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     prefetch: baseApiUrl + 'spaces/search/?format=json'
 });
+
 // passing in `null` for the `options` arguments will result in the default
 // options being used
 $('#rooms-prefetch .typeahead').typeahead(null, {
@@ -79,6 +85,7 @@ $('#rooms-prefetch .typeahead').typeahead(null, {
     limit: 100,
     source: searchValues
 });
+
 $("#submitForm").submit(function (event) {
     // alert( "Handler for .submit() called."  );
     var startNum = $('#route-from').val();
@@ -87,4 +94,3 @@ $("#submitForm").submit(function (event) {
     addRoute(startNum, endNum, rType);
     event.preventDefault();
 });
-
