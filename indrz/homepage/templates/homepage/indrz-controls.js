@@ -18,6 +18,7 @@ $("#id-map-switcher").on("click", function(evt){
         $(this).text('Map');
         ortho30cm_bmapat.setVisible(true);
         grey_bmapat.setVisible(false);
+        hideLayers();
     }
 });
 
