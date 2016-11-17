@@ -30,11 +30,11 @@ var styles = {
   })],
   'MultiPolygon': [new ol.style.Style({
     stroke: new ol.style.Stroke({
-      color: 'yellow',
-      width: 2
+      color: '#21B6D8',
+      width: 3
     }),
     fill: new ol.style.Fill({
-      color: 'rgba(255, 255, 0, 0.2)'
+      color: 'rgba(38, 215, 255, 0.2)'
     })
   })],
   'Polygon': [new ol.style.Style({
@@ -117,8 +117,8 @@ function setSearchFeatureStyle(feature, resolution) {
 function zoomToFeature(source) {
 
     var view = map.getView();
-    // view.setCenter([centerx, centery]);
-    view.setZoom(19);
+    // // view.setCenter([centerx, centery]);
+    // view.setZoom(19);
 
     var feature = source.getFeatures()[0];
     var polygon = /** @type {ol.geom.SimpleGeometry} */ (feature.getGeometry());
@@ -153,6 +153,16 @@ function activateFloor(feature){
 
 }
 
+function clearSearchResults(){
+            close_popup();
+
+            $("#search-results-list").empty()
+            $("#search-res").addClass("hide");
+            $("#searchTools").addClass("hide");
+            $("#search-input").val('');
+
+}
+
 
 function searchIndrz(campusId, searchString) {
     // var searchUrl = '/api/v1/buildings/' + buildingId + '/' + spaceName + '.json';
@@ -161,8 +171,10 @@ function searchIndrz(campusId, searchString) {
 
     if (searchLayer) {
         map.removeLayer(searchLayer);
+        clearSearchResults();
 
     }
+
 
 
     var searchSource = new ol.source.Vector();
@@ -213,8 +225,7 @@ function searchIndrz(campusId, searchString) {
     map.getLayers().push(searchLayer);
 
     $("#search-res").removeClass("hide");
-    $("#clearSearch").removeClass("hide");
-    $("#shareSearch").removeClass("hide");
+    $("#searchTools").removeClass("hide");
 
 }
 
@@ -223,13 +234,8 @@ $("#clearSearch").click(function () {
     if (searchLayer) {
         map.removeLayer(searchLayer);
     }
-    close_popup();
 
-    $("#search-results-list").empty()
-    $("#search-res").addClass("hide");
-    $("#clearSearch").addClass("hide");
-    $("#shareSearch").addClass("hide");
-    $("#search-input").val('');
+    clearSearchResults();
 
 });
 

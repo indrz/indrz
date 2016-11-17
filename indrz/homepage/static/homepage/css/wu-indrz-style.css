@@ -380,3 +380,8 @@ h3 {
 .jstree-anchor{
     font-size: 14px !important;
 }
+
+.indrz-search-tools{
+    padding-bottom: 15px !important;
+    padding-top: 15px;
+}
