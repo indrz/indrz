@@ -1,8 +1,13 @@
 {% load i18n %}
 {% load staticfiles %}
 
+{% if hide_left == "false" %}
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10">
 
-            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10">
+    {% else %}
+    <div>
+{% endif %}
+
                 <div class="row">
                     <div id="map" class="indrz-map-container">
 

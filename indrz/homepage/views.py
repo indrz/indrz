@@ -33,6 +33,9 @@ def view_map(request, *args, **kwargs):
         search_text, = request.GET.get('q', ''),
         poi_id, = request.GET.get('poi-id', 0),
         share_xy = request.GET.get('search', ''),
+        hide_left_menu = request.GET.get('hide-left', 'false')
+        hide_top = request.GET.get('hide-top', 'false')
+        hide_footer = request.GET.get('hide-footer', 'false')
         floor_num = int(floor_num)
 
         if floor_num == 0:
@@ -60,6 +63,9 @@ def view_map(request, *args, **kwargs):
             'search_text': search_text,
             'poi_id' : poi_id,
             'share_xy' : share_xy,
+            'hide_top' : hide_top,
+            'hide_left': hide_left_menu,
+            'hide_footer' : hide_footer,
             'nodes': PoiCategory.objects.all(),
         })
 
