@@ -158,7 +158,8 @@ function clearSearchResults(){
 
             $("#search-results-list").empty()
             $("#search-res").addClass("hide");
-            $("#searchTools").addClass("hide");
+            $("#clearSearch").addClass("hide");
+            $("#shareSearch").addClass("hide");
             $("#search-input").val('');
 
 }
@@ -225,7 +226,8 @@ function searchIndrz(campusId, searchString) {
     map.getLayers().push(searchLayer);
 
     $("#search-res").removeClass("hide");
-    $("#searchTools").removeClass("hide");
+    $("#clearSearch").removeClass("hide");
+    $("#shareSearch").removeClass("hide");
 
 }
 
