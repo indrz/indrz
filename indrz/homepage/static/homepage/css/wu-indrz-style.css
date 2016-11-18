@@ -385,3 +385,12 @@ h3 {
     padding-bottom: 15px !important;
     padding-top: 15px;
 }
+
+.indrz-popup p{
+    font-family: Arial,sans-serif;
+    font-size: 12px;
+    letter-spacing: .1px;
+    line-height: 12px;
+    color: black;
+
+}
