@@ -190,7 +190,7 @@ function searchIndrz(campusId, searchString) {
             var floor = feature.get("floor_num");
             var infoo = '"' + att + '"'
             var htmlInsert = "<a href='#' onclick='showRes(" + infoo + ")' id='searchResListItem_"+ att +
-                "' class='list-group-item indrz-search-res' >" + att + " <span class='badge'>"+ floor +"</span> </a>"
+                "' class='list-group-item indrz-search-res' >" + att + " <span class='badge'>"+ gettext('Floor  ') + floor +"</span> </a>"
 
             $("#search-results-list").append(htmlInsert);
             });

@@ -14,32 +14,12 @@
       </div>
         <input id="enterSearch" type="submit" class="btn btn-primary" value="{% trans "Go!" %}">
         <div id="searchTools" class="indrz-search-tools hide" >
-             <a id="clearSearch" class="btn btn-primary" href="#"><i class="fa fa-refresh fa-fw"></i></a>
-             <a id="shareSearch" href="#ShareModal" class = "btn btn-primary" data-toggle="modal" data-target="#ShareSearchModal"><i class="fa fa-share fa-fw"></i> {% trans "Share" %}</a>
+             <a id="clearSearch" class="btn btn-primary" href="#" data-placement="top" title="{% trans 'Refresh' %}"><i class="fa fa-refresh fa-fw"></i></a>
+             <a id="shareSearch" href="#ShareModal" class = "btn btn-primary" data-toggle="modal" data-target="#ShareSearchModal" data-placement="top" title="{% trans 'Share' %}" ><i class="fa fa-share fa-fw"></i> {% trans "Share" %}</a>
 
         </div>
     </form>
 
-
-
-{#<form class="form form-inline" id="submitFormSearch" style="padding-bottom: 15px;">#}
-{#    <div class="form-group">#}
-{##}
-{#        <label for="searchField" class="sr-only">{% trans "Search Term" %}</label>#}
-{##}
-{#        <input type="text" class="form-control" id="search-input" placeholder="{% trans "Search for ..." %}">#}
-{##}
-{#    </div>#}
-{##}
-{#    <input id="enterSearch" type="submit" class="btn btn-primary" value="{% trans "Go!" %}">#}
-{##}
-{#    <div>#}
-{#         <a id="clearSearch" class="btn btn-primary hide " href="#"><i class="fa fa-refresh fa-fw"></i></a>#}
-{#         <a id="shareSearch" href="#ShareModal" class = "btn btn-primary hide" data-toggle="modal" data-target="#ShareSearchModal"><i class="fa fa-share fa-fw"></i> {% trans "Share" %}</a>#}
-{##}
-{#    </div>#}
-{##}
-{#</form>#}
 
 
     <div id="search-res" class="panel panel-default hide">
@@ -48,14 +28,34 @@
 
         <div id="search-results-list" class="list-group " >
 
-            <li href='#' class='list-group-item indrz-search-res' ><span class='badge'>FLOOR</span> </li>
-            <hr>
 
         </div>
 
 
       </div>
     </div>
+
+{#         <div id="search-res" class="panel panel-default hide">#}
+{#        <div class="panel-heading">{% trans "Search Results" %}</div>#}
+{#        <div class="panel-body">#}
+{##}
+{#        <div id="search-results-list" >#}
+{#            <table id="resTable" class="table table-condensed table-hover">#}
+{#                  <tr>#}
+{#                    <th>{% trans "Result" %}</th>#}
+{#                    <th>{% trans "Floor" %}</th>#}
+{##}
+{#                  </tr>#}
+{##}
+{#            </table>#}
+{##}
+{##}
+{##}
+{#        </div>#}
+{##}
+{##}
+{#      </div>#}
+{#    </div>#}
 
 </div>
 

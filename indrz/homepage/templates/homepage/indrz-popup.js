@@ -1,7 +1,9 @@
 {% load i18n %}
 var popup_container = document.getElementById('indrz-popup');
 var popup_content = document.getElementById('popup-content');
+var popup_links = document.getElementById('popup-links');
 var popup_closer = document.getElementById('popup-closer');
+
 
 var selectRoom = new ol.interaction.Select();
 
@@ -50,10 +52,12 @@ map.addInteraction(selectRoom);
 
 map.on('singleclick', function (e) {
   map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
-      if(feature.getGeometry().getType() == "MultiPolygon") {
+
+      if(feature.getGeometry().getType() == "MultiPolygon" || feature.getGeometry().getType() == "MultiPoint") {
           var coordinate = map.getCoordinateFromPixel(e.pixel);
           var properties = feature.getProperties();
           open_popup(properties, coordinate);
+          console.log("inside popup click action")
       }
   });
 });
@@ -64,23 +68,26 @@ function getTitle(properties){
         name = properties.label;
         return name;
     }
-    if(properties.short_name){
+    else if(properties.short_name){
         name = properties.short_name;
         return name;
     }
-    if (properties.room_code){
+    else if (properties.room_code){
         name = properties.room_code;
         return name;
     }
-    if (properties.fancyname_de){
+    else if (properties.fancyname_de){
         name = properties.fancyname_de;
         return name;
     }
-    if (properties.roomcode && properties.label != undefined){
+    else if (properties.roomcode && properties.label != undefined){
         name = properties.roomcode;
         return name;
 
-
+    }
+    else if (properties.name) {
+        name = properties.name;
+        return name;
     }
 
 
@@ -88,7 +95,7 @@ function getTitle(properties){
 
 
 function open_popup(properties, coordinate, name){
-
+    console.log("properites: " + properties.name)
     var titlePopup = ""
     var titleBuildingName = gettext('Building : ');
     var titleFloorNumber = gettext('Floor Number: ');
@@ -97,10 +104,6 @@ function open_popup(properties, coordinate, name){
     var floorNum;
     var buildingName;
     var roomcode ;
-
-    if (properties.fancyname_de){
-        name = properties.fancyname_de;
-    }
 
     var name = "";
 
@@ -136,9 +139,10 @@ function open_popup(properties, coordinate, name){
     }
 
 
+    // uncomment below to show the coordinate in popup
+    // popup_content.innerHTML += '<p>' + gettext('Coordinate: ')+ '</p><code>' + coordinate + '</code><p></p><code>' + hdms + '</code>';
 
-  popup_content.innerHTML += '<p>' + gettext('Coordinate: ')+ '</p><code>' + coordinate + '</code><p></p><code>' + hdms + '</code>';
-  popup_overlay.setPosition(coordinate);
+    popup_overlay.setPosition(coordinate);
 }
 
 function close_popup(){
@@ -147,14 +151,8 @@ function close_popup(){
     $("#search-input").val('');
   return false;
 }
-/*
-map.on('singleclick', function(evt) {
-  var coordinate = evt.coordinate;
-  var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
-        coordinate, 'EPSG:3857', 'EPSG:4326'));
 
-  popup_content.innerHTML = '<p>Coordinate:</p><code>' + hdms + '</code><p><a href="#"><i class="fa fa-bug fa-fw"></i> Bug report</a>  </p>';
-  popup_overlay.setPosition(coordinate)
-});
-
-*/
+popup_links.onclick = function(){
+        var id = $(this).attr('id');
+    console.log("clickmeeeee" + id);
+}
