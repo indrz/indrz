@@ -93,6 +93,8 @@ function getTitle(properties){
 
 }
 
+var routeToValTemp = ""
+var routeFromValTemp = ""
 
 function open_popup(properties, coordinate, name){
     console.log("properites: " + properties.name)
@@ -108,6 +110,9 @@ function open_popup(properties, coordinate, name){
     var name = "";
 
     titlePopup = getTitle(properties);
+
+    routeToValTemp = titlePopup;
+    routeFromValTemp = titlePopup;
 
     var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
       coordinate, 'EPSG:3857', 'EPSG:4326'));
@@ -152,7 +157,27 @@ function close_popup(){
   return false;
 }
 
-popup_links.onclick = function(){
-        var id = $(this).attr('id');
-    console.log("clickmeeeee" + id);
-}
+
+$(function() {
+    $("#routeFromHere").click(function() {
+
+        $('#collapseTwo').collapse('show');
+
+
+            document.getElementById('route-from').value = routeFromValTemp;
+
+        }
+        )
+});
+
+$(function() {
+    $("#routeToHere").click(function(){
+        document.getElementById('route-to').value = routeToValTemp;
+        $('#collapseTwo').collapse('show');
+
+    }
+        )
+});
+
+
+

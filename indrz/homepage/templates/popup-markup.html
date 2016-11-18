@@ -3,12 +3,12 @@
     <a href="#" id="popup-closer" class="ol-popup-closer"></a>
     <div id="popup-content"></div>
     <div id="popup-links" >
-        <a><i class="fa fa-map-marker fa-fw"></i>{% trans "Route from here" %}</a><br>
-        <a><i class="fa fa-map-marker fa-fw"></i>{% trans "Route to here" %}</a><br>
 
+        <a id="routeFromHere" style="color:#5bc0de;"><i class="fa fa-map-marker fa-fw"></i>{% trans "Route from here" %}</a><br>
+        <a id="routeToHere" style="color:#5bc0de;"><i class="fa fa-map-marker fa-fw"></i>{% trans "Route to here" %}</a><br>
 
-        <a id="routeToBus" class="btn btn-info" href="#" data-placement="top" title="{% trans 'Route from bus' %}"><i class="fa fa-map-signs fa-fw"></i>{% trans "Bus" %}</a>
-        <a id="routeToTrain" class="btn btn-info" href="#" data-placement="top" title="{% trans 'Route from train' %}"><i class="fa fa-map-signs fa-fw"></i>{% trans "Train" %}</a>
+        <a id="routeFromBuildingEntrance" class="btn btn-info" href="#" data-placement="top" title="{% trans 'Route from building' %}"><i class="fa fa-map-signs fa-fw"></i>{% trans "Building" %}</a>
+        <a id="routeFromTrain" class="btn btn-info" href="#" data-placement="top" title="{% trans 'Route from train' %}"><i class="fa fa-map-signs fa-fw"></i>{% trans "Train" %}</a>
 
         <a id="shareSearch" href="#ShareModal" class = "btn btn-primary" data-toggle="modal" data-target="#ShareSearchModal" data-placement="top" title="{% trans 'Share' %}"><i class="fa fa-share fa-fw"></i></a>
 
