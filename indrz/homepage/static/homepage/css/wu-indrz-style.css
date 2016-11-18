@@ -227,7 +227,7 @@ body, h1, h2, h3, h4, p, li, td, th {
 .indrz-floor-changer-float{
     position: absolute;
     background-color: rgba(51, 51, 51, 0.5);
-    top: 5%;
+    top: 2%;
     right: 15px;
     z-index: 1;
     margin: 1 !important;
@@ -243,7 +243,7 @@ body, h1, h2, h3, h4, p, li, td, th {
 #id-map-switcher-widget{
     position: absolute;
     right: 50px;
-    top: 5%;
+    top: 2%;
 }
 #id-map-switcher-widget button{
     width: 120px;
