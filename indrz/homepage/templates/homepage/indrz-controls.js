@@ -23,7 +23,10 @@ $("#id-map-switcher").on("click", function(evt){
 });
 
 
-var CampusZoom = [StartCenterX, StartCenterY];
+
+
+
+
 var panToCampus = document.getElementById('id-zoom-to-campus');
 
 panToCampus.addEventListener('click', function() {
@@ -35,3 +38,5 @@ panToCampus.addEventListener('click', function() {
     view.setCenter(CampusZoom);
     view.setZoom(17);
     }, false);
+
+

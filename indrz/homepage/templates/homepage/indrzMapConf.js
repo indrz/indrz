@@ -26,6 +26,7 @@ var centery = "{{centery}}";
 var share_xy = [1826602.52731,6142514.228525]
 var StartCenterX = 1826602.5273166203;
 var StartCenterY = 6142514.2285252055;
+var CampusZoom = [StartCenterX, StartCenterY];
 
 
 var building_id = 1;
@@ -94,3 +95,29 @@ $("#submitForm").submit(function (event) {
     addRoute(startNum, endNum, rType);
     event.preventDefault();
 });
+
+
+
+function zoomToCampus(){
+    var pan = ol.animation.pan({
+      duration: 2000,
+      source: /** @type {ol.Coordinate} */ (view.getCenter())
+    });
+    map.beforeRender(pan);
+    view.setCenter(CampusZoom);
+    view.setZoom(17);
+}
+
+$("#id-zoom-to-campus-left").on("click", function(evt){
+    zoomToCampus();
+
+
+});
+
+
+$("#id-zoom-to-campus-map").on("click", function(evt){
+
+ zoomToCampus();
+
+});
+

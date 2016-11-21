@@ -394,3 +394,10 @@ h3 {
     color: black;
 
 }
+
+.indrz-toolbar{
+    position: absolute;
+    top: .5em;
+    left: 2.5em;
+
+}
