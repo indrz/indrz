@@ -316,6 +316,9 @@ def search_any(request, q):
                     roomcode_value = None
                     building_name = None
 
+                    if 'buildingname' in row:
+                        building_name = row['buildingname']
+
                     if 'category_en' in row and row['category_en'] is not None:
                         cat_en_value = row['category_en']
                     if 'category_de' in row and row['category_de'] is not None:
@@ -333,7 +336,7 @@ def search_any(request, q):
                                 building_name = row['location_struc']['buildingname']
                     else:
                         roomcode_value = ""
-                        building_name = ""
+
 
                     # distinguish between normal (aks = location), search by pk, and persons (location can be found in currentaffiliaton)
                     if 'location' in row and row['location'] is not None:
@@ -415,6 +418,8 @@ def search_any(request, q):
                             cat_en_value = row['category_en']
                         else:
                             cat_en_value = ""
+
+
 
                         # if cat_de_value is not None:
                         #     cat_de_encode = cat_de_value.encode('utf-8')
