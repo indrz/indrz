@@ -74,7 +74,7 @@ def get_room_center(aks_nummer):
     else:
         return None
 
-pprint(get_room_center('001_10_EG01_311200'))
+# pprint(get_room_center('001_10_EG01_311200'))
 
 def test_route_terminal(ipTerminal):
     url = 'http://localhost:8000/terminal'
@@ -157,7 +157,6 @@ def bach_search_directory(searchStr):
 
 # data_search_dir = bach_search_directory("IT-service")
 #data_search_dir = bach_search_directory("Irene Fellner")
-# data_search_dir = bach_search_directory("Hörsaal 120")
 # data_search_dir = bach_search_directory("test")
 # print 'type: ' + str(type(data_pk_big)) + '  data_pk_big length: ' + str(len(data_pk_big))
 # pprint(data_search_dir)
@@ -327,8 +326,9 @@ def bach_search_rooms(search_string):
 
     return load_json(data, url)
 
-# data_search_dir = bach_search_rooms("Erst")
+# data_search_dir = bach_search_rooms("D2.0.039")
 # data_search_dir = bach_search_rooms("Hörsaal 120")
+# print("hoersall search")
 # pprint(data_search_dir)
 # print(len(data_search_dir))
 
