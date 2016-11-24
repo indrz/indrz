@@ -12,55 +12,55 @@ drop table if exists geodata.networklines_e06;
 
 
 -- convert to 3d coordinates with EPSG:3857
-SELECT id, ST_Force_3d(ST_Transform(ST_Force_2D(st_geometryN(geom, 1)),3857)) AS geom,
+SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
   network_type, cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_ug01
   FROM django.routing_networklinesug01;
 
-SELECT id, ST_Force_3d(ST_Transform(ST_Force_2D(st_geometryN(geom, 1)),3857)) AS geom,
+SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
   network_type, cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e00
   FROM django.routing_networklinese00;
 
-SELECT id, ST_Force_3d(ST_Transform(ST_Force_2D(st_geometryN(geom, 1)),3857)) AS geom,
+SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
   network_type, cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e01
   FROM django.routing_networklinese01;
 
-SELECT id, ST_Force_3d(ST_Transform(ST_Force_2D(st_geometryN(geom, 1)),3857)) AS geom,
+SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
   network_type, cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e02
   FROM django.routing_networklinese02;
 
-SELECT id, ST_Force_3d(ST_Transform(ST_Force_2D(st_geometryN(geom, 1)),3857)) AS geom,
+SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
   network_type, cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e03
   FROM django.routing_networklinese03;
 
-SELECT id, ST_Force_3d(ST_Transform(ST_Force_2D(st_geometryN(geom, 1)),3857)) AS geom,
+SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
   network_type, cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e04
   FROM django.routing_networklinese04;
 
-SELECT id, ST_Force_3d(ST_Transform(ST_Force_2D(st_geometryN(geom, 1)),3857)) AS geom,
+SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
   network_type, cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e05
   FROM django.routing_networklinese05;
 
-SELECT id, ST_Force_3d(ST_Transform(ST_Force_2D(st_geometryN(geom, 1)),3857)) AS geom,
+SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
   network_type, cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e06
   FROM django.routing_networklinese06;
 
 -- fill the 3rd coordinate according to their floor number
-UPDATE geodata.networklines_ug01 SET geom=ST_Translate(ST_Force_3Dz(geom),0,0,-1);
-UPDATE geodata.networklines_e00 SET geom=ST_Translate(ST_Force_3Dz(geom),0,0,0);
-UPDATE geodata.networklines_e01 SET geom=ST_Translate(ST_Force_3Dz(geom),0,0,1);
-UPDATE geodata.networklines_e02 SET geom=ST_Translate(ST_Force_3Dz(geom),0,0,2);
-UPDATE geodata.networklines_e03 SET geom=ST_Translate(ST_Force_3Dz(geom),0,0,3);
-UPDATE geodata.networklines_e04 SET geom=ST_Translate(ST_Force_3Dz(geom),0,0,4);
-UPDATE geodata.networklines_e05 SET geom=ST_Translate(ST_Force_3Dz(geom),0,0,5);
-UPDATE geodata.networklines_e06 SET geom=ST_Translate(ST_Force_3Dz(geom),0,0,6);
+UPDATE geodata.networklines_ug01 SET geom=ST_Translate(ST_Force3DZ(geom),0,0,-1);
+UPDATE geodata.networklines_e00 SET geom=ST_Translate(ST_Force3DZ(geom),0,0,0);
+UPDATE geodata.networklines_e01 SET geom=ST_Translate(ST_Force3DZ(geom),0,0,1);
+UPDATE geodata.networklines_e02 SET geom=ST_Translate(ST_Force3DZ(geom),0,0,2);
+UPDATE geodata.networklines_e03 SET geom=ST_Translate(ST_Force3DZ(geom),0,0,3);
+UPDATE geodata.networklines_e04 SET geom=ST_Translate(ST_Force3DZ(geom),0,0,4);
+UPDATE geodata.networklines_e05 SET geom=ST_Translate(ST_Force3DZ(geom),0,0,5);
+UPDATE geodata.networklines_e06 SET geom=ST_Translate(ST_Force3DZ(geom),0,0,6);
 
 UPDATE geodata.networklines_ug01 SET length =ST_Length(geom);
 UPDATE geodata.networklines_e00 SET length =ST_Length(geom);
@@ -132,10 +132,10 @@ SELECT Populate_Geometry_Columns('geodata.networklines_3857'::regclass);
 -- update stairs, ramps and elevators to match with the next layer
 UPDATE geodata.networklines_3857 SET geom=ST_AddPoint(geom,
   ST_EndPoint(ST_Translate(geom,0,0,1)))
-  WHERE network_type=1 OR network_type=2 OR network_type=7;
+  WHERE network_type=1 OR network_type=2 OR network_type=5;
 -- remove the second last point
 UPDATE geodata.networklines_3857 SET geom=ST_RemovePoint(geom,ST_NPoints(geom) - 2)
-  WHERE network_type=1 OR network_type=2 OR network_type=7;
+  WHERE network_type=1 OR network_type=2 OR network_type=5;
 
 
 -- add columns source and target
@@ -156,7 +156,7 @@ DROP TABLE IF EXISTS geodata.networklines_e06;
 -- remove route nodes vertices table if exists
 DROP TABLE IF EXISTS geodata.networklines_3857_vertices_pgr;
 -- building routing network vertices (fills source and target columns in those new tables)
-SELECT public.pgr_createTopology3d('geodata.networklines_3857', 0.0001, 'geom', 'id');
+SELECT public.pgr_createTopology3dIndrz('geodata.networklines_3857', 0.0001, 'geom', 'id');
 
 
---ALTER TABLE geodata.networklines_3857_vertices_pgr OWNER TO "indrz-pg";
+--ALTER TABLE geodata.networklines_3857_vertices_pgr OWNER TO "indrz-wu";

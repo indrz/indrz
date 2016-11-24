@@ -11,7 +11,7 @@ db_port = "5432"
 conn = psycopg2.connect(host=db_host, user=db_user, port=db_port, password=db_passwd, database=db_database)
 cur = conn.cursor()
 
-floors = ["ug01", "e00", "e01", "e02", "e03"]
+floors = ["ug01", "e00", "e01", "e02", "e03", "e04", "e05", "e06"]
 extension_name = "routing_networklines"
 level = None
 
@@ -20,7 +20,7 @@ def cleanup():
         cur.execute("""drop table if exists geodata.networklines_{0}""".format(floor))
 
 
-def create_3D_networklines():
+def create_3D_networklines(floors):
     for floor in floors:
         sql = """SELECT id, ST_Force_3d(ST_Transform(ST_Force_2D(st_geometryN(geom, 1)),3857)) AS geom,
           network_type, cost, length, 0 AS source, 0 AS target
