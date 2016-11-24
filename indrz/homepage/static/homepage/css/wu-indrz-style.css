@@ -392,6 +392,7 @@ h3 {
     letter-spacing: .1px;
     line-height: 12px;
     color: black;
+    z-index: 0;
 
 }
 

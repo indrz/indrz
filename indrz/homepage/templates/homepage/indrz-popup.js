@@ -179,5 +179,15 @@ $(function() {
         )
 });
 
+$(function() {
+    $("#shareSearchPopup").click(function(){
+
+        $('#ShareSearchModal').modal('show');
+
+
+    }
+        )
+});
+
 
 
