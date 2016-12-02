@@ -4,8 +4,6 @@
 
 CREATE OR REPLACE FUNCTION public.pgr_createtopology3dIndrz(
     edge_table text,
-  from_zlev text,
-  to_zlev text,
     tolerance double precision,
     the_geom text DEFAULT 'the_geom'::text,
     id text DEFAULT 'id'::text,
@@ -55,7 +53,7 @@ BEGIN
     msgKind = 1; -- notice
     fnName = 'pgr_createtopology3dIndrz';
     raise notice 'PROCESSING:';
-    raise notice 'pgr_createtopology3dIndrz(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,from_zlev, to_zlev, tolerance,the_geom,id,source,target,rows_where, clean;
+    raise notice 'pgr_createtopology3dIndrz(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
     execute 'show client_min_messages' into debuglevel;
 
 
@@ -188,7 +186,7 @@ BEGIN
          END IF;
          IF (emptied) THEN
              execute 'select addGeometryColumn('||quote_literal(sname)||','||quote_literal(vname)||','||
-	         quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
+	         quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 3)';
              perform _pgr_createIndex(vertname , 'the_geom'::text , 'gist'::text);
          END IF;
          execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::text[])' into naming;
