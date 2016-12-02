@@ -14,6 +14,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from geojson import loads, Feature, FeatureCollection
 
+from poi_manager.models import Poi
+
 from homepage.search_wu import search_any
 
 
@@ -240,6 +242,48 @@ def force_route_mid_point(request, **kwargs):
     route_out_merge = merge_2_routes(route_start_to_mid_point, route_mid_to_end_point)
 
     return Response({'type': 'FeatureCollection', 'features': route_out_merge})
+
+
+@api_view(['GET',])
+def route_to_nearest_poi(x_coord, y_coord, floor, poi_cat_id):
+
+    startid = find_closest_network_node(x_coord, y_coord, floor)
+
+    poi_node_ids = []
+
+
+
+    cur = connection.cursor()
+    bus_poi_ids = (1071, 1044)
+    ubahn_poi_ids = (1070, 1069)
+    taxi = (1104, 1103)
+
+    list_of_pois = []
+
+    # bus = pk 27  underground= 26
+    # qs_poi_bus_underground = PoiCategory.objects.filter(Q(pk=27) | Q(pk=26))
+    qs_poi_bus_underground = Poi.objects.filter(fk_poi_category=poi_cat_id)
+
+    foo = #qs_poi_bus_underground[1].geom.coords
+
+    pgr_query = """SELECT end_vid, sum(cost) as distance_to_poi
+        FROM pgr_dijkstra(
+            'SELECT id, source, target, cost FROM geodata.networklines_3857',
+            {start_node_id}, ARRAY[{bus_id}, {ubahn_id}],
+            -- 2, ARRAY[1077, 1255],
+            FALSE )
+        GROUP BY end_vid
+        ORDER BY distance_to_poi asc
+        LIMIT 1;""".format(start_node_id=startid, bus_id=1071, ubahn_id=1044)
+
+    cur.execute(pgr_query)
+    res = cur.fetchall()
+
+    node_id_closest_poi = res[0]
+
+    geojs_fc = run_route(startid, node_id_closest_poi, 1)
+
+    return Response(geojs_fc)
 
 
 def run_route(start_node_id, end_node_id, route_type):
