@@ -79,7 +79,7 @@ def find_closest_network_node(x_coord, y_coord, floor):
         FROM geodata.networklines_3857_vertices_pgr AS verts
         INNER JOIN
           (select ST_PointFromText('POINT({0} {1} {2})', 3857)as geom) AS pt
-        ON ST_DWithin(verts.the_geom, pt.geom, 100) and st_Z(verts.the_geom)={2}
+        ON ST_DWithin(verts.the_geom, pt.geom, 10) and st_Z(verts.the_geom)={2}
         ORDER BY ST_3DDistance(verts.the_geom, pt.geom)
         LIMIT 1;""".format(x_coord, y_coord, floor)
 
@@ -267,10 +267,11 @@ def run_route(start_node_id, end_node_id, route_type):
     # }
 
     cur = connection.cursor()
-    base_route_q = """SELECT id, source, target,
-                     total_cost:: DOUBLE PRECISION AS cost,
-                     floor, network_type
-                     FROM geodata.networklines_3857"""
+    # base_route_q = """SELECT id, source, target,
+    #                  total_cost:: DOUBLE PRECISION AS cost,
+    #                  floor, network_type
+    #                  FROM geodata.networklines_3857"""
+    base_route_q = """SELECT id, source, target, cost, reverse_cost FROM geodata.networklines_3857"""
 
     # set default query
     barrierfree_q = "WHERE 1=1"
@@ -278,25 +279,47 @@ def run_route(start_node_id, end_node_id, route_type):
         # exclude all networklines of type stairs
         barrierfree_q = "WHERE network_type not in (1,3)"
 
-    routing_query = '''
-        SELECT seq,
-        id1 AS node,
-        id2 AS edge,
-          ST_Length(geom) AS cost,
-           floor,
-          network_type,
-          ST_AsGeoJSON(geom) AS geoj
-          FROM pgr_dijkstra('
-            {normal} {type}', %s, %s, FALSE, FALSE
-          ) AS dij_route
-          JOIN  geodata.networklines_3857 AS input_network
-          ON dij_route.id2 = input_network.id ;
-      '''.format(normal=base_route_q, type=barrierfree_q)
+
+    # routing_query = '''
+    #  SELECT seq, id, node, edge, ST_Length(geom) AS cost, floor, network_type, ST_AsGeoJSON(geom) AS geoj
+    #   FROM pgr_dijkstra( '{normal} {type}', %s, %s, FALSE) AS dij_route
+    #   LEFT JOIN geodata.networklines_3857 AS input_network
+    #   ON dij_route.edge = input_network.id
+    #   ORDER BY dij_route.seq;
+    # '''.format(normal=base_route_q,type=barrierfree_q)
+    route_query = "SELECT id, source, target, cost, reverse_cost FROM geodata.networklines_3857"
+
+    routing_query = """
+        SELECT seq, id, node, edge,
+            ST_Length(geom) AS cost, agg_cost, floor, network_type,
+            ST_AsGeoJSON(geom) AS geoj
+        FROM pgr_dijkstra( '{normal} {type}',{start_node}, {end_node}) AS dij_route
+
+          JOIN geodata.networklines_3857 AS input_network
+          ON dij_route.edge = input_network.id ;""".format(normal=route_query, type=barrierfree_q, start_node=start_node_id, end_node=end_node_id)
+
+    print(routing_query)
+
+    # routing_query = '''
+    #     SELECT seq,
+    #     id1 AS node,
+    #     id2 AS edge,
+    #       ST_Length(geom) AS cost,
+    #        floor,
+    #       network_type,
+    #       ST_AsGeoJSON(geom) AS geoj
+    #       FROM pgr_dijkstra('
+    #         {normal} {type}', %s, %s, FALSE, FALSE
+    #       ) AS dij_route
+    #       JOIN  geodata.networklines_3857 AS input_network
+    #       ON dij_route.id2 = input_network.id ;
+    #   '''.format(normal=base_route_q, type=barrierfree_q)
 
     # run our shortest path query
     if start_node_id or end_node_id:
         if start_node_id != end_node_id:
-            cur.execute(routing_query, (start_node_id, end_node_id))
+            # cur.execute(routing_query, (start_node_id, end_node_id))
+            cur.execute(routing_query)
     else:
         logger.error("start or end node is None or is the same node " + str(start_node_id))
         return HttpResponseNotFound('<h1>Sorry NO start or end node'
@@ -313,12 +336,12 @@ def run_route(start_node_id, end_node_id, route_type):
     # loop over each segment in the result route segments
     # create the list of our new GeoJSON
     for segment in route_segments:
-        seg_length = segment[3]  # length of segment
-        layer_level = segment[4]  # floor number
-        seg_type = segment[5]
-        seg_node_id = segment[1]
+        seg_length = segment[4]  # length of segment
+        layer_level = segment[6]  # floor number
+        seg_type = segment[7]
+        seg_node_id = segment[2]
         seq_sequence = segment[0]
-        geojs = segment[6]  # geojson coordinates
+        geojs = segment[8]  # geojson coordinates
         geojs_geom = loads(geojs)  # load string to geom
         geojs_feat = Feature(geometry=geojs_geom,
                              properties={'floor': layer_level,

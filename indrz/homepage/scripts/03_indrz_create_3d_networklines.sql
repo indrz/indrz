@@ -115,6 +115,8 @@ SELECT * INTO geodata.networklines_3857 FROM
 )
 as foo ORDER BY id;
 
+UPDATE geodata.networklines_3857 set reverse_cost = cost;
+
 CREATE INDEX geom_gist_index
    ON geodata.networklines_3857 USING gist (geom);
 
