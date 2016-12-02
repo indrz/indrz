@@ -13,42 +13,42 @@ drop table if exists geodata.networklines_e06;
 
 -- convert to 3d coordinates with EPSG:3857
 SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
-  network_type, cost, length, 0 AS source, 0 AS target
+  network_type, cost::FLOAT, 0.0 AS reverse_cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_ug01
   FROM django.routing_networklinesug01;
 
 SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
-  network_type, cost, length, 0 AS source, 0 AS target
+  network_type, cost::FLOAT, 0.0 AS reverse_cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e00
   FROM django.routing_networklinese00;
 
 SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
-  network_type, cost, length, 0 AS source, 0 AS target
+  network_type, cost::FLOAT, 0.0 AS reverse_cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e01
   FROM django.routing_networklinese01;
 
 SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
-  network_type, cost, length, 0 AS source, 0 AS target
+  network_type, cost::FLOAT, 0.0 AS reverse_cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e02
   FROM django.routing_networklinese02;
 
 SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
-  network_type, cost, length, 0 AS source, 0 AS target
+  network_type, cost::FLOAT, 0.0 AS reverse_cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e03
   FROM django.routing_networklinese03;
 
 SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
-  network_type, cost, length, 0 AS source, 0 AS target
+  network_type, cost::FLOAT, 0.0 AS reverse_cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e04
   FROM django.routing_networklinese04;
 
 SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
-  network_type, cost, length, 0 AS source, 0 AS target
+  network_type, cost::FLOAT, 0.0 AS reverse_cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e05
   FROM django.routing_networklinese05;
 
 SELECT id, ST_Force3D(ST_Transform(ST_Force2D(st_geometryN(geom, 1)),3857)) AS geom,
-  network_type, cost, length, 0 AS source, 0 AS target
+  network_type, cost::FLOAT, 0.0 AS reverse_cost, length, 0 AS source, 0 AS target
   INTO geodata.networklines_e06
   FROM django.routing_networklinese06;
 
@@ -96,21 +96,21 @@ DROP TABLE IF EXISTS geodata.networklines_3857;
 
 SELECT * INTO geodata.networklines_3857 FROM
 (
-  (SELECT id, geom, length, network_type, length*ug01.cost as total_cost,
+  (SELECT id, geom, length, network_type, length*ug01.cost as cost, reverse_cost::DOUBLE PRECISION,
    -1 as floor FROM geodata.networklines_ug01 ug01) UNION
-  (SELECT id, geom, length, network_type, length*e0.cost as total_cost,
+  (SELECT id, geom, length, network_type, length*e0.cost as cost, reverse_cost::DOUBLE PRECISION,
    0 as floor FROM geodata.networklines_e00 e0) UNION
-(SELECT id, geom, length, network_type, length*e1.cost as total_cost,
+(SELECT id, geom, length, network_type, length*e1.cost as cost, reverse_cost::DOUBLE PRECISION,
    1 as floor FROM geodata.networklines_e01 e1) UNION
-(SELECT id, geom, length, network_type, length*e2.cost as total_cost,
+(SELECT id, geom, length, network_type, length*e2.cost as cost, reverse_cost::DOUBLE PRECISION,
    2 as floor FROM geodata.networklines_e02 e2) UNION
-  (SELECT id, geom, length, network_type, length*e3.cost as total_cost,
+  (SELECT id, geom, length, network_type, length*e3.cost as cost, reverse_cost::DOUBLE PRECISION,
    3 as floor FROM geodata.networklines_e03 e3) UNION
-  (SELECT id, geom, length, network_type, length*e4.cost as total_cost,
+  (SELECT id, geom, length, network_type, length*e4.cost as cost, reverse_cost::DOUBLE PRECISION,
    4 as floor FROM geodata.networklines_e04 e4) UNION
-   (SELECT id, geom, length, network_type, length*e5.cost as total_cost,
+   (SELECT id, geom, length, network_type, length*e5.cost as cost, reverse_cost::DOUBLE PRECISION,
    5 as floor FROM geodata.networklines_e05 e5) UNION
-  (SELECT id, geom, length, network_type, length*e6.cost as total_cost,
+  (SELECT id, geom, length, network_type, length*e6.cost as cost, reverse_cost::DOUBLE PRECISION,
    6 as floor FROM geodata.networklines_e06 e6)
 )
 as foo ORDER BY id;
@@ -156,7 +156,6 @@ DROP TABLE IF EXISTS geodata.networklines_e06;
 -- remove route nodes vertices table if exists
 DROP TABLE IF EXISTS geodata.networklines_3857_vertices_pgr;
 -- building routing network vertices (fills source and target columns in those new tables)
-SELECT public.pgr_createTopology3dIndrz('geodata.networklines_3857', 0.0001, 'geom', 'id');
-
+SELECT public.pgr_createtopology3dIndrz('geodata.networklines_3857', 0.0001, 'geom', 'id', 'source', 'target', 'true', true);
 
 --ALTER TABLE geodata.networklines_3857_vertices_pgr OWNER TO "indrz-wu";
