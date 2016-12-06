@@ -81,9 +81,11 @@ def find_closest_network_node(x_coord, y_coord, floor):
         FROM geodata.networklines_3857_vertices_pgr AS verts
         INNER JOIN
           (select ST_PointFromText('POINT({0} {1} {2})', 3857)as geom) AS pt
-        ON ST_DWithin(verts.the_geom, pt.geom, 10) and st_Z(verts.the_geom)={2}
+        ON ST_DWithin(verts.the_geom, pt.geom, 50) and st_Z(verts.the_geom)={2}
         ORDER BY ST_3DDistance(verts.the_geom, pt.geom)
         LIMIT 1;""".format(x_coord, y_coord, floor)
+
+    print(query)
 
     cur.execute(query)
 
@@ -245,45 +247,81 @@ def force_route_mid_point(request, **kwargs):
 
 
 @api_view(['GET',])
-def route_to_nearest_poi(x_coord, y_coord, floor, poi_cat_id):
+def route_to_nearest_poi(request, start_xy, floor, poi_cat_id):
 
-    startid = find_closest_network_node(x_coord, y_coord, floor)
+    coords = start_xy.split("=")[1]
+    x_start_coord = float(coords.split(',')[0])
+    y_start_coord = float(coords.split(',')[1])
+    start_floor_num = int(floor.split('=')[1])
+    poi_cat_id_v = int(poi_cat_id.split("=")[1])
 
-    poi_node_ids = []
 
 
+
+    startid = find_closest_network_node(x_start_coord, y_start_coord, start_floor_num)
+
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX" + str(startid))
+
+    # poi_node_ids = []
 
     cur = connection.cursor()
-    bus_poi_ids = (1071, 1044)
-    ubahn_poi_ids = (1070, 1069)
-    taxi = (1104, 1103)
-
-    list_of_pois = []
+    # bus_poi_ids = (1071, 1044)
+    # ubahn_poi_ids = (1070, 1069)
+    # taxi = (1104, 1103)
+    #
+    # list_of_pois = []
 
     # bus = pk 27  underground= 26
     # qs_poi_bus_underground = PoiCategory.objects.filter(Q(pk=27) | Q(pk=26))
-    qs_poi_bus_underground = Poi.objects.filter(fk_poi_category=poi_cat_id)
+    qs_nearest_poi = Poi.objects.filter(fk_poi_category=poi_cat_id_v)
 
-    foo = #qs_poi_bus_underground[1].geom.coords
+
+    poi_ids = [x.id for x in qs_nearest_poi]
+
+    dest_nodes = []
+
+    for res in qs_nearest_poi:
+        network_node_id = find_closest_network_node(res.geom.coords[0][0], res.geom.coords[0][1], res.floor_num )
+
+        print(network_node_id)
+        dest_nodes.append(network_node_id)
+
+    print(dest_nodes)
+
+    print("HOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+
+
+
+
+    #foo = qs_nearest_poi[1].geom.coords
+
+
 
     pgr_query = """SELECT end_vid, sum(cost) as distance_to_poi
         FROM pgr_dijkstra(
             'SELECT id, source, target, cost FROM geodata.networklines_3857',
-            {start_node_id}, ARRAY[{bus_id}, {ubahn_id}],
+            {start_node_id}, ARRAY{poi_ids},FALSE
             -- 2, ARRAY[1077, 1255],
-            FALSE )
+             )
         GROUP BY end_vid
         ORDER BY distance_to_poi asc
-        LIMIT 1;""".format(start_node_id=startid, bus_id=1071, ubahn_id=1044)
+        LIMIT 1;""".format(start_node_id=startid, poi_ids=dest_nodes)
+
+    print("poiNeares query looks like this: " + pgr_query)
 
     cur.execute(pgr_query)
     res = cur.fetchall()
 
-    node_id_closest_poi = res[0]
+    node_id_closest_poi = res[0][0]
 
     geojs_fc = run_route(startid, node_id_closest_poi, 1)
 
     return Response(geojs_fc)
+
+
+def set_route_start_end_feature():
+    # add the name of the start route item and destination route item
+    pass
 
 
 def run_route(start_node_id, end_node_id, route_type):

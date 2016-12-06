@@ -1,9 +1,12 @@
 from django.conf.urls import url
 
 from routing.views import create_route_from_coords, create_route_from_id, create_route_from_search, \
-    force_route_mid_point
+    force_route_mid_point, route_to_nearest_poi
 
 urlpatterns = [
+    url(
+        r'(?P<start_xy>startxy=[-]?\d+\.?\d+,\d+\.\d+)&(?P<floor>floor=[-]?\d+)(?P<poi_cat_id>&poiCatId=\d{1,5})/$',
+        route_to_nearest_poi, name='routing-from-poi'),
     url(
         r'(?P<start_coord>[-]?\d+\.?\d+,\d+\.\d+),(?P<start_floor>[-]?\d+)&(?P<end_coord>[-]?\d+\.?\d+,\d+\.\d+),(?P<end_floor>[-]?\d+)&(?P<route_type>[0-9])/$',
         create_route_from_coords, name='root_coords'),
@@ -14,5 +17,6 @@ urlpatterns = [
     url(
         r'(?P<start_term>startstr=.+)&(?P<end_term>endstr=.+)(?P<route_type>&type=\d{1,5})?/$',
         create_route_from_search, name='routing-from-search'),
+
     url(r'force_mid/', force_route_mid_point, name='force-route-midpoint')
 ]
