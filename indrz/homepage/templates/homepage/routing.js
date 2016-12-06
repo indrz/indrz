@@ -30,10 +30,10 @@ var route_inactive_style = new ol.style.Style({
 });
 
 
-function addRoute(fromNumber, toNumber, routeType) {
-    var geoJsonUrl = baseApiRoutingUrl + 'startstr=' + fromNumber + '&endstr=' + toNumber + '/?format=json';
+function addRoute(fromSearchText, toSearchText, routeType) {
+    var geoJsonUrl = baseApiRoutingUrl + 'startstr=' + fromSearchText + '&endstr=' + toSearchText + '/?format=json';
 
-    var startingLevel = fromNumber.charAt(0);
+    var startingLevel = fromSearchText.charAt(0);
 
     if (routeLayer) {
         map.removeLayer(routeLayer);
@@ -183,4 +183,81 @@ function addMarkers(route_features){
         zIndex: 9999
     });
     map.getLayers().push(markerLayer);
+}
+
+
+// function routeToNearestPoi(startXY, floorNum, poiCatId){
+//
+//     console.log("click startxy: " + startXY)
+//     console.log("click start Floor : " + floorNum)
+//     console.log("clic poiCat is : " + poiCatId)
+//
+//     var poiNearestRouteUrl = baseApiRoutingUrl + 'startxy=' + startXY + '&floor=' + floorNum + '&poiCatId=' + poiCatId + '/?format=json';
+//
+//     console.log("route url is : " + poiNearestRouteUrl)
+//
+//
+//
+//
+// }
+
+
+function routeToNearestPoi(startXY, floorNum, poiCatId){
+
+    var geoJsonUrl = baseApiRoutingUrl + 'startxy=' + startXY + '&floor=' + floorNum + '&poiCatId=' + poiCatId + '/?format=json';
+
+
+    if (routeLayer) {
+        map.removeLayer(routeLayer);
+        console.log("removing layer now");
+        //map.getLayers().pop();
+    }
+
+    var source = new ol.source.Vector();
+    $.ajax(geoJsonUrl).then(function (response) {
+        //console.log("response", response);
+        var geojsonFormat = new ol.format.GeoJSON();
+        var features = geojsonFormat.readFeatures(response,
+            {featureProjection: 'EPSG:4326'});
+        source.addFeatures(features);
+
+        addMarkers(features);
+
+        // active the floor of the start point
+        var start_floor = features[0].getProperties().floor;
+        for (var i = 0; i < floor_layers.length; i++) {
+            if (start_floor == floor_layers[i].getProperties().floor_num) {
+                activateLayer(i);
+            }
+        }
+        // center up the route
+        var extent = source.getExtent();
+        map.getView().fit(extent, map.getSize());
+    });
+
+    routeLayer = new ol.layer.Vector({
+        //url: geoJsonUrl,
+        //format: new ol.format.GeoJSON(),
+        source: source,
+        style: function (feature, resolution) {
+            var feature_floor = feature.getProperties().floor;
+            if (feature_floor == active_floor_num) {
+                feature.setStyle(route_active_style);
+            } else {
+                feature.setStyle(route_inactive_style);
+            }
+        },
+        title: "Route",
+        name: "Route",
+        visible: true,
+        zIndex: 9999
+    });
+
+    map.getLayers().push(routeLayer);
+
+
+
+
+    $("#clearRoute").removeClass("hide");
+    $("#shareRoute").removeClass("hide");
 }

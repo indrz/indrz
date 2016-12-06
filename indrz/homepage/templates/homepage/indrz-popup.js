@@ -95,15 +95,20 @@ function getTitle(properties){
 
 var routeToValTemp = ""
 var routeFromValTemp = ""
+var objCenterCoords = ""
+var floorNum;
 
 function open_popup(properties, coordinate, name){
-    console.log("properites: " + properties.name)
+    // console.log("properites: " + properties.name)
+    // console.log("properites: " + properties.centerGeometry.coordinates)
+
+    objCenterCoords = properties.centerGeometry.coordinates;
     var titlePopup = ""
     var titleBuildingName = gettext('Building : ');
     var titleFloorNumber = gettext('Floor Number: ');
     var titleRoomcode = gettext('Room Number: ');
     //var name;
-    var floorNum;
+
     var buildingName;
     var roomcode ;
 
@@ -175,8 +180,8 @@ $(function() {
         document.getElementById('route-to').value = routeToValTemp;
         $('#collapseTwo').collapse('show');
 
-    }
-        )
+        }
+    )
 });
 
 $(function() {
@@ -185,8 +190,40 @@ $(function() {
         $('#ShareSearchModal').modal('show');
 
 
-    }
-        )
+        }
+    )
+});
+
+
+$(function() {
+    $("#routeFromTrain").click(function(){
+
+
+        routeToNearestPoi(objCenterCoords, floorNum, 27); // 27 is the id of poi_category UNDERGROUND
+
+        document.getElementById('route-from').value = routeFromValTemp;
+
+        $('#collapseTwo').collapse('show');
+
+
+        }
+    )
+});
+
+
+$(function() {
+    $("#routeFromBuildingEntrance").click(function(){
+
+
+        document.getElementById('route-from').value = routeFromValTemp;
+        // document.getElementById('route-to').value = routeToValTemp;
+        $('#collapseTwo').collapse('show');
+
+        routeToNearestPoi(objCenterCoords, floorNum, 13); // 13 is the id of poi_category Building Entrance
+
+
+        }
+    )
 });
 
 
