@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-12 11:51+0200\n"
+"POT-Creation-Date: 2016-12-07 17:04+0100\n"
 "PO-Revision-Date: 2016-07-15 13:03+0200\n"
 "Last-Translator: b'  <admin@admin.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -284,8 +284,8 @@ msgstr ""
 msgid "location of kiosk"
 msgstr ""
 
-#: .\homepage\kiosk\templates\kiosk.html:27 .\homepage\templates\map.html:27
-#: .\maps\templates\map.html:27
+#: .\homepage\kiosk\templates\kiosk.html:27 .\homepage\templates\map.html:40
+#: .\homepage\templates\wu-neu-homepage.html:34 .\maps\templates\map.html:27
 #, fuzzy
 #| msgid "Toggle sorting"
 msgid "Toggle search form"
@@ -350,17 +350,36 @@ msgstr "Contenu inconnu"
 msgid "Change language"
 msgstr "Langue"
 
+#: .\homepage\templates\includes\poi_layers.html:9
+#, fuzzy
+#| msgid "Owner name"
+msgid "Enter Poi name"
+msgstr "Le nom du propriétaire d'"
+
+#: .\homepage\templates\includes\poi_layers.html:13
+#: .\homepage\templates\search-form.html:16
+#: .\maps\templates\search-form.html:12
+#: .\poi_manager\templates\poi\poi-kiosk.html:28
+msgid "Go!"
+msgstr "Allez!"
+
+#: .\homepage\templates\main-map.html:54
+msgid "Zoom to Campus"
+msgstr ""
+
+#: .\homepage\templates\main-map.html:55
+#, fuzzy
+#| msgid "Share map"
+msgid "Share Map"
+msgstr "Partager la carte"
+
 #: .\homepage\templates\modal-bugreport.html:9
-#: .\maps\templates\modal-bugreport.html:9
-msgid "Bug Report"
+#, fuzzy
+#| msgid "Bug Report"
+msgid " Bug Report"
 msgstr "Rapport De Bug"
 
-#: .\homepage\templates\modal-bugreport.html:12
-#: .\maps\templates\modal-bugreport.html:12
-msgid "Please describe what went wrong."
-msgstr "Veuillez décrire ce qui s'est passé."
-
-#: .\homepage\templates\modal-bugreport.html:15
+#: .\homepage\templates\modal-bugreport.html:22
 #: .\homepage\templates\modal-share.html:21
 #: .\homepage\templates\modal-share.html:46
 #: .\homepage\templates\modal-share.html:71
@@ -370,7 +389,7 @@ msgstr "Veuillez décrire ce qui s'est passé."
 msgid "Close"
 msgstr "Fermer"
 
-#: .\homepage\templates\modal-bugreport.html:16
+#: .\homepage\templates\modal-bugreport.html:23
 #: .\maps\templates\modal-bugreport.html:16
 msgid "Send"
 msgstr "Envoyer"
@@ -459,64 +478,93 @@ msgstr "Etage 0"
 msgid "Etage -1"
 msgstr "Etage -1"
 
-#: .\homepage\templates\routing-form.html:22
-#: .\maps\templates\routing-form.html:22
-msgid "Standard Route"
-msgstr "Route Standard"
+#: .\homepage\templates\popup-markup.html:7
+msgid "Route from here"
+msgstr ""
 
-#: .\homepage\templates\routing-form.html:28
+#: .\homepage\templates\popup-markup.html:8
+msgid "Route to here"
+msgstr ""
+
+#: .\homepage\templates\popup-markup.html:10
+#, fuzzy
+#| msgid "Number of buildings"
+msgid "Route from building"
+msgstr "Nombre de bâtiments"
+
+#: .\homepage\templates\popup-markup.html:10
+#, fuzzy
+#| msgid "Building name"
+msgid "Building"
+msgstr "Le nom de l'immeuble"
+
+#: .\homepage\templates\popup-markup.html:11
+#, fuzzy
+#| msgid "Remove from sorting"
+msgid "Route from train"
+msgstr "Retirer du tri"
+
+#: .\homepage\templates\popup-markup.html:11
+msgid "Train"
+msgstr ""
+
+#: .\homepage\templates\popup-markup.html:13
+#: .\homepage\templates\search-form.html:19
+#: .\maps\templates\search-form.html:20
+#: .\poi_manager\templates\poi\poi-kiosk.html:32
+msgid "Share"
+msgstr "Partager"
+
+#: .\homepage\templates\routing-form.html:22
 #: .\maps\templates\routing-form.html:28
 msgid "Barrier Free Route"
 msgstr "Sans Obstacle De La Route"
 
-#: .\homepage\templates\routing-form.html:31
+#: .\homepage\templates\routing-form.html:25
 #: .\maps\templates\routing-form.html:31
 msgid "Go !"
 msgstr "Allez !"
 
-#: .\homepage\templates\search-form.html:8 .\maps\templates\search-form.html:8
-msgid "Search for ..."
-msgstr "Recherche pour ..."
+#: .\homepage\templates\routing-form.html:28
+#, fuzzy
+#| msgid "Standard Route"
+msgid "Share Route"
+msgstr "Route Standard"
+
+#: .\homepage\templates\search-form.html:11
+#, fuzzy
+#| msgid "Search"
+msgid "Search Term"
+msgstr "Recherche"
 
 #: .\homepage\templates\search-form.html:12
-#: .\maps\templates\search-form.html:12
-msgid "Go!"
-msgstr "Allez!"
-
-#: .\homepage\templates\search-form.html:20
-#: .\maps\templates\search-form.html:20
-msgid "Share"
-msgstr "Partager"
-
-#: .\homepage\templates\search-form.html:22
-#: .\maps\templates\search-form.html:22
-msgid "GPS"
-msgstr "GPS"
-
-#: .\homepage\templates\search-form.html:25
-#: .\maps\templates\search-form.html:25
-msgid "Directions"
-msgstr "Les Directions"
-
-#: .\homepage\templates\search-form.html:26
-#: .\maps\templates\search-form.html:26
-msgid "Print"
+msgid "Search people, places, organisations..."
 msgstr ""
 
-#: .\homepage\templates\search-form.html:28
-#: .\maps\templates\search-form.html:28
-msgid "Clear"
-msgstr "Claire"
+#: .\homepage\templates\search-form.html:18
+msgid "Refresh"
+msgstr ""
 
-#: .\homepage\templates\search-form.html:32
-#: .\maps\templates\search-form.html:32
-msgid "Info"
-msgstr "Info"
+#: .\homepage\templates\search-form.html:27
+#, fuzzy
+#| msgid "Share search results"
+msgid "Search Results"
+msgstr "Partager les résultats de recherche"
 
-#: .\homepage\templates\search-form.html:34
-#: .\maps\templates\search-form.html:34
-msgid "Report Bug"
-msgstr "Rapport De Bug"
+#: .\homepage\templates\wu-neu-left-menu-old.html:10
+#: .\homepage\templates\wu-neu-left-menu.html:15
+#, fuzzy
+#| msgid "Search for ..."
+msgid "Search on campus"
+msgstr "Recherche pour ..."
+
+#: .\homepage\templates\wu-neu-left-menu.html:52
+msgid "Routing"
+msgstr ""
+
+#: .\homepage\templates\wu-neu-left-menu.html:68
+msgid "POIs"
+msgstr ""
 
 #: .\landscape\models.py:174
 msgid "Geometry multi-polygon outside facility areas"
@@ -530,6 +578,47 @@ msgstr ""
 #: .\landscape\models.py:218
 msgid "Geometry multi-linestrings pavement lines"
 msgstr "La géométrie multi-éléments linestring chaussée lignes"
+
+#: .\maps\templates\modal-bugreport.html:9
+msgid "Bug Report"
+msgstr "Rapport De Bug"
+
+#: .\maps\templates\modal-bugreport.html:12
+msgid "Please describe what went wrong."
+msgstr "Veuillez décrire ce qui s'est passé."
+
+#: .\maps\templates\routing-form.html:22
+msgid "Standard Route"
+msgstr "Route Standard"
+
+#: .\maps\templates\search-form.html:8
+#: .\poi_manager\templates\poi\poi-kiosk.html:24
+msgid "Search for ..."
+msgstr "Recherche pour ..."
+
+#: .\maps\templates\search-form.html:22
+msgid "GPS"
+msgstr "GPS"
+
+#: .\maps\templates\search-form.html:25
+msgid "Directions"
+msgstr "Les Directions"
+
+#: .\maps\templates\search-form.html:26
+msgid "Print"
+msgstr ""
+
+#: .\maps\templates\search-form.html:28
+msgid "Clear"
+msgstr "Claire"
+
+#: .\maps\templates\search-form.html:32
+msgid "Info"
+msgstr "Info"
+
+#: .\maps\templates\search-form.html:34
+msgid "Report Bug"
+msgstr "Rapport De Bug"
 
 #: .\permissions\permissions.py:22 .\permissions\permissions.py:28
 #: .\permissions\permissions.py:39
@@ -677,6 +766,15 @@ msgstr "Arbre de commande dans la légende"
 #: .\poi_manager\models.py:100
 msgid "Sort oder of POI items"
 msgstr "Trier oder de POI éléments"
+
+#: .\poi_manager\templates\poi\poi-kiosk.html:6
+msgid "POI"
+msgstr ""
+
+#: .\poi_manager\templates\poi\poi-kiosk.html:11
+#: .\templates\admin\search_form.html:7
+msgid "Search"
+msgstr "Recherche"
 
 #: .\poi_manager\templatetags\mptt_tags.py:31
 #, python-format
@@ -917,16 +1015,23 @@ msgstr "Cliquez ici pour sélectionner les objets à travers toutes les pages"
 
 #: .\templates\admin\actions.html:11
 #, python-format
-msgid "Select all "
-msgstr "Sélectionnez tous "
+msgid "Select all %(total_count)s %(module_name)s"
+msgstr ""
 
 #: .\templates\admin\actions.html:13
 msgid "Clear selection"
 msgstr "Effacer la sélection"
 
 #: .\templates\admin\auth\user\add_form.html:6
-msgid "First, enter a username and password. Then, you'll be able to edit more user options. "
-msgstr "Tout d'abord, saisissez un nom d'utilisateur et mot de passe. Ensuite, vous "
+#, fuzzy
+#| msgid ""
+#| "First, enter a username and password. Then, you'll be able to edit more "
+#| "user options. "
+msgid ""
+"First, enter a username and password. Then, you'll be able to edit more user "
+"options."
+msgstr ""
+"Tout d'abord, saisissez un nom d'utilisateur et mot de passe. Ensuite, vous "
 "serez en mesure de modifier plusieurs options de l'utilisateur."
 
 #: .\templates\admin\auth\user\add_form.html:8
@@ -1188,10 +1293,6 @@ msgstr "Ajouter un autre %(model)s"
 msgid "Delete selected %(model)s"
 msgstr "Delete selected %(model)s"
 
-#: .\templates\admin\search_form.html:7
-msgid "Search"
-msgstr "Recherche"
-
 #: .\templates\admin\search_form.html:9
 #, python-format
 msgid "%(counter)s result"
@@ -1231,6 +1332,9 @@ msgstr "Google Maps via GeoDjango"
 #: .\templates\gis\openlayers.html:19
 msgid "Debugging window (serialized value)"
 msgstr "Fenêtre de débogage (sérialisé valeur)"
+
+#~ msgid "Select all "
+#~ msgstr "Sélectionnez tous "
 
 #~ msgid "Active meaning show it yes - no"
 #~ msgstr "Active sens le montrer oui - non"
