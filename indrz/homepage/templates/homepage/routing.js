@@ -185,26 +185,29 @@ function addMarkers(route_features){
     map.getLayers().push(markerLayer);
 }
 
-
-// function routeToNearestPoi(startXY, floorNum, poiCatId){
-//
-//     console.log("click startxy: " + startXY)
-//     console.log("click start Floor : " + floorNum)
-//     console.log("clic poiCat is : " + poiCatId)
-//
-//     var poiNearestRouteUrl = baseApiRoutingUrl + 'startxy=' + startXY + '&floor=' + floorNum + '&poiCatId=' + poiCatId + '/?format=json';
-//
-//     console.log("route url is : " + poiNearestRouteUrl)
-//
-//
-//
-//
-// }
-
-
 function routeToNearestPoi(startXY, floorNum, poiCatId){
 
+
     var geoJsonUrl = baseApiRoutingUrl + 'startxy=' + startXY + '&floor=' + floorNum + '&poiCatId=' + poiCatId + '/?format=json';
+
+    //
+    // $.getJSON(geoJsonUrl, function(json){
+    //     destinationPoiInfo = json.route_info[0].destination.name;
+    // });
+
+       // var myD =  $.getJSON(geoJsonUrl, function(data) {
+       //                   var n = data.route_info[0].destination.name;
+       //                  console.log("xxxxxxxxx x  :  " + n);
+       //
+       //                  destinationPoiInfo.push(n);
+       //
+       //                  return n
+       //                  //data is the JSON string
+       //              });
+
+       // console.log("PPPPPPPPPPPPPPPPP " + destinationPoiInfo);
+       //
+       // document.getElementById('route-to').value = destinationPoiInfo;
 
 
     if (routeLayer) {
@@ -215,7 +218,6 @@ function routeToNearestPoi(startXY, floorNum, poiCatId){
 
     var source = new ol.source.Vector();
     $.ajax(geoJsonUrl).then(function (response) {
-        //console.log("response", response);
         var geojsonFormat = new ol.format.GeoJSON();
         var features = geojsonFormat.readFeatures(response,
             {featureProjection: 'EPSG:4326'});
@@ -254,8 +256,6 @@ function routeToNearestPoi(startXY, floorNum, poiCatId){
     });
 
     map.getLayers().push(routeLayer);
-
-
 
 
     $("#clearRoute").removeClass("hide");

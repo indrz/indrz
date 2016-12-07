@@ -202,6 +202,7 @@ $(function() {
         routeToNearestPoi(objCenterCoords, floorNum, 27); // 27 is the id of poi_category UNDERGROUND
 
         document.getElementById('route-from').value = routeFromValTemp;
+        // document.getElementById('route-to').value = destinationPoiInfo;
 
         $('#collapseTwo').collapse('show');
 
@@ -216,11 +217,12 @@ $(function() {
 
 
         document.getElementById('route-from').value = routeFromValTemp;
-        // document.getElementById('route-to').value = routeToValTemp;
+
         $('#collapseTwo').collapse('show');
 
         routeToNearestPoi(objCenterCoords, floorNum, 13); // 13 is the id of poi_category Building Entrance
 
+        // document.getElementById('route-to').value = destinationPoiInfo;
 
         }
     )

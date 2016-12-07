@@ -10,6 +10,7 @@ import requests
 from django.conf import settings
 from django.http import HttpResponseNotFound
 from django.db import connection
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from geojson import loads, Feature, FeatureCollection
@@ -255,68 +256,58 @@ def route_to_nearest_poi(request, start_xy, floor, poi_cat_id):
     start_floor_num = int(floor.split('=')[1])
     poi_cat_id_v = int(poi_cat_id.split("=")[1])
 
-
-
-
     startid = find_closest_network_node(x_start_coord, y_start_coord, start_floor_num)
 
-    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX" + str(startid))
-
-    # poi_node_ids = []
-
     cur = connection.cursor()
-    # bus_poi_ids = (1071, 1044)
-    # ubahn_poi_ids = (1070, 1069)
-    # taxi = (1104, 1103)
-    #
-    # list_of_pois = []
 
     # bus = pk 27  underground= 26
-    # qs_poi_bus_underground = PoiCategory.objects.filter(Q(pk=27) | Q(pk=26))
     qs_nearest_poi = Poi.objects.filter(fk_poi_category=poi_cat_id_v)
 
+    if qs_nearest_poi:
+        dest_nodes = []
+        pois_found = []
 
-    poi_ids = [x.id for x in qs_nearest_poi]
+        for i, res in enumerate(qs_nearest_poi):
+            network_node_id = find_closest_network_node(res.geom.coords[0][0], res.geom.coords[0][1], res.floor_num )
+            if network_node_id:
+                pois_found.append({"result_index": i, 'name': res.name, 'floor': res.floor_num, 'id': res.id,
+                                 'network_node_id': network_node_id, 'geometry':loads(res.geom.geojson)})
 
-    dest_nodes = []
-
-    for res in qs_nearest_poi:
-        network_node_id = find_closest_network_node(res.geom.coords[0][0], res.geom.coords[0][1], res.floor_num )
-
-        print(network_node_id)
-        dest_nodes.append(network_node_id)
-
-    print(dest_nodes)
-
-    print("HOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
-
+                dest_nodes.append(network_node_id)
+            else:
+                return Response({"error": "no network node found close to poi"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 
-    #foo = qs_nearest_poi[1].geom.coords
+        pgr_query = """SELECT end_vid, sum(cost) as distance_to_poi
+            FROM pgr_dijkstra(
+                'SELECT id, source, target, cost FROM geodata.networklines_3857',
+                {start_node_id}, ARRAY{poi_ids},FALSE
+                -- 2, ARRAY[1077, 1255],
+                 )
+            GROUP BY end_vid
+            ORDER BY distance_to_poi asc
+            LIMIT 1;""".format(start_node_id=startid, poi_ids=dest_nodes)
 
 
+        cur.execute(pgr_query)
+        res = cur.fetchall()
 
-    pgr_query = """SELECT end_vid, sum(cost) as distance_to_poi
-        FROM pgr_dijkstra(
-            'SELECT id, source, target, cost FROM geodata.networklines_3857',
-            {start_node_id}, ARRAY{poi_ids},FALSE
-            -- 2, ARRAY[1077, 1255],
-             )
-        GROUP BY end_vid
-        ORDER BY distance_to_poi asc
-        LIMIT 1;""".format(start_node_id=startid, poi_ids=dest_nodes)
+        node_id_closest_poi = res[0][0]
 
-    print("poiNeares query looks like this: " + pgr_query)
+        closest_poi = None
 
-    cur.execute(pgr_query)
-    res = cur.fetchall()
+        for x in pois_found:
+            if node_id_closest_poi == x['network_node_id']:
+                closest_poi = x
 
-    node_id_closest_poi = res[0][0]
 
-    geojs_fc = run_route(startid, node_id_closest_poi, 1)
+        geojs_fc = run_route(startid, node_id_closest_poi, 1)
+        geojs_fc.update({'route_info':[{'destination':closest_poi},{'start': 'work in progress'}]})
 
-    return Response(geojs_fc)
+        return Response(geojs_fc)
+    else:
+        return Response({"error":"no Pois with that poi_cat_id found"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 def set_route_start_end_feature():
