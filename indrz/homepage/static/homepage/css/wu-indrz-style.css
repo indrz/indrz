@@ -294,11 +294,25 @@ body, h1, h2, h3, h4, p, li, td, th {
   content: "X";
 }
 
+.ol-control button:focus, .ol-control button:hover {
+    text-decoration: none;
+    background-color: rgb(0, 0, 0);
+    border-color:black;
+
+}
+
+
+
 .ol-control button {
 
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.ol-control {
+
+    background-color: black;
+    border-radius: 0px;
+}
 
 
 
@@ -399,7 +413,7 @@ h3 {
 .indrz-toolbar{
     position: absolute;
     top: .5em;
-    left: 2.5em;
+    left: 2.8em;
 
 }
 
