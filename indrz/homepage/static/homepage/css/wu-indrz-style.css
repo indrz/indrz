@@ -314,6 +314,9 @@ body, h1, h2, h3, h4, p, li, td, th {
     border-radius: 0px;
 }
 
+.ol-control:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
 
 
 .twitter-typeahead{ float:left; width:100%}
