@@ -27,7 +27,7 @@
     // 6 create an instance when the DOM is ready
     $('#jstree').jstree({
     "checkbox" : {
-      "keep_selected_style" : true,
+      "keep_selected_style" : false,
       "visible" : false,
       "three_state": false
     },
@@ -45,46 +45,34 @@
                 var Catid = data.node.id;
                 var catNumId = Catid.split("_")[1];
                 var poiIconName = $('#jstree').jstree(true).get_icon(data.node.id);
-                console.log("poi icon name is:" + poiIconName);
-                createPoi(1, nodeName.trim(), catNumId, poiIconName);
+                createPoi(1, nodeName.trim(), catNumId, poiIconName.replace('_active',''));
             }
 
-
       });
 
-    $('#jstree').on("deselect_node.jstree", function(e, data) {
-        var nodeName = $('#jstree').jstree(true).get_text(data.node.id);
-        console.log("deselected  :" + nodeName.trim());
 
-                //map.removeLayer(poiLayer);
-                setPoiVisibility(nodeName.trim());
-                console.log("removing poi layer now");
-                //map.getLayers().pop();
+      $("#jstree")
+          .on('select_node.jstree', function (evt, data) {
 
-      });
+              var nodeName = $('#jstree').jstree(true).get_text(data.node.id);
+              var poiIconName2 = $('#jstree').jstree(true).get_icon(data.node.id);
+              var Catid = data.node.id;
 
-          $('#jstree').on("select_node.jstree", function(e, data) {
-            var nodeName = $('#jstree').jstree(true).get_text(data.node.id);
-            console.log("SELECTED  :" + nodeName.trim());
+              setPoiVisibility(nodeName.trim());
 
-            var Catid = data.node.id;
-            var catNumId = Catid.split("_")[1];
-            console.log("current id is num: " + Catid);
-            console.log("id num is: " + catNumId);
+              data.instance.set_icon(data.node, poiIconName2 + '_active');
 
+          })
+          .on('deselect_node.jstree', function (evt, data) {
 
+              var nodeName = $('#jstree').jstree(true).get_text(data.node.id);
+              var poiIconName3 = $('#jstree').jstree(true).get_icon(data.node.id);
 
+              data.instance.set_icon(data.node, poiIconName3.replace("_active", ""));
 
+              setPoiVisibility(nodeName.trim());
 
-
-
-                //map.removeLayer(poiLayer);
-                setPoiVisibility(nodeName.trim());
-                console.log("make it Visible");
-                //map.getLayers().pop();
-
-      });
-
+          });
 
 
 
