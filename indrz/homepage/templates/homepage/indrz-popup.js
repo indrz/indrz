@@ -102,7 +102,14 @@ function open_popup(properties, coordinate, name){
     // console.log("properites: " + properties.name)
     // console.log("properites: " + properties.centerGeometry.coordinates)
 
-    objCenterCoords = properties.centerGeometry.coordinates;
+    objCenterCoords = coordinate
+
+    if (objCenterCoords != undefined || objCenterCoords != ''){
+        objCenterCoords = coordinate
+    }
+    else{
+        objCenterCoords = properties.centerGeometry.coordinates;
+    }
     var titlePopup = ""
     var titleBuildingName = gettext('Building : ');
     var titleFloorNumber = gettext('Floor Number: ');
