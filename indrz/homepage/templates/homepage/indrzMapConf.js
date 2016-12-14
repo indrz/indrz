@@ -51,17 +51,31 @@ $('#search-input').typeahead(null, {
     name: 'search-field',
     limit: 100,
     source: searchValues
+    // templates: {
+    //         empty: 'not found', //optional
+    //         suggestion: function(el){return '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREZsX_jcmMUqvVF3HW8-3dyjxZ9wZO4ugIvYQyj761-RYwcH91" />'+el.name}
+    //     }
+
+
+});
+
+$('#search-input').on('typeahead:selected', function (e, item) {
+    console.log("selected item: " + item);
+    searchIndrz(building_id, item);
+
+}).on('typeahead:autocompleted', function (e, item) {
+    console.log("autocompleted item: " + item);
 });
 
 
-$("#submitFormSearch").submit(function (event) {
-    //              alert( "Handler for .submit() called."  );
-
-    //            var buildingid = buildingNantesId;
-    var searchText = $('#search-input').val();
-    searchIndrz(building_id, searchText);
-    event.preventDefault();
-});
+// $("#submitFormSearch").submit(function (event) {
+//     //              alert( "Handler for .submit() called."  );
+//
+//     //            var buildingid = buildingNantesId;
+//     var searchText = $('#search-input').val();
+//     searchIndrz(building_id, searchText);
+//     event.preventDefault();
+// });
 
 $("#showPoi").submit(function (event) {
    // alert( "Handler for .submit() called." + $('#poi-input').val()   );
