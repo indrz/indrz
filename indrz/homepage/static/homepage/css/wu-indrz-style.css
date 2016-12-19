@@ -430,3 +430,11 @@ h3 {
 .indrz-search-box {
     margin-top: 10px;
 }
+
+
+.jstree-icon:empty{
+    vertical-align: middle;
+}
+.jstree-icon{
+    vertical-align: middle;
+}
