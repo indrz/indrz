@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-07 17:04+0100\n"
+"POT-Creation-Date: 2016-12-20 13:19+0100\n"
 "PO-Revision-Date: 2016-12-20 12:56+0100\n"
 "Last-Translator: b'  <>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.7.11\n"
 
@@ -283,7 +283,7 @@ msgstr "Bitte in Grad eingeben von 0 bis 359 wobei Nord ist 0"
 msgid "location of kiosk"
 msgstr "Kiosk Ort"
 
-#: .\homepage\kiosk\templates\kiosk.html:27 .\homepage\templates\map.html:40
+#: .\homepage\kiosk\templates\kiosk.html:27 .\homepage\templates\map.html:43
 #: .\homepage\templates\wu-neu-homepage.html:34 .\maps\templates\map.html:27
 #, fuzzy
 #| msgid "Toggle sorting"
@@ -356,11 +356,14 @@ msgid "Enter Poi name"
 msgstr "Besitzer"
 
 #: .\homepage\templates\includes\poi_layers.html:13
-#: .\homepage\templates\search-form.html:16
 #: .\maps\templates\search-form.html:12
 #: .\poi_manager\templates\poi\poi-kiosk.html:28
 msgid "Go!"
 msgstr "Go!"
+
+#: .\homepage\templates\main-map.html:47
+msgid "Satellite"
+msgstr "Satellit"
 
 #: .\homepage\templates\main-map.html:54
 msgid "Zoom to Campus"
@@ -372,11 +375,19 @@ msgstr "Gesamte Campus"
 msgid "Share Map"
 msgstr "Karte Teilen"
 
+#: .\homepage\templates\main-map.html:56
+msgid "Print to PDF"
+msgstr "PDF Drucken"
+
+#: .\homepage\templates\main-map.html:56 .\maps\templates\search-form.html:26
+msgid "Print"
+msgstr "Drucken"
+
 #: .\homepage\templates\modal-bugreport.html:9
 #, fuzzy
 #| msgid "Bug Report"
 msgid " Bug Report"
-msgstr "Bug-Report"
+msgstr "Fehler Bericht"
 
 #: .\homepage\templates\modal-bugreport.html:22
 #: .\homepage\templates\modal-share.html:21
@@ -386,7 +397,7 @@ msgstr "Bug-Report"
 #: .\maps\templates\modal-share.html:21 .\maps\templates\modal-share.html:46
 #: .\maps\templates\modal-share.html:71
 msgid "Close"
-msgstr "In der Nähe"
+msgstr "Schliessen"
 
 #: .\homepage\templates\modal-bugreport.html:23
 #: .\maps\templates\modal-bugreport.html:16
@@ -514,17 +525,29 @@ msgstr "Ubahn"
 msgid "Share"
 msgstr "Teilen"
 
-#: .\homepage\templates\routing-form.html:22
+#: .\homepage\templates\routing-form.html:9
+#, fuzzy
+#| msgid "Standard Route"
+msgid "Start Route"
+msgstr "Route Teilen"
+
+#: .\homepage\templates\routing-form.html:15
+#, fuzzy
+#| msgid "Standard Route"
+msgid "End Route"
+msgstr "Standard-Route"
+
+#: .\homepage\templates\routing-form.html:23
 #: .\maps\templates\routing-form.html:28
 msgid "Barrier Free Route"
 msgstr "Barriere Freier Strecke"
 
-#: .\homepage\templates\routing-form.html:25
+#: .\homepage\templates\routing-form.html:26
 #: .\maps\templates\routing-form.html:31
 msgid "Go !"
 msgstr "Go !"
 
-#: .\homepage\templates\routing-form.html:28
+#: .\homepage\templates\routing-form.html:29
 #, fuzzy
 #| msgid "Standard Route"
 msgid "Share Route"
@@ -551,17 +574,22 @@ msgid "Search Results"
 msgstr "Teilen Sie die Suchergebnisse"
 
 #: .\homepage\templates\wu-neu-left-menu-old.html:10
-#: .\homepage\templates\wu-neu-left-menu.html:15
+#, fuzzy
+#| msgid "Share search results"
+msgid "Search on campus"
+msgstr "Teilen Sie die Suchergebnisse"
+
+#: .\homepage\templates\wu-neu-left-menu.html:16
 #, fuzzy
 #| msgid "Search for ..."
-msgid "Search on campus"
-msgstr "Suche auf dem campus"
+msgid "SEARCH ON CAMPUS"
+msgstr "SUCHE AM CAMPUS"
 
-#: .\homepage\templates\wu-neu-left-menu.html:52
+#: .\homepage\templates\wu-neu-left-menu.html:53
 msgid "Routing"
 msgstr "Routen"
 
-#: .\homepage\templates\wu-neu-left-menu.html:68
+#: .\homepage\templates\wu-neu-left-menu.html:69
 msgid "POIs"
 msgstr "POIs"
 
@@ -601,10 +629,6 @@ msgstr "GPS"
 #: .\maps\templates\search-form.html:25
 msgid "Directions"
 msgstr "Richtungen"
-
-#: .\maps\templates\search-form.html:26
-msgid "Print"
-msgstr "Drucken"
 
 #: .\maps\templates\search-form.html:28
 msgid "Clear"
@@ -784,15 +808,15 @@ msgstr ""
 #, python-format
 msgid "drilldown_tree_for_node tag was given an invalid model: %s"
 msgstr ""
-"drilldown_tree_for_node tag gegeben wurde eine ungültige Modell: "
-"<code>%s</code>"
+"drilldown_tree_for_node tag gegeben wurde eine ungültige Modell: <code>%s</"
+"code>"
 
 #: .\poi_manager\templatetags\mptt_tags.py:62
 #, python-format
 msgid "drilldown_tree_for_node tag was given an invalid model field: %s"
 msgstr ""
-"drilldown_tree_for_node tag gegeben wurde eine ungültige Modell-field: "
-"<code>%s</code>"
+"drilldown_tree_for_node tag gegeben wurde eine ungültige Modell-field: <code>"
+"%s</code>"
 
 #: .\poi_manager\templatetags\mptt_tags.py:89
 #, python-format
@@ -1013,8 +1037,8 @@ msgid ""
 "email and should be fixed shortly. Thanks for your patience."
 msgstr ""
 "Es ist ein Fehler gewesen. Es ist berichtet worden, um die site-"
-"Administratoren per E-Mail und sollte in Kürze behoben. Vielen Dank für Ihre"
-" Geduld."
+"Administratoren per E-Mail und sollte in Kürze behoben. Vielen Dank für Ihre "
+"Geduld."
 
 #: .\templates\admin\actions.html:4
 msgid "Run the selected action"
@@ -1039,8 +1063,8 @@ msgstr "Löschen der Auswahl"
 
 #: .\templates\admin\auth\user\add_form.html:6
 msgid ""
-"First, enter a username and password. Then, you'll be able to edit more user"
-" options."
+"First, enter a username and password. Then, you'll be able to edit more user "
+"options."
 msgstr ""
 "Geben Sie zuerst einen Benutzernamen und ein Passwort. Dann, Sie werden in "
 "der Lage sein, zu Bearbeiten mehr-Benutzer-Optionen."
@@ -1150,8 +1174,8 @@ msgstr ""
 #: .\templates\admin\delete_confirmation.html:25
 #, python-format
 msgid ""
-"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the"
-" following protected related objects:"
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
+"following protected related objects:"
 msgstr ""
 "Löschen des %(object_name)s '%(escaped_object)s' erfordern würde, löschen "
 "Sie die folgenden geschützten verwandten Objekte:"
@@ -1245,9 +1269,9 @@ msgstr "Modelle in <code>%(name)s</code> application"
 
 #: .\templates\admin\invalid_setup.html:12
 msgid ""
-"Something's wrong with your database installation. Make sure the appropriate"
-" database tables have been created, and make sure the database is readable "
-"by the appropriate user."
+"Something's wrong with your database installation. Make sure the appropriate "
+"database tables have been created, and make sure the database is readable by "
+"the appropriate user."
 msgstr ""
 "Etwas ist falsch mit Ihrer Datenbank-installation. Stellen Sie sicher, dass "
 "die entsprechenden Datenbank-Tabellen erstellt wurden, und sicherzustellen, "
@@ -1275,8 +1299,8 @@ msgstr "Aktion"
 
 #: .\templates\admin\object_history.html:38
 msgid ""
-"This object doesn't have a change history. It probably wasn't added via this"
-" admin site."
+"This object doesn't have a change history. It probably wasn't added via this "
+"admin site."
 msgstr ""
 "Dieses Objekt muss nicht eine Veränderung der Geschichte. Es war wohl nicht "
 "Hinzugefügt, über das admin-Website."

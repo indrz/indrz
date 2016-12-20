@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-07 17:04+0100\n"
+"POT-Creation-Date: 2016-12-20 13:19+0100\n"
 "PO-Revision-Date: 2016-07-15 13:03+0200\n"
 "Last-Translator: b'  <admin@admin.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -284,7 +284,7 @@ msgstr ""
 msgid "location of kiosk"
 msgstr ""
 
-#: .\homepage\kiosk\templates\kiosk.html:27 .\homepage\templates\map.html:40
+#: .\homepage\kiosk\templates\kiosk.html:27 .\homepage\templates\map.html:43
 #: .\homepage\templates\wu-neu-homepage.html:34 .\maps\templates\map.html:27
 #, fuzzy
 #| msgid "Toggle sorting"
@@ -357,11 +357,14 @@ msgid "Enter Poi name"
 msgstr "Le nom du propriétaire d'"
 
 #: .\homepage\templates\includes\poi_layers.html:13
-#: .\homepage\templates\search-form.html:16
 #: .\maps\templates\search-form.html:12
 #: .\poi_manager\templates\poi\poi-kiosk.html:28
 msgid "Go!"
 msgstr "Allez!"
+
+#: .\homepage\templates\main-map.html:47
+msgid "Satellite"
+msgstr ""
 
 #: .\homepage\templates\main-map.html:54
 msgid "Zoom to Campus"
@@ -372,6 +375,14 @@ msgstr ""
 #| msgid "Share map"
 msgid "Share Map"
 msgstr "Partager la carte"
+
+#: .\homepage\templates\main-map.html:56
+msgid "Print to PDF"
+msgstr ""
+
+#: .\homepage\templates\main-map.html:56 .\maps\templates\search-form.html:26
+msgid "Print"
+msgstr ""
 
 #: .\homepage\templates\modal-bugreport.html:9
 #, fuzzy
@@ -515,17 +526,29 @@ msgstr ""
 msgid "Share"
 msgstr "Partager"
 
-#: .\homepage\templates\routing-form.html:22
+#: .\homepage\templates\routing-form.html:9
+#, fuzzy
+#| msgid "Standard Route"
+msgid "Start Route"
+msgstr "Route Standard"
+
+#: .\homepage\templates\routing-form.html:15
+#, fuzzy
+#| msgid "Standard Route"
+msgid "End Route"
+msgstr "Route Standard"
+
+#: .\homepage\templates\routing-form.html:23
 #: .\maps\templates\routing-form.html:28
 msgid "Barrier Free Route"
 msgstr "Sans Obstacle De La Route"
 
-#: .\homepage\templates\routing-form.html:25
+#: .\homepage\templates\routing-form.html:26
 #: .\maps\templates\routing-form.html:31
 msgid "Go !"
 msgstr "Allez !"
 
-#: .\homepage\templates\routing-form.html:28
+#: .\homepage\templates\routing-form.html:29
 #, fuzzy
 #| msgid "Standard Route"
 msgid "Share Route"
@@ -552,17 +575,20 @@ msgid "Search Results"
 msgstr "Partager les résultats de recherche"
 
 #: .\homepage\templates\wu-neu-left-menu-old.html:10
-#: .\homepage\templates\wu-neu-left-menu.html:15
 #, fuzzy
 #| msgid "Search for ..."
 msgid "Search on campus"
 msgstr "Recherche pour ..."
 
-#: .\homepage\templates\wu-neu-left-menu.html:52
+#: .\homepage\templates\wu-neu-left-menu.html:16
+msgid "FOOFEE"
+msgstr ""
+
+#: .\homepage\templates\wu-neu-left-menu.html:53
 msgid "Routing"
 msgstr ""
 
-#: .\homepage\templates\wu-neu-left-menu.html:68
+#: .\homepage\templates\wu-neu-left-menu.html:69
 msgid "POIs"
 msgstr ""
 
@@ -603,10 +629,6 @@ msgstr "GPS"
 #: .\maps\templates\search-form.html:25
 msgid "Directions"
 msgstr "Les Directions"
-
-#: .\maps\templates\search-form.html:26
-msgid "Print"
-msgstr ""
 
 #: .\maps\templates\search-form.html:28
 msgid "Clear"
