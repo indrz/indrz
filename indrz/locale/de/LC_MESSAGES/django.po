@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-20 13:19+0100\n"
+"POT-Creation-Date: 2016-12-20 13:41+0100\n"
 "PO-Revision-Date: 2016-12-20 12:56+0100\n"
 "Last-Translator: b'  <>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -789,6 +789,17 @@ msgstr "Baum Reihenfolge in der Legende"
 msgid "Sort oder of POI items"
 msgstr "Sortieren oder POI-Elemente"
 
+#: .\poi_manager\templates\poi\poi-category.html:6
+#, fuzzy, python-format
+#| msgid "Add %(name)s"
+msgid "%(node.cat_name)s"
+msgstr "Hinzufügen von %(name)s"
+
+#: .\poi_manager\templates\poi\poi-category.html:9
+#, python-format
+msgid "%(children)s"
+msgstr ""
+
 #: .\poi_manager\templates\poi\poi-kiosk.html:6
 msgid "POI"
 msgstr "POI"
@@ -1368,6 +1379,207 @@ msgstr "Google Maps über GeoDjango"
 msgid "Debugging window (serialized value)"
 msgstr "Debugging-Fenster (serialisierte Wert)"
 
+# POI translations
+msgid "Public Infrastructure"
+msgstr ""
+
+msgid "Education"
+msgstr ""
+
+msgid "Safety & Security"
+msgstr ""
+
+msgid "unknown"
+msgstr ""
+
+msgid "Facilities"
+msgstr ""
+
+msgid "Access"
+msgstr ""
+
+msgid "Sport"
+msgstr ""
+
+msgid "Sights"
+msgstr ""
+
+msgid "Womens WC"
+msgstr ""
+
+msgid "Public WC"
+msgstr ""
+
+msgid "Barrierfree WC"
+msgstr ""
+
+msgid "Mens WC"
+msgstr ""
+
+msgid "Toilet"
+msgstr ""
+
+msgid "Grocery"
+msgstr ""
+
+msgid "Bookstore"
+msgstr ""
+
+msgid "Cafe - Snack"
+msgstr ""
+
+msgid "Restaurant"
+msgstr ""
+
+msgid "Vending Machine"
+msgstr ""
+
+msgid "Self Checkout"
+msgstr ""
+
+msgid "Scanner"
+msgstr ""
+
+msgid "Search Terminal"
+msgstr ""
+
+msgid "Library Location"
+msgstr ""
+
+msgid "Computer Desks"
+msgstr ""
+
+msgid "Quiet Room"
+msgstr ""
+
+msgid "Telephone Zone"
+msgstr ""
+
+msgid "Information"
+msgstr ""
+
+msgid "Study Area"
+msgstr ""
+
+msgid "Bus"
+msgstr ""
+
+msgid "Underground"
+msgstr ""
+
+msgid "P1"
+msgstr ""
+
+msgid "P2"
+msgstr ""
+
+msgid "P3"
+msgstr ""
+
+msgid "P4"
+msgstr ""
+
+msgid "Entrance Underground Parking"
+msgstr ""
+
+msgid "Bike Covered"
+msgstr ""
+
+msgid "Delivery"
+msgstr ""
+
+msgid "Bike"
+msgstr ""
+
+msgid "Motor Bike"
+msgstr ""
+
+msgid "Quiet Room -  First Aid"
+msgstr ""
+
+msgid "Emergency Telephone"
+msgstr ""
+
+msgid "Company Medical Officer"
+msgstr ""
+
+msgid "Meeting Point"
+msgstr ""
+
+msgid "Copy Machines"
+msgstr ""
+
+msgid "Change Rooms"
+msgstr ""
+
+msgid "Locker"
+msgstr ""
+
+msgid "Bank Machine"
+msgstr ""
+
+msgid "Food"
+msgstr ""
+
+msgid "Shop"
+msgstr ""
+
+msgid "Toilet"
+msgstr ""
+
+msgid "Other"
+msgstr ""
+
+msgid "Front Office Web & New Media"
+msgstr ""
+
+msgid "Library"
+msgstr ""
+
+msgid "Computer Room"
+msgstr ""
+
+msgid "Front Office"
+msgstr ""
+
+msgid "Surf Station"
+msgstr ""
+
+msgid "Self Service Terminal"
+msgstr ""
+
+msgid "Study Area"
+msgstr ""
+
+msgid "Ramp Up"
+msgstr ""
+
+msgid "Parking"
+msgstr ""
+
+msgid "Entrance"
+msgstr ""
+
+msgid "Taxi Meeting Point"
+msgstr ""
+
+msgid "Public Transport"
+msgstr ""
+
+msgid "Info Point"
+msgstr ""
+
+msgid "Taxi"
+msgstr ""
+
+msgid "Info Terminal"
+msgstr ""
+
+
+
+
+
+
 #~ msgid "Active meaning show it yes - no"
 #~ msgstr "Active Bedeutung zeigen es ja - Nein"
 
@@ -1436,3 +1648,5 @@ msgstr "Debugging-Fenster (serialisierte Wert)"
 
 #~ msgid "Visibility"
 #~ msgstr "Sichtbarkeit"
+
+
