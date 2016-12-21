@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-20 13:41+0100\n"
+"POT-Creation-Date: 2016-12-21 12:24+0100\n"
 "PO-Revision-Date: 2016-12-20 12:56+0100\n"
 "Last-Translator: b'  <>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -341,6 +341,337 @@ msgstr "Keine vorhanden"
 #: .\templates\admin\index.html:74
 msgid "Unknown content"
 msgstr "Unbekannte Inhalte"
+
+#: .\homepage\scripts\poi-trans.html:3
+#: .\homepage\templates\poi_translations.html:3
+msgid "Safety & Security"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:4
+#: .\homepage\templates\poi_translations.html:4
+msgid "Access"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:5
+#: .\homepage\templates\poi_translations.html:5
+msgid "Facilities"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:6
+#: .\homepage\templates\poi_translations.html:6
+msgid "Public Infrastructure"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:7
+#: .\homepage\templates\poi_translations.html:7
+#, fuzzy
+#| msgid "Unknown"
+msgid "unknown"
+msgstr "Unbekannt"
+
+#: .\homepage\scripts\poi-trans.html:8
+#: .\homepage\templates\poi_translations.html:8
+#, fuzzy
+#| msgid "Action"
+msgid "Education"
+msgstr "Aktion"
+
+#: .\homepage\scripts\poi-trans.html:9
+#: .\homepage\templates\poi_translations.html:9
+msgid "Sport"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:10
+#: .\homepage\templates\poi_translations.html:10
+msgid "Sights"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:11
+#: .\homepage\templates\poi_translations.html:11
+msgid "Mens WC"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:12
+#: .\homepage\templates\poi_translations.html:12
+#, fuzzy
+#| msgid "Barrier Free Route"
+msgid "Barrierfree WC"
+msgstr "Barriere Freier Strecke"
+
+#: .\homepage\scripts\poi-trans.html:13
+#: .\homepage\templates\poi_translations.html:13
+msgid "Womens WC"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:14
+#: .\homepage\templates\poi_translations.html:14
+#, fuzzy
+#| msgid "Public"
+msgid "Public WC"
+msgstr "Öffentliche"
+
+#: .\homepage\scripts\poi-trans.html:15
+#: .\homepage\templates\poi_translations.html:15
+msgid "Grocery"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:16
+#: .\homepage\templates\poi_translations.html:16
+msgid "Bookstore"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:17
+#: .\homepage\templates\poi_translations.html:17
+msgid "Restaurant"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:18
+#: .\homepage\templates\poi_translations.html:18
+msgid "Vending Machine"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:19
+#: .\homepage\templates\poi_translations.html:19
+msgid "Cafe - Snack"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:20
+#: .\homepage\templates\poi_translations.html:20
+msgid "Self Checkout"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:21
+#: .\homepage\templates\poi_translations.html:21
+msgid "Computer Desks"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:22
+#: .\homepage\templates\poi_translations.html:22
+msgid "Information"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:23
+#: .\homepage\templates\poi_translations.html:23
+msgid "Library Location"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:24
+#: .\homepage\templates\poi_translations.html:24
+msgid "Quiet Room"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:25
+#: .\homepage\templates\poi_translations.html:25
+msgid "Scanner"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:26
+#: .\homepage\templates\poi_translations.html:26
+#, fuzzy
+#| msgid "Search"
+msgid "Search Terminal"
+msgstr "Suche"
+
+#: .\homepage\scripts\poi-trans.html:27
+#: .\homepage\templates\poi_translations.html:27
+msgid "Telephone Zone"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:28
+#: .\homepage\templates\poi_translations.html:28
+msgid "Bus"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:29
+#: .\homepage\templates\poi_translations.html:29
+msgid "Underground"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:30
+#: .\homepage\templates\poi_translations.html:30
+msgid "Delivery"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:31
+#: .\homepage\templates\poi_translations.html:31
+msgid "Entrance Underground Parking"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:32
+#: .\homepage\templates\poi_translations.html:32
+msgid "P2"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:33
+#: .\homepage\templates\poi_translations.html:33
+msgid "P3"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:34
+#: .\homepage\templates\poi_translations.html:34
+msgid "P4"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:35
+#: .\homepage\templates\poi_translations.html:35
+msgid "Bike Covered"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:36
+#: .\homepage\templates\poi_translations.html:36
+msgid "Motor Bike"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:37
+#: .\homepage\templates\poi_translations.html:37
+msgid "Bike"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:38
+#: .\homepage\templates\poi_translations.html:38
+msgid "P1"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:39
+#: .\homepage\templates\poi_translations.html:39
+msgid "Meeting Point"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:40
+#: .\homepage\templates\poi_translations.html:40
+msgid "Company Medical Officer"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:41
+#: .\homepage\templates\poi_translations.html:41
+msgid "Quiet Room -  First Aid"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:42
+#: .\homepage\templates\poi_translations.html:42
+msgid "Emergency Telephone"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:43
+#: .\homepage\templates\poi_translations.html:43
+msgid "Bank Machine"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:44
+#: .\homepage\templates\poi_translations.html:44
+msgid "Locker"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:45
+#: .\homepage\templates\poi_translations.html:45
+msgid "Copy Machines"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:46
+#: .\homepage\templates\poi_translations.html:46
+#, fuzzy
+#| msgid "Change"
+msgid "Change Rooms"
+msgstr "Ändern"
+
+#: .\homepage\scripts\poi-trans.html:47
+#: .\homepage\templates\poi_translations.html:47 .\routing\models.py:47
+msgid "Other"
+msgstr "Andere"
+
+#: .\homepage\scripts\poi-trans.html:48
+#: .\homepage\templates\poi_translations.html:48
+msgid "Toilet"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:49
+#: .\homepage\templates\poi_translations.html:49
+msgid "Food"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:50
+#: .\homepage\templates\poi_translations.html:50
+msgid "Shop"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:51
+#: .\homepage\templates\poi_translations.html:51
+msgid "Library"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:52
+#: .\homepage\templates\poi_translations.html:52
+msgid "Study Area"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:53
+#: .\homepage\templates\poi_translations.html:53
+msgid "Computer Room"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:54
+#: .\homepage\templates\poi_translations.html:54
+msgid "Surf Station"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:55
+#: .\homepage\templates\poi_translations.html:55
+msgid "Self Service Terminal"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:56
+#: .\homepage\templates\poi_translations.html:56
+msgid "Front Office"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:57
+#: .\homepage\templates\poi_translations.html:57
+msgid "Front Office Web & New Media"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:58
+#: .\homepage\templates\poi_translations.html:58
+#, fuzzy
+#| msgid "Ramp"
+msgid "Ramp Up"
+msgstr "Rampe"
+
+#: .\homepage\scripts\poi-trans.html:59
+#: .\homepage\templates\poi_translations.html:59
+msgid "Parking"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:60
+#: .\homepage\templates\poi_translations.html:60
+#, fuzzy
+#| msgid "Maintenance"
+msgid "Entrance"
+msgstr "Wartung"
+
+#: .\homepage\scripts\poi-trans.html:61
+#: .\homepage\templates\poi_translations.html:61
+msgid "Info Terminal"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:62
+#: .\homepage\templates\poi_translations.html:62
+msgid "Taxi"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:63
+#: .\homepage\templates\poi_translations.html:63
+msgid "Taxi Meeting Point"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:64
+#: .\homepage\templates\poi_translations.html:64
+msgid "Public Transport"
+msgstr ""
+
+#: .\homepage\scripts\poi-trans.html:65
+#: .\homepage\templates\poi_translations.html:65
+msgid "Info Point"
+msgstr ""
 
 #: .\homepage\templates\includes\change_lang_form.html:16
 #: .\maps\templates\includes\change_lang_form.html:16
@@ -789,17 +1120,6 @@ msgstr "Baum Reihenfolge in der Legende"
 msgid "Sort oder of POI items"
 msgstr "Sortieren oder POI-Elemente"
 
-#: .\poi_manager\templates\poi\poi-category.html:6
-#, fuzzy, python-format
-#| msgid "Add %(name)s"
-msgid "%(node.cat_name)s"
-msgstr "Hinzufügen von %(name)s"
-
-#: .\poi_manager\templates\poi\poi-category.html:9
-#, python-format
-msgid "%(children)s"
-msgstr ""
-
 #: .\poi_manager\templates\poi\poi-kiosk.html:6
 msgid "POI"
 msgstr "POI"
@@ -969,10 +1289,6 @@ msgstr "Wartung"
 #: .\routing\models.py:46
 msgid "Handicap"
 msgstr "Handicap"
-
-#: .\routing\models.py:47
-msgid "Other"
-msgstr "Andere"
 
 #: .\routing\models.py:48
 msgid "Unknown"
@@ -1379,206 +1695,10 @@ msgstr "Google Maps über GeoDjango"
 msgid "Debugging window (serialized value)"
 msgstr "Debugging-Fenster (serialisierte Wert)"
 
-# POI translations
-msgid "Public Infrastructure"
-msgstr ""
-
-msgid "Education"
-msgstr ""
-
-msgid "Safety & Security"
-msgstr ""
-
-msgid "unknown"
-msgstr ""
-
-msgid "Facilities"
-msgstr ""
-
-msgid "Access"
-msgstr ""
-
-msgid "Sport"
-msgstr ""
-
-msgid "Sights"
-msgstr ""
-
-msgid "Womens WC"
-msgstr ""
-
-msgid "Public WC"
-msgstr ""
-
-msgid "Barrierfree WC"
-msgstr ""
-
-msgid "Mens WC"
-msgstr ""
-
-msgid "Toilet"
-msgstr ""
-
-msgid "Grocery"
-msgstr ""
-
-msgid "Bookstore"
-msgstr ""
-
-msgid "Cafe - Snack"
-msgstr ""
-
-msgid "Restaurant"
-msgstr ""
-
-msgid "Vending Machine"
-msgstr ""
-
-msgid "Self Checkout"
-msgstr ""
-
-msgid "Scanner"
-msgstr ""
-
-msgid "Search Terminal"
-msgstr ""
-
-msgid "Library Location"
-msgstr ""
-
-msgid "Computer Desks"
-msgstr ""
-
-msgid "Quiet Room"
-msgstr ""
-
-msgid "Telephone Zone"
-msgstr ""
-
-msgid "Information"
-msgstr ""
-
-msgid "Study Area"
-msgstr ""
-
-msgid "Bus"
-msgstr ""
-
-msgid "Underground"
-msgstr ""
-
-msgid "P1"
-msgstr ""
-
-msgid "P2"
-msgstr ""
-
-msgid "P3"
-msgstr ""
-
-msgid "P4"
-msgstr ""
-
-msgid "Entrance Underground Parking"
-msgstr ""
-
-msgid "Bike Covered"
-msgstr ""
-
-msgid "Delivery"
-msgstr ""
-
-msgid "Bike"
-msgstr ""
-
-msgid "Motor Bike"
-msgstr ""
-
-msgid "Quiet Room -  First Aid"
-msgstr ""
-
-msgid "Emergency Telephone"
-msgstr ""
-
-msgid "Company Medical Officer"
-msgstr ""
-
-msgid "Meeting Point"
-msgstr ""
-
-msgid "Copy Machines"
-msgstr ""
-
-msgid "Change Rooms"
-msgstr ""
-
-msgid "Locker"
-msgstr ""
-
-msgid "Bank Machine"
-msgstr ""
-
-msgid "Food"
-msgstr ""
-
-msgid "Shop"
-msgstr ""
-
-msgid "Toilet"
-msgstr ""
-
-msgid "Other"
-msgstr ""
-
-msgid "Front Office Web & New Media"
-msgstr ""
-
-msgid "Library"
-msgstr ""
-
-msgid "Computer Room"
-msgstr ""
-
-msgid "Front Office"
-msgstr ""
-
-msgid "Surf Station"
-msgstr ""
-
-msgid "Self Service Terminal"
-msgstr ""
-
-msgid "Study Area"
-msgstr ""
-
-msgid "Ramp Up"
-msgstr ""
-
-msgid "Parking"
-msgstr ""
-
-msgid "Entrance"
-msgstr ""
-
-msgid "Taxi Meeting Point"
-msgstr ""
-
-msgid "Public Transport"
-msgstr ""
-
-msgid "Info Point"
-msgstr ""
-
-msgid "Taxi"
-msgstr ""
-
-msgid "Info Terminal"
-msgstr ""
-
-
-
-
-
+#, fuzzy
+#~| msgid "Add %(name)s"
+#~ msgid "%(node.cat_name)s"
+#~ msgstr "Hinzufügen von %(name)s"
 
 #~ msgid "Active meaning show it yes - no"
 #~ msgstr "Active Bedeutung zeigen es ja - Nein"
@@ -1648,5 +1768,3 @@ msgstr ""
 
 #~ msgid "Visibility"
 #~ msgstr "Sichtbarkeit"
-
-
