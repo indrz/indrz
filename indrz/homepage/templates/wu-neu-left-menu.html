@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load staticfiles %}
 
 {% block search-form %} {% endblock search-form %}
 {% block routing-form %} {% endblock routing-form %}
@@ -12,7 +13,7 @@
 
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-        <h3>{% trans "Search on campus" %}</h3>
+        <h3>{% trans 'Search' %}</h3>
 
 
          {% include 'search-form.html' %}
