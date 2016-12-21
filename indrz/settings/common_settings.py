@@ -128,8 +128,7 @@ LANGUAGE_CODE = 'en'
 
 LANGUAGES = (
     ('en', 'English'),
-    ('de', 'Deutsch'),
-    ('fr', 'French'),)
+    ('de', 'Deutsch'))
 
 # Location of translation files
 LOCALE_PATHS = (
