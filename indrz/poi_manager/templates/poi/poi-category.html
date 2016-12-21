@@ -1,11 +1,12 @@
 {% load mptt_tags %}
+{% load i18n %}
 <ul id="poitree_id">
     {% recursetree nodes %}
         <li data-jstree='{"icon":"{{ node.icon_css_name }}"}' id="catid_{{ node.id }}"{% if node.icon_css_name %}{% endif %}>
-            {{ node.cat_name }}
+            {% trans node.cat_name %}
             {% if not node.is_leaf_node %}
                 <ul class="children">
-                    {{ children }}
+                   {{ children }}
                 </ul>
             {% endif %}
         </li>
