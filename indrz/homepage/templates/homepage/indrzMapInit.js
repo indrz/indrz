@@ -7,6 +7,8 @@ var view = new ol.View({
         zoom: zoom_level
     });
 
+
+var scaleLineControl = new ol.control.ScaleLine();
 var map = new ol.Map({
     interactions: ol.interaction.defaults().extend([
         new ol.interaction.DragRotateAndZoom()
@@ -31,9 +33,10 @@ var map = new ol.Map({
         attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
             collapsible: false
         })
-    }),
+    }).extend([ scaleLineControl]),
     view: view
 });
+
 
 // Change map height on resize
 function fixContentHeight(){

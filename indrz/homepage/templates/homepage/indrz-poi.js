@@ -108,6 +108,33 @@ function listAllLayers() {
 
 }
 
+function listVisibleLayers() {
+
+    map.getLayers().forEach(function (layer, i) {
+
+        // bindInputs('#layer' + i, layer);
+        if (layer instanceof ol.layer.Group) {
+            // console.log("Group Name is : " + layer.getProperties().name)
+            layer.getLayers().forEach(function (sublayer) {
+
+                if (sublayer.getVisible()){
+                    console.log("layer name : " + sublayer.getProperties().name)
+                    console.log("layer visibility : " + sublayer.getVisible())
+
+                } else{
+                    console.log("not visible")
+
+                }
+                // map.removeLayer(layer);
+
+
+
+            });
+        }
+    });
+
+}
+
 
 function setPoiVisibility(namepoi) {
 
