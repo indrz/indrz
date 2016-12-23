@@ -147,13 +147,13 @@ function createWmsLayer(layerName, geoserverLayer, floorNumber, isVisible, zInde
 
 var wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06;
 wmsUG01 = createWmsLayer('ug01', 'indrz:ug01', '-1', 'false', 3);
-wmsE00 = createWmsLayer('eg00', 'indrz:e00', '0', 'true', 3);
-wmsE01 = createWmsLayer('og01', 'indrz:e01', '1', 'false', 3);
-wmsE02 = createWmsLayer('og02', 'indrz:e02', '2', 'false', 3);
-wmsE03 = createWmsLayer('og03', 'indrz:e03', '3', 'false', 3);
-wmsE04 = createWmsLayer('og04', 'indrz:e04', '4', 'false', 3 );
-wmsE05 = createWmsLayer('og05', 'indrz:e05', '5', 'false', 3 );
-wmsE06 = createWmsLayer('og06', 'indrz:e06', '6', 'false', 3 );
+wmsE00 = createWmsLayer('e00', 'indrz:e00', '0', 'true', 3);
+wmsE01 = createWmsLayer('e01', 'indrz:e01', '1', 'false', 3);
+wmsE02 = createWmsLayer('e02', 'indrz:e02', '2', 'false', 3);
+wmsE03 = createWmsLayer('e03', 'indrz:e03', '3', 'false', 3);
+wmsE04 = createWmsLayer('e04', 'indrz:e04', '4', 'false', 3 );
+wmsE05 = createWmsLayer('e05', 'indrz:e05', '5', 'false', 3 );
+wmsE06 = createWmsLayer('e06', 'indrz:e06', '6', 'false', 3 );
 
 
 
