@@ -350,6 +350,7 @@ body, h1, h2, h3, h4, p, li, td, th {
     .indrz-floor-changer-float {
         position: absolute;
         top: 0.5em;
+        width: 70px;
     }
 
     #id-map-switcher-widget button {
