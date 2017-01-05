@@ -267,7 +267,7 @@ body, h1, h2, h3, h4, p, li, td, th {
   border: 1px solid #cccccc;
   bottom: 12px;
   left: -50px;
-  min-width: 280px;
+  min-width: 290px;
   z-index: 9999;
 }
 .ol-popup:after, .ol-popup:before {
