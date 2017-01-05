@@ -567,14 +567,10 @@ msgid "Refresh"
 msgstr "Erneuern"
 
 #: .\homepage\templates\search-form.html:27
-#, fuzzy
-#| msgid "Share search results"
 msgid "Search Results"
 msgstr "Teilen Sie die Suchergebnisse"
 
 #: .\homepage\templates\wu-neu-left-menu-old.html:10
-#, fuzzy
-#| msgid "Share search results"
 msgid "Search on campus"
 msgstr "Teilen Sie die Suchergebnisse"
 
@@ -647,8 +643,7 @@ msgstr "Report Bug"
 
 #: .\permissions\permissions.py:22 .\permissions\permissions.py:28
 #: .\permissions\permissions.py:39
-#, fuzzy
-#| msgid "View on site"
+
 msgid "View organization"
 msgstr "Vor Ort ansehen"
 
@@ -693,16 +688,12 @@ msgid "Modify map map"
 msgstr "Karte Editieren"
 
 #: .\permissions\permissions.py:44
-#, fuzzy
-#| msgid "Delete all Features"
 msgid "Delete map map"
 msgstr "Löschen Sie alle Funktionen"
 
 #: .\permissions\permissions.py:46
-#, fuzzy
-#| msgid "View site"
 msgid "View layer"
-msgstr "View site"
+msgstr "View ebene"
 
 #: .\permissions\permissions.py:47
 msgid "Add layer"
@@ -713,30 +704,25 @@ msgid "Modify layer"
 msgstr "Ebene Ändern"
 
 #: .\permissions\permissions.py:50
-#, fuzzy
-#| msgid "Number of buildings"
+
 msgid "View building"
-msgstr "Anzahl der Gebäude"
+msgstr "Gebäude anschauen"
 
 #: .\permissions\permissions.py:51
 msgid "Add building"
 msgstr "Gebäude HInzugügen"
 
 #: .\permissions\permissions.py:52
-#, fuzzy
-#| msgid "Number of buildings"
 msgid "Modify building"
-msgstr "Anzahl der Gebäude"
+msgstr "Gebäude modifizieren"
 
 #: .\permissions\permissions.py:58
 msgid "Add member"
 msgstr "Mitglied hinzufügen"
 
 #: .\permissions\permissions.py:59
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove member"
-msgstr "Entfernen"
+msgstr "Mitglieder entfernen"
 
 #: .\permissions\permissions.py:60
 msgid "Delete organization"
@@ -763,10 +749,8 @@ msgid "Pictogram"
 msgstr "Piktogramm"
 
 #: .\poi_manager\models.py:92
-#, fuzzy
-#| msgid "Owner name"
 msgid "Category name"
-msgstr "Owner name"
+msgstr "Kategorie name"
 
 #: .\poi_manager\models.py:93
 msgid "Icon CSS name"
@@ -813,16 +797,12 @@ msgid "Public Infrastructure"
 msgstr ""
 
 #: .\poi_manager\templates\poi\poi-translations.html:7
-#, fuzzy
-#| msgid "Unknown"
 msgid "unknown"
 msgstr "Unbekannt"
 
 #: .\poi_manager\templates\poi\poi-translations.html:8
-#, fuzzy
-#| msgid "Action"
 msgid "Education"
-msgstr "Aktion"
+msgstr "Lehre"
 
 #: .\poi_manager\templates\poi\poi-translations.html:9
 msgid "Sport"
@@ -837,20 +817,16 @@ msgid "Mens WC"
 msgstr ""
 
 #: .\poi_manager\templates\poi\poi-translations.html:12
-#, fuzzy
-#| msgid "Barrier Free Route"
 msgid "Barrierfree WC"
-msgstr "Barriere Freier Strecke"
+msgstr "Barrierefrie WC"
 
 #: .\poi_manager\templates\poi\poi-translations.html:13
 msgid "Womens WC"
 msgstr ""
 
 #: .\poi_manager\templates\poi\poi-translations.html:14
-#, fuzzy
-#| msgid "Public"
 msgid "Public WC"
-msgstr "Öffentliche"
+msgstr "Öffentliche WC"
 
 #: .\poi_manager\templates\poi\poi-translations.html:15
 msgid "Grocery"
@@ -897,10 +873,8 @@ msgid "Scanner"
 msgstr ""
 
 #: .\poi_manager\templates\poi\poi-translations.html:26
-#, fuzzy
-#| msgid "Search"
 msgid "Search Terminal"
-msgstr "Suche"
+msgstr "Such Terminal"
 
 #: .\poi_manager\templates\poi\poi-translations.html:27
 msgid "Telephone Zone"
@@ -979,10 +953,8 @@ msgid "Copy Machines"
 msgstr ""
 
 #: .\poi_manager\templates\poi\poi-translations.html:46
-#, fuzzy
-#| msgid "Change"
 msgid "Change Rooms"
-msgstr "Ändern"
+msgstr "Umkleiderkabine"
 
 #: .\poi_manager\templates\poi\poi-translations.html:47 .\routing\models.py:47
 msgid "Other"
@@ -1029,8 +1001,6 @@ msgid "Front Office Web & New Media"
 msgstr ""
 
 #: .\poi_manager\templates\poi\poi-translations.html:58
-#, fuzzy
-#| msgid "Ramp"
 msgid "Ramp Up"
 msgstr "Rampe"
 

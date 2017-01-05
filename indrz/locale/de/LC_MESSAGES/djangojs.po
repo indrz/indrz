@@ -8,55 +8,77 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-06 15:13+0200\n"
+"POT-Creation-Date: 2017-01-05 13:29+0100\n"
 "PO-Revision-Date: 2016-10-06 15:21+0200\n"
 "Last-Translator: b'  <>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.7.11\n"
 
-#: .\homepage\templates\homepage\indrz-popup.js:77
+#: .\homepage\templates\homepage\indrz-popup.js:114
+msgid "Building : "
+msgstr "Gebäude: "
+
+#: .\homepage\templates\homepage\indrz-popup.js:115
+msgid "Floor Number: "
+msgstr "Stockwerk"
+
+#: .\homepage\templates\homepage\indrz-popup.js:116
+msgid "Room Number: "
+msgstr "Stockwerk"
+
+#: .\homepage\templates\homepage\indrz-popup.js:117
+msgid "Category: "
+msgstr "Kategorie: "
+
+#: .\homepage\templates\homepage\indrzLayers.js:125
+msgid "background maps"
+msgstr "Hintergrund"
+
+#: .\homepage\templates\homepage\indrzLayers.js:162
+msgid "wms floor maps"
+msgstr "wsm floor maps"
+
+#: .\homepage\templates\homepage\indrzLayers.js:165
+msgid "poi group"
+msgstr "poi group"
+
+#: .\homepage\templates\homepage\search.js:196
+#: .\homepage\templates\homepage\search.js:200
+msgid "Floor  "
+msgstr "Ebene"
+
 #: .\maps\templates\maps\indrz-popup.js:62
 msgid "Building Name: "
 msgstr "Gebäudename: "
 
-#: .\homepage\templates\homepage\indrz-popup.js:101
 #: .\maps\templates\maps\indrz-popup.js:74
 msgid "Campus "
 msgstr "Campus"
-
-#: .\homepage\templates\homepage\indrz-popup.js:104
-#, fuzzy
-#| msgid "Floor Number "
-msgid "Floor Number: "
-msgstr "Stockwerk"
-
-#: .\homepage\templates\homepage\indrz-popup.js:110
-#: .\maps\templates\maps\indrz-popup.js:83
-msgid "Coordinate: "
-msgstr "Koordinate: "
-
-#: .\homepage\templates\homepage\indrzMapInit.js:17
-#: .\maps\templates\maps\indrzMapInit.js:13
-msgid "Background"
-msgstr "Hintergrund"
-
-#: .\homepage\templates\homepage\indrzMapInit.js:22
-#: .\maps\templates\maps\indrzMapInit.js:18
-msgid "Floor"
-msgstr "Ebene"
 
 #: .\maps\templates\maps\indrz-popup.js:77
 msgid "Floor Number "
 msgstr "Stockwerk"
 
 #: .\maps\templates\maps\indrz-popup.js:83
+msgid "Coordinate: "
+msgstr "Koordinate: "
+
+#: .\maps\templates\maps\indrz-popup.js:83
 msgid "Bug Report"
 msgstr "Bug-Report"
+
+#: .\maps\templates\maps\indrzMapInit.js:13
+msgid "Background"
+msgstr "Hintergrund"
+
+#: .\maps\templates\maps\indrzMapInit.js:18
+msgid "Floor"
+msgstr "Ebene"
 
 #: .\static\admin\js\SelectFilter2.js:47
 #, c-format
@@ -207,8 +229,8 @@ msgstr "Morgen"
 
 #: .\static\admin\js\calendar.js:11
 msgid ""
-"January February March April May June July August September October November"
-" December"
+"January February March April May June July August September October November "
+"December"
 msgstr ""
 "Januar Februar März April Mai Juni Juli August September Oktober November "
 "Dezember"

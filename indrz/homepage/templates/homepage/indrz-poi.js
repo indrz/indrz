@@ -191,7 +191,7 @@ function poiExist(poiName){
 }
 
 
-function createPoiStyle(poiIconName, active){
+function createPoiStyle(poiIconName, active, floorNum){
 
     poiIconImageHidden = '/static/homepage/img/access_parking_p1.png'
     poiIconImage = '/static/homepage/img/' + poiIconName + '.png'
@@ -213,7 +213,14 @@ function createPoiStyle(poiIconName, active){
             anchorXUnits: 'fraction',
             anchorYUnits: 'pixels',
             src: poiIconImage
-        }))
+        })),
+        text: new ol.style.Text({
+                        text: floorNum,
+                        offsetY: -10,
+                        fill: new ol.style.Fill({
+                            color: '#fff'
+                        })
+                    })
     });
 
     if (active==='y'){

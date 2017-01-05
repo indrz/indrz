@@ -114,10 +114,16 @@ function open_popup(properties, coordinate, name){
     var titleBuildingName = gettext('Building : ');
     var titleFloorNumber = gettext('Floor Number: ');
     var titleRoomcode = gettext('Room Number: ');
+    var titleRoomCat = gettext('Category: ');
     //var name;
 
     var buildingName;
     var roomcode ;
+    var roomCat ;
+
+    if (properties.category_en != '' ){
+        roomCat = properties.category_en;
+    }
 
     var name = "";
 
@@ -153,6 +159,10 @@ function open_popup(properties, coordinate, name){
 
     if(properties.roomcode != undefined){
         popup_content.innerHTML += '<p>' + titleRoomcode + roomcode + '</p>';
+    }
+
+    if(properties.category_de != undefined  && properties.category_de != ""){
+        popup_content.innerHTML += '<p>' + titleRoomCat + roomCat + '</p>';
     }
 
 
