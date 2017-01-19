@@ -72,9 +72,18 @@ def get_poi_by_category(request, campus_id, category_name):
 def get_poi_by_cat_id(request, campus_id, cat_id):
     if request.method == 'GET':
 
-        poi_qs = Poi.objects.filter(fk_poi_category=cat_id)
-        if poi_qs:
-            serializer = PoiSerializer(poi_qs, many=True)
+        poicat_qs = PoiCategory.objects.get(pk=cat_id)
+        cat_children = PoiCategory.objects.add_related_count(poicat_qs.get_children(),Poi,'fk_poi_category', 'cat_name')
+
+        poi_ids = []
+
+        for x in poicat_qs.get_children():
+            poi_ids.append(x.id)
+
+        qs_objs = Poi.objects.filter(fk_poi_category_id__in=poi_ids)
+
+        if cat_children:
+            serializer = PoiSerializer(qs_objs, many=True)
             return Response(serializer.data)
 
 
