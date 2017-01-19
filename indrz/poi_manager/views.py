@@ -85,6 +85,12 @@ def get_poi_by_cat_id(request, campus_id, cat_id):
         if cat_children:
             serializer = PoiSerializer(qs_objs, many=True)
             return Response(serializer.data)
+        elif len(poi_ids)==0:
+            qs = Poi.objects.filter(fk_poi_category_id = cat_id)
+            serializer = PoiSerializer(qs, many=True)
+            return Response(serializer.data)
+        else:
+            return Response({'error': 'something booomed with category id : ' + cat_id})
 
 
 @api_view(['GET', ])
