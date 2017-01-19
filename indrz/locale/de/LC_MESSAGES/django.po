@@ -497,8 +497,6 @@ msgid "Route to here"
 msgstr "Route nach hier"
 
 #: .\homepage\templates\popup-markup.html:10
-#, fuzzy
-#| msgid "Remove from sorting"
 msgid "Route from entrance"
 msgstr "Route von Eingang"
 
@@ -508,10 +506,8 @@ msgid "Entrance"
 msgstr "Eingang"
 
 #: .\homepage\templates\popup-markup.html:11
-#, fuzzy
-#| msgid "Route from here"
 msgid "Route from Metro"
-msgstr "Route von hier"
+msgstr "Route von U-Bahn"
 
 #: .\homepage\templates\popup-markup.html:11
 msgid "Metro"
@@ -531,15 +527,13 @@ msgid "Start Route"
 msgstr "Route Teilen"
 
 #: .\homepage\templates\routing-form.html:15
-#, fuzzy
-#| msgid "Standard Route"
 msgid "End Route"
-msgstr "Standard-Route"
+msgstr "Ende der Route"
 
 #: .\homepage\templates\routing-form.html:23
 #: .\maps\templates\routing-form.html:28
 msgid "Barrier Free Route"
-msgstr "Barriere Freier Strecke"
+msgstr "Barrierefrei"
 
 #: .\homepage\templates\routing-form.html:26
 #: .\maps\templates\routing-form.html:31
@@ -547,14 +541,10 @@ msgid "Go !"
 msgstr "Go !"
 
 #: .\homepage\templates\routing-form.html:29
-#, fuzzy
-#| msgid "Standard Route"
 msgid "Share Route"
 msgstr "Route Teilen"
 
 #: .\homepage\templates\search-form.html:11
-#, fuzzy
-#| msgid "Search"
 msgid "Search Term"
 msgstr "Suche"
 
@@ -1593,98 +1583,3 @@ msgstr "Google Maps über GeoDjango"
 #: .\templates\gis\openlayers.html:19
 msgid "Debugging window (serialized value)"
 msgstr "Debugging-Fenster (serialisierte Wert)"
-
-#~ msgid "Print to PDF"
-#~ msgstr "PDF Drucken"
-
-#, fuzzy
-#~| msgid "Number of buildings"
-#~ msgid "Route from building"
-#~ msgstr "Anzahl der Gebäude"
-
-#, fuzzy
-#~| msgid "Building name"
-#~ msgid "Building"
-#~ msgstr "Gebäude name"
-
-#~ msgid "Train"
-#~ msgstr "Ubahn"
-
-#, fuzzy
-#~| msgid "Search for ..."
-#~ msgid "SEARCH ON CAMPUS"
-#~ msgstr "SUCHE AM CAMPUS"
-
-#, fuzzy
-#~| msgid "Add %(name)s"
-#~ msgid "%(node.cat_name)s"
-#~ msgstr "Hinzufügen von %(name)s"
-
-#~ msgid "Active meaning show it yes - no"
-#~ msgstr "Active Bedeutung zeigen es ja - Nein"
-
-#~ msgid "Priority of POI"
-#~ msgstr "Priorität POI"
-
-#~ msgid "Sort order in legend"
-#~ msgstr "Sortierreihenfolge in der Legende"
-
-#~ msgid "style name"
-#~ msgstr "style-name"
-
-#~ msgid "name"
-#~ msgstr "name"
-
-#~ msgid "projection"
-#~ msgstr "Projektion"
-
-#~ msgid "map thumbnail"
-#~ msgstr "anzeigen Miniaturansicht"
-
-#~ msgid "zoom"
-#~ msgstr "zoom"
-
-#~ msgid "locate"
-#~ msgstr "suchen"
-
-#~ msgid "Locate user on load?"
-#~ msgstr "Suchen Sie user auf Last?"
-
-#~ msgid "background"
-#~ msgstr "hintergrund"
-
-#~ msgid "Map"
-#~ msgstr "Anzeigen"
-
-#~ msgid "Maps"
-#~ msgstr "Karten"
-
-#~ msgid "Can view the map"
-#~ msgstr "Kann sich die Karte ansehen"
-
-#~ msgid "name for a group of layers"
-#~ msgstr "name für eine Gruppe von Ebenen"
-
-#~ msgid "opacity"
-#~ msgstr "Deckkraft"
-
-#~ msgid "visibility"
-#~ msgstr "Sichtbarkeit"
-
-#~ msgid "stack order"
-#~ msgstr "Stapel, um"
-
-#~ msgid "Can view the map layer"
-#~ msgstr "Können sich die Karte ansehen, Schicht"
-
-#~ msgid "URL template using OSM tile format"
-#~ msgstr "URL-Vorlage mit OSM-tile-format"
-
-#~ msgid "Order of the tilelayers in the edit box"
-#~ msgstr "Reihenfolge der tilelayers in die edit-box"
-
-#~ msgid "Can view the tilelayer"
-#~ msgstr "Können die tilelayer"
-
-#~ msgid "Visibility"
-#~ msgstr "Sichtbarkeit"
