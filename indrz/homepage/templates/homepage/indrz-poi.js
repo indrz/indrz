@@ -193,8 +193,10 @@ function poiExist(poiName){
 
 function createPoiStyle(poiIconName, active, floorNum){
 
-    poiIconImageHidden = '/static/homepage/img/access_parking_p1.png'
-    poiIconImage = '/static/homepage/img/' + poiIconName + '.png'
+    var poiIconImageHidden = '/static/homepage/img/other.png';
+    var poiIconImage = '/static/homepage/img/' + poiIconName + '.png';
+    var srcImage;
+    var mainPoiIcons = ["education_active","access_active","security_active", "infrastructure_active", "services_active"]
 
 
 
@@ -203,6 +205,7 @@ function createPoiStyle(poiIconName, active, floorNum){
             anchor: [0.5, 46],
             anchorXUnits: 'fraction',
             anchorYUnits: 'pixels',
+            opacity: 0.5,
             src: poiIconImageHidden
         }))
     });
@@ -225,6 +228,13 @@ function createPoiStyle(poiIconName, active, floorNum){
 
     if (active==='y'){
 
+        if($.inArray(poiIconName, mainPoiIcons) == -1){
+            return iconStyle;
+        }else{
+            return iconDeactiveStyle;
+        }
+
+
         return iconStyle;
     }
     else {
@@ -243,9 +253,7 @@ function createPoi(campusId, poiName, poiCatId, poiIconName) {
     } else {
 
         var poiUrl = baseApiUrl + "campus/1/poi/poi/cat/" + poiCatId + '/?format=json';
-        console.log("in createPoi: " + poiUrl);
 
-        console.log( $( "li" ).get( 0 ) );
 
         // create the poi because it does not exist
         var poiSource = new ol.source.Vector();
