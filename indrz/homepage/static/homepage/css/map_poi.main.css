@@ -1,8 +1,8 @@
 .access_parking_bike_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') 0px 0px !important;}
 .access_parking_bike{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') 0px -16px !important;}
 
-.access_parking_bikecovered_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -16px 0px !important;}
-.access_parking_bikecovered{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -16px -16px !important;}
+.access_parking_bikecovered_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -0px 0px !important;}
+.access_parking_bikecovered{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -0px -16px !important;}
 
 .access_parking_motorbike_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -32px 0px !important;}
 .access_parking_motorbike{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -32px -16px !important;}
@@ -55,8 +55,8 @@
 .access_other_elevator_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -368px 0px !important;}
 .access_other_elevator{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -368px -16px !important;}
 
-.access_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -384px 0px !important;}
-.access{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -384px -16px !important;}
+.access_active_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -384px 0px !important;}
+.access_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -384px -0px !important;}
 
 .access_public_bus_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -400px 0px !important;}
 .access_public_bus{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -400px -16px !important;}
@@ -100,8 +100,8 @@
 .services_other_post_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -144px -32px !important;}
 .services_other_post{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -144px -48px !important;}
 
+.services_active_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -160px -32px !important;}
 .services_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -160px -32px !important;}
-.services{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -160px -48px !important;}
 
 .services_food_automat_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -176px -32px !important;}
 .services_food_automat{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -176px -48px !important;}
@@ -148,8 +148,8 @@
 .education_departments_frontoffice_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -112px -64px !important;}
 .education_departments_frontoffice{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -112px -80px !important;}
 
+.education_active_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px -64px !important;}
 .education_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px -64px !important;}
-.education{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px -80px !important;}
 
 .education_departments_pc_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -144px -64px !important;}
 .education_departments_pc{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -144px -80px !important;}
@@ -178,8 +178,8 @@
 .infrastructure_students_bankomat_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -112px -96px !important;}
 .infrastructure_students_bankomat{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -112px -112px !important;}
 
+.infrastructure_active_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px -96px !important;}
 .infrastructure_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px -96px !important;}
-.infrastructure{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -128px -112px !important;}
 
 
 .security_safety_first_aid_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -0px -128px !important;}
@@ -197,8 +197,8 @@
 .security_safety_defibrillator_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -64px -128px !important;}
 .security_safety_defibrillator{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -64px -144px !important;}
 
+.security_active_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -80px -128px !important;}
 .security_active{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -80px -128px !important;}
-.security{width:16px !important;height:16px !important; background:url('../img/sprite_poi_tree_16px.png') -80px -144px !important;}
 
 
 .no_icon {
