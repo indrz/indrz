@@ -9,7 +9,7 @@ from rest_framework.response import Response
 
 
 @api_view(['GET'])
-def rvk_call(request, rvk_id):
+def rvk_call(request, rvk_id, format=None):
     """
     if a space was used in the url it is encoded as %20
     :param request:
@@ -178,7 +178,7 @@ def rvk_call(request, rvk_id):
 
 
 @api_view(['GET'])
-def route_to_book(request, rvk_id):
+def route_to_book(request, rvk_id, format=None):
     """
     Create a route directly to a book based on RVK key
     :param request:

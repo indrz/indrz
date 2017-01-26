@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 @api_view(['GET', 'POST'])
-def autocomplete_list(request):
+def autocomplete_list(request, format=None):
     '''-
     http://localhost:8000/api/v1/spaces/
     :param request: no parameters GET or POST

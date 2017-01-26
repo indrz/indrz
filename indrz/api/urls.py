@@ -52,6 +52,8 @@ urlpatterns += [
 
     ]
 
+
+
 urlpatterns += [
 
     url(r'^campus/(?P<campus_id>\d{1,5})/poi/', include('poi_manager.urls')),
@@ -85,4 +87,4 @@ urlpatterns += [
 # http://localhost:8000/api/v1/directions/buildingid=1&startid=307: Orne&endid=311: Mayenne
 # http://localhost:8000/api/v1/directions/buildingid=1&startid=1173&endid=1231
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+

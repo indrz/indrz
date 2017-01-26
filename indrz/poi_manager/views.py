@@ -15,13 +15,13 @@ from mptt.forms import MoveNodeForm
 from mptt.templatetags.mptt_tags import cache_tree_children
 
 
-def poi_category_list(request, campus_id):
+def poi_category_list(request, campus_id, format=None):
     return render(request, "poi/poi-category.html",
                   {'nodes': PoiCategory.objects.all()})
 
 
 @api_view(['GET', ])
-def get_poi_by_id(request, campus_id, poi_id):
+def get_poi_by_id(request, campus_id, poi_id, format=None):
     try:
         poi_qs = Poi.objects.filter(fk_campus=campus_id).filter(id=poi_id)
         serializer = PoiSerializer(poi_qs, many=True)
@@ -32,7 +32,7 @@ def get_poi_by_id(request, campus_id, poi_id):
 
 
 @api_view(['GET', ])
-def poi_category_json(request, campus_id):
+def poi_category_json(request, campus_id, format=None):
     def recursive_node_to_dict(node):
         result = collections.OrderedDict()
         result['id'] = node.pk
@@ -53,7 +53,7 @@ def poi_category_json(request, campus_id):
 
 
 @api_view(['GET', ])
-def get_poi_by_category(request, campus_id, category_name):
+def get_poi_by_category(request, campus_id, category_name, format=None):
     if request.method == 'GET':
         try:
             cats = PoiCategory.objects.get(cat_name__contains=category_name)
@@ -69,7 +69,7 @@ def get_poi_by_category(request, campus_id, category_name):
 
 
 @api_view(['GET', ])
-def get_poi_by_cat_id(request, campus_id, cat_id):
+def get_poi_by_cat_id(request, campus_id, cat_id, format=None):
     if request.method == 'GET':
 
         poicat_qs = PoiCategory.objects.get(pk=cat_id)
@@ -94,7 +94,7 @@ def get_poi_by_cat_id(request, campus_id, cat_id):
 
 
 @api_view(['GET', ])
-def get_poi_by_cat_name(request, campus_id, category_name):
+def get_poi_by_cat_name(request, campus_id, category_name, format=None):
     cats = PoiCategory.objects.filter(cat_name__icontains=category_name)
     # list = cats.get_descendants()
 
@@ -125,14 +125,14 @@ def get_poi_by_cat_name(request, campus_id, category_name):
 
 
 @api_view(['GET', ])
-def get_poicat_by_id(request, campus_id, cat_id):
+def get_poicat_by_id(request, campus_id, cat_id, format=None):
     cats = PoiCategory.objects.get(pk=cat_id)
     serializer = PoiCategorySerializer(cats)
     return Response(serializer.data)
 
 
 @api_view(['GET', ])
-def poi_category_by_name(request, campus_id, category_name):
+def poi_category_by_name(request, campus_id, category_name, format=None):
     def recursive_node_to_dict(node):
         result = collections.OrderedDict()
         result['id'] = node.pk
@@ -157,7 +157,7 @@ def poi_category_by_name(request, campus_id, category_name):
 
 
 @api_view(['GET', ])
-def poi_list(request, campus_id):
+def poi_list(request, campus_id, format=None):
     try:
         poi_qs = Poi.objects.all()
         serializer = PoiSerializer(poi_qs, many=True)
@@ -168,7 +168,7 @@ def poi_list(request, campus_id):
 
 
 @api_view(['GET', ])
-def poi_by_name(request, campus_id, poi_name, **kwargs):
+def poi_by_name(request, campus_id, poi_name, format=None, **kwargs):
     poi_qs = Poi.objects.filter(fk_campus=campus_id).filter(name__icontains=poi_name)
     floor = request.GET.get('floor')
 

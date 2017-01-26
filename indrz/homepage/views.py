@@ -73,7 +73,7 @@ def view_map(request, *args, **kwargs):
 
 
 @api_view(['GET'])
-def get_room_center(request, big_pk):
+def get_room_center(request, big_pk, format=None):
     def get_client_ip(request):
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
         if x_forwarded_for:

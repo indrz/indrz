@@ -1,9 +1,6 @@
 # search anything on campus
 import json
-import pprint
 import ast
-
-from django.http import HttpResponse
 import logging
 from homepage import bach_calls
 
@@ -26,7 +23,7 @@ logr = logging.getLogger(__name__)
 
 # @jsonrpc_method('searchCoordinates(q=dict) -> dict', validate=True)
 @api_view(['GET'])
-def search_coordinates(request, q):
+def search_coordinates(request, q, format=None):
     if q.keys().index('coordinates') < 0:
         raise Exception("Couldn't find coordinates in Parameter q")
     coordinates = q['coordinates']
@@ -87,7 +84,7 @@ def search_coordinates(request, q):
 # @jsonrpc_method('searchCoordinatesPOI(q=dict) -> dict', validate=True)
 
 @api_view(['GET'])
-def search_coordinates_on_poi(request, q):
+def search_coordinates_on_poi(request, q, format=None):
     if q.keys().index('coordinates') < 0:
         raise Exception("Couldn't find coordinates in Parameter q")
     coordinates = q['coordinates']
@@ -145,7 +142,7 @@ def repNoneWithEmpty(string):
 
 # returns the entrance which is nearest to this room+
 @api_view(['GET'])
-def getAssignedEntrance(request, aks, layer):
+def getAssignedEntrance(request, aks, layer, format=None):
     """
     input aks as string
     input layer as integer
@@ -233,7 +230,7 @@ def has_front_office(orgid):
 
 # @jsonrpc_method('searchAny(q=dict) -> dict', validate=True)
 @api_view(['GET'])
-def search_any(request, q):
+def search_any(request, q, format=None):
     # if q.keys().index('searchString') < 0:
     #     raise Exception("Couldn't find searchString in parameter q")
     # searchString = q['searchString']
@@ -569,7 +566,7 @@ def search_any(request, q):
         return Response(local_data_geojson)
 
 @api_view(['GET'])
-def searchAutoComplete(request, search_text):
+def searchAutoComplete(request, search_text, format=None):
     # searchString = request.GET["query"]
     searchString = search_text
     if (searchString != None):

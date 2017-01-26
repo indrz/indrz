@@ -418,7 +418,7 @@ def run_route(start_node_id, end_node_id, route_type):
         geojs_geom = loads(geojs)  # load string to geom
         geojs_feat = Feature(geometry=geojs_geom,
                              properties={'floor': layer_level,
-                                         'length': seg_length,
+                                         'segment_length': seg_length,
                                          'network_type': seg_type,
                                          'seg_node_id': seg_node_id,
                                          'sequence': seq_sequence}
@@ -542,6 +542,46 @@ def create_route_from_search(request, start_term, end_term, route_type=0):
 
         start_node_id = get_room_centroid_node( start_id_value )
         end_node_id = get_room_centroid_node( end_id_value )
+
+        res = run_route(start_node_id, end_node_id, route_type)
+
+        try:
+            return Response(res)
+        except:
+            logger.error("error exporting to json model: " + str(res))
+            logger.error(traceback.format_exc())
+            return Response({'error': 'either no JSON or no key params in your JSON'})
+    else:
+        return HttpResponseNotFound('<h1>Sorry not a GET or POST request</h1>')
+
+
+@api_view(['GET', 'POST'])
+def create_route_from_search2(request, start_term, end_term, route_type=0):
+    """
+    Generate a GeoJSON route from room number
+    to room number
+    :param request: GET or POST request
+    :param building_id: buiilding id as integer
+    :param start_term: a text string as search term
+    :param end_term: a text string as search term
+    :param route_type: an integer room type
+    :return: a GeoJSON linestring of the route
+    """
+
+    if request.method == 'GET' or request.method == 'POST':
+
+        start_aks = start_term.split("=")[1]
+        end_aks = end_term.split("=")[1]
+
+        if start_aks:
+            start_room = start_aks
+
+        if end_aks:
+            end_room = end_aks
+
+        start_node_id = find_closest_network_node(x_start_coord, y_start_coord, start_floor)
+        end_node_id = find_closest_network_node(x_end_coord, y__end_coord, end_floor)
+
 
         res = run_route(start_node_id, end_node_id, route_type)
 

@@ -46,7 +46,7 @@ def get_query(query_string, search_fields):
 
 
 @api_view(['GET'])
-def search_indrz(request, campus_id, search_string):
+def search_indrz(request, campus_id, search_string, format=None):
     # query_string = ''
     # found_entries = None
 

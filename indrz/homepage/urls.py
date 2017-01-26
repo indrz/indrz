@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from rest_framework.urlpatterns import format_suffix_patterns
+# from rest_framework.urlpatterns import format_suffix_patterns
 from homepage.views import view_map
 from homepage.search_wu import search_any, searchAutoComplete
 # all urls begin with http://localhost:8000/map/
@@ -17,4 +17,4 @@ urlpatterns = [
 
 ]
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+# urlpatterns = format_suffix_patterns(urlpatterns)

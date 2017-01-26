@@ -56,7 +56,7 @@ def create_terminal_start_json(query_result):
 
 
 @api_view(['GET', ])
-def get_terminal(request):
+def get_terminal(request, format=None):
     """
     find IP of terminal and return start location
     """
@@ -83,7 +83,7 @@ def get_terminal(request):
 
 
 @api_view(['GET', ])
-def route_from_terminal(request, destination_location):
+def route_from_terminal(request, destination_location, format=None):
     if destination_location is None:
         return json.dumps({'myerror': 'destination_location param is None !  why we dont know not good'})
     else:
@@ -122,7 +122,7 @@ def route_from_terminal(request, destination_location):
 
 
 @api_view(['GET'])
-def route_from_kiosk(request, rvk_id):
+def route_from_kiosk(request, rvk_id, format=None):
     """
     Create a route directly to a book based on RVK key
     :param request:
