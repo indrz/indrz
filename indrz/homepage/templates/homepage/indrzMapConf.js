@@ -21,6 +21,8 @@ var route_from = "{{route_from}}";
 var route_to = "{{route_to}}";
 var centerx = "{{centerx}}";
 var centery = "{{centery}}";
+var tempStart = [];
+var tempEnd = [];
 
 // var share_xy = "{{ share_xy }}"  // an array like [1826602.52,6142514.22]
 var share_xy = [1826602.52731,6142514.228525]
@@ -92,21 +94,53 @@ $("#showPoi").submit(function (event) {
 
 // passing in `null` for the `options` arguments will result in the default
 // options being used
-$('#rooms-prefetch .typeahead').typeahead(null, {
+$('#prefetch-start-location .typeahead').typeahead(null, {
     hint: true,
     highlight: true,
     minLength: 1,
-    name: 'route-search-field',
+    name: 'route-from-field',
     limit: 100,
     source: searchValues
 });
 
-$("#submitForm").submit(function (event) {
+$('#prefetch-end-location .typeahead').typeahead(null, {
+    hint: true,
+    highlight: true,
+    minLength: 1,
+    name: 'route-to-field',
+    limit: 100,
+    source: searchValues
+});
+
+
+$('#prefetch-start-location').on('typeahead:change', function (e, item) {
+    console.log("CHANGE item: " + item);
+    get_start(item);
+
+
+    }).on('typeahead:autocomplete', function (e, item) {
+        console.log("autocompleted START item: " + item);
+    });
+
+$('#prefetch-end-location').on('typeahead:change', function (e, item) {
+    console.log("CHANGE END item: " + item);
+       get_end(item);
+
+    }).on('typeahead:autocomplete', function (e, item) {
+        console.log("autocompleted END item: " + item);
+    });
+
+
+
+$("#directionsForm").submit(function (event) {
     // alert( "Handler for .submit() called."  );
-    var startNum = $('#route-from').val();
-    var endNum = $('#route-to').val();
-    var rType = $("input:radio[name=typeRoute]:checked").val();
-    addRoute(startNum, endNum, rType);
+    var startSearchText = $('#route-from').val();
+    var endSearchText = $('#route-to').val();
+     var routeType = $("input:radio[name=typeRoute]:checked").val();
+
+    // addRoute(startSearchText, endSearchText, routeType);
+
+    getDirections2(startSearchText, endSearchText, routeType);
     event.preventDefault();
 });
 

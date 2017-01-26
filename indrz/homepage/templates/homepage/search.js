@@ -265,3 +265,122 @@ function showRes(featureName){
 
 
 }
+
+
+// $.when(ajax1(), ajax2(), ajax3(), ajax4()).done(function(a1, a2, a3, a4){
+//     // the code here will be executed when all four ajax requests resolve.
+//     // a1, a2, a3 and a4 are lists of length 3 containing the response text,
+//     // status, and jqXHR object for each of the four ajax calls respectively.
+// });
+//
+// function ajax1() {
+//     // NOTE:  This function must return the value
+//     //        from calling the $.ajax() method.
+//     return $.ajax({
+//         url: "someUrl",
+//         dataType: "json",
+//         data:  yourJsonData,
+//         ...
+//     });
+// }
+
+
+function get_start(searchWord1) {
+
+    var myReq = new XMLHttpRequest();
+    myReq.open('GET', '/search/'+ searchWord1);
+    myReq.onload = function () {
+
+        if (myReq.status >= 200 && myReq.status < 400) {
+            var myVillages = JSON.parse(myReq.responseText);
+            // renderHtml(myVillages);
+
+            tempStart = [];
+
+                var xcoord = myVillages.features[0].properties.centerGeometry.coordinates[0];
+                var ycoord= myVillages.features[0].properties.centerGeometry.coordinates[1];
+                var floor = myVillages.features[0].properties.floor_num;
+                // var frontOffice = searchString.features[0].properties.frontoffice;
+
+                var routeVal = xcoord + "," + ycoord + "," + floor;
+
+            tempStart.push(routeVal);
+            return routeVal;
+            // console.log('madata : ' + myVillages.features[0].properties.roomcode);
+            // console.log("geoms area: " + myVillages.features[0].properties.centerGeometry.coordinates)
+        }
+        else {
+            console.log('error do something more usefull');
+        }
+    };
+
+    myReq.onerror = function () {
+        console.log("connection error");
+
+    }
+    myReq.send();
+
+}
+
+
+function get_end(searchWord1) {
+
+    var myReq = new XMLHttpRequest();
+    myReq.open('GET', '/search/'+ searchWord1);
+    myReq.onload = function () {
+
+        if (myReq.status >= 200 && myReq.status < 400) {
+            var myVillages = JSON.parse(myReq.responseText);
+            // renderHtml(myVillages);
+
+            tempEnd = [];
+
+                var xcoord = myVillages.features[0].properties.centerGeometry.coordinates[0];
+                var ycoord= myVillages.features[0].properties.centerGeometry.coordinates[1];
+                var floor = myVillages.features[0].properties.floor_num;
+                // var frontOffice = searchString.features[0].properties.frontoffice;
+
+                var routeVal = xcoord + "," + ycoord + "," + floor;
+
+            tempEnd.push(routeVal);
+            // console.log('madata : ' + myVillages.features[0].properties.roomcode);
+            // console.log("geoms area: " + myVillages.features[0].properties.centerGeometry.coordinates)
+        }
+        else {
+            console.log('error do something more usefull');
+        }
+    };
+
+    myReq.onerror = function () {
+        console.log("connection error");
+
+    }
+    myReq.send();
+
+}
+
+
+
+function getSearchRes(searchString) {
+    // var aks = searchString.features[0].properties.aks_nummer;
+    // var xman = searchString.features[0].properties.roomcode;
+    var xcoord = searchString.features[0].properties.centerGeometry.coordinates[0];
+    var ycoord= searchString.features[0].properties.centerGeometry.coordinates[1];
+    var floor = searchString.features[0].properties.floor_num;
+    // var frontOffice = searchString.features[0].properties.frontoffice;
+
+    var routeVal = xcoord + "," + ycoord + "," + floor;
+
+
+    // console.log("WOOOOW ROOMCODE is   "+ searchString.features[0].properties.roomcode)
+    // console.log("WOOOOW AKS is   "+ searchString.features[0].properties.aks_nummer)
+    // console.log("ROUTE value is   "+ routeVal)
+
+
+
+    return routeVal;
+
+
+
+
+}

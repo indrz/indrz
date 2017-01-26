@@ -30,6 +30,89 @@ var route_inactive_style = new ol.style.Style({
 });
 
 
+// function getDirections(){
+//
+//     var customer = {contact_name :"Scott",company_name:"HP"};
+//     $.ajax({
+//         type: "POST",
+//         data :JSON.stringify(customer),
+//         url: "api/Customer",
+//         contentType: "application/json"
+//     });
+//
+// }
+
+
+// function getDirections2(xStart, yStart, floorStart, xEnd, yEnd,endFloor, routeType) {
+function getDirections2(startSearchText, endSearchText, routeType) {
+
+
+    var startVals = get_start(startSearchText);
+    var endVals = get_start(endSearchText);
+
+
+    // var geoJsonUrl = baseApiRoutingUrl + 'start_coord=' + aksStart + '&endstr=' + aksEnd + '/?format=json';
+    //
+    // var routeUrl = baseApiRoutingUrl + "1826657.11148431,6142529.11906656,4&1826685.08369027,6142499.12539894,4&1"
+    // var geoJsonUrl = baseApiRoutingUrl + xStart + "," + yStart + "," + floorStart + "&" + xEnd + "," + yEnd + "," + endFloor + "&" + routeType;
+    var geoJsonUrl = baseApiRoutingUrl + startVals + "&" + endVals + "&" + 0;
+
+    var startingLevel = routeType;
+
+    if (routeLayer) {
+        map.removeLayer(routeLayer);
+        console.log("removing layer now");
+        //map.getLayers().pop();
+    }
+
+    var source = new ol.source.Vector();
+    $.ajax(geoJsonUrl).then(function (response) {
+        //console.log("response", response);
+        var geojsonFormat = new ol.format.GeoJSON();
+        var features = geojsonFormat.readFeatures(response,
+            {featureProjection: 'EPSG:4326'});
+        source.addFeatures(features);
+
+        addMarkers(features);
+
+        // active the floor of the start point
+        var start_floor = features[0].getProperties().floor;
+        for (var i = 0; i < floor_layers.length; i++) {
+            if (start_floor == floor_layers[i].floor_num) {
+                activateLayer(i);
+            }
+        }
+        // center up the route
+        var extent = source.getExtent();
+        map.getView().fit(extent, map.getSize());
+    });
+
+    routeLayer = new ol.layer.Vector({
+        //url: geoJsonUrl,
+        //format: new ol.format.GeoJSON(),
+        source: source,
+        style: function (feature, resolution) {
+            var feature_floor = feature.getProperties().floor;
+            if (feature_floor == active_floor_num) {
+                feature.setStyle(route_active_style);
+            } else {
+                feature.setStyle(route_inactive_style);
+            }
+        },
+        title: "Route",
+        name: "Route",
+        visible: true,
+        zIndex: 9999
+    });
+
+    map.getLayers().push(routeLayer);
+
+    $("#clearRoute").removeClass("hide");
+    $("#shareRoute").removeClass("hide");
+
+}
+
+
 function addRoute(fromSearchText, toSearchText, routeType) {
     var geoJsonUrl = baseApiRoutingUrl + 'startstr=' + fromSearchText + '&endstr=' + toSearchText + '/?format=json';
 
@@ -94,6 +177,8 @@ $("#clearRoute").click(function () {
     if (markerLayer) {
         map.removeLayer(markerLayer);
     }
+    tempStart = [];
+    tempEnd = [];
     $("#clearRoute").addClass("hide");
     $("#shareRoute").addClass("hide");
     $("#route-to").val('');

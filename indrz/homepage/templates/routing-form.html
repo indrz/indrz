@@ -2,15 +2,15 @@
 {% load staticfiles %}
 
     <div id="directions" class="directions">
-        <form id="submitForm">
+        <form id="directionsForm">
 
-            <div id="rooms-prefetch" class="input-group margin-bottom-sm">
+            <div id="prefetch-start-location" class="input-group margin-bottom-sm">
                 <span class="input-group-addon"><i class="fa fa-flag-o"></i></span>
                 <input id="route-from" class="typeahead form-control" type="text" placeholder="{% trans "Start Route" %}">
             </div>
             <br>
 
-            <div id="rooms-prefetch" class="input-group margin-bottom-sm">
+            <div id="prefetch-end-location" class="input-group margin-bottom-sm">
                 <span class="input-group-addon"><i class="fa fa-flag-checkered"></i></span>
                 <input id="route-to" class="typeahead form-control" type="text" placeholder="{% trans "End Route" %}">
 
