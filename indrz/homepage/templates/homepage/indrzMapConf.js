@@ -23,6 +23,9 @@ var centerx = "{{centerx}}";
 var centery = "{{centery}}";
 var tempStart = [];
 var tempEnd = [];
+var routeLocalData = {};
+var request = null;
+
 
 // var share_xy = "{{ share_xy }}"  // an array like [1826602.52,6142514.22]
 var share_xy = [1826602.52731,6142514.228525]
@@ -115,7 +118,9 @@ $('#prefetch-end-location .typeahead').typeahead(null, {
 
 $('#prefetch-start-location').on('typeahead:change', function (e, item) {
     console.log("CHANGE item: " + item);
-    get_start(item);
+    // get_start(item);
+   // getRouteToFromInfo(item,'start')
+
 
 
     }).on('typeahead:autocomplete', function (e, item) {
@@ -124,7 +129,9 @@ $('#prefetch-start-location').on('typeahead:change', function (e, item) {
 
 $('#prefetch-end-location').on('typeahead:change', function (e, item) {
     console.log("CHANGE END item: " + item);
-       get_end(item);
+       //get_end(item);
+       //getRouteToFromInfo(item,'end')
+
 
     }).on('typeahead:autocomplete', function (e, item) {
         console.log("autocompleted END item: " + item);
@@ -136,11 +143,41 @@ $("#directionsForm").submit(function (event) {
     // alert( "Handler for .submit() called."  );
     var startSearchText = $('#route-from').val();
     var endSearchText = $('#route-to').val();
-     var routeType = $("input:radio[name=typeRoute]:checked").val();
+    var routeType = $("input:radio[name=typeRoute]:checked").val();
 
-    // addRoute(startSearchText, endSearchText, routeType);
 
-    getDirections2(startSearchText, endSearchText, routeType);
+        $.when(fetcherMd(startSearchText),fetcherMd(endSearchText)).then(function(a,b) {
+
+            getSearchRes(startSearchText)
+
+        routeLocalData.start = {};
+        routeLocalData.start.xcoord = a[0].features[0].properties.centerGeometry.coordinates[0];
+        routeLocalData.start.ycoord = a[0].features[0].properties.centerGeometry.coordinates[1];
+        routeLocalData.start.floor = a[0].features[0].properties.floor_num;
+        var routeStartValue = routeLocalData.start.xcoord + "," + routeLocalData.start.ycoord + "," + routeLocalData.start.floor;
+
+        routeLocalData.start.routeValue = routeStartValue;
+
+        routeLocalData.end = {};
+        routeLocalData.end.xcoord = b[0].features[0].properties.centerGeometry.coordinates[0];
+        routeLocalData.end.ycoord = b[0].features[0].properties.centerGeometry.coordinates[1];
+        routeLocalData.end.floor = b[0].features[0].properties.floor_num;
+        var routeEndValue = routeLocalData.end.xcoord + "," + routeLocalData.end.ycoord + "," + routeLocalData.end.floor;
+
+        routeLocalData.end.routeValue = routeEndValue;
+
+        console.log(a[0]);
+        console.log(b[0]);
+
+        console.log(JSON.stringify(routeLocalData));
+        console.log("START IS "+a[0].features[0].properties);
+        console.log("END IS "+b[0].features[0].properties);
+
+        getDirections2(routeStartValue, routeEndValue,0);
+
+    });
+
+
     event.preventDefault();
 });
 

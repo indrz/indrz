@@ -266,6 +266,77 @@ function showRes(featureName){
 
 }
 
+// function getResultFromURLWithCallback(url, callback)
+// {
+//
+// 	return $.ajax({
+// 		url: url,
+// 		success: function(response) {
+// 			callback(response);
+// 		},
+// 		error: function(e) {
+// 			console.error("Failed to call " + url);
+// 			callback(null);
+// 		},
+// 		async:true,
+// 		timeout: 7500 // 7.5 seconds
+// 	});
+//
+// }
+
+// $.when(ajax1(), ajax2(), ajax3(), ajax4()).done(function(a1, a2, a3, a4){
+//     // the code here will be executed when all four ajax requests resolve.
+//     // a1, a2, a3 and a4 are lists of length 3 containing the response text,
+//     // status, and jqXHR object for each of the four ajax calls respectively.
+// });
+//
+// function ajax1() {
+//     // NOTE:  This function must return the value
+//     //        from calling the $.ajax() method.
+//     return $.ajax({
+//         url: "/search/Irene Fellner",
+//         dataType: "json",
+//         data:  yourJsonData,
+//         ...
+//     });
+// }
+//
+// $.when(
+//   // Get the HTML
+//   $.get("/feature/", function(html) {
+//     globalStore.html = html;
+//   }),
+//
+//   // Get the CSS
+//   $.get("/assets/feature.css", function(css) {
+//     globalStore.css = css;
+//   }),
+//
+//   // Get the JS
+//   $.getScript("/assets/feature.js")
+//
+// ).then(function() {
+//
+//   // All is ready now, so...
+//
+//   // Add CSS to page
+//   $("<style />").html(globalStore.css).appendTo("head");
+//
+//   // Add HTML to page
+//   $("body").append(globalStore.html);
+//
+// });
+
+
+
+// $.when(getRouteStartInfo(), getRouteEndInfo()).done(function(a1, a2){
+//
+//     console.log("WWWWWWWWWWWWWWWWWOOOOOOOOOOOOOOOOOOWWWWWWWWWWWWWWWWWWWWW");
+//     // the code here will be executed when all four ajax requests resolve.
+//     // a1, a2, a3 and a4 are lists of length 3 containing the response text,
+//     // status, and jqXHR object for each of the four ajax calls respectively.
+// });
+
 
 // $.when(ajax1(), ajax2(), ajax3(), ajax4()).done(function(a1, a2, a3, a4){
 //     // the code here will be executed when all four ajax requests resolve.
@@ -285,88 +356,264 @@ function showRes(featureName){
 // }
 
 
-function get_start(searchWord1) {
+// function getStart(routeStartText){
+//     var url = '/search/'+ routeText;
+//     return getResultFromURLWithCallback(url, callback)
+// }
+//
+// // Generic function to make an AJAX call
+// var fetchData = function(query, dataURL) {
+//     // Return the $.ajax promise
+//     return $.ajax({
+//         data: query,
+//         dataType: 'json',
+//         url: dataURL
+//     });
+// }
 
-    var myReq = new XMLHttpRequest();
-    myReq.open('GET', '/search/'+ searchWord1);
-    myReq.onload = function () {
+// Generic function to make an AJAX call
+var fetchData2 = function(text) {
+    console.log("IN FETCHDATA 2 : " + text);
+    // Return the $.ajax promise
+    return $.ajax({
 
-        if (myReq.status >= 200 && myReq.status < 400) {
-            var myVillages = JSON.parse(myReq.responseText);
-            // renderHtml(myVillages);
-
-            tempStart = [];
-
-                var xcoord = myVillages.features[0].properties.centerGeometry.coordinates[0];
-                var ycoord= myVillages.features[0].properties.centerGeometry.coordinates[1];
-                var floor = myVillages.features[0].properties.floor_num;
-                // var frontOffice = searchString.features[0].properties.frontoffice;
-
-                var routeVal = xcoord + "," + ycoord + "," + floor;
-
-            tempStart.push(routeVal);
-            return routeVal;
-            // console.log('madata : ' + myVillages.features[0].properties.roomcode);
-            // console.log("geoms area: " + myVillages.features[0].properties.centerGeometry.coordinates)
-        }
-        else {
-            console.log('error do something more usefull');
-        }
-    };
-
-    myReq.onerror = function () {
-        console.log("connection error");
-
-    }
-    myReq.send();
-
+        dataType: 'json',
+        url: "/search/" + text
+    });
 }
 
-
-function get_end(searchWord1) {
-
-    var myReq = new XMLHttpRequest();
-    myReq.open('GET', '/search/'+ searchWord1);
-    myReq.onload = function () {
-
-        if (myReq.status >= 200 && myReq.status < 400) {
-            var myVillages = JSON.parse(myReq.responseText);
-            // renderHtml(myVillages);
-
-            tempEnd = [];
-
-                var xcoord = myVillages.features[0].properties.centerGeometry.coordinates[0];
-                var ycoord= myVillages.features[0].properties.centerGeometry.coordinates[1];
-                var floor = myVillages.features[0].properties.floor_num;
-                // var frontOffice = searchString.features[0].properties.frontoffice;
-
-                var routeVal = xcoord + "," + ycoord + "," + floor;
-
-            tempEnd.push(routeVal);
-            // console.log('madata : ' + myVillages.features[0].properties.roomcode);
-            // console.log("geoms area: " + myVillages.features[0].properties.centerGeometry.coordinates)
-        }
-        else {
-            console.log('error do something more usefull');
-        }
-    };
-
-    myReq.onerror = function () {
-        console.log("connection error");
-
-    }
-    myReq.send();
-
+var fetcherMd = function(foo) {
+    return $.ajax({
+        dataType: 'json',
+        url: '/search/' + foo
+    }).done(function (data) {
+        // If successful
+        //console.log(data);
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        // If fail
+        //console.log(textStatus + ': ' + errorThrown);
+    });
 }
+
+var runRouteM = function(startP, endP) {
+    return $.ajax({
+        dataType: 'json',
+        url: '/directions/' + startP + endP
+    }).done(function (data) {
+        // If successful
+        //console.log(data);
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        // If fail
+        //console.log(textStatus + ': ' + errorThrown);
+    });
+}
+
+// var ajaxCall = $.ajax({
+//     context: $(element),
+//
+//     dataType: 'json',
+//     url: '/path/to/script'
+// });
+//
+// ajaxCall.done(function(data) {
+//     console.log(data);
+// });
+
+// var getOrder = fetchData(
+//     {
+//         'hash': '2528ce2ed5ff3891c71a07448a3003e5',
+//         'email': 'john.doe@gmail.com'
+//     }, '/path/to/url/1'),
+//     getCustomerID = fetchData(
+//     {
+//         'email': 'john.doe@gmail.com'
+//     }, '/path/to/url/2');
+
+// Use $.when to check if both AJAX calls are successful
+
+
+
+// function createRequest() {
+//      try {
+//        request = new XMLHttpRequest();
+//      } catch (trymicrosoft) {
+//        try {
+//          request = new ActiveXObject("Msxml2.XMLHTTP");
+//        } catch (othermicrosoft) {
+//          try {
+//            request = new ActiveXObject("Microsoft.XMLHTTP");
+//          } catch (failed) {
+//            request = null;
+//          }
+//        }
+//      }
+//
+//      if (request == null)
+//        alert("Error creating request object!");
+//
+//
+//
+// }
+
+   // function getRouteStartInfo(routeStartText) {
+  //    createRequest();
+  //    request.open('GET', '/search/'+ routeStartText, true);
+  //    request.onreadystatechange = runRouteQuery("start");
+  //    request.send(null);
+  // }
+ //
+ // function getRouteEndInfo(routeEndText) {
+ //     createRequest();
+ //     request.open('GET', '/search/'+ routeEndText, true);
+ //
+ //     request.onreadystatechange = runRouteQuery("end");
+ //     request.send(null);
+ //  }
+
+//     function runRouteQuery(position) {
+//
+//     if (request.readyState == 4) {
+//         var myVillages = JSON.parse(request.responseText);
+//
+//         if (position === 'start') {
+//
+//             routeLocalData.start = {};
+//             routeLocalData.start.xcoord = myVillages.features[0].properties.centerGeometry.coordinates[0];
+//             routeLocalData.start.ycoord = myVillages.features[0].properties.centerGeometry.coordinates[1];
+//             routeLocalData.start.floor = myVillages.features[0].properties.floor_num;
+//
+//             // var xcoord = myVillages.features[0].properties.centerGeometry.coordinates[0];
+//             // var ycoord = myVillages.features[0].properties.centerGeometry.coordinates[1];
+//             // var floor = myVillages.features[0].properties.floor_num;
+//             // var frontOffice = searchString.features[0].properties.frontoffice;
+//
+//             var routeStartValue = routeLocalData.start.xcoord + "," + routeLocalData.start.ycoord + "," + routeLocalData.start.floor;
+//             routeLocalData.start.routeValue = routeStartValue;
+//
+//
+//         } else if (position === "end") {
+//
+//             routeLocalData.end = {};
+//             routeLocalData.end.xcoord = myVillages.features[0].properties.centerGeometry.coordinates[0];
+//             routeLocalData.end.ycoord = myVillages.features[0].properties.centerGeometry.coordinates[1];
+//             routeLocalData.end.floor = myVillages.features[0].properties.floor_num;
+//
+//             var routeEndValue = routeLocalData.end.xcoord + "," + routeLocalData.end.ycoord + "," + routeLocalData.end.floor;
+//             routeLocalData.end.routeValue = routeEndValue;
+//
+//
+//         }
+//     }
+// }
+
+// // function getRouteToFromInfo(routeText, fromOrTo) {
+// function getRouteToFromInfo(routeStartText, routeEndText) {
+//
+//     var myReq = new XMLHttpRequest();
+//     myReq.open('GET', '/search/'+ routeText);
+//     myReq.onload = function () {
+//
+//         if (myReq.status >= 200 && myReq.status < 400) {
+//
+//             var myVillages = JSON.parse(myReq.responseText);
+//
+//             if (fromOrTo==='start'){
+//
+//                 // renderHtml(myVillages);
+//
+//                 tempStart = [];
+//
+//
+//                 routeLocalData.start = {};
+//                 routeLocalData.start.xcoord = myVillages.features[0].properties.centerGeometry.coordinates[0];
+//                 routeLocalData.start.ycoord = myVillages.features[0].properties.centerGeometry.coordinates[1];
+//                 routeLocalData.start.floor = myVillages.features[0].properties.floor_num;
+//
+//                 var xcoord = myVillages.features[0].properties.centerGeometry.coordinates[0];
+//                 var ycoord= myVillages.features[0].properties.centerGeometry.coordinates[1];
+//                 var floor = myVillages.features[0].properties.floor_num;
+//                 // var frontOffice = searchString.features[0].properties.frontoffice;
+//
+//                 var routeStartValue = routeLocalData.start.xcoord + "," + routeLocalData.start.ycoord + "," + routeLocalData.start.floor;
+//                 routeLocalData.start.routeValue = routeStartValue;
+//
+//                 //tempStart.push(routeVal);
+//                 //return routeVal;
+//             // console.log('madata : ' + myVillages.features[0].properties.roomcode);
+//             // console.log("geoms area: " + myVillages.features[0].properties.centerGeometry.coordinates)
+//             }else if (fromOrTo==='end'){
+//
+//
+//                 routeLocalData.end = {};
+//                 routeLocalData.end.xcoord = myVillages.features[0].properties.centerGeometry.coordinates[0];
+//                 routeLocalData.end.ycoord = myVillages.features[0].properties.centerGeometry.coordinates[1];
+//                 routeLocalData.end.floor = myVillages.features[0].properties.floor_num;
+//
+//                 var routeEndValue = routeLocalData.end.xcoord + "," + routeLocalData.end.ycoord + "," + routeLocalData.end.floor;
+//                 routeLocalData.end.routeValue = routeEndValue;
+//
+//
+//             }
+//
+//         }
+//         else {
+//             console.log('error do something more usefull');
+//         }
+//     };
+//
+//     myReq.onerror = function () {
+//         console.log("connection error");
+//
+//     }
+//     myReq.send();
+//
+// }
+
+
+// function get_end(searchWord1) {
+//
+//     var myReq = new XMLHttpRequest();
+//     myReq.open('GET', '/search/'+ searchWord1);
+//     myReq.onload = function () {
+//
+//         if (myReq.status >= 200 && myReq.status < 400) {
+//             var myVillages = JSON.parse(myReq.responseText);
+//             // renderHtml(myVillages);
+//
+//             tempEnd = [];
+//
+//                 var xcoord = myVillages.features[0].properties.centerGeometry.coordinates[0];
+//                 var ycoord= myVillages.features[0].properties.centerGeometry.coordinates[1];
+//                 var floor = myVillages.features[0].properties.floor_num;
+//                 // var frontOffice = searchString.features[0].properties.frontoffice;
+//
+//                 var routeVal = xcoord + "," + ycoord + "," + floor;
+//
+//             tempEnd.push(routeVal);
+//             // console.log('madata : ' + myVillages.features[0].properties.roomcode);
+//             // console.log("geoms area: " + myVillages.features[0].properties.centerGeometry.coordinates)
+//         }
+//         else {
+//             console.log('error do something more usefull');
+//         }
+//     };
+//
+//     myReq.onerror = function () {
+//         console.log("connection error");
+//
+//     }
+//     myReq.send();
+//
+// }
 
 
 
 function getSearchRes(searchString) {
     // var aks = searchString.features[0].properties.aks_nummer;
     // var xman = searchString.features[0].properties.roomcode;
-    var xcoord = searchString.features[0].properties.centerGeometry.coordinates[0];
-    var ycoord= searchString.features[0].properties.centerGeometry.coordinates[1];
-    var floor = searchString.features[0].properties.floor_num;
+    var xcoord = searchString[0].features[0].properties.centerGeometry.coordinates[0];
+    var ycoord= searchString[0].features[0].properties.centerGeometry.coordinates[1];
+    var floor = searchString[0].features[0].properties.floor_num;
     // var frontOffice = searchString.features[0].properties.frontoffice;
 
     var routeVal = xcoord + "," + ycoord + "," + floor;

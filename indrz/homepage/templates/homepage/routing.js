@@ -47,15 +47,19 @@ var route_inactive_style = new ol.style.Style({
 function getDirections2(startSearchText, endSearchText, routeType) {
 
 
-    var startVals = get_start(startSearchText);
-    var endVals = get_start(endSearchText);
+    // var startVals = get_start(startSearchText);
+    // var endVals = get_start(endSearchText);
 
 
     // var geoJsonUrl = baseApiRoutingUrl + 'start_coord=' + aksStart + '&endstr=' + aksEnd + '/?format=json';
     //
     // var routeUrl = baseApiRoutingUrl + "1826657.11148431,6142529.11906656,4&1826685.08369027,6142499.12539894,4&1"
     // var geoJsonUrl = baseApiRoutingUrl + xStart + "," + yStart + "," + floorStart + "&" + xEnd + "," + yEnd + "," + endFloor + "&" + routeType;
-    var geoJsonUrl = baseApiRoutingUrl + startVals + "&" + endVals + "&" + 0;
+    //var geoJsonUrl = baseApiRoutingUrl + startVals + "&" + endVals + "&" + 0;
+    // var geoJsonUrl = baseApiRoutingUrl + 'start_coord=' + routeLocalData.start.routeValue + '&enstr='+ routeLocalData.end.routeValue + '/?format=json';
+
+var geoJsonUrl = baseApiRoutingUrl + startSearchText + "&" + endSearchText + "&" + routeType + '/?format=json';
+
 
     var startingLevel = routeType;
 
@@ -177,8 +181,6 @@ $("#clearRoute").click(function () {
     if (markerLayer) {
         map.removeLayer(markerLayer);
     }
-    tempStart = [];
-    tempEnd = [];
     $("#clearRoute").addClass("hide");
     $("#shareRoute").addClass("hide");
     $("#route-to").val('');
@@ -238,9 +240,6 @@ function addMarkers(route_features){
         }
 
     }
-
-    console.log(floorList);
-    console.log(lengthList);
 
     // Add start/end marker
     var start_point = new ol.geom.Point(route_features[0].getGeometry().getLastCoordinate());
