@@ -148,7 +148,6 @@ $("#directionsForm").submit(function (event) {
 
         $.when(fetcherMd(startSearchText),fetcherMd(endSearchText)).then(function(a,b) {
 
-            getSearchRes(startSearchText)
 
         routeLocalData.start = {};
         routeLocalData.start.xcoord = a[0].features[0].properties.centerGeometry.coordinates[0];
