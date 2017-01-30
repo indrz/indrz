@@ -30,37 +30,10 @@ var route_inactive_style = new ol.style.Style({
 });
 
 
-// function getDirections(){
-//
-//     var customer = {contact_name :"Scott",company_name:"HP"};
-//     $.ajax({
-//         type: "POST",
-//         data :JSON.stringify(customer),
-//         url: "api/Customer",
-//         contentType: "application/json"
-//     });
-//
-// }
-
-
-// function getDirections2(xStart, yStart, floorStart, xEnd, yEnd,endFloor, routeType) {
+// valid startSearchText string is 21315.12,12312.123,3   x,y,floor_num
 function getDirections2(startSearchText, endSearchText, routeType) {
 
-
-    // var startVals = get_start(startSearchText);
-    // var endVals = get_start(endSearchText);
-
-
-    // var geoJsonUrl = baseApiRoutingUrl + 'start_coord=' + aksStart + '&endstr=' + aksEnd + '/?format=json';
-    //
-    // var routeUrl = baseApiRoutingUrl + "1826657.11148431,6142529.11906656,4&1826685.08369027,6142499.12539894,4&1"
-    // var geoJsonUrl = baseApiRoutingUrl + xStart + "," + yStart + "," + floorStart + "&" + xEnd + "," + yEnd + "," + endFloor + "&" + routeType;
-    //var geoJsonUrl = baseApiRoutingUrl + startVals + "&" + endVals + "&" + 0;
-    // var geoJsonUrl = baseApiRoutingUrl + 'start_coord=' + routeLocalData.start.routeValue + '&enstr='+ routeLocalData.end.routeValue + '/?format=json';
-
-var geoJsonUrl = baseApiRoutingUrl + startSearchText + "&" + endSearchText + "&" + routeType + '/?format=json';
-
-
+    var geoJsonUrl = baseApiRoutingUrl + startSearchText + "&" + endSearchText + "&" + routeType + '/?format=json';
     var startingLevel = routeType;
 
     if (routeLayer) {
@@ -271,28 +244,7 @@ function addMarkers(route_features){
 
 function routeToNearestPoi(startXY, floorNum, poiCatId){
 
-
     var geoJsonUrl = baseApiRoutingUrl + 'startxy=' + startXY + '&floor=' + floorNum + '&poiCatId=' + poiCatId + '/?format=json';
-
-    //
-    // $.getJSON(geoJsonUrl, function(json){
-    //     destinationPoiInfo = json.route_info[0].destination.name;
-    // });
-
-       // var myD =  $.getJSON(geoJsonUrl, function(data) {
-       //                   var n = data.route_info[0].destination.name;
-       //                  console.log("xxxxxxxxx x  :  " + n);
-       //
-       //                  destinationPoiInfo.push(n);
-       //
-       //                  return n
-       //                  //data is the JSON string
-       //              });
-
-       // console.log("PPPPPPPPPPPPPPPPP " + destinationPoiInfo);
-       //
-       // document.getElementById('route-to').value = destinationPoiInfo;
-
 
     if (routeLayer) {
         map.removeLayer(routeLayer);
