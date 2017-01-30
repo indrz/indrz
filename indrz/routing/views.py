@@ -86,7 +86,6 @@ def find_closest_network_node(x_coord, y_coord, floor):
         ORDER BY ST_3DDistance(verts.the_geom, pt.geom)
         LIMIT 1;""".format(x_coord, y_coord, floor)
 
-    print(query)
 
     cur.execute(query)
 
@@ -371,7 +370,6 @@ def run_route(start_node_id, end_node_id, route_type):
           JOIN geodata.networklines_3857 AS input_network
           ON dij_route.edge = input_network.id ;""".format(normal=route_query, type=barrierfree_q, start_node=start_node_id, end_node=end_node_id)
 
-    print(routing_query)
 
     # routing_query = '''
     #     SELECT seq,
