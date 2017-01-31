@@ -3,6 +3,8 @@
 cd /opt/indrz-wu
 
 # copy all server made translation changes to temp dir
+rm -rf /home/mdiener/temp/de
+
 cp -R /opt/django-deploy/indrz/locale/de /home/mdiener/temp/
 
 rm -rf /opt/django-deploy/indrz
@@ -21,7 +23,7 @@ cp -R /home/mdiener/temp/de /opt/django-deploy/indrz/locale/de
 
 cd /opt/django-deploy/indrz
 source /opt/venvs/py3uwsgi/bin/activate
-python manage.py collectstatic
+python manage.py collectstatic --clear
 
 cd /opt/indrz-wu/
 supervisorctl reload
