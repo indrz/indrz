@@ -1,5 +1,4 @@
 from django.conf.urls import url, include
-from rest_framework.urlpatterns import format_suffix_patterns
 # from django.conf import settings
 # from routing.views import create_route_from_coords, create_route_from_id, create_route_from_search, \
 #     force_route_mid_point

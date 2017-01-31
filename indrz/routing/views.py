@@ -490,12 +490,12 @@ def create_route_from_search(request, start_term, end_term, route_type=0):
         start_room = start_term.split("=")[1]
         end_room = end_term.split("=")[1]
 
-        res_start_searchany = requests.get(url=settings.LOCALHOST_URL + "search/{0}".format(start_room))
+        res_start_searchany = requests.get(url=settings.LOCALHOST_URL + "search/{0}".format(start_room), verify=False)
         fx1 = res_start_searchany.json()
 
         start_aks = fx1['features'][0]['properties']['aks_nummer']
 
-        res_end_searchany = requests.get(url=settings.LOCALHOST_URL + "search/{0}".format(end_room))
+        res_end_searchany = requests.get(url=settings.LOCALHOST_URL + "search/{0}".format(end_room), verify=False)
         fx2 = res_end_searchany.json()
 
         end_aks = fx2['features'][0]['properties']['aks_nummer']

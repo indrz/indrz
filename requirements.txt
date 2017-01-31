@@ -1,5 +1,5 @@
 django == 1.10.5
-django-mptt == 0.8.0
+django-mptt == 0.8.7
 django-rest-swagger == 0.3.10
 django-taggit == 0.18.0
 django-rosetta==0.7.12
