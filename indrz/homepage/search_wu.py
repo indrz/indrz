@@ -506,64 +506,126 @@ def search_any(request, q, format=None):
         # add % at the beginning and end of the search string so we can use it in the like statement
         # also convert searchString toUpper here
         searchString2 = "%" + searchString.upper() + "%"
+        searchString_exact = searchString.upper()
         extraBuilding2 = "%" + extraBuilding.upper() + "%"
 
         local_db_results = []
 
-        sql = """
+        sql_exact = """
         SELECT search_string, text_type, external_id, st_asgeojson(geom) AS geom,
             st_asgeojson(st_PointOnSurface(geom)) AS center, layer, building_id, 0 AS resultType,
             external_id, room_code, id
                 FROM geodata.search_index_v
-                WHERE upper(search_string) LIKE %(search_string)s
+                WHERE upper(search_string) = upper(%(search_string)s)
                 ORDER BY search_string DESC, length(search_string) LIMIT 9
         """
 
-        cursor.execute(sql,
-                       {"search_string": searchString2, "building": extraBuilding2,
+
+        cursor.execute(sql_exact,
+                       {"search_string": searchString_exact, "building": extraBuilding2,
                         "bach_location_list": tuple(bachLocationStrings)})
-        db_rows = cursor.fetchall()
 
-        for row in db_rows:
-            loc = row[8]  # row[8] is AKS_NUMMER
-            roomcode_value = row[9]  # roomcode
-
-            if roomcode_value == '':
-                roomcode_value = None
+        db_res_exact = cursor.fetchall()
 
 
-            poi_id = row[1]
-            if poi_id == 'poi':
-                poi_id = repNoneWithEmpty(int(row[10]))
+        if db_res_exact:
+            for row in db_res_exact:
+                loc = row[8]  # row[8] is AKS_NUMMER
+                roomcode_value = row[9]  # roomcode
 
-                # our search string
-            obj = {"label": row[0], "name": row[0], "type": row[1], "external_id": row[2],
-                   "centerGeometry": ast.literal_eval(row[4]), "floor_num": repNoneWithEmpty(int(row[5])),
-                   "building": repNoneWithEmpty(row[6]), "aks_nummer": loc, "roomcode_value": repNoneWithEmpty(roomcode_value),
-                   "src": "local db view", "poi_id" : poi_id
-                   # , "frontoffice": "001_10_OG04_421600", "orgid": "1234"
-                   }
+                if roomcode_value == '':
+                    roomcode_value = None
 
 
-            poi_feature_geojson = Feature(geometry=ast.literal_eval(row[3]), properties=obj)
-            local_db_results.append(poi_feature_geojson)
+                poi_id = row[1]
+                if poi_id == 'poi':
+                    poi_id = repNoneWithEmpty(int(row[10]))
+
+                    # our search string
+                obj = {"label": row[0], "name": row[0], "type": row[1], "external_id": row[2],
+                       "centerGeometry": ast.literal_eval(row[4]), "floor_num": repNoneWithEmpty(int(row[5])),
+                       "building": repNoneWithEmpty(row[6]), "aks_nummer": loc, "roomcode_value": repNoneWithEmpty(roomcode_value),
+                       "src": "local db view", "poi_id" : poi_id
+                       # , "frontoffice": "001_10_OG04_421600", "orgid": "1234"
+                       }
 
 
-        # --------------------------------------------------------
-        # add the assigned entrance
-        # for tempResult in rows:
-        #     if (tempResult["aks_nummer"] is not None and tempResult["aks_nummer"] != ""):
-        #         #entranceData = getAssignedEntrance(tempResult["aks_nummer"], tempResult["layer"]);
-        #         #tempResult["entrance"] = entranceData["id"];
-        #        # tempResult["entrance_name_de"] = entranceData["de"];
-        #         #tempResult["entrance_name_en"] = entranceData["en"];
-        #         pass
-        # --------------------------------------------------------
-        # retVal = {"searchString": searchString, "building": extraBuilding, "searchResult": local_db_results, "length": len(db_rows)}
+                poi_feature_geojson = Feature(geometry=ast.literal_eval(row[3]), properties=obj)
+                local_db_results.append(poi_feature_geojson)
 
-        local_data_geojson = FeatureCollection(features=local_db_results)
 
-        return Response(local_data_geojson)
+            # --------------------------------------------------------
+            # add the assigned entrance
+            # for tempResult in rows:
+            #     if (tempResult["aks_nummer"] is not None and tempResult["aks_nummer"] != ""):
+            #         #entranceData = getAssignedEntrance(tempResult["aks_nummer"], tempResult["layer"]);
+            #         #tempResult["entrance"] = entranceData["id"];
+            #        # tempResult["entrance_name_de"] = entranceData["de"];
+            #         #tempResult["entrance_name_en"] = entranceData["en"];
+            #         pass
+            # --------------------------------------------------------
+            # retVal = {"searchString": searchString, "building": extraBuilding, "searchResult": local_db_results, "length": len(db_rows)}
+
+            local_data_geojson = FeatureCollection(features=local_db_results)
+
+            return Response(local_data_geojson)
+
+        else:
+            sql_like = """
+            SELECT search_string, text_type, external_id, st_asgeojson(geom) AS geom,
+                st_asgeojson(st_PointOnSurface(geom)) AS center, layer, building_id, 0 AS resultType,
+                external_id, room_code, id
+                    FROM geodata.search_index_v
+                    WHERE upper(search_string) LIKE %(search_string)s
+                    ORDER BY search_string DESC, length(search_string) LIMIT 9
+            """
+
+            cursor.execute(sql_like,
+                           {"search_string": searchString2, "building": extraBuilding2,
+                            "bach_location_list": tuple(bachLocationStrings)})
+
+            db_rows = cursor.fetchall()
+
+            for row in db_rows:
+                loc = row[8]  # row[8] is AKS_NUMMER
+                roomcode_value = row[9]  # roomcode
+
+                if roomcode_value == '':
+                    roomcode_value = None
+
+
+                poi_id = row[1]
+                if poi_id == 'poi':
+                    poi_id = repNoneWithEmpty(int(row[10]))
+
+                    # our search string
+                obj = {"label": row[0], "name": row[0], "type": row[1], "external_id": row[2],
+                       "centerGeometry": ast.literal_eval(row[4]), "floor_num": repNoneWithEmpty(int(row[5])),
+                       "building": repNoneWithEmpty(row[6]), "aks_nummer": loc, "roomcode_value": repNoneWithEmpty(roomcode_value),
+                       "src": "local db view", "poi_id" : poi_id
+                       # , "frontoffice": "001_10_OG04_421600", "orgid": "1234"
+                       }
+
+
+                poi_feature_geojson = Feature(geometry=ast.literal_eval(row[3]), properties=obj)
+                local_db_results.append(poi_feature_geojson)
+
+
+            # --------------------------------------------------------
+            # add the assigned entrance
+            # for tempResult in rows:
+            #     if (tempResult["aks_nummer"] is not None and tempResult["aks_nummer"] != ""):
+            #         #entranceData = getAssignedEntrance(tempResult["aks_nummer"], tempResult["layer"]);
+            #         #tempResult["entrance"] = entranceData["id"];
+            #        # tempResult["entrance_name_de"] = entranceData["de"];
+            #         #tempResult["entrance_name_en"] = entranceData["en"];
+            #         pass
+            # --------------------------------------------------------
+            # retVal = {"searchString": searchString, "building": extraBuilding, "searchResult": local_db_results, "length": len(db_rows)}
+
+            local_data_geojson = FeatureCollection(features=local_db_results)
+
+            return Response(local_data_geojson)
 
 @api_view(['GET'])
 def searchAutoComplete(request, search_text, format=None):
