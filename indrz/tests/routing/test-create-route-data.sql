@@ -1,4 +1,7 @@
-﻿DROP TABLE IF EXISTS test.edge_table_e00;
+﻿
+CREATE SCHEMA test AUTHORIZATION postgres;
+
+DROP TABLE IF EXISTS test.edge_table_e00;
 DROP TABLE IF EXISTS test.edge_table_e01;
 CREATE TABLE test.edge_table_e00 (
     id serial PRIMARY KEY ,
@@ -104,6 +107,7 @@ UPDATE test.networklines_e00 SET id=id+100000;
 UPDATE test.networklines_e01 SET id=id+200000;
 
 DROP TABLE IF EXISTS test.networklines_3857;
+
 SELECT * INTO test.networklines_3857 FROM
     (
       (SELECT id, geom, length, way_type, length*e0.cost as cost, reverse_cost,
