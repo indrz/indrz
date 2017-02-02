@@ -7,11 +7,11 @@
         <div class="container-fluid">
         <div class="nav-left">
             <ul>
-                <li class="logo-container"><a href="http://hosting.wu.ac.at/gis/#">
+                <li class="logo-container"><a href="http://campus.wu.ac.at/">
                     <img src="{% static "homepage/wu-neu/sitelogo-md.png" %}" class="logo" alt=""></a></li>
                 <!--li class="brandname slideout"><a>CAMPUS</a></li-->
-                <li class="active" style="background: #009bb8;"><a>Karte</a></li>
-                <li><a>Hilfe</a></li>
+                <li class="active" style="background: #009bb8;"><a href="{% url "map_home" %}">Karte</a></li>
+                <li ><a href="{% url "help" %}">Hilfe</a></li>
             </ul>
         </div>
 

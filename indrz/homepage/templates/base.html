@@ -45,6 +45,7 @@
 
 
     {% block nav-top %}{% endblock %}
+    {% block indrz-content %}{% endblock %}
     <main>
 
         <div id="indrz-main-container" class="container-fluid">
@@ -58,12 +59,17 @@
         </div>
     </main>
 
-    {% include 'modal-bugreport.html' %}
-    {% include 'modal-share.html' %}
+    {% block modal-popups %}
+        {% include 'modal-bugreport.html' %}
+        {% include 'modal-share.html' %}
+        
+    {% endblock modal-popups %}
+
 
 
 
     {% block popup-markup %} {% include 'popup-markup.html' %} {% endblock popup-markup %}
+    
     {% block js-conf %}{% endblock js-conf %}
     {% block route_from_to %}{% endblock route_from_to %}
     {% block map_frame %}{% endblock map_frame %}

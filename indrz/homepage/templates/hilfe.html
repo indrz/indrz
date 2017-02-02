@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block title %}WU Campus Hilfe{% endblock %}
+
+{% block head_extra %}
+
+
+    {#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">#}
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    {#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">#}
+
+
+    <link rel="stylesheet" href="{% static "homepage/wu-neu/css.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "homepage/wu-neu/font-awesome.min.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "homepage/wu-neu/app.min.css" %}" type="text/css" media="all">
+    <script type="text/javascript" src="{% static "homepage/wu-neu/app.min.js" %}"></script>
+
+    <style> body {
+        padding-top: 0px;
+    }</style>
+
+
+{% endblock head_extra %}
+
+{% block nav-top %}{% include "wu-neu-nav.html" %}{% endblock nav-top %}
+
+
+
+{% block indrz-content %}
+
+
+    <div class="row-fluid">
+        <div class="span62 b3k_content" role="main"><!--the span60 box will always have main role-->
+
+
+            <div class="span6">
+                <h1>Campus Map Hilfe</h1>
+            </div>
+
+            <div class="span6">
+                <h2>Routing</h2>
+                <p><img class="span4" src="{% static "homepage/img/hilfe/hilfe_routing_ergebnisse_lc_d2.jpg" %}"
+                        alt="routing results">Die Routingfunktion unterscheidet sich von der Suchfunktion insofern, dass
+                    neben einem Start- auch ein Endpunkt eingegeben werden muss, um den kürzesten Weg dahin berechnen
+                    und anzeigen zu können. Sollten Sie eine körperliche Behinderung aufweisen, haben Sie die
+                    Möglichkeit, eine behintertenfreundliche, barrierefreie Route zu erhalten, indem Sie das Symbol über
+                    der Eingabe des Start- und Zielpunkts wechseln. <br>
+                    Nun wird eine Route generiert, welche Hindernisse wie Stiegen und steile Rampen umgeht und
+                    stattdessen Lifte und flache Rampen benutzt. <br>
+                <p>Wollen Sie zum Beispiel eine Route vom Audimax im Gebäude D1 TC zur Bibliothek im Gebäude LC
+                    generieren, wäre eine Möglichkeit, dass Sie „Audimax“ als Start- und „Bibliothek“ als Endpunkt
+                    eingeben. Nach Auflistung der Ergebnisse werden diese beiden Punkte ausgewählt und die Route wird
+                    generiert und auf der Karte angezeigt.</p> Zusätzlich zur grafischen Darstellung auf der Karte wird
+                eine Wegbeschreibung mit detaillierten Angaben angegeben. Sollte sich eine Route über mehrere Stockwerke
+                erstrecken, wird die Route des aktiven Stockwerks dicker dargestellt als der Rest der Route. Befindet
+                man sich beispielsweise im Audimax im ersten Obergeschoss und generiert eine Route zum Haupteingang im
+                Erdgeschoss, so wird die Route vom Audimax bis zum Stiegenhaus dicker dargestellt als der Teil vom
+                Stiegenhaus zum Haupteingang. Setzt man das Erdgeschoss als aktives Stockwerk, so ändern sich die
+                Stärken der Linien.</p>
+
+                <img src="{% static "homepage/img/hilfe/hilfe_route_anywhere.jpg" %}" alt="routing anywhere">
+                <p>Klicken Sie mit der rechten Maustaste, so öffnet sich ein Fenster. Sie haben jetzt die Möglichkeit,
+                    Informationen zum Raum zu erhalten, die bereits angezeigte Route zu löschen sowie diesen Raum als
+                    Start- oder Endpunkt zu definieren. Sollten Sie sich dazu entscheiden, den Raum beispielsweise als
+                    Ziel hinzuzufügen, wird die Route neu berechnet. Zur vorherigen Route ändert sich lediglich der
+                    Zielpunkt. Der Startpunkt bleibt derselbe, welchen Sie zuvor gewählt haben.</p>
+
+                <h2>POIs</h2>
+                <img src="{% static "homepage/img/hilfe/hilfe_poi_tree_main.jpg" %}" alt="poi tree">
+                <p> „POIs“ - Points of Interest markieren interessante Punkte und Sehenswürdigkeiten am Campus. Im
+                    linken Abschnitt neben der Karte sieht man die Hauptkategorien, in welche sich die Points of
+                    Interest gliedern. Diese sind:</p>
+                <ul>
+                    <li>„Zugang“: beinhaltet alle Informationen, Eingänge und Parkmöglichkeiten (öffentliche
+                        Verkehrsmittel, Radparkplatz, Motorradparkplatz)
+                    </li>
+                    <li>„Studium“: beinhaltet alle Einrichtungen, Departements und Bibliotheken</li>
+                    <li>„Einrichtungen“: beinhaltet Essen und Trinken, Buchhandlung, WC, Sonstiges, Sport</li>
+                    <li>„Öffentliche Infrastruktur“: beinhaltet u.a. Garderobe, Kopierer, Umkleideraum, Bankomat.</li>
+
+                </ul>
+                <p>Um die Elemente einer Hauptkategorie zu sehen, klicken Sie auf den Pfeil neben der gewünschten
+                    Kategorie. Nun öffnet sich diese Kategorie und die Elemente mit ihren jeweiligen Symbolen werden
+                    sichtbar. Um ein Symbol ein- bzw. auszuschalten, klicken Sie auf ein Symbol.</p>
+
+
+                <h2>Werkzeugleiste</h2>
+                <img src="" alt="map tools in the toolbar">
+                <p>Die Werkzeugleiste, welche über der Karte platziert ist, bietet Ihnen verschiedene Möglichkeiten und
+                    Funktionen (folgende Beschreibung der Symbole von links nach rechts):</p>
+                <ul>
+                    <li><img src="" alt="zoom to campus"> „Campus
+                        anzeigen“: zeigt Ihnen den gesamten Campus im Kartenfenster an
+                    </li>
+                    <li><img src="" alt="zoom to vorherigen"> „Zum
+                        vorherigen Kartenausschnitt“: zeigt den vorherigen Kartenausschnitt auf der Karte an (ein
+                        Schritt zurück)
+                    </li>
+                    <li><img src="" alt="zoom nächsten"> „Zum nächsten
+                        Kartenausschnitt“: zeigt den nachfolgenden Kartenausschnitt auf der Karrte an (ein Schritt
+                        weiter)
+                    </li>
+                    <li><img src="" alt="drucken"> „Drucken“: druckt den
+                        aktuellen Kartenausschnitt aus. Es öffnet sich ein weiteres Fenster mit der Druckansicht und den
+                        Einstellungen von Auflösung, Maßstab und Zoomstufe. Sie haben auch die Möglichkeit, der Karte
+                        einen Titel zu geben und Kommentare hinzuzufügen.
+                    </li>
+                </ul>
+
+
+                <h2>Drucken</h2>
+                <p><img src="" alt="drucken"> Sollten Sie den
+                    Kartenausschnitt als Ausdruck benötigen, haben Sie die Möglichkeit, den aktuellen Kartenausschnitt
+                    auszudrucken. Klicken Sie dazu in der Werkzeugleiste das Symbol „Drucken“. Dazu öffnet sich ein
+                    Fenster mit der Druckansicht. Hier können zusätzliche Einstellungen von Auflösung, Maßstab und
+                    Zoomstufe vorgenommen werden. Entspricht die Karte Ihren Vorstellungen, können Sie der Karte einen
+                    Titel geben und Kommentare zum Bild hinzufügen. Um die Karte schließlich auszudrucken, klicken Sie
+                    auf „Drucken“ im rechten oberen Abschnitt.</p>
+
+
+                <h2>Suche</h2>
+                <img src="" alt="search field">
+                <p>Um die Suchfunktion zu verwenden, aktivieren Sie im Menü „Karte“ den Punkt „Suche“. Tippen Sie nun
+                    den gesuchten Raum (z.B. Bibliothek) in das Suchfenster ein. Haben Sie zum Beispiel „Bib“
+                    eingegeben, werden in einer Liste automatisch alle Räume aufgelistet, welche mit „Bib“ beginnen.
+                    Nachdem Sie „Bibliothek“ ausgewählt haben, drücken Sie anschließend „Start“. Sofort werden Ihnen die
+                    gefundenen Räume als Ergebnisse aufgelistet. Nachdem Sie den gewünschten Raum angeklickt haben, wird
+                    dieser im Kartenfenster markiert.</p>
+
+                <h2>Stockwerksauswahl</h2>
+                <img class="media-object" src=""
+                     alt="floor changer">
+                <p>Diese Funktion ermöglicht es Ihnen, das gewünschte Stockwerk zu aktivieren und im Kartenfenster
+                    anzuzeigen. Klicken Sie auf das gewünschte Stockwerk (z.B. OG04 = viertes Obergeschoss), um die auf
+                    diesem Stockwerk liegenden Räume anzuzeigen.</p>
+            </div>
+            <div class="span5">
+
+                <h2>Zoomleiste</h2>
+                <img src=""
+                     alt="navigation slider to zoom and pan">
+                <p>Die Zoomleiste, welche sich im linken Teil der Karte befindet, zeigt die derzeitige Zoomstufe an.
+                    Durch klicken auf das Plus- oder das Minussymbol können Sie den Kartenausschnitt ebenfalls
+                    vergrößern oder verkleinern. Zoomen ist auch möglich, wenn Sie den Schieber der Zoomleiste direkt in
+                    Richtung des Plus- oder des Minussymbols verschieben. Die vier Pfeile im oberen Abschnitt der
+                    Zoomleiste dienen zur Navigation auf der Karte. Klicken Sie z.B. auf den nach Osten ausgerichteten
+                    Pfeil, verschiebt sich der Kartenausschnitt in östliche Richtung.</p>
+
+
+                <!--            <h2>Menüfunktionen</h2>
+                                <p>Dieser Kartenausschnitt stellt Ihnen mehrere Menüfunktionen zur Verfügung. Derzeit befinden Sie sich im Menüpunkt „Hilfe“. Unter dem Menüpunkt „Zum Campus“ finden Sie einen Anfahrtsplan. Als Transportmittel könne Sie zwischen den Verkehrsmitteln Auto, Bus, Bahn, Flugzeug, S-Bahn sowie Taxi wählen. Die Navigation sowie das Zoomen funktionieren analog zur Basiskarte. Der Anfahrtsplan weist ebenfalls die Zoomleiste auf, welche es Ihnen ermöglicht, die Zoomstufe zu verändern. Im Menüpunkt „Karte“ befinden sich die Untermenüpunkte „Suche“ (Raumsuche und kürzester Weg zwischen zwei Räumen) und „POIs“ (Points of Interst am Campus).</p>-->
+
+                <h2>Bibliothekwegweiser</h2>
+                <p><img src="{% static "homepage/img/hilfe/mobile_route_icon.png" %}" alt="google earth 3d view">
+                    Zusätzlich zur Routingfunktion von Raum zu Raum haben Sie die Möglichkeit, direkt aus den
+                    Suchergebnissen des Bibliothekskatalogs eine Route zum gewünschten Buch anzeigen zu lassen. Dies ist
+                    für alle Freihandbücher im LC auf der Ebene 5 und 6 möglich. Bei diesen Bücher wird in der Spalte
+                    "Standort" ein kleines Symbol angezeigt, das direkt in die Kartenübersicht verlinkt. Die Route,
+                    welche berechnet wird, zeigt Ihnen den kürzesten Weg zum Buch an. Die Gestaltung der Route hängt
+                    davon ab, auf welcher Seite des Regals sich das gesuchte Buch befindet. Die Routenführung wird
+                    darauf angepasst.</p>
+
+                <h2>Karte</h2>
+                <p>Die Karte zeigt Pläne des Campus der Wirtschaftsuniversität Wien. Diese beinhaltet die Gebäude D1 TC
+                    (Teaching Center), D2 SC (Students Center), D3 AD (Administration), D4 (Departmentgebäude 4), LC
+                    (Learning Center) und EA (Executive Academy). Als Hintergrundkarte wird eine Open Street Map Karte
+                    verwendet. Um auf der Karte zu navigieren, klicken Sie auf die Karte und ziehen Sie die Karte an die
+                    gewünschte Position. Um die Karte zu vergrößern oder zu verkleinern, benützen Sie das Scrollrad der
+                    Maus, indem Sie nach oben bzw. unten scrollen. Eine weitere Möglichkeit, um die Karte zu vergrößern,
+                    bietet ein Doppelklick auf die gewünschte Position.</p>
+
+                <h2>Verlinkung</h2>
+                <p>
+                    Es können direkte Links zu Räumen oder gewissen Punkten ("POIs") erzeugt werden. Der Erzeugung
+                    dieser Links ist einfach, Sie müssen nur in der Webadresse eine eindeutige Raumnummer oder einen
+                    eindeutigen POI-Namen übergeben, z.B.:
+
+                    <ul>
+                        <li><a href="http://gis.wu.ac.at/index2.html?roomShow=TC.0.02">http://gis.wu.ac.at/index2.html?roomShow=TC.0.0</a>
+                        </li>
+                        <li><a href="http://gis.wu.ac.at/index2.html?roomShow=D2 Eingang B">http://gis.wu.ac.at/index2.html?roomShow=D2
+                            Eingang </a></li>
+                    </ul>
+
+                Wenn der Suchbegriff hinter "roomShow=" nicht eindeutig ist, wird eine Liste mit den Suchergebnissen
+                angezeigt, z.B.: <a href="http://gis.wu.ac.at/index2.html?roomShow=Self-service Terminals">http://gis.wu.ac.at/index2.html?roomShow=Self-service
+                Terminal</a>.
+                </p>
+                <p>
+                    Zusätzlich können Sie mit weiteren Parametern die Zoom-Stufe, das linke Menü, das horizontale Menü
+                    sowie die Version (Desktop/mobil) beeinflussen:
+                <ul>
+                    <li><strong>Zoomstufe:</strong> Die maximale Zoomstufe beträgt 22. Bei eindeutigen Suchbegriffen
+                        wird automatisch die Zoomstufe 18 verwendet. Eine andere Zoomstufe erzeichen Sie durch den
+                        Zusatz <strong>"z=Zoomlevel"</strong>, z.B.: <a
+                                href="http://gis.wu.ac.at/index2.html?roomShow=D2 Eingang B&z=20">http://gis.wu.ac.at/index2.html?roomShow=D2
+                            Eingang B&z=20</a></li>
+                    <li><strong>Linkes Menü:</strong> Dies kann durch den Parameter <strong>"hideGUI=true"</strong>
+                        unterdrückt werden, z.B.: <a
+                                href="http://gis.wu.ac.at/index2.html?roomShow=TC.0.02&z=21&hideGUI=true">http://gis.wu.ac.at/index2.html?roomShow=TC.0.02&z=21&hideGUI=true</a>
+                    </li>
+                    <li><strong>Horizontales Menü:</strong> Zur Unterdrückung müssen Sie statt "index2.html" nur
+                        <strong>"index.html"</strong> im Link verwenden, z.B.: <a
+                                href="http://gis.wu.ac.at/index.html?roomShow=TC.0.02&z=21&hideGUI=true">http://gis.wu.ac.at/index.html?roomShow=TC.0.02&z=21&hideGUI=true</a>
+                    </li>
+                    <li><strong>Mobile Version:</strong> Um in die Version für mobile Endgeräte zu verlinken, müssen Sie
+                        statt "index2.html" <strong>"mobile.html"</strong> verwenden, z.B.: <a
+                                href="http://gis.wu.ac.at/mobile.html?roomShow=TC.0.02&z=21">http://gis.wu.ac.at/mobile.html?roomShow=TC.0.02&z=21</a>
+                    </li>
+                </ul>
+                </p>
+                <p>
+                    Es ist auch möglich, direkte Links auf bestimmte Routen zu erstellen. Dazu müssen Sie nur nach
+                    Erzeugung einer Route in "Campus" auf den Button <strong>"Route teilen"</strong> klicken und können
+                    aus dem darunterliegenden Textfeld den Url für die Route kopieren. Wichtig ist dabei jedoch, dass
+                    der Start- und Endpunkt der Route (im Url: "routeStart" und "routeEnd") eindeutig ist.
+                </p>
+
+
+            </div>
+
+
+            <!--        <div class="span6">
+                        <h2>Überlagerung mit einem Satellitenfoto</h2>
+                        <p>Diese im rechten oberen Abschnitt platzierte Funktion bietet Ihnen die Möglichkeit, die Karte mit einem Satellitenbild zu überlagern. Abhängig von der Position des Schiebers werden entweder nur die Karte, nur das Satellitenbild oder beide im Kartenfenster angezeigt.</p>
+                    </div>-->
+
+        </div><!-- close class row fluid -->
+    </div><!-- close class row fluid -->
+    <!-- /b3k_sidebar -->
+
+    </div><!--footwrap-->
+
+
+{% endblock %}
+
+{% block modal-popups %} {% endblock modal-popups %}
+{% block popup-markup %} {% endblock popup-markup %}
+
+
+{% block footer %}{% include "wu-neu-footer.html" %}{% endblock footer %}
+

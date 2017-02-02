@@ -140,3 +140,10 @@ def get_campus_floors(request, campus_id, format=None):
         data = CampusFloorSerializer(floor_list, many=True)
 
         return Response(data.data)
+
+
+def view_help(request, *args, **kwargs):
+    context = {}
+    if request.method == 'GET':
+
+        return render(request, template_name='hilfe.html')
