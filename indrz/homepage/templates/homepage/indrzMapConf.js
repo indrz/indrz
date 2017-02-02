@@ -25,6 +25,8 @@ var tempStart = [];
 var tempEnd = [];
 var routeLocalData = {};
 var request = null;
+var routeLayer = null;
+var markerLayer = null;
 
 
 // var share_xy = "{{ share_xy }}"  // an array like [1826602.52,6142514.22]
@@ -139,7 +141,7 @@ $('#prefetch-end-location').on('typeahead:change', function (e, item) {
 
 
 
-$("#directionsForm").submit(function (event) {
+$("#directionsForm").on("click", function (event) {
     // alert( "Handler for .submit() called."  );
     var startSearchText = $('#route-from').val();
     var endSearchText = $('#route-to').val();

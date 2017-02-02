@@ -23,18 +23,18 @@
                     {% trans "Barrier Free Route" %}
                 </label>
             </div>
-            <button id="enterRoute" type="submit" class="btn btn-primary"><i class="fa fa-map-signs" aria-hidden="true"></i> {% trans "Go !" %}</button>
-            <button id="shareRoute" type="button" class="btn btn-info hide" data-toggle="modal" data-target="#ShareRouteModal">
-                <span >
-                    <i class="fa fa-share"></i> {% trans "Share Route" %}
-                </span>
-{#                {% trans " Share route" %}#}
 
-            </button>
-            <button id="clearRoute" type="button" class="btn btn-warning hide">
+
+            <a id="enterRoute" class="btn btn-primary"><i class="fa fa-map-signs" aria-hidden="true"></i> {% trans "Go !" %}</a>
+            <a id="shareRoute" class="btn btn-primary hide" data-toggle="modal" data-target="#ShareRouteModal" data-placement="top" title="{% trans 'Share Route' %}"><i class="fa fa-share"></i> {% trans "Share" %}</a>
+
+
+
+
+            <a id="clearRoute" class="btn btn-primary hide" data-placement="top" title="{% trans 'Clear route' %}">
                 <i class="fa fa-refresh"></i>
 {#                {% trans "Clear route" %}#}
-            </button>
+            </a>
             <br><br>
         </form>
 

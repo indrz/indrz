@@ -1,5 +1,4 @@
-var routeLayer = null;
-var markerLayer = null;
+
 
 var start_maker_style = new ol.style.Style({
     image: new ol.style.Icon({
