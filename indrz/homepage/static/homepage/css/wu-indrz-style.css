@@ -439,3 +439,32 @@ h3 {
 .jstree-icon{
     vertical-align: middle;
 }
+
+.indrz-modal-share h4{
+ font-size: 14px !important;
+    text-align: left !important;
+}
+
+.indrz-modal-share p{
+ font-size: 14px !important;
+    text-align: left !important;
+}
+
+#textAreaShareMap {
+    /*resize: none;*/
+    /*overflow: hidden;*/
+    min-height: 80px;
+    width:100%;
+
+}
+
+#textAreaShareSearch{
+    min-height: 50px;
+    width:100%;
+
+}
+
+#textAreaShareRoute{
+    min-height: 80px;
+    width:100%;
+}
