@@ -295,14 +295,16 @@ def route_to_nearest_poi(request, start_xy, floor, poi_cat_id):
         node_id_closest_poi = res[0][0]
 
         closest_poi = None
+        end_name = ""
 
         for x in pois_found:
             if node_id_closest_poi == x['network_node_id']:
                 closest_poi = x
+                end_name = x['name']
 
 
         geojs_fc = run_route(startid, node_id_closest_poi, 1)
-        geojs_fc.update({'route_info':[{'destination':closest_poi},{'start': 'work in progress'}]})
+        geojs_fc.update({'route_info':[{'destination':closest_poi},{'start': 'work in progress'},{"name": end_name}]})
 
         return Response(geojs_fc)
     else:

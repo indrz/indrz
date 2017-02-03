@@ -27,6 +27,7 @@ var routeLocalData = {};
 var request = null;
 var routeLayer = null;
 var markerLayer = null;
+var routeDestinationName = "";
 
 
 // var share_xy = "{{ share_xy }}"  // an array like [1826602.52,6142514.22]

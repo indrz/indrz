@@ -258,6 +258,14 @@ function routeToNearestPoi(startXY, floorNum, poiCatId){
             {featureProjection: 'EPSG:4326'});
         source.addFeatures(features);
 
+        var route_info_test = JSON.stringify(response);
+
+        var rf = JSON.parse(route_info_test);
+
+        routeDestinationName = rf.route_info[0].destination.name
+        document.getElementById('route-to').value = routeDestinationName;
+
+
         addMarkers(features);
 
         // active the floor of the start point
