@@ -10,8 +10,8 @@
                 <li class="logo-container"><a href="http://campus.wu.ac.at/">
                     <img src="{% static "homepage/wu-neu/sitelogo-md.png" %}" class="logo" alt=""></a></li>
                 <!--li class="brandname slideout"><a>CAMPUS</a></li-->
-                <li class="active" style="background: #009bb8;"><a href="{% url "map_home" %}">Karte</a></li>
-                <li ><a href="{% url "help" %}">Hilfe</a></li>
+                <li class="active" style="background: #009bb8;"><a href="{% url "map_home" %}">{% trans "Map" %}</a></li>
+                <li ><a href="{% url "help" %}">{% trans "Help" %}</a></li>
             </ul>
         </div>
 
@@ -39,7 +39,7 @@
                     </ul>
                 </li>
 
-                <li class="slideout" id="quicklinksLink"><a>Quicklinks <i class="fa fa-plus wu-blue"></i></a></li>
+                <li class="slideout" id="quicklinksLink"><a>{% trans "Quicklinks" %} <i class="fa fa-plus wu-blue"></i></a></li>
             </ul>
         </div>
             </div>
