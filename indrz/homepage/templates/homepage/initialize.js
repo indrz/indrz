@@ -29,9 +29,12 @@ $(document).ready(function () {
         if (floor_layers.length > 0) {
 
             if (route_from != '' && route_to != '') {
+
+                initRoute(route_from, route_to);
+
                 $("#route-from").val(route_from);
                 $("#route-to").val(route_to);
-                $("#directionsForm").submit();
+                // $("#directionsForm").submit();
                 $('#collapseTwo').collapse('show'); // open the accordian point routing
             } else if (centerx != 0 && centery != 0 && isNaN(centerx) == false) {
                 var view = map.getView();

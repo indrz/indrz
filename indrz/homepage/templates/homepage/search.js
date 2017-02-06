@@ -241,6 +241,43 @@ function searchIndrz(campusId, searchString) {
 
 }
 
+function initRoute(route_from, route_to){
+
+        var routeType = $("input:radio[name=typeRoute]:checked").val();
+
+        $.when(fetcherMd(route_from),fetcherMd(route_to)).then(function(a,b) {
+
+        routeLocalData.start = {};
+        routeLocalData.start.xcoord = a[0].features[0].properties.centerGeometry.coordinates[0];
+        routeLocalData.start.ycoord = a[0].features[0].properties.centerGeometry.coordinates[1];
+        routeLocalData.start.floor = a[0].features[0].properties.floor_num;
+        var routeStartValue = routeLocalData.start.xcoord + "," + routeLocalData.start.ycoord + "," + routeLocalData.start.floor;
+
+        console.log(routeStartValue);
+
+        routeLocalData.start.routeValue = routeStartValue;
+
+        routeLocalData.end = {};
+        routeLocalData.end.xcoord = b[0].features[0].properties.centerGeometry.coordinates[0];
+        routeLocalData.end.ycoord = b[0].features[0].properties.centerGeometry.coordinates[1];
+        routeLocalData.end.floor = b[0].features[0].properties.floor_num;
+        var routeEndValue = routeLocalData.end.xcoord + "," + routeLocalData.end.ycoord + "," + routeLocalData.end.floor;
+
+        routeLocalData.end.routeValue = routeEndValue;
+
+        console.log(a[0]);
+        console.log(b[0]);
+
+        console.log(JSON.stringify(routeLocalData));
+        console.log("START IS "+a[0].features[0].properties);
+        console.log("END IS "+b[0].features[0].properties);
+
+        getDirections2(routeStartValue, routeEndValue,0);
+
+    });
+
+}
+
 
 $("#clearSearch").click(function () {
     if (searchLayer) {
