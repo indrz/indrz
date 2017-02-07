@@ -44,7 +44,7 @@ def poi_category_json(request, campus_id, format=None):
             result['children'] = children
         return result
 
-    root_nodes = cache_tree_children(PoiCategory.objects.filter(enabled=True).filter(cat_name__isnot ='unkown'))
+    root_nodes = cache_tree_children(PoiCategory.objects.filter(enabled=True))
     dicts = []
     for n in root_nodes:
         dicts.append(recursive_node_to_dict(n))
