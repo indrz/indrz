@@ -17,7 +17,7 @@ from mptt.templatetags.mptt_tags import cache_tree_children
 
 def poi_category_list(request, campus_id, format=None):
     return render(request, "poi/poi-category.html",
-                  {'nodes': PoiCategory.objects.all()})
+                  {'nodes': PoiCategory.objects.filter(enabled=True)})
 
 
 @api_view(['GET', ])
@@ -44,7 +44,7 @@ def poi_category_json(request, campus_id, format=None):
             result['children'] = children
         return result
 
-    root_nodes = cache_tree_children(PoiCategory.objects.filter(enabled=True))
+    root_nodes = cache_tree_children(PoiCategory.objects.filter(enabled=True).filter(cat_name__isnot ='unkown'))
     dicts = []
     for n in root_nodes:
         dicts.append(recursive_node_to_dict(n))
