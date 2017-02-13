@@ -7,7 +7,13 @@
      /*url(../../homepage/static/homepage/fonts/QuattrocentoSans-Italic.ttf) format('truetype');*/
 /*}*/
 
+.row {
+    padding-left: 15px;
+}
 
+.container, .container-fluid {
+    padding-left: 0px;
+}
 
 body {
     position: absolute;
