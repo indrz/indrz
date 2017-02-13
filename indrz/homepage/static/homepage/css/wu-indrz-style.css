@@ -470,6 +470,14 @@ h3 {
 }
 
 
+#search-res {
+    max-height: 250px;
+    overflow-y:scroll;
+
+}
+
+
+
 .jstree-icon:empty{
     vertical-align: middle;
 }
