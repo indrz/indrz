@@ -190,10 +190,15 @@ function searchIndrz(campusId, searchString) {
             var att = feature.get("name");
             var floor = feature.get("floor_num");
             var roomcat = feature.get('category_de');
+            var roomcode = feature.get('roomcode');
             var infoo = '"' + att + '"'
             if (roomcat != "" && roomcat != undefined){
                 var htmlInsert = "<a href='#' onclick='showRes(" + infoo + ")' id='searchResListItem_"+ att +
                 "' class='list-group-item indrz-search-res' >" + att +" ("+ roomcat + ") <span class='badge'>"+ gettext('Floor  ') + floor +"</span> </a>"
+            }
+            else if (roomcode != "" && roomcode != undefined){
+                var htmlInsert = "<a href='#' onclick='showRes(" + infoo + ")' id='searchResListItem_"+ att +
+                "' class='list-group-item indrz-search-res' >" + att +" ("+ roomcode + ") <span class='badge'>"+ gettext('Floor  ') + floor +"</span> </a>"
             }
             else{
                  var htmlInsert = "<a href='#' onclick='showRes(" + infoo + ")' id='searchResListItem_"+ att +
