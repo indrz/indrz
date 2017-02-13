@@ -208,4 +208,4 @@ def homepage_kiosk(request, *args, **kwargs):
             'poi_cats': poi_cats_list,
         })
 
-    return render(request, context=context, template_name='kiosk2.html')
+    return render(request, context=context, template_name='kiosk/kiosk2.html')

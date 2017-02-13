@@ -1,0 +1,35 @@
+{% load i18n %}
+
+ <div id="search-prefetch2" style="padding-bottom: 15px;">
+    <form id="submitFormSearch">
+      <div class="form-group">
+
+
+        <label for="searchField" class="sr-only" >{% trans "Search Term" %}</label>
+        <input type="text" class="form-control" id="search-input-kiosk" placeholder="{% trans "Search people, places, organisations..." %}">
+
+      </div>
+        <div id="searchTools" class="indrz-search-tools " >
+{#            <input id="enterSearch" type="submit" class="btn btn-primary indrz-search-box" value="{% trans "Go!" %}">#}
+            <a id="clearSearch" class="btn btn-primary indrz-search-box hide" href="#" data-placement="top" title="{% trans 'Clear Results' %}"><i class="fa fa-refresh fa-fw"></i></a>
+
+        </div>
+    </form>
+
+
+    <div id="search-res" class="panel panel-default hide ">
+        <div class="panel-heading">{% trans "Search Results" %}</div>
+        <div class="panel-body">
+
+        <div id="search-results-list" class="list-group " >
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+</div>
+

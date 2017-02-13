@@ -127,8 +127,8 @@ main a {
 
 .indrz-search-kiosk {
     position: absolute; /* or absolute */
-    top:2%;
-    left: 5%;
+    top: 0.6em;
+    left: 2.9em;
     z-index: 2000;
 }
 
@@ -136,6 +136,10 @@ main a {
 .indrz-poi-kiosk {
 
 
+}
+
+.indrz-kiosk-zoom-to-campus{
+    left: 4.0em;
 }
 
 

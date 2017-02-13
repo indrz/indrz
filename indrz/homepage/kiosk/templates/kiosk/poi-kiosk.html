@@ -14,28 +14,30 @@
 <div class="collapse" id="collapseExample">
     <div class="well">
 
-             <div id="search-prefetch2" class="input-group">
+        {% include "kiosk/search-form-kiosk.html" %}
 
-                <form class="form form-inline" id="submitFormSearch">
-                    <div class="form-group form-group-sm">
-
-                        <label for="searchField" class="sr-only">Searchterm</label>
-
-                        <input type="text" class="form-control" id="search-input" placeholder="{% trans "Search for ..." %}">
-
-                    </div>
-
-                    <input id="enterSearch" type="submit" class="btn btn-primary" value="{% trans "Go!" %}">
-
-                    <div>
-                         <a id="clearSearch" class="btn btn-primary hide " href="#"><i class="fa fa-refresh fa-fw"></i></a>
-                         <a id="shareSearch" href="#ShareModal" class = "btn btn-primary hide" data-toggle="modal" data-target="#ShareSearchModal"><i class="fa fa-share fa-fw"></i> {% trans "Share" %}</a>
-
-                    </div>
-
-                </form>
-
-            </div>
+{#             <div id="search-prefetch2" class="input-group">#}
+{##}
+{#                <form class="form form-inline" id="submitFormSearch">#}
+{#                    <div class="form-group form-group-sm">#}
+{##}
+{#                        <label for="searchField" class="sr-only">Searchterm</label>#}
+{##}
+{#                        <input type="text" class="form-control" id="search-input" placeholder="{% trans "Search for ..." %}">#}
+{##}
+{#                    </div>#}
+{##}
+{#                    <input id="enterSearch" type="submit" class="btn btn-primary" value="{% trans "Go!" %}">#}
+{##}
+{#                    <div>#}
+{#                         <a id="clearSearch" class="btn btn-primary hide " href="#"><i class="fa fa-refresh fa-fw"></i></a>#}
+{#                         <a id="shareSearch" href="#ShareModal" class = "btn btn-primary hide" data-toggle="modal" data-target="#ShareSearchModal"><i class="fa fa-share fa-fw"></i> {% trans "Share" %}</a>#}
+{##}
+{#                    </div>#}
+{##}
+{#                </form>#}
+{##}
+{#            </div>#}
 
 
     </div>

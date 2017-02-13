@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="{% static "homepage/css/wu-indrz-style.css" %}" type="text/css">
     <script type="text/javascript" src="{% static "homepage/wu-neu/app.min.js" %}"></script>
 
+
+
+
+
+
     <style> body {
             padding-top: 0px;
         }
@@ -39,7 +44,7 @@
             <div id="search-form-id" class="indrz-search-kiosk">
                 <div id="kiosk-poi-section" class="indrz-poi-kiosk">
 
-                    {% include "poi/poi-kiosk.html" %}
+                    {% include "kiosk/poi-kiosk.html" %}
 
                 </div>
 
@@ -52,13 +57,12 @@
 {% endblock side_col %}
 
 {% block main_col %}
-            <div id="map" class="indrz-map-container">
-                {% block floor-change-float %}
 
-                            <div class="indrz-floor-changer-float">
-                                <select class="form-control hidden-md hidden-lg" id="floor-links-select"></select>
-                                <ul class="nav nav-pills nav-stacked visible-md-block visible-lg-block" id="floor-links"></ul>
-                            </div>
+                     <div id="map" class="indrz-map-container">
+
+                        {% block floor-change-float %}
+
+
 
                         {% endblock floor-change-float %}
 
@@ -75,11 +79,35 @@
 
                         {% endblock indrz-logo-imgt %}
 
-            </div>
+
+                    </div>
+
+                {% block background-base-changer %}
+
+                      <div class="indrz-floor-changer-float" >
+                                <select class="form-control hidden-md hidden-lg" id="floor-links-select"></select>
+                                <ul class="list-group visible-md-block visible-lg-block" id="floor-links" ></ul>
+                    </div>
+
+
+
+                    <div id="id-map-switcher-widget">
+                        <button id="id-map-switcher" class="btn btn-info">
+                            {% trans 'Satellite' %}
+                        </button>
+                    </div>
+
+                {% endblock background-base-changer %}
+
+                <div id="zoomToCampusBase" class="indrz-toolbar indrz-kiosk-zoom-to-campus">
+                            <a id="id-zoom-to-campus" class="btn btn-primary" data-placement="top" title="{% trans 'Zoom to Campus' %}"  ><i class="fa fa-home"  aria-hidden="true"></i></a>
+
+                    </div>
 {% endblock %}
 
 {% block js-conf %}
 <script>  {% include 'homepage/indrzMapConf.js' %} </script>
+<script>  {% include 'kiosk/indrzMapConfKiosk.js' %} </script>
 
 {% endblock js-conf %}
 
@@ -89,7 +117,9 @@
     <script>  {% include 'homepage/indrzLayers.js' %} </script>
     <script>  {% include 'homepage/indrz-floorswitcher.js' %} </script>
     <script>  {% include 'homepage/indrzMapInit.js' %}</script>
+    <script>  {% include 'kiosk/routing-kiosk.js' %} </script>
     <script>  {% include 'homepage/routing.js' %} </script>
+    <script>  {% include 'kiosk/search-kiosk.js' %} </script>
     <script>  {% include 'homepage/search.js' %} </script>
     <script>  {% include 'homepage/indrz-popup.js' %} </script>
     <script>  {% include 'homepage/indrz-controls.js' %} </script>
