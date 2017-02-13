@@ -120,5 +120,9 @@ function setLayerVisible(index) {
 function activateLayer(index) {
     hideLayers();
     setLayerVisible(index);
-    update_url('map');
+    if (typeof update_url('map') === "function") {
+    // safe to use the function
+        update_url('map');
+    }
+
 }
