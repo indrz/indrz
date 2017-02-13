@@ -307,28 +307,59 @@ body, h1, h2, h3, h4, p, li, td, th {
   content: "X";
 }
 
+/*.ol-control button:focus, .ol-control button:hover {*/
+    /*text-decoration: none;*/
+    /*background-color: rgb(0, 0, 0);*/
+    /*border-color:black;*/
+
+/*}*/
+
+
+
+/*.ol-control button {*/
+
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+/*}*/
+
+/*.ol-control {*/
+
+    /*background-color: black;*/
+    /*border-radius: 0px;*/
+/*}*/
+
+/*.ol-control:hover {*/
+    /*background-color: rgba(0, 0, 0, 0.6);*/
+/*}*/
+
+.ol-zoom {
+    top: .2em;
+    left: .5em;
+}
+
 .ol-control button:focus, .ol-control button:hover {
     text-decoration: none;
-    background-color: rgb(0, 0, 0);
-    border-color:black;
-
+    background-color: rgba(19, 19, 19, 0.7);
 }
-
-
 
 .ol-control button {
-
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.ol-control {
-
-    background-color: black;
+    display: block;
+    margin: 3px;
+    margin-top: 3px;
+    margin-right: 1px;
+    margin-bottom: 2px;
+    margin-left: 1px;
+    padding: 0;
+    color: #fff;
+    font-size: 1.4em;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    height: 1.375em;
+    width: 1.375em;
+    line-height: .4em;
+    background-color: rgb(0, 0, 0);
+    border: none;
     border-radius: 0px;
-}
-
-.ol-control:hover {
-    background-color: rgba(0, 0, 0, 0.6);
 }
 
 
@@ -430,7 +461,7 @@ h3 {
 .indrz-toolbar{
     position: absolute;
     top: .5em;
-    left: 2.8em;
+    left: 3.9em;
 
 }
 
