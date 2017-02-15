@@ -252,6 +252,13 @@ function searchIndrz(campusId, searchString) {
     });
 
     map.getLayers().push(searchLayer);
+    window.location.href="#map";
+
+
+    $('html,body').animate({
+        scrollTop: $("#map").offset().top},
+        'slow');
+
 
     $("#search-res").removeClass("hide");
     $("#clearSearch").removeClass("hide");
@@ -317,6 +324,10 @@ function showRes(featureName){
         }
 
     })
+
+        $('html,body').animate({
+        scrollTop: $("#map").offset().top},
+        'slow');
 
 
 }
