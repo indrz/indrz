@@ -398,6 +398,7 @@ body, h1, h2, h3, h4, p, li, td, th {
     #id-map-switcher-widget button {
         width: auto;
         height: 2.85em;
+    }
 
     #map-search-form {
         display: none;
