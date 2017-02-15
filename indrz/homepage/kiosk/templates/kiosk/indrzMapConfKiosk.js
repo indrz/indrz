@@ -18,8 +18,7 @@ $('#search-input-kiosk').typeahead(null, {
 
 $('#search-input-kiosk').on('typeahead:selected', function (e, item) {
     console.log("selected item: " + item);
-    searchIndrz(building_id, item);
-    getDirectionsFromKiosk(item, 0);
+    searchIndrzKiosk(building_id, item);
 
 
 }).on('typeahead:autocompleted', function (e, item) {

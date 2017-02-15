@@ -9,11 +9,16 @@ function getDirectionsFromKiosk(endSearchText, routeType) {
     var geoJsonUrl = '/indrz/api/v1/kiosk/route/' + endSearchText ;
     var startingLevel = routeType;
 
+
+
     if (routeLayer) {
         map.removeLayer(routeLayer);
-        console.log("removing layer now");
-        //map.getLayers().pop();
     }
+    if (markerLayer) {
+        map.removeLayer(markerLayer);
+    }
+
+
 
     var source = new ol.source.Vector();
     $.ajax(geoJsonUrl).then(function (response) {

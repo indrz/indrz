@@ -162,6 +162,19 @@ function clearSearchResults(){
             $("#shareSearch").addClass("hide");
             $("#search-input").val('');
 
+                    if (routeLayer) {
+                        map.removeLayer(routeLayer);
+                    }
+                    if (markerLayer) {
+                        map.removeLayer(markerLayer);
+                    }
+                    $("#clearRoute").addClass("hide");
+                    $("#shareRoute").addClass("hide");
+                    $("#route-to").val('');
+                    $("#route-from").val('');
+                    $("#search-input-kiosk").val('');
+
+
 }
 
 
