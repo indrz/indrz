@@ -66,7 +66,7 @@ def view_map(request, *args, **kwargs):
             'hide_top' : hide_top,
             'hide_left': hide_left_menu,
             'hide_footer' : hide_footer,
-            'nodes': PoiCategory.objects.all(),
+            'nodes': PoiCategory.objects.filter(enabled=True),
         })
 
     return render(request, context=context, template_name='map.html')
