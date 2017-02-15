@@ -380,11 +380,12 @@ body, h1, h2, h3, h4, p, li, td, th {
 
 @media (max-width: 990px) {
     #id-map-switcher-widget {
-        bottom: 1em;
-        left: 1.5em;
+        position: absolute;
+        top: 0.5em;
+        right: 6em;
 
-        right: auto;
-        top: auto;
+        left: auto;
+        bottom: auto;
         z-index: 9999;
     }
 
@@ -396,7 +397,7 @@ body, h1, h2, h3, h4, p, li, td, th {
 
     #id-map-switcher-widget button {
         width: auto;
-    }
+        height: 2.85em;
 
     #map-search-form {
         display: none;
