@@ -44,7 +44,7 @@ function fixContentHeight(){
     var viewWidth = $(window).width();
     var $map_block = $("#map-block");
     if (viewWidth >= 990) {
-        $map_block.height(viewHeight);
+        $map_block.height(viewHeight - 190);
     } else {
         var navbar = $(".navbar:visible:visible");
         var contentHeight = viewHeight - navbar.outerHeight();
