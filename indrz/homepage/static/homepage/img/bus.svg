@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="4.5155554mm"
+   height="4.5155554mm"
+   viewBox="0 0 16 16"
+   id="svg7939"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="bus.svg">
+  <defs
+     id="defs7941" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11.2"
+     inkscape:cx="-6.9048685"
+     inkscape:cy="11.546076"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1600"
+     inkscape:window-height="837"
+     inkscape:window-x="1912"
+     inkscape:window-y="74"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7944">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-624.76849,-408.73657)">
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#003366;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:5.4000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect7942"
+       width="16"
+       height="16"
+       x="624.76849"
+       y="408.73657"
+       ry="1.7778685" />
+    <g
+       style="display:inline"
+       id="g6166-7-8-2-4-4"
+       transform="matrix(1.7248572,0,0,-1.7248572,637.24794,412.45245)"
+       inkscape:export-filename="c:\02_DEV\01_projects\02_indrz\gitlab_wu\indrz\homepage\static\homepage\img\access_public_bus.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         d="M 0,0 C -0.078,0.388 -0.326,0.543 -0.699,0.698 -1.072,0.854 -1.945,1.039 -2.596,1.039 -3.248,1.039 -4.121,0.854 -4.494,0.698 -4.867,0.543 -5.115,0.388 -5.193,0 l -0.28,-2.152 0,-2.965 0.483,0 0,-0.465 c 0,-0.566 0.83,-0.566 0.83,0 l 0,0.465 3.129,0 0,-0.465 c 0,-0.566 0.828,-0.566 0.828,0 l 0,0.465 0.482,0 0,2.965 L 0,0 Z m -3.897,0.563 2.601,0 c 0.256,0 0.256,-0.484 0,-0.484 l -2.601,0 c -0.256,0 -0.256,0.484 0,0.484 m -0.679,-4.79 c -0.24,0 -0.437,0.195 -0.437,0.438 0,0.241 0.197,0.437 0.437,0.437 0.242,0 0.438,-0.196 0.438,-0.437 0,-0.243 -0.196,-0.438 -0.438,-0.438 m 3.959,0 c -0.242,0 -0.439,0.195 -0.439,0.438 0,0.241 0.197,0.437 0.439,0.437 0.24,0 0.436,-0.196 0.436,-0.437 0,-0.243 -0.196,-0.438 -0.436,-0.438 m 0.172,1.848 -4.297,0 c -0.125,0 -0.229,0.104 -0.229,0.229 0,0.021 0.004,0.041 0.008,0.06 l 0.229,1.697 c 0.019,0.106 0.113,0.188 0.224,0.188 l 3.832,0 c 0.112,0 0.205,-0.082 0.225,-0.188 l 0.228,-1.697 c 0.004,-0.019 0.008,-0.039 0.008,-0.06 0,-0.125 -0.103,-0.229 -0.228,-0.229"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path6168-1-4-8-1-4"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>
