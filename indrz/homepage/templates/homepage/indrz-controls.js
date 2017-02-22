@@ -14,17 +14,18 @@ $("#id-map-switcher").on("click", function(evt){
         $(this).text('Satellite');
         ortho30cm_bmapat.setVisible(false);
         grey_bmapat.setVisible(true);
+        wmsOutdoorMap.setVisible(true);
+
+        setLayerVisible(1);
+
     } else {
         $(this).text('Map');
         ortho30cm_bmapat.setVisible(true);
         grey_bmapat.setVisible(false);
+        wmsOutdoorMap.setVisible(false);
         hideLayers();
     }
 });
-
-
-
-
 
 
 var panToCampus = document.getElementById('id-zoom-to-campus');

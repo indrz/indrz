@@ -119,12 +119,6 @@ function createWmtsLayer(layerSrcName, type, isVisible) {
 }
 
 
-var grey_bmapat = createWmtsLayer('bmapgrau', '.png', true);
-var ortho30cm_bmapat = createWmtsLayer('bmaporthofoto30cm', '.jpg', false);
-
-var backgroundLayerGroup = new ol.layer.Group({layers: [grey_bmapat, ortho30cm_bmapat], name: gettext("background maps")});
-
-
 function createWmsLayer(layerName, geoserverLayer, floorNumber, isVisible, zIndexValue) {
     var newWmsLayer = new ol.layer.Image({
         source: new ol.source.ImageWMS({
@@ -145,6 +139,13 @@ function createWmsLayer(layerName, geoserverLayer, floorNumber, isVisible, zInde
     return newWmsLayer;
 }
 
+var grey_bmapat = createWmtsLayer('bmapgrau', '.png', true);
+var wmsOutdoorMap = createWmsLayer('outdoorMap', 'indrz:outdoor', '0', 'true', 1 );
+var ortho30cm_bmapat = createWmtsLayer('bmaporthofoto30cm', '.jpg', false);
+
+var backgroundLayerGroup = new ol.layer.Group({layers: [grey_bmapat, wmsOutdoorMap, ortho30cm_bmapat], name: gettext("background maps")});
+
+
 var wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06;
 wmsUG01 = createWmsLayer('ug01', 'indrz:ug01', '-1', 'false', 3);
 wmsE00 = createWmsLayer('e00', 'indrz:e00', '0', 'true', 3);
@@ -154,9 +155,6 @@ wmsE03 = createWmsLayer('e03', 'indrz:e03', '3', 'false', 3);
 wmsE04 = createWmsLayer('e04', 'indrz:e04', '4', 'false', 3 );
 wmsE05 = createWmsLayer('e05', 'indrz:e05', '5', 'false', 3 );
 wmsE06 = createWmsLayer('e06', 'indrz:e06', '6', 'false', 3 );
-
-
-
 
 
 var wmsfloorLayerGroup = new ol.layer.Group({layers: [wmsUG01, wmsE00, wmsE01, wmsE02, wmsE03, wmsE04, wmsE05, wmsE06], name: gettext("wms floor maps")});

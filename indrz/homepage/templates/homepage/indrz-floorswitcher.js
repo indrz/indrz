@@ -46,6 +46,7 @@ function hideLayers() {
 
 
 function setLayerVisible(index) {
+
     // switchableLayers[index].setVisible(true);
     if (switchableLayers.length > 0) {
         switchableLayers[index].setVisible(true);
