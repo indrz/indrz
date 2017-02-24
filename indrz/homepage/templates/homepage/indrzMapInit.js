@@ -60,3 +60,27 @@ $(window).resize(function () {
 $(document).ready(function () {
     fixContentHeight();
 });
+
+
+function jsonRpcCall(url)
+{
+	//data = '{"method": "' + methodName+ '", "id": "labla", "params": [' + parameters+ '], "jsonrpc":"2.0"}';
+
+	jQuery.ajax({
+		url: url,
+		//data: JSON.stringify(data),
+        //data: data,
+		type: 'GET',
+        dataType:"json",
+		contentType: 'application/json; charset=UTF-8',
+		success: function(jsonObj) {
+			callback(jsonObj.result);
+		},
+		error: function(e) {
+			console.error("Failed to do json rpc call to " + url );
+			callback(null);
+		},
+		async:true,
+		timeout: 7500 // 7.5 seconds
+	});
+}

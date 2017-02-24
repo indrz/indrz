@@ -24,6 +24,12 @@ $(document).ready(function () {
         //         // map.getLayers().push(spaceLayer);
         // }
         //
+			if(document.location.href.split('?')[1] != null){
+				if(document.location.href.split('?')[1].split("key=")[1] != null){
+					var key = document.location.href.split('?')[1].split("key=")[1].split("&")[0];
+					calculateLibraryRoute(key);
+				}
+			}
 
 
         if (floor_layers.length > 0) {
@@ -48,6 +54,7 @@ $(document).ready(function () {
 
     initialize();
     loadShare();
+    calculateLibraryRoute("ST 261.w34 G744");
 
 
 });

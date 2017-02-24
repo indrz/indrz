@@ -1,4 +1,3 @@
-# Create your views here.
 import json
 import re
 from geojson import Feature, FeatureCollection
@@ -6,6 +5,10 @@ from geojson import Feature, FeatureCollection
 import requests
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+import logging
+
+
+logr = logging.getLogger(__name__)
 
 
 @api_view(['GET'])
@@ -189,6 +192,7 @@ def route_to_book(request, rvk_id, format=None):
     fix_start_location = "1826545.2173675,6142423.4241214,0&"
 
     book_location_resp = rvk_call(request, rvk_id)
+
 
     resp = json.loads(str(book_location_resp.data))
 
