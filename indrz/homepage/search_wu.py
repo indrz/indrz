@@ -105,7 +105,7 @@ def search_coordinates_on_poi(request, q, format=None):
     AND layer=%(layer)s \
     AND ST_Distance(geom," + geom + ") < %(distance_bound)s \
     ORDER BY priority DESC, ST_Distance(geom," + geom + ") \
-    ASC LIMIT 9"
+    ASC LIMIT 30"
 
     rows = []
 
@@ -517,7 +517,7 @@ def search_any(request, q, format=None):
             external_id, room_code, id
                 FROM geodata.search_index_v
                 WHERE upper(search_string) = upper(%(search_string)s)
-                ORDER BY search_string DESC, length(search_string) LIMIT 9
+                ORDER BY search_string DESC, length(search_string) LIMIT 30
         """
 
 
