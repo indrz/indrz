@@ -42,7 +42,7 @@ def search_coordinates(request, q, format=None):
         FROM geodata.search_index_v \
         WHERE layer=%(layer)s \
             AND ST_Distance( geom," + geom + " ) < %(distance_bound)s \
-        ORDER BY priority DESC, ST_Distance(geom," + geom + ") ASC LIMIT 9"
+        ORDER BY priority DESC, ST_Distance(geom," + geom + ") ASC LIMIT 30"
 
     rows = []
 
