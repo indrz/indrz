@@ -506,7 +506,7 @@ def search_any(request, q, format=None):
         # add % at the beginning and end of the search string so we can use it in the like statement
         # also convert searchString toUpper here
         searchString2 = "%" + searchString.upper() + "%"
-        searchString_exact = searchString.upper()
+        # searchString_exact = searchString.upper()
         extraBuilding2 = "%" + extraBuilding.upper() + "%"
 
         local_db_results = []
@@ -516,13 +516,13 @@ def search_any(request, q, format=None):
             st_asgeojson(st_PointOnSurface(geom)) AS center, layer, building_id, 0 AS resultType,
             external_id, room_code, id
                 FROM geodata.search_index_v
-                WHERE upper(search_string) = upper(%(search_string)s)
+                WHERE replace(replace (upper(search_string), '.', ''),'.', '') LIKE upper(%(search_string)s)
                 ORDER BY search_string DESC, length(search_string) LIMIT 30
         """
-
+        # #WHERE upper(search_string) = upper(%(search_string)s)
 
         cursor.execute(sql_exact,
-                       {"search_string": searchString_exact, "building": extraBuilding2,
+                       {"search_string": searchString2, "building": extraBuilding2,
                         "bach_location_list": tuple(bachLocationStrings)})
 
         db_res_exact = cursor.fetchall()
