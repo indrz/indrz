@@ -411,6 +411,7 @@ body, h1, h2, h3, h4, p, li, td, th {
     .navbar-toggle {
         float: left !important ;
         display: block;
+        margin-left: 2em;
     }
 
     .navbar-header {
@@ -433,7 +434,7 @@ body, h1, h2, h3, h4, p, li, td, th {
 .navbar-toggle {
     float: left  ;
     display: block;
-    margin-left: 1em;
+    margin-left: 2em;
 }
 
 .indrz-logo {
