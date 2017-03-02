@@ -527,3 +527,18 @@ h3 {
     min-height: 80px;
     width:100%;
 }
+
+
+@media (max-width: 450px) {
+
+    #id-map-switcher-widget {
+        position: absolute;
+        top: 3.1em;
+        right: 0.7em;
+
+        left: auto;
+        bottom: auto;
+        z-index: 9999;
+    }
+
+}
