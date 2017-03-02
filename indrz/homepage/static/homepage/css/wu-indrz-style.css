@@ -543,8 +543,10 @@ h3 {
     }
     
     #poi-accordian{
-        visibility: hidden;
+        /*visibility: hidden;*/
+        display:none;
     }
+
     
 
 
