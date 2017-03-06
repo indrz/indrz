@@ -386,7 +386,7 @@ body, h1, h2, h3, h4, p, li, td, th {
 
         left: auto;
         bottom: auto;
-        z-index: 9999;
+
     }
 
     .indrz-floor-changer-float {
@@ -539,7 +539,7 @@ h3 {
 
         left: auto;
         bottom: auto;
-        z-index: 9999;
+
     }
     
     #poi-accordian{
