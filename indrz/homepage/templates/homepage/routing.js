@@ -300,6 +300,10 @@ function routeToNearestPoi(startXY, floorNum, poiCatId){
 
     map.getLayers().push(routeLayer);
 
+        $('html,body').animate({
+        scrollTop: $("#map").offset().top},
+        'slow');
+
 
     $("#clearRoute").removeClass("hide");
     $("#shareRoute").removeClass("hide");
