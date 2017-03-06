@@ -15,7 +15,10 @@ from geojson import Feature
 
 from homepage.serializer import CampusFloorSerializer
 from poi_manager.models import PoiCategory
+from django.views.decorators.clickjacking import xframe_options_exempt
 
+
+@xframe_options_exempt
 def view_map(request, *args, **kwargs):
     context = {}
     if request.method == 'GET':
