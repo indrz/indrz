@@ -138,6 +138,10 @@ main a {
 
 }
 
+#poi-panel-body{
+    padding:0px;
+}
+
 .indrz-kiosk-zoom-to-campus{
     left: 4.0em;
 }
