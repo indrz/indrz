@@ -14,10 +14,11 @@
 
 from django.conf.urls import url
 
-from homepage.library.views import rvk_call, route_to_book
+from homepage.library.views import rvk_call, book_location, shelf_geom
 
 urlpatterns = [
-   url(r'^route/(?P<rvk_id>.+)', route_to_book, name="book_route"),
+   url(r'^location/(?P<rvk_id>.+)', book_location, name="book_location"),
+   url(r'^shelf/(?P<rvk_id>.+)', shelf_geom, name="shelf geometry"),
    url(r'(?P<rvk_id>.+)', rvk_call, name="call RVK system"),
 
 

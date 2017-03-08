@@ -1,5 +1,18 @@
 $(document).ready(function () {
 
+    function loadLibraryRoute(){
+
+        if (library_key !='nokey'){
+            library_book_position(library_key);
+            // run route to book now
+
+
+        }else{
+            console.log("NO library key present")
+        }
+
+    }
+
 
     function loadShare(){
         if(search_text != '' && search_text.length > 0){
@@ -27,7 +40,7 @@ $(document).ready(function () {
 			if(document.location.href.split('?')[1] != null){
 				if(document.location.href.split('?')[1].split("key=")[1] != null){
 					var key = document.location.href.split('?')[1].split("key=")[1].split("&")[0];
-					calculateLibraryRoute(key);
+					//calculateLibraryRoute(key);
 				}
 			}
 
@@ -50,11 +63,18 @@ $(document).ready(function () {
         } else {
             setTimeout(initialize, 250);
         }
+
+
+
+
+
     }
 
     initialize();
     loadShare();
-    calculateLibraryRoute("ST 261.w34 G744");
+    loadLibraryRoute();
+    //calculateLibraryRoute("ST 261.w34 G744");
+
 
 
 });

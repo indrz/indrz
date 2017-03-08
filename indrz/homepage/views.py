@@ -40,6 +40,7 @@ def view_map(request, *args, **kwargs):
         hide_top = request.GET.get('hide-top', 'false')
         hide_footer = request.GET.get('hide-footer', 'false')
         floor_num = int(floor_num)
+        library_key = request.GET.get('key', 'nokey')
 
         if floor_num == 0:
             floor_num = floor_num + 1
@@ -69,6 +70,7 @@ def view_map(request, *args, **kwargs):
             'hide_top' : hide_top,
             'hide_left': hide_left_menu,
             'hide_footer' : hide_footer,
+            'library_key' : library_key,
             'nodes': PoiCategory.objects.filter(enabled=True),
         })
 

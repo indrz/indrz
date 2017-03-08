@@ -11,8 +11,8 @@ import logging
 logr = logging.getLogger(__name__)
 
 
-@api_view(['GET'])
-def rvk_call(request, rvk_id, format=None):
+
+def rvk_call(rvk_id, location=False, shelfgeom=False, format=None):
     """
     if a space was used in the url it is encoded as %20
     :param request:
@@ -154,9 +154,9 @@ def rvk_call(request, rvk_id, format=None):
                     shelfGeom = dbrow[0][0]
                     shelfGeomJson = json.loads(str(shelfGeom))
                     shelf_properties = {
-                        "text": rvk_key,
+                        "name": rvk_key,
                         "building": building[:2],
-                        "floor": building[3:4],
+                        "floor_num": building[3:4],
                         "shelfID": shelfID,
                         "fachboden": fachboden,
                         "position": str(sectionPosition),
@@ -165,7 +165,12 @@ def rvk_call(request, rvk_id, format=None):
                     shelf_poly = Feature(geometry=shelfGeomJson, properties=shelf_properties)
                     result_collection = FeatureCollection([shelf_poly, point_location])
 
-                    return Response(result_collection)
+                    if location==True:
+                        return point_location
+                    elif shelfgeom==True:
+                        return shelf_poly
+                    else:
+                        return result_collection
 
                 else:
                     return Response({'error 4': 'len db row is 0'})
@@ -181,31 +186,16 @@ def rvk_call(request, rvk_id, format=None):
 
 
 @api_view(['GET'])
-def route_to_book(request, rvk_id, format=None):
-    """
-    Create a route directly to a book based on RVK key
-    :param request:
-    :param rvk_id: rvk_id
-    :return: GeoJson linestring route from building entrance to book
-    """
+def book_location(request, rvk_id, format=None):
 
-    fix_start_location = "1826545.2173675,6142423.4241214,0&"
+    book_location_geojson = rvk_call(rvk_id, location=True)
 
-    book_location_resp = rvk_call(request, rvk_id)
+    return Response(book_location_geojson)
 
 
-    resp = json.loads(str(book_location_resp.data))
+@api_view(['GET'])
+def shelf_geom(request, rvk_id, format=None):
 
-    if resp['features'][1]['geometry']['type'] == 'Point':
-        dest_floor = resp['features'][1]['properties']['floor']
-        dest_coord_x = resp['features'][1]['geometry']['coordinates'][0]
-        dest_coord_y = resp['features'][1]['geometry']['coordinates'][1]
+    shelf_geometry = rvk_call(rvk_id, shelfgeom=True)
 
-        dest_coords = str(dest_coord_x) + "," + str(dest_coord_y)
-
-        # print('/api/v1/directions/'+ fix_start_location + dest_coord + "," + dest_floor + "&0" )
-        url = 'http://localhost:8000/api/v1/directions/' + fix_start_location + dest_coords + ',' + dest_floor + '&0'
-        route_to_book = requests.get(url)
-
-        return Response(route_to_book.json())
-        # localhost:8000/api/v1/directions/1826545.2173675,6142423.4241214,0&1826600.05182995,6142427.76651319,5
+    return Response(shelf_geometry)

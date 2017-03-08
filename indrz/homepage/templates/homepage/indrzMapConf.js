@@ -28,6 +28,7 @@ var request = null;
 var routeLayer = null;
 var markerLayer = null;
 var routeDestinationName = "";
+var library_key = "{{library_key}}";
 
 
 // var share_xy = "{{ share_xy }}"  // an array like [1826602.52,6142514.22]
@@ -86,14 +87,6 @@ function validate(e){
     console.log("TEXT IS: "+ text);
     searchIndrz(building_id, text);
 }
-
-
-
-
-
-
-
-
 
 
 $("#showPoi").submit(function (event) {

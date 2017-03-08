@@ -37,7 +37,7 @@ function getDirections2(startSearchText, endSearchText, routeType) {
 
     if (routeLayer) {
         map.removeLayer(routeLayer);
-        console.log("removing layer now");
+
         //map.getLayers().pop();
     }
 
@@ -53,11 +53,19 @@ function getDirections2(startSearchText, endSearchText, routeType) {
 
         // active the floor of the start point
         var start_floor = features[0].getProperties().floor;
+
+        if (library_key !== "nokey"){
+            start_floor = routeLocalData.end.floor;
+        }
+
+
         for (var i = 0; i < floor_layers.length; i++) {
             if (start_floor == floor_layers[i].floor_num) {
                 activateLayer(i);
             }
         }
+
+
         // center up the route
         var extent = source.getExtent();
         map.getView().fit(extent, map.getSize());
@@ -103,7 +111,7 @@ function addRoute(fromSearchText, toSearchText, routeType) {
 
     if (routeLayer) {
         map.removeLayer(routeLayer);
-        console.log("removing layer now");
+
         //map.getLayers().pop();
     }
 
@@ -254,7 +262,7 @@ function routeToNearestPoi(startXY, floorNum, poiCatId){
 
     if (routeLayer) {
         map.removeLayer(routeLayer);
-        console.log("removing layer now");
+
         //map.getLayers().pop();
     }
 
