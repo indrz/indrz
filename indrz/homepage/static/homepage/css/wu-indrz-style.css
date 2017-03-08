@@ -483,6 +483,11 @@ h3 {
 
 }
 
+#popup-links a{
+    margin-bottom: 5px;
+
+}
+
 .indrz-toolbar{
     position: absolute;
     top: .5em;

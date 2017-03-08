@@ -222,8 +222,6 @@ $("#id-zoom-to-campus-map").on("click", function(evt){
 $("#enterSearchGoButton").click(function (e) {
 
     var searchString = $('#search-input').val();
-    alert( "Handler for .submit() called." + searchString   );
-    console.log("GO text is now: " + searchString);
     searchIndrz(building_id, searchString);
     e.preventDefault();
 
