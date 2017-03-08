@@ -55,7 +55,7 @@ var searchValues = new Bloodhound({
 $('#search-input').typeahead(null, {
     hint: true,
     highlight: true,
-    minLength: 1,
+    minLength: 3,
     name: 'search-field',
     limit: 100,
     source: searchValues
@@ -68,22 +68,33 @@ $('#search-input').typeahead(null, {
 });
 
 $('#search-input').on('typeahead:selected', function (e, item) {
+
     console.log("selected item: " + item);
     searchIndrz(building_id, item);
 
 }).on('typeahead:autocompleted', function (e, item) {
     console.log("autocompleted item: " + item);
+}).on("keydown", function(e){
+    if (e.keyCode == 13) {
+       // validate(e)
+    }
 });
 
 
-// $("#submitFormSearch").submit(function (event) {
-//     //              alert( "Handler for .submit() called."  );
-//
-//     //            var buildingid = buildingNantesId;
-//     var searchText = $('#search-input').val();
-//     searchIndrz(building_id, searchText);
-//     event.preventDefault();
-// });
+function validate(e){
+    var text = e.target.value;
+    console.log("TEXT IS: "+ text);
+    searchIndrz(building_id, text);
+}
+
+
+
+
+
+
+
+
+
 
 $("#showPoi").submit(function (event) {
    // alert( "Handler for .submit() called." + $('#poi-input').val()   );
@@ -207,4 +218,12 @@ $("#id-zoom-to-campus-map").on("click", function(evt){
  zoomToCampus();
 
 });
+
+$("#enterSearchGoButton").click(function (e) {
+
+    var searchString = $('#search-input').val();
+    searchIndrz(building_id, searchString);
+    e.preventDefault();
+
+    });
 

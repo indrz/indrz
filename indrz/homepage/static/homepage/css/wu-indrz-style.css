@@ -138,6 +138,10 @@ main a {
 
 }
 
+#poi-panel-body{
+    padding:0px;
+}
+
 .indrz-kiosk-zoom-to-campus{
     left: 4.0em;
 }
@@ -386,7 +390,7 @@ body, h1, h2, h3, h4, p, li, td, th {
 
         left: auto;
         bottom: auto;
-        z-index: 9999;
+
     }
 
     .indrz-floor-changer-float {
@@ -411,6 +415,7 @@ body, h1, h2, h3, h4, p, li, td, th {
     .navbar-toggle {
         float: left !important ;
         display: block;
+        margin-left: 2em;
     }
 
     .navbar-header {
@@ -433,7 +438,7 @@ body, h1, h2, h3, h4, p, li, td, th {
 .navbar-toggle {
     float: left  ;
     display: block;
-    margin-left: 1em;
+    margin-left: 2em;
 }
 
 .indrz-logo {
@@ -457,9 +462,15 @@ h3 {
     font-size: 14px !important;
 }
 
+#searchTools{
+    display: none;
+
+}
+
 .indrz-search-tools{
     padding-bottom: 15px !important;
     padding-top: 15px;
+
 }
 
 .indrz-popup p{
@@ -469,6 +480,11 @@ h3 {
     line-height: 12px;
     color: black;
     z-index: 0;
+
+}
+
+#popup-links a{
+    margin-bottom: 5px;
 
 }
 
@@ -488,6 +504,11 @@ h3 {
     max-height: 250px;
     overflow-y:scroll;
 
+}
+
+.searchbox-wu{
+    padding-left: 0px;
+    padding-right:12px;
 }
 
 
@@ -526,4 +547,27 @@ h3 {
 #textAreaShareRoute{
     min-height: 80px;
     width:100%;
+}
+
+
+@media (max-width: 650px) {
+
+    #id-map-switcher-widget {
+        position: absolute;
+        top: 3.1em;
+        right: 0.7em;
+
+        left: auto;
+        bottom: auto;
+
+    }
+    
+    #poi-accordian{
+        /*visibility: hidden;*/
+        display:none;
+    }
+
+    
+
+
 }

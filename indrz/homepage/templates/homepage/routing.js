@@ -86,6 +86,13 @@ function getDirections2(startSearchText, endSearchText, routeType) {
     $("#clearRoute").removeClass("hide");
     $("#shareRoute").removeClass("hide");
 
+    window.location.href="#map";
+
+
+    $('html,body').animate({
+        scrollTop: $("#map").offset().top},
+        'slow');
+
 }
 
 
@@ -299,6 +306,10 @@ function routeToNearestPoi(startXY, floorNum, poiCatId){
     });
 
     map.getLayers().push(routeLayer);
+
+        $('html,body').animate({
+        scrollTop: $("#map").offset().top},
+        'slow');
 
 
     $("#clearRoute").removeClass("hide");

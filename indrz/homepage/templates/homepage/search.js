@@ -130,15 +130,30 @@ function zoomToFeature(source) {
     }
 
 
-function zoomer(coord, zoom){
+function getCenterOfExtent(Extent){
+    var X = Extent[0] + (Extent[2]-Extent[0])/2;
+    var Y = Extent[1] + (Extent[3]-Extent[1])/2;
+    return [X, Y];
+}
+
+function zoomer(coord){
+    // var extent = source.getExtent();
+    //
+    // map.getView().fit(extent, map.getSize());
+
+
+
+
+
         var pan = ol.animation.pan({
           duration: 2000,
-          source: /** @type {ol.Coordinate} */ (view.getCenter())
+          // source: /** @type {ol.Coordinate} */ (view.getCenter())
+            source: coord
         });
         map.beforeRender(pan);
 
         view.setCenter(coord);
-       // view.setZoom(zoom)
+
     }
 
 
@@ -173,6 +188,8 @@ function clearSearchResults(){
                     $("#route-to").val('');
                     $("#route-from").val('');
                     $("#search-input-kiosk").val('');
+
+                     $("#searchTools").hide(); // hide div tag
 
 
 }
@@ -230,15 +247,24 @@ function searchIndrz(campusId, searchString) {
         if (featuresSearch.length === 1){
 
             open_popup(featuresSearch[0].getProperties(), centerCoord);
+            zoomer(centerCoord);
+            //map.view.setZoom(20)
+
+            space_id = response.features[0].properties.space_id;
+            poi_id = response.features[0].properties.poi_id;
+            search_text = searchString;
+
+            // active the floor of the start point
+            activateFloor(featuresSearch[0]);
+
+        }else{
+
+            var resExtent = searchSource.getExtent();
+            map.getView().fit(resExtent, map.getSize());
 
         }
 
-        space_id = response.features[0].properties.space_id;
-        poi_id = response.features[0].properties.poi_id;
-        search_text = searchString;
 
-        // active the floor of the start point
-        activateFloor(featuresSearch[0]);
 
     } );
 
@@ -263,6 +289,7 @@ function searchIndrz(campusId, searchString) {
     $("#search-res").removeClass("hide");
     $("#clearSearch").removeClass("hide");
     $("#shareSearch").removeClass("hide");
+    $("#searchTools").toggle(true); // show div tag
 
 }
 
@@ -317,7 +344,12 @@ $("#clearSearch").click(function () {
 function showRes(featureName){
     searchLayer.getSource().forEachFeature(function(feature) {
         if (feature.get('name') === featureName ){
-            open_popup(feature.getProperties(), feature.get('centerGeometry').coordinates);
+
+            popupCenterLocation = feature.get('centerGeometry').coordinates;
+            open_popup(feature.getProperties(), popupCenterLocation);
+
+
+            zoomer(popupCenterLocation);
 
             activateFloor(feature);
 

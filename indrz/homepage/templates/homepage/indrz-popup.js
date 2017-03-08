@@ -151,19 +151,22 @@ function open_popup(properties, coordinate, name){
 
 
     popup_content.innerHTML = '<h4>' + titlePopup + '</h4>';
-    popup_content.innerHTML += '<p>' + titleFloorNumber + floorNum + '</p>';
+    popup_content.innerHTML += '<div><p>'
+    popup_content.innerHTML += titleFloorNumber + floorNum + '<br>';
 
     if(properties.building_name != undefined || properties.building_name === ""){
-        popup_content.innerHTML += '<p>' + titleBuildingName + buildingName + '</p>';
+        popup_content.innerHTML += titleBuildingName + buildingName + '<br>';
     }
 
     if(properties.roomcode != undefined){
-        popup_content.innerHTML += '<p>' + titleRoomcode + roomcode + '</p>';
+        popup_content.innerHTML += titleRoomcode + roomcode + '<br>';
     }
 
     if(properties.category_de != undefined  && properties.category_de != ""){
-        popup_content.innerHTML += '<p>' + titleRoomCat + roomCat + '</p>';
+        popup_content.innerHTML += titleRoomCat + roomCat + '<br>';
     }
+
+    popup_content.innerHTML += '</p></div>'
 
 
     // uncomment below to show the coordinate in popup
