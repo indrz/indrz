@@ -76,7 +76,7 @@ $('#search-input').on('typeahead:selected', function (e, item) {
     console.log("autocompleted item: " + item);
 }).on("keydown", function(e){
     if (e.keyCode == 13) {
-        validate(e)
+       // validate(e)
     }
 });
 
@@ -86,6 +86,14 @@ function validate(e){
     console.log("TEXT IS: "+ text);
     searchIndrz(building_id, text);
 }
+
+
+
+
+
+
+
+
 
 
 $("#showPoi").submit(function (event) {
@@ -210,4 +218,14 @@ $("#id-zoom-to-campus-map").on("click", function(evt){
  zoomToCampus();
 
 });
+
+$("#enterSearchGoButton").click(function (e) {
+
+    var searchString = $('#search-input').val();
+    alert( "Handler for .submit() called." + searchString   );
+    console.log("GO text is now: " + searchString);
+    searchIndrz(building_id, searchString);
+    e.preventDefault();
+
+    });
 

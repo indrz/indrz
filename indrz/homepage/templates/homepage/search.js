@@ -189,6 +189,8 @@ function clearSearchResults(){
                     $("#route-from").val('');
                     $("#search-input-kiosk").val('');
 
+                     $("#searchTools").hide(); // hide div tag
+
 
 }
 
@@ -246,7 +248,7 @@ function searchIndrz(campusId, searchString) {
 
             open_popup(featuresSearch[0].getProperties(), centerCoord);
             zoomer(centerCoord);
-            map.view.setZoom(20)
+            //map.view.setZoom(20)
 
             space_id = response.features[0].properties.space_id;
             poi_id = response.features[0].properties.poi_id;
@@ -287,6 +289,7 @@ function searchIndrz(campusId, searchString) {
     $("#search-res").removeClass("hide");
     $("#clearSearch").removeClass("hide");
     $("#shareSearch").removeClass("hide");
+    $("#searchTools").toggle(true); // show div tag
 
 }
 

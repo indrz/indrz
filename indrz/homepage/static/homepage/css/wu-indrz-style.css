@@ -458,9 +458,15 @@ h3 {
     font-size: 14px !important;
 }
 
+#searchTools{
+    display: none;
+
+}
+
 .indrz-search-tools{
     padding-bottom: 15px !important;
     padding-top: 15px;
+
 }
 
 .indrz-popup p{
@@ -489,6 +495,11 @@ h3 {
     max-height: 250px;
     overflow-y:scroll;
 
+}
+
+.searchbox-wu{
+    padding-left: 0px;
+    padding-right:12px;
 }
 
 
